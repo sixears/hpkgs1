@@ -8,16 +8,16 @@ build-utils.url = path:/home/martyn/src/flake-build-utils;
 ##    has-callstack.url = github:sixears/has-callstack/r1.0.1.10;
 ##    more-unicode.url  = github:sixears/more-unicode/r0.0.17.7;
 ##    natural.url       = github:sixears/natural/r0.0.1.7;
-#    has-callstack.url = path:/home/martyn/src/has-callstack?flake=false;
-    more-unicode.url  = path:/home/martyn/src/more-unicode;
+    has-callstack.url = path:/home/martyn/src/has-callstack;
+#    more-unicode.url  = path:/home/martyn/src/more-unicode;
 #    natural.url       = path:/home/martyn/src/natural;
   };
 
-  inputs.has-callstack = {
-    type = "path";
-    path = "/home/martyn/src/has-callstack";
-    flake = false;
-  };
+##  inputs.has-callstack = {
+##    type = "path";
+##    path = "/home/martyn/src/has-callstack";
+##    flake = false;
+##  };
 
 ##  inputs.more-unicode = {
 ##    type = "path";
@@ -25,14 +25,14 @@ build-utils.url = path:/home/martyn/src/flake-build-utils;
 ##    flake = false;
 ##  };
 
-  inputs.natural = {
-    type = "path";
-    path = "/home/martyn/src/natural";
-    flake = false;
-  };
+##  inputs.natural = {
+##    type = "path";
+##    path = "/home/martyn/src/natural";
+##    flake = false;
+##  };
 
   outputs = { self, build-utils, nixpkgs
-            , has-callstack, more-unicode, natural
+            , has-callstack # , more-unicode, natural
             }:
     let
       system = "x86_64-linux";
@@ -41,21 +41,104 @@ build-utils.url = path:/home/martyn/src/flake-build-utils;
         overlays = [ (final: prev: { haskellPackages = prev.haskell.packages.ghc8107; }) ];
       };
     in {
-#      nixpkgs = pkgs;
 
-      packages.${system} = {
+      packages.${system} = rec {
         natural =
-          build-utils.lib.hPackage system pkgs "natural" natural {
-            deps = { inherit more-unicode; };
-          };
+          pkgs.haskell.packages.ghc8107.callPackage (
+            { mkDerivation, fetchFromGitHub, lib
+            , base, base-unicode-symbols }:
+              let
+                pname = "natural";
+                version = "0.0.1.14";
+              in
+                mkDerivation {
+                  inherit pname version;
+                  src = fetchFromGitHub {
+                    owner = "sixears";
+                    repo  = pname;
+                    rev   = "r${version}";
+                    sha256 = "sha256-Oq1UGCQic1x7b1PsptkHd6w3k6SyMFBVc2uhQAPOjqk";
+                  };
+                  libraryHaskellDepends = [
+                    base base-unicode-symbols
+                    more-unicode
+                  ];
+                  description = "Type-level natural numbers";
+                  license = lib.licenses.mit;
+                }
+          ) {};
 
         more-unicode =
-          build-utils.lib.hPackage system pkgs "more-unicode" more-unicode { };
+          pkgs.haskell.packages.ghc8107.callPackage ({ mkDerivation, fetchFromGitHub, lib
+                              , base, base-unicode-symbols, containers, lens
+                              , mono-traversable, prettyprinter, tasty-hunit
+                              , tasty-quickcheck, text
+                              }:
+            let
+              pname = "more-unicode";
+              version = "0.0.17.12";
+            in
+              mkDerivation {
+                inherit pname version;
+                src = fetchFromGitHub {
+                  owner = "sixears";
+                  repo  = pname;
+                  rev   = "r${version}";
+                  sha256 = "sha256-4TlmMRQTBJwCJ2JAFA54Dgah4LPGtQC+9o7X0mhn8qw";
+                };
+                libraryHaskellDepends = [
+                  base base-unicode-symbols containers lens mono-traversable
+                  prettyprinter tasty-hunit tasty-quickcheck text
+                ];
+                testHaskellDepends = [ base ];
+                description = "More unicode symbols";
+                license = lib.licenses.mit;
+              }) {};
 
         has-callstack =
-          build-utils.lib.hPackage system pkgs "has-callstack" has-callstack {
-            deps = { inherit more-unicode natural; };
-          };
+          pkgs.haskell.packages.ghc8107.callPackage ({ mkDerivation, fetchFromGitHub, lib
+                    , base, base-unicode-symbols, lens, safe, strings, text
+                    }:
+        let
+          pname = "has-callstack";
+          version = "1.0.1.19";
+        in
+          mkDerivation {
+            inherit pname version;
+            src = fetchFromGitHub {
+              owner = "sixears";
+              repo  = pname;
+              rev   = "r${version}";
+              sha256 = "sha256-lxdqsh05wSMQ3QMAMA5Euccm5lbFPTG50uhnChTxmxc";
+            };
+            libraryHaskellDepends = [
+              base base-unicode-symbols lens safe strings text
+              more-unicode natural
+            ];
+            description = "TypeClass for things that carry around a callstack";
+            license = lib.licenses.mit;
+          }) {};
+
+        number =
+          pkgs.haskell.packages.ghc8107.callPackage ({ mkDerivation, fetchFromGitHub, lib
+                    , base, base-unicode-symbols }:
+        let
+          pname = "number";
+          version = "1.1.2.14";
+        in
+          mkDerivation {
+            inherit pname version;
+            src = fetchFromGitHub {
+              owner = "sixears";
+              repo  = pname;
+              rev   = "r${version}";
+              sha256 = "sha256-2dRXfRcwTqT5symkNmQM+/wtwE0BwoDfihF/YcDLzVI";
+            };
+            libraryHaskellDepends = [ base base-unicode-symbols ];
+            description = "manage info.yaml";
+            license = lib.licenses.mit;
+          }) {};
+
       };
-  };
+    };
 }
