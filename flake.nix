@@ -15,7 +15,9 @@
     monaderror-io-src-1-2-5-20.url = github:sixears/monaderror-io/r1.2.5.20;
     more-unicode-src-0-0-17-12.url = github:sixears/more-unicode/r0.0.17.12;
     natural-src-0-0-1-14.url       = github:sixears/natural/r0.0.1.14;
+    non-empty-containers-src-1-4-3-36.url = github:sixears/non-empty-containers/r1.4.3.36;
     number-src-1-1-2-14.url        = github:sixears/number/r1.1.2.14;
+    parsec-plus-base-src-1-0-5-23.url = github:sixears/parsec-plus-base/r1.0.5.23;
     tasty-plus-src-1-5-2-24.url    = github:sixears/tasty-plus/r1.5.2.24;
     tfmt-src-0-2-7-25.url          = github:sixears/tfmt/r0.2.7.25;
   };
@@ -33,7 +35,9 @@
             , monaderror-io-src-1-2-5-20
             , more-unicode-src-0-0-17-12
             , natural-src-0-0-1-14
+            , non-empty-containers-src-1-4-3-36
             , number-src-1-1-2-14
+            , parsec-plus-base-src-1-0-5-23
             , tasty-plus-src-1-5-2-24
             , tfmt-src-0-2-7-25
             }:
@@ -180,6 +184,19 @@
             testDepends = h: with h; [ base ];
           };
 
+          # -- parsec-plus-base --------
+
+          parsec-plus-base          = parsec-plus-base-1-0;
+          parsec-plus-base-1-0      = parsec-plus-base-1-0-5-23;
+          parsec-plus-base-1-0-5-23 = callPkg "parsec-plus-base" "1.0.5.23" parsec-plus-base-src-1-0-5-23 {
+            description = "Parsecable class, and utilities; base version without file parsing";
+            libDepends = h: with h; [
+              base base-unicode-symbols data-textual deepseq has-callstack lens
+              monaderror-io more-unicode mtl parsec text-printer
+            ];
+            testDepends = h: with h; [ base ];
+          };
+
           # -- L5 (internal dependencies on L4) --------------
 
           # -- tasty-plus --------------
@@ -242,6 +259,24 @@
             description = "Prelude replacement, first-level local packages, incl. tests";
             libDepends = h: with h; [ base0t base1 tasty-plus ];
           };
+
+          # -- non-empty-containers ----
+
+          non-empty-containers          = non-empty-containers-1-4;
+          non-empty-containers-1-4      = non-empty-containers-1-4-3-36;
+          non-empty-containers-1-4-3-36 = callPkg "non-empty-containers" "1.4.3.36" non-empty-containers-src-1-4-3-36 {
+            description = "Containers that may not be empty, by construction";
+            libDepends = h: with h; [
+              base base-unicode-symbols base1 containers deepseq lens
+              mono-traversable more-unicode QuickCheck tasty tasty-hunit
+              tasty-plus tasty-quickcheck template-haskell text text-printer
+              unordered-containers
+
+              base1 more-unicode tasty-plus
+            ];
+            testDepends = h: with h; [ base tasty ];
+          };
+
 
           # -- L9 (internal dependencies on L8) --------------
 
