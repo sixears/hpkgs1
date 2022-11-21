@@ -8,6 +8,7 @@
     base0t-src-0-0-1-14.url        = github:sixears/base0t/r0.0.1.14;
     base1-src-0-0-9-34.url         = github:sixears/base1/r0.0.9.34;
     base1t-src-0-0-5-36.url        = github:sixears/base1t/r0.0.5.36;
+    env-plus-src-1-0-7-37.url      = github:sixears/env-plus/r1.0.7.37;
     exited-src-1-0-4-23.url        = github:sixears/exited/r1.0.4.23;
     has-callstack-src-1-0-1-19.url = github:sixears/has-callstack/r1.0.1.19;
     index-src-1-0-1-26.url         = github:sixears/index/r1.0.1.26;
@@ -25,6 +26,7 @@
             , base0t-src-0-0-1-14
             , base1-src-0-0-9-34
             , base1t-src-0-0-5-36
+            , env-plus-src-1-0-7-37
             , exited-src-1-0-4-23
             , has-callstack-src-1-0-1-19
             , index-src-1-0-1-26
@@ -240,6 +242,24 @@
             description = "Prelude replacement, first-level local packages, incl. tests";
             libDepends = h: with h; [ base0t base1 tasty-plus ];
           };
+
+          # -- L9 (internal dependencies on L8) --------------
+
+          # -- env-plus ----------------
+
+          env-plus          = env-plus-1-0;
+          env-plus-1-0      = env-plus-1-0-7-37;
+          env-plus-1-0-7-37 = callPkg "env-plus" "1.0.7.37" env-plus-src-1-0-7-37 {
+            description = "Utilities for working with the system environment";
+            libDepends = h: with h; [
+              base containers data-textual deepseq lens mono-traversable mtl
+              parsers text text-printer unix
+
+              base1t tasty-plus
+            ];
+            testDepends = h: with h; [ base tasty ];
+          };
+
         }; # packages = rec { ...
 
         # run, say, nix develop ~/src/hpkgs1/flake.nix#tasty-plus
