@@ -2,143 +2,85 @@
   description = "some haskell packages";
   inputs = {
     nixpkgs.url     = github:nixos/nixpkgs/be44bf67; # nixos-22.05 2022-10-15
-#    build-utils.url = github:sixears/flake-build-utils/r1.0.0.10;
-build-utils.url = path:/home/martyn/src/flake-build-utils;
+    flake-utils.url = github:numtide/flake-utils/c0e246b9;
 
-##    has-callstack.url = github:sixears/has-callstack/r1.0.1.10;
-##    more-unicode.url  = github:sixears/more-unicode/r0.0.17.7;
-##    natural.url       = github:sixears/natural/r0.0.1.7;
-    has-callstack.url = path:/home/martyn/src/has-callstack;
-#    more-unicode.url  = path:/home/martyn/src/more-unicode;
-#    natural.url       = path:/home/martyn/src/natural;
+    has-callstack-src-1-0-1-19.url = github:sixears/has-callstack/r1.0.1.19;
+    more-unicode-src-0-0-17-12.url = github:sixears/more-unicode/r0.0.17.12;
+    natural-src-0-0-1-14.url       = github:sixears/natural/r0.0.1.14;
+    number-src-1-1-2-14.url        = github:sixears/number/r1.1.2.14;
   };
 
-##  inputs.has-callstack = {
-##    type = "path";
-##    path = "/home/martyn/src/has-callstack";
-##    flake = false;
-##  };
-
-##  inputs.more-unicode = {
-##    type = "path";
-##    path = "/home/martyn/src/more-unicode";
-##    flake = false;
-##  };
-
-##  inputs.natural = {
-##    type = "path";
-##    path = "/home/martyn/src/natural";
-##    flake = false;
-##  };
-
-  outputs = { self, build-utils, nixpkgs
-            , has-callstack # , more-unicode, natural
+  outputs = { self, nixpkgs, flake-utils
+            , has-callstack-src-1-0-1-19
+            , more-unicode-src-0-0-17-12
+            , natural-src-0-0-1-14
+            , number-src-1-1-2-14
             }:
-    let
-      system = "x86_64-linux";
-      pkgs = import nixpkgs {
-        system = system;
-        overlays = [ (final: prev: { haskellPackages = prev.haskell.packages.ghc8107; }) ];
-      };
-    in {
+    flake-utils.lib.eachDefaultSystem (system:
+      let
+        pkgs = import nixpkgs {
+          system = system;
+          overlays = [ (final: prev: { haskellPackages = prev.haskell.packages.ghc8107; }) ];
+        };
+        hpkgs = pkgs.haskellPackages;
 
-      packages.${system} = rec {
-        natural =
-          pkgs.haskell.packages.ghc8107.callPackage (
-            { mkDerivation, fetchFromGitHub, lib
-            , base, base-unicode-symbols }:
-              let
-                pname = "natural";
-                version = "0.0.1.14";
-              in
-                mkDerivation {
-                  inherit pname version;
-                  src = fetchFromGitHub {
-                    owner = "sixears";
-                    repo  = pname;
-                    rev   = "r${version}";
-                    sha256 = "sha256-Oq1UGCQic1x7b1PsptkHd6w3k6SyMFBVc2uhQAPOjqk";
-                  };
-                  libraryHaskellDepends = [
-                    base base-unicode-symbols
-                    more-unicode
-                  ];
-                  description = "Type-level natural numbers";
-                  license = lib.licenses.mit;
-                }
-          ) {};
+        callPkg = pname: version: src: { description, libDepends ? _: {} }:
+              hpkgs.mkDerivation {
+                inherit pname version src description;
+                libraryHaskellDepends = libDepends hpkgs;
+                license = pkgs.lib.licenses.mit;
+              };
+      in {
+        packages = rec {
+          # -- L0 (no internal dependencies) -----------------
 
-        more-unicode =
-          pkgs.haskell.packages.ghc8107.callPackage ({ mkDerivation, fetchFromGitHub, lib
-                              , base, base-unicode-symbols, containers, lens
-                              , mono-traversable, prettyprinter, tasty-hunit
-                              , tasty-quickcheck, text
-                              }:
-            let
-              pname = "more-unicode";
-              version = "0.0.17.12";
-            in
-              mkDerivation {
-                inherit pname version;
-                src = fetchFromGitHub {
-                  owner = "sixears";
-                  repo  = pname;
-                  rev   = "r${version}";
-                  sha256 = "sha256-4TlmMRQTBJwCJ2JAFA54Dgah4LPGtQC+9o7X0mhn8qw";
-                };
-                libraryHaskellDepends = [
-                  base base-unicode-symbols containers lens mono-traversable
-                  prettyprinter tasty-hunit tasty-quickcheck text
-                ];
-                testHaskellDepends = [ base ];
-                description = "More unicode symbols";
-                license = lib.licenses.mit;
-              }) {};
 
-        has-callstack =
-          pkgs.haskell.packages.ghc8107.callPackage ({ mkDerivation, fetchFromGitHub, lib
-                    , base, base-unicode-symbols, lens, safe, strings, text
-                    }:
-        let
-          pname = "has-callstack";
-          version = "1.0.1.19";
-        in
-          mkDerivation {
-            inherit pname version;
-            src = fetchFromGitHub {
-              owner = "sixears";
-              repo  = pname;
-              rev   = "r${version}";
-              sha256 = "sha256-lxdqsh05wSMQ3QMAMA5Euccm5lbFPTG50uhnChTxmxc";
+          more-unicode           = more-unicode-0-0;
+          more-unicode-0-0       = more-unicode-0-0-17-12;
+          more-unicode-0-0-17-12 =
+            callPkg "more-unicode" "0.0.17.12" more-unicode-src-0-0-17-12 {
+              description = "More unicode symbols";
+              libDepends = h: with h; [
+                base-unicode-symbols containers lens mono-traversable
+                prettyprinter tasty-hunit tasty-quickcheck
+                # strangely, neither 'base' nor 'text' seem to be required in
+                # practice!?
+                # base text
+              ];
             };
-            libraryHaskellDepends = [
-              base base-unicode-symbols lens safe strings text
-              more-unicode natural
-            ];
-            description = "TypeClass for things that carry around a callstack";
-            license = lib.licenses.mit;
-          }) {};
 
-        number =
-          pkgs.haskell.packages.ghc8107.callPackage ({ mkDerivation, fetchFromGitHub, lib
-                    , base, base-unicode-symbols }:
-        let
-          pname = "number";
-          version = "1.1.2.14";
-        in
-          mkDerivation {
-            inherit pname version;
-            src = fetchFromGitHub {
-              owner = "sixears";
-              repo  = pname;
-              rev   = "r${version}";
-              sha256 = "sha256-2dRXfRcwTqT5symkNmQM+/wtwE0BwoDfihF/YcDLzVI";
+          # -- number --------------------
+
+          number          = number-1-1;
+          number-1-1      = number-1-1-2-14;
+          number-1-1-2-14 =
+            callPkg "number" "1.1.2.14" number-src-1-1-2-14 {
+              description = "manage info.yaml";
+              libDepends = h: with h; [ base base-unicode-symbols ];
             };
-            libraryHaskellDepends = [ base base-unicode-symbols ];
-            description = "manage info.yaml";
-            license = lib.licenses.mit;
-          }) {};
 
-      };
-    };
+          # -- L1 (internal dependencies on L0) --------------
+
+          natural          = natural-0-0;
+          natural-0-0      = natural-0-0-1-14;
+          natural-0-0-1-14 = callPkg "natural" "0.0.1.14" natural-src-0-0-1-14 {
+            description = "Type-level natural numbers";
+            libDepends  = h: with h; [ base base-unicode-symbols  more-unicode ];
+          };
+
+          # -- L2 (internal dependencies on L1) --------------
+
+          has-callstack          = has-callstack-1-0;
+          has-callstack-1-0      = has-callstack-1-0-1-19;
+          has-callstack-1-0-1-19 =
+            callPkg "has-callstack" "1.0.1.19" has-callstack-src-1-0-1-19 {
+              description = "TypeClass for things that carry around a callstack";
+              libDepends = h: with h; [
+                base base-unicode-symbols lens safe strings text
+                more-unicode natural
+              ];
+            };
+        }; # packages = rec { ...
+      } # let pkgs ... in ...
+    );
 }
