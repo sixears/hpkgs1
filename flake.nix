@@ -19,8 +19,10 @@
     non-empty-containers-src-1-4-3-36.url = github:sixears/non-empty-containers/r1.4.3.36;
     number-src-1-1-2-14.url        = github:sixears/number/r1.1.2.14;
     parsec-plus-base-src-1-0-5-23.url = github:sixears/parsec-plus-base/r1.0.5.23;
+    parsec-plus-src-1-1-1-44.url   = github:sixears/parsec-plus/r1.1.1.44;
     quasiquoting-src-1-0-1-32.url  = github:sixears/quasiquoting/r1.0.1.32;
     tasty-plus-src-1-5-2-24.url    = github:sixears/tasty-plus/r1.5.2.24;
+    textual-plus-src-1-0-2-27.url  = github:sixears/textual-plus/r1.0.2.27;
     tfmt-src-0-2-7-25.url          = github:sixears/tfmt/r0.2.7.25;
   };
 
@@ -41,8 +43,10 @@
             , non-empty-containers-src-1-4-3-36
             , number-src-1-1-2-14
             , parsec-plus-base-src-1-0-5-23
+            , parsec-plus-src-1-1-1-44
             , quasiquoting-src-1-0-1-32
             , tasty-plus-src-1-5-2-24
+            , textual-plus-src-1-0-2-27
             , tfmt-src-0-2-7-25
             }:
     flake-utils.lib.eachDefaultSystem (system:
@@ -65,7 +69,7 @@
               };
       in rec {
         packages = rec {
-          # -- L0 (no internal dependencies) -----------------
+          # -- L0 (no internal dependencies) ---------------
 
           # -- base0 -------------------
 
@@ -114,7 +118,7 @@
               libDepends = h: with h; [ base base-unicode-symbols ];
             };
 
-          # -- L1 (internal dependencies on L0) --------------
+          # -- L1 (internal dependencies on L0) ------------
 
           # -- number ------------------
 
@@ -125,7 +129,7 @@
             libDepends  = h: with h; [ base base-unicode-symbols  more-unicode ];
           };
 
-          # -- L2 (internal dependencies on L1) --------------
+          # -- L2 (internal dependencies on L1) ------------
 
           # -- has-callstack -----------
 
@@ -140,7 +144,7 @@
               ];
             };
 
-          # -- L3 (internal dependencies on L2) --------------
+          # -- L3 (internal dependencies on L2) ------------
 
           # -- tfmt --------------------
 
@@ -172,7 +176,7 @@
             testDepends = h: with h; [ base ];
           };
 
-          # -- L4 (internal dependencies on L3) --------------
+          # -- L4 (internal dependencies on L3) ------------
 
           # -- exited ------------------
 
@@ -201,7 +205,18 @@
             testDepends = h: with h; [ base ];
           };
 
-          # -- L5 (internal dependencies on L4) --------------
+          # -- textual-plus ------------
+
+          textual-plus          = textual-plus-1-0;
+          textual-plus-1-0      = textual-plus-1-0-2-27;
+          textual-plus-1-0-2-27 = callPkg "textual-plus" "1.0.2.27" textual-plus-src-1-0-2-27 {
+            description = "manage info.yaml";
+            libDepends = h: with h; [
+              base base-unicode-symbols data-textual mtl text tfmt
+            ];
+          };
+
+          # -- L5 (internal dependencies on L4) ------------
 
           # -- quasiquoting ------------
 
@@ -232,7 +247,7 @@
             testDepends = h: with h; [ base optparse-applicative ];
           };
 
-          # -- L6 (internal dependencies on L5) --------------
+          # -- L6 (internal dependencies on L5) ------------
 
           # -- index -------------------
 
@@ -253,7 +268,7 @@
             ];
           };
 
-          # -- L7 (internal dependencies on L6) --------------
+          # -- L7 (internal dependencies on L6) ------------
 
           # -- base1 -------------------
 
@@ -266,7 +281,7 @@
             ];
           };
 
-          # -- L8 (internal dependencies on L7) --------------
+          # -- L8 (internal dependencies on L7) ------------
 
           # -- base1t ------------------
 
@@ -294,7 +309,7 @@
             testDepends = h: with h; [ base tasty ];
           };
 
-          # -- L9 (internal dependencies on L8) --------------
+          # -- L9 (internal dependencies on L8) ------------
 
           # -- env-plus ----------------
 
@@ -329,6 +344,22 @@
               non-empty-containers quasiquoting tasty-plus tfmt
             ];
             testDepends = h: with h; [ base tasty ];
+          };
+
+          # -- L10 (internal dependencies on L9) -----------
+
+          # -- parsec-plus -------------
+
+          parsec-plus          = parsec-plus-1-1;
+          parsec-plus-1-1      = parsec-plus-1-1-1-44;
+          parsec-plus-1-1-1-44 = callPkg "parsec-plus" "1.1.1.44" parsec-plus-src-1-1-1-44 {
+            description = "Parsecable class, with file-reading functions";
+            libDepends = h: with h; [
+              base base-unicode-symbols data-textual lens mtl parsec
+
+              base1t fpath monaderror-io monadio-plus parsec-plus-base
+            ];
+            testDepends = h: with h; [ base ];
           };
 
         }; # packages = rec { ...
