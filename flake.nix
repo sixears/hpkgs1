@@ -6,20 +6,26 @@
 
     base0-src-0-0-4-11.url         = github:sixears/base0/r0.0.4.11;
     base0t-src-0-0-1-14.url        = github:sixears/base0t/r0.0.1.14;
+    exited-src-1-0-4-23.url        = github:sixears/exited/r1.0.4.23;
     has-callstack-src-1-0-1-19.url = github:sixears/has-callstack/r1.0.1.19;
+    monaderror-io-src-1-2-5-20.url = github:sixears/monaderror-io/r1.2.5.20;
     more-unicode-src-0-0-17-12.url = github:sixears/more-unicode/r0.0.17.12;
     natural-src-0-0-1-14.url       = github:sixears/natural/r0.0.1.14;
     number-src-1-1-2-14.url        = github:sixears/number/r1.1.2.14;
+    tasty-plus-src-1-5-2-24.url    = github:sixears/tasty-plus/r1.5.2.24;
   };
 
   outputs = { self, nixpkgs, flake-utils
 
             , base0-src-0-0-4-11
             , base0t-src-0-0-1-14
+            , exited-src-1-0-4-23
             , has-callstack-src-1-0-1-19
+            , monaderror-io-src-1-2-5-20
             , more-unicode-src-0-0-17-12
             , natural-src-0-0-1-14
             , number-src-1-1-2-14
+            , tasty-plus-src-1-5-2-24
             }:
     flake-utils.lib.eachDefaultSystem (system:
       let
@@ -29,13 +35,16 @@
         };
         hpkgs = pkgs.haskellPackages;
 
-        callPkg = pname: version: src: { description, libDepends ? _: {} }:
+        callPkg = pname: version: src: { description, libDepends ? _: []
+                                       , testDepends ? _ : []
+                                       }:
               hpkgs.mkDerivation {
                 inherit pname version src description;
                 libraryHaskellDepends = libDepends hpkgs;
                 license = pkgs.lib.licenses.mit;
+                testHaskellDepends = testDepends hpkgs;
               };
-      in {
+      in rec {
         packages = rec {
           # -- L0 (no internal dependencies) -----------------
 
@@ -107,7 +116,67 @@
                 more-unicode natural
               ];
             };
+
+          # -- L3 (internal dependencies on L2) --------------
+
+          # -- monaderror-io -----------
+
+          monaderror-io          = monaderror-io-1-2;
+          monaderror-io-1-2      = monaderror-io-1-2-5-20;
+          monaderror-io-1-2-5-20 = callPkg "monaderror-io" "1.2.5.20" monaderror-io-src-1-2-5-20 {
+            description = "An AsIOError class for compound errors, and some MonadError handling utilities";
+            libDepends = h: with h; [
+              base base0 deepseq has-callstack lens more-unicode mtl text-printer
+            ];
+            testDepends = h: with h; [ base ];
+          };
+
+          # -- L4 (internal dependencies on L3) --------------
+
+          # -- exited ------------------
+
+          exited          = exited-1-0;
+          exited-1-0      = exited-1-0-4-23;
+          exited-1-0-4-23 = callPkg "exited" "1.0.4.23" exited-src-1-0-4-23 {
+            description = "An Exited DataType, to represent program exit better than ()";
+            libDepends = h: with h; [
+              base base-unicode-symbols data-textual mtl
+
+              has-callstack monaderror-io more-unicode
+            ];
+            testDepends = h: with h; [ base ];
+          };
+
+          # -- L5 (internal dependencies on L4) --------------
+
+          # -- tasty-plus --------------
+
+          tasty-plus          = tasty-plus-1-5;
+          tasty-plus-1-5      = tasty-plus-1-5-2-24;
+          tasty-plus-1-5-2-24 = callPkg "tasty-plus" "1.5.2.24" tasty-plus-src-1-5-2-24 {
+            description = "Additional utilities for working with Tasty";
+            libDepends = h: with h; [
+              base base-unicode-symbols data-textual deepseq directory mtl
+              optparse-applicative safe tasty tasty-hunit tasty-quickcheck
+              temporary text text-printer
+
+              exited more-unicode
+            ];
+            testDepends = h: with h; [ base optparse-applicative ];
+          };
+
+
         }; # packages = rec { ...
+
+        # run, say, nix develop ~/src/hpkgs1/flake.nix#tasty-plus
+        devShells.tasty-plus =
+          hpkgs.shellFor {
+            packages = _: [packages.tasty-plus];
+            buildInputs = with hpkgs; [
+              haskell-language-server ## you must build it with your ghc to work
+              ghcid cabal-install
+            ];
+          };
       } # let pkgs ... in ...
     );
 }
