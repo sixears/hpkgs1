@@ -10,6 +10,7 @@
     base1t-src-0-0-5-36.url        = github:sixears/base1t/r0.0.5.36;
     env-plus-src-1-0-7-37.url      = github:sixears/env-plus/r1.0.7.37;
     exited-src-1-0-4-23.url        = github:sixears/exited/r1.0.4.23;
+    fpath-src-1-3-2-39.url         = github:sixears/fpath/r1.3.2.39;
     has-callstack-src-1-0-1-19.url = github:sixears/has-callstack/r1.0.1.19;
     index-src-1-0-1-26.url         = github:sixears/index/r1.0.1.26;
     monaderror-io-src-1-2-5-20.url = github:sixears/monaderror-io/r1.2.5.20;
@@ -31,6 +32,7 @@
             , base1t-src-0-0-5-36
             , env-plus-src-1-0-7-37
             , exited-src-1-0-4-23
+            , fpath-src-1-3-2-39
             , has-callstack-src-1-0-1-19
             , index-src-1-0-1-26
             , monaderror-io-src-1-2-5-20
@@ -292,7 +294,6 @@
             testDepends = h: with h; [ base tasty ];
           };
 
-
           # -- L9 (internal dependencies on L8) --------------
 
           # -- env-plus ----------------
@@ -306,6 +307,26 @@
               parsers text text-printer unix
 
               base1t tasty-plus
+            ];
+            testDepends = h: with h; [ base tasty ];
+          };
+
+          # -- fpath -------------------
+
+          fpath          = fpath-1-3;
+          fpath-1-3      = fpath-1-3-2-39;
+          fpath-1-3-2-39 = callPkg "fpath" "1.3.2.39" fpath-src-1-3-2-39 {
+            description = "Strongly-typed file paths";
+            libDepends = h: with h; [
+              base base-unicode-symbols containers data-default data-textual
+              deepseq directory exceptions filepath genvalidity
+              genvalidity-bytestring genvalidity-property genvalidity-text lens
+              mono-traversable mtl optparse-applicative parsers QuickCheck safe
+              tasty tasty-hunit tasty-quickcheck template-haskell temporary text
+              text-printer th-lift-instances unix validity
+
+              base1t exited has-callstack monaderror-io more-unicode
+              non-empty-containers quasiquoting tasty-plus tfmt
             ];
             testDepends = h: with h; [ base tasty ];
           };
