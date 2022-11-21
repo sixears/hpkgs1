@@ -18,6 +18,7 @@
     non-empty-containers-src-1-4-3-36.url = github:sixears/non-empty-containers/r1.4.3.36;
     number-src-1-1-2-14.url        = github:sixears/number/r1.1.2.14;
     parsec-plus-base-src-1-0-5-23.url = github:sixears/parsec-plus-base/r1.0.5.23;
+    quasiquoting-src-1-0-1-32.url  = github:sixears/quasiquoting/r1.0.1.32;
     tasty-plus-src-1-5-2-24.url    = github:sixears/tasty-plus/r1.5.2.24;
     tfmt-src-0-2-7-25.url          = github:sixears/tfmt/r0.2.7.25;
   };
@@ -38,6 +39,7 @@
             , non-empty-containers-src-1-4-3-36
             , number-src-1-1-2-14
             , parsec-plus-base-src-1-0-5-23
+            , quasiquoting-src-1-0-1-32
             , tasty-plus-src-1-5-2-24
             , tfmt-src-0-2-7-25
             }:
@@ -198,6 +200,19 @@
           };
 
           # -- L5 (internal dependencies on L4) --------------
+
+          # -- quasiquoting ------------
+
+          quasiquoting          = quasiquoting-1-0;
+          quasiquoting-1-0      = quasiquoting-1-0-1-32;
+          quasiquoting-1-0-1-32 = callPkg "quasiquoting" "1.0.1.32" quasiquoting-src-1-0-1-32 {
+            description = "manage info.yaml";
+            libDepends = h: with h; [
+              base base-unicode-symbols data-default lens template-haskell text
+
+              monaderror-io more-unicode parsec-plus-base tfmt
+            ];
+          };
 
           # -- tasty-plus --------------
 
