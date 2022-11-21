@@ -4,6 +4,8 @@
     nixpkgs.url     = github:nixos/nixpkgs/be44bf67; # nixos-22.05 2022-10-15
     flake-utils.url = github:numtide/flake-utils/c0e246b9;
 
+    base0-src-0-0-4-11.url         = github:sixears/base0/r0.0.4.11;
+    base0t-src-0-0-1-14.url        = github:sixears/base0t/r0.0.1.14;
     has-callstack-src-1-0-1-19.url = github:sixears/has-callstack/r1.0.1.19;
     more-unicode-src-0-0-17-12.url = github:sixears/more-unicode/r0.0.17.12;
     natural-src-0-0-1-14.url       = github:sixears/natural/r0.0.1.14;
@@ -11,6 +13,9 @@
   };
 
   outputs = { self, nixpkgs, flake-utils
+
+            , base0-src-0-0-4-11
+            , base0t-src-0-0-1-14
             , has-callstack-src-1-0-1-19
             , more-unicode-src-0-0-17-12
             , natural-src-0-0-1-14
@@ -34,6 +39,28 @@
         packages = rec {
           # -- L0 (no internal dependencies) -----------------
 
+          # -- base0 -------------------
+
+          base0 = base0-0-0;
+          base0-0-0 = base0-0-0-4-11;
+          base0-0-0-4-11 = callPkg "base0" "0.0.4.11" base0-src-0-0-4-11 {
+            description = "Prelude replacement, external packages only, no tests";
+            libDepends = h: with h;[
+              base base-unicode-symbols data-default data-textual hashable lens
+              mtl safe
+            ];
+          };
+
+          # -- base0t -------------------
+
+          base0t = base0t-0-0;
+          base0t-0-0 = base0t-0-0-1-14;
+          base0t-0-0-1-14 = callPkg "base0t" "0.0.1.14" base0t-src-0-0-1-14 {
+            description = "Prelude replacement, external packages only, incl. tests";
+            libDepends = h: with h; [ base0 tasty tasty-hunit ];
+          };
+
+          # -- more-unicode ------------
 
           more-unicode           = more-unicode-0-0;
           more-unicode-0-0       = more-unicode-0-0-17-12;
