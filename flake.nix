@@ -8,6 +8,7 @@
     base0t-src-0-0-1-14.url        = github:sixears/base0t/r0.0.1.14;
     base1-src-0-0-9-34.url         = github:sixears/base1/r0.0.9.34;
     base1t-src-0-0-5-36.url        = github:sixears/base1t/r0.0.5.36;
+    containers-plus-src-0-0-10-39.url = github:sixears/containers-plus/r0.0.10.39;
     env-plus-src-1-0-7-37.url      = github:sixears/env-plus/r1.0.7.37;
     exited-src-1-0-4-23.url        = github:sixears/exited/r1.0.4.23;
     fpath-src-1-3-2-39.url         = github:sixears/fpath/r1.3.2.39;
@@ -32,6 +33,7 @@
             , base0t-src-0-0-1-14
             , base1-src-0-0-9-34
             , base1t-src-0-0-5-36
+            , containers-plus-src-0-0-10-39
             , env-plus-src-1-0-7-37
             , exited-src-1-0-4-23
             , fpath-src-1-3-2-39
@@ -310,6 +312,22 @@
           };
 
           # -- L9 (internal dependencies on L8) ------------
+
+          # -- containers-plus ---------
+
+          containers-plus           = containers-plus-0-0;
+          containers-plus-0-0       = containers-plus-0-0-10-39;
+          containers-plus-0-0-10-39 = callPkg "containers-plus" "0.0.10.39" containers-plus-src-0-0-10-39 {
+            description = "Additional Utilities for Working with Containers";
+            libDepends = h: with h; [
+              base base-unicode-symbols containers hashable lens
+              mono-traversable tasty tasty-hunit text-printer
+              unordered-containers
+
+              base1 more-unicode non-empty-containers tasty-plus textual-plus
+            ];
+            testDepends = h: with h; [ base tasty ];
+          };
 
           # -- env-plus ----------------
 
