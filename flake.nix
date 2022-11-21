@@ -12,6 +12,7 @@
     env-plus-src-1-0-7-37.url      = github:sixears/env-plus/r1.0.7.37;
     exited-src-1-0-4-23.url        = github:sixears/exited/r1.0.4.23;
     fpath-src-1-3-2-39.url         = github:sixears/fpath/r1.3.2.39;
+    fstat-src-1-0-2-26.url         = github:sixears/fstat/r1.0.2.26;
     has-callstack-src-1-0-1-19.url = github:sixears/has-callstack/r1.0.1.19;
     index-src-1-0-1-26.url         = github:sixears/index/r1.0.1.26;
     monaderror-io-src-1-2-5-20.url = github:sixears/monaderror-io/r1.2.5.20;
@@ -37,6 +38,7 @@
             , env-plus-src-1-0-7-37
             , exited-src-1-0-4-23
             , fpath-src-1-3-2-39
+            , fstat-src-1-0-2-26
             , has-callstack-src-1-0-1-19
             , index-src-1-0-1-26
             , monaderror-io-src-1-2-5-20
@@ -192,6 +194,18 @@
               has-callstack monaderror-io more-unicode
             ];
             testDepends = h: with h; [ base ];
+          };
+
+          # -- fstat -------------------
+
+          fstat          = fstat-1-0;
+          fstat-1-0      = fstat-1-0-2-26;
+          fstat-1-0-2-26 = callPkg "fstat" "1.0.2.26" fstat-src-1-0-2-26 {
+            description = "Haskell version of C's struct stat";
+            libDepends = h: with h; [
+              base base-unicode-symbols data-textual text text-printer tfmt time
+              unix
+            ];
           };
 
           # -- parsec-plus-base --------
