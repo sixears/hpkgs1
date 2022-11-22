@@ -16,6 +16,7 @@
     has-callstack-src-1-0-1-19.url = github:sixears/has-callstack/r1.0.1.19;
     index-src-1-0-1-26.url         = github:sixears/index/r1.0.1.26;
     monaderror-io-src-1-2-5-20.url = github:sixears/monaderror-io/r1.2.5.20;
+    monadio-plus-src-2-5-1-49.url  = github:sixears/monadio-plus/r2.5.1.49;
     more-unicode-src-0-0-17-12.url = github:sixears/more-unicode/r0.0.17.12;
     natural-src-0-0-1-14.url       = github:sixears/natural/r0.0.1.14;
     non-empty-containers-src-1-4-3-36.url = github:sixears/non-empty-containers/r1.4.3.36;
@@ -42,6 +43,7 @@
             , has-callstack-src-1-0-1-19
             , index-src-1-0-1-26
             , monaderror-io-src-1-2-5-20
+            , monadio-plus-src-2-5-1-49
             , more-unicode-src-0-0-17-12
             , natural-src-0-0-1-14
             , non-empty-containers-src-1-4-3-36
@@ -62,11 +64,13 @@
         hpkgs = pkgs.haskellPackages;
         hlib  = pkgs.haskell.lib;
 
-        callPkg = pname: version: src: { description, libDepends ? _: []
+        callPkg = pname: version: src: { description
+                                       , libDepends ? _: []
                                        , testDepends ? _ : []
+                                       , postConfigure ? ""
                                        }:
               hpkgs.mkDerivation {
-                inherit pname version src description;
+                inherit pname version src description postConfigure;
                 libraryHaskellDepends = libDepends hpkgs;
                 license = pkgs.lib.licenses.mit;
                 testHaskellDepends = testDepends hpkgs;
@@ -379,6 +383,27 @@
           };
 
           # -- L10 (internal dependencies on L9) -----------
+
+          # -- monadio-plus ------------
+
+          monadio-plus          = monadio-plus-2-5;
+          monadio-plus-2-5      = monadio-plus-2-5-1-49;
+          monadio-plus-2-5-1-49 = callPkg "monadio-plus" "2.5.1.49" monadio-plus-src-2-5-1-49 {
+            description = "IO operations, using MonadIO & MonadError with AsIOError";
+            libDepends = h: with h; [
+              base base-unicode-symbols bytestring containers data-textual
+              deepseq directory exceptions filelock filepath lens mtl process
+              safe tasty-hunit temporary text text-printer unix
+
+              base1t containers-plus env-plus exited fpath fstat monaderror-io
+              more-unicode natural tasty-plus
+            ];
+            testDepends = h: with h; [ base tasty ];
+            postConfigure = ''
+              substitute proto/MonadIO/Paths.hs src/MonadIO/Paths.hs \
+                --replace __gnugrep__ ${pkgs.gnugrep}
+            '';
+          };
 
           # -- parsec-plus -------------
 
