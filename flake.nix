@@ -4,30 +4,188 @@
     nixpkgs.url     = github:nixos/nixpkgs/be44bf67; # nixos-22.05 2022-10-15
     flake-utils.url = github:numtide/flake-utils/c0e246b9;
 
-    base0-src-0-0-4-11.url         = github:sixears/base0/r0.0.4.11;
-    base0t-src-0-0-1-14.url        = github:sixears/base0t/r0.0.1.14;
-    base1-src-0-0-9-34.url         = github:sixears/base1/r0.0.9.34;
-    base1t-src-0-0-5-36.url        = github:sixears/base1t/r0.0.5.36;
-    containers-plus-src-0-0-10-39.url = github:sixears/containers-plus/r0.0.10.39;
-    env-plus-src-1-0-7-37.url      = github:sixears/env-plus/r1.0.7.37;
-    exited-src-1-0-4-23.url        = github:sixears/exited/r1.0.4.23;
-    fpath-src-1-3-2-39.url         = github:sixears/fpath/r1.3.2.39;
-    fstat-src-1-0-2-26.url         = github:sixears/fstat/r1.0.2.26;
-    has-callstack-src-1-0-1-19.url = github:sixears/has-callstack/r1.0.1.19;
-    index-src-1-0-1-26.url         = github:sixears/index/r1.0.1.26;
-    monaderror-io-src-1-2-5-20.url = github:sixears/monaderror-io/r1.2.5.20;
-    monadio-plus-src-2-5-1-49.url  = github:sixears/monadio-plus/r2.5.1.49;
-    more-unicode-src-0-0-17-12.url = github:sixears/more-unicode/r0.0.17.12;
-    natural-src-0-0-1-14.url       = github:sixears/natural/r0.0.1.14;
-    non-empty-containers-src-1-4-3-36.url = github:sixears/non-empty-containers/r1.4.3.36;
-    number-src-1-1-2-14.url        = github:sixears/number/r1.1.2.14;
-    parsec-plus-base-src-1-0-5-23.url = github:sixears/parsec-plus-base/r1.0.5.23;
-    parsec-plus-src-1-1-1-44.url   = github:sixears/parsec-plus/r1.1.1.44;
-    proclib-src-3-2-3-53.url       = github:sixears/proclib/r3.2.3.53;
-    quasiquoting-src-1-0-1-32.url  = github:sixears/quasiquoting/r1.0.1.32;
-    tasty-plus-src-1-5-2-24.url    = github:sixears/tasty-plus/r1.5.2.24;
-    textual-plus-src-1-0-2-27.url  = github:sixears/textual-plus/r1.0.2.27;
-    tfmt-src-0-2-7-25.url          = github:sixears/tfmt/r0.2.7.25;
+    base0-src-0-0-4-11 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "base0";
+      ref   = "r0.0.4.11";
+      flake = false;
+    };
+    base0t-src-0-0-1-14 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "base0t";
+      ref   = "r0.0.1.14";
+      flake = false;
+    };
+    base1-src-0-0-9-34 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "base1";
+      ref   = "r0.0.9.34";
+      flake = false;
+    };
+    base1t-src-0-0-5-36 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "base1t";
+      ref   = "r0.0.5.36";
+      flake = false;
+    };
+    containers-plus-src-0-0-10-39 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "containers-plus";
+      ref   = "r0.0.10.39";
+      flake = false;
+    };
+    env-plus-src-1-0-7-37 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "env-plus";
+      ref   = "r1.0.7.37";
+      flake = false;
+    };
+    exited-src-1-0-4-23 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "exited";
+      ref   = "r1.0.4.23";
+      flake = false;
+    };
+    fpath-src-1-3-2-39 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "fpath";
+      ref   = "r1.3.2.39";
+      flake = false;
+    };
+    fstat-src-1-0-2-26 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "fstat";
+      ref   = "r1.0.2.26";
+      flake = false;
+    };
+    has-callstack-src-1-0-1-19 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "has-callstack";
+      ref   = "r1.0.1.19";
+      flake = false;
+    };
+    index-src-1-0-1-26 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "index";
+      ref   = "r1.0.1.26";
+      flake = false;
+    };
+    monaderror-io-src-1-2-5-20 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "monaderror-io";
+      ref   = "r1.2.5.20";
+      flake = false;
+    };
+    monadio-plus-src-2-5-1-49 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "monadio-plus";
+      ref   = "r2.5.1.49";
+      flake = false;
+    };
+    more-unicode-src-0-0-17-12 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "more-unicode";
+      ref   = "r0.0.17.12";
+      flake = false;
+    };
+    natural-src-0-0-1-14 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "natural";
+      ref   = "r0.0.1.14";
+      flake = false;
+    };
+    non-empty-containers-src-1-4-3-36 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "non-empty-containers";
+      ref   = "r1.4.3.36";
+      flake = false;
+    };
+    number-src-1-1-2-14 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "number";
+      ref   = "r1.1.2.14";
+      flake = false;
+    };
+    optparse-plus-src-1-3-2-42 = {
+      type = "github";
+      owner = "sixears";
+      repo  = "optparse-plus";
+      ref   = "r1.3.2.42";
+      flake = false;
+    };
+    parsec-plus-base-src-1-0-5-23 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "parsec-plus-base";
+      ref   = "r1.0.5.23";
+      flake = false;
+    };
+    parsec-plus-src-1-1-1-44 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "parsec-plus";
+      ref   = "r1.1.1.44";
+      flake = false;
+    };
+    parser-plus-src-1-0-7-29 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "parser-plus";
+      ref   = "r1.0.7.29";
+      flake = false;
+    };
+    proclib-src-3-2-3-53 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "proclib";
+      ref   = "r3.2.3.53";
+      flake = false;
+    };
+    quasiquoting-src-1-0-1-32 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "quasiquoting";
+      ref   = "r1.0.1.32";
+      flake = false;
+    };
+    tasty-plus-src-1-5-2-24 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "tasty-plus";
+      ref   = "r1.5.2.24";
+      flake = false;
+    };
+    textual-plus-src-1-0-2-27 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "textual-plus";
+      ref   = "r1.0.2.27";
+      flake = false;
+    };
+    tfmt-src-0-2-7-25 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "tfmt";
+      ref   = "r0.2.7.25";
+      flake = false;
+    };
   };
 
   outputs = { self, nixpkgs, flake-utils
@@ -49,8 +207,10 @@
             , natural-src-0-0-1-14
             , non-empty-containers-src-1-4-3-36
             , number-src-1-1-2-14
+            , optparse-plus-src-1-3-2-42
             , parsec-plus-base-src-1-0-5-23
             , parsec-plus-src-1-1-1-44
+            , parser-plus-src-1-0-7-29
             , proclib-src-3-2-3-53
             , quasiquoting-src-1-0-1-32
             , tasty-plus-src-1-5-2-24
@@ -384,6 +544,21 @@
             testDepends = h: with h; [ base tasty ];
           };
 
+          # -- parser-plus -------------
+
+          parser-plus          = parser-plus-1-0;
+          parser-plus-1-0      = parser-plus-1-0-7-29;
+          parser-plus-1-0-7-29 = callPkg "parser-plus" "1.0.7.29" parser-plus-src-1-0-7-29 {
+            description = "manage info.yaml";
+            libDepends = h: with h; [
+              base base-unicode-symbols data-textual mono-traversable mtl
+              nonempty-containers parsec parsers tasty tasty-hunit
+
+              more-unicode natural non-empty-containers tasty-plus
+            ];
+            testDepends = h: with h; [ base tasty ];
+          };
+
           # -- L10 (internal dependencies on L9) -----------
 
           # -- monadio-plus ------------
@@ -423,6 +598,22 @@
 
           # -- L11 (internal dependencies on L10) ----------
 
+          # -- optparse-plus -----------
+
+          optparse-plus          = optparse-plus-1-3;
+          optparse-plus-1-3      = optparse-plus-1-3-2-42;
+          optparse-plus-1-3-2-42 = callPkg "optparse-plus" "1.3.2.42" optparse-plus-src-1-3-2-42 {
+            description = "manage info.yaml";
+            libDepends = h: with h; [
+              base data-textual extra lens nonempty-containers
+              optparse-applicative parsec parsers terminal-size text
+
+              base1 parsec-plus parser-plus textual-plus
+            ];
+          };
+
+          # -- proclib -----------------
+
           proclib          = proclib-3-2;
           proclib-3-2      = proclib-3-2-3-53;
           proclib-3-2-3-53 = callPkg "proclib" "3.2.3.53" proclib-src-3-2-3-53 {
@@ -434,10 +625,16 @@
               template-haskell text text-printer transformers unix
 
               env-plus exited fpath has-callstack monaderror-io monadio-plus
-              more-unicode natural parsec-plus tasty-plus tfmt
-
+              more-unicode natural optparse-plus parsec-plus tasty-plus tfmt
             ];
             testDepends = h: with h; [ base tasty ];
+            postConfigure = ''
+              substitute proto/ProcLib/Paths.hs src/ProcLib/Paths.hs \
+                --replace __coreutils__ ${pkgs.coreutils}            \
+                --replace __gnugrep__   ${pkgs.gnugrep}              \
+                --replace __inetutils__ ${pkgs.inetutils}
+            '';
+          };
 
           # END OF PACKAGES ----------------------------------------------------
 
