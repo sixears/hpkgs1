@@ -23,6 +23,7 @@
     number-src-1-1-2-14.url        = github:sixears/number/r1.1.2.14;
     parsec-plus-base-src-1-0-5-23.url = github:sixears/parsec-plus-base/r1.0.5.23;
     parsec-plus-src-1-1-1-44.url   = github:sixears/parsec-plus/r1.1.1.44;
+    proclib-src-3-2-3-53.url       = github:sixears/proclib/r3.2.3.53;
     quasiquoting-src-1-0-1-32.url  = github:sixears/quasiquoting/r1.0.1.32;
     tasty-plus-src-1-5-2-24.url    = github:sixears/tasty-plus/r1.5.2.24;
     textual-plus-src-1-0-2-27.url  = github:sixears/textual-plus/r1.0.2.27;
@@ -50,6 +51,7 @@
             , number-src-1-1-2-14
             , parsec-plus-base-src-1-0-5-23
             , parsec-plus-src-1-1-1-44
+            , proclib-src-3-2-3-53
             , quasiquoting-src-1-0-1-32
             , tasty-plus-src-1-5-2-24
             , textual-plus-src-1-0-2-27
@@ -418,6 +420,26 @@
             ];
             testDepends = h: with h; [ base ];
           };
+
+          # -- L11 (internal dependencies on L10) ----------
+
+          proclib          = proclib-3-2;
+          proclib-3-2      = proclib-3-2-3-53;
+          proclib-3-2-3-53 = callPkg "proclib" "3.2.3.53" proclib-src-3-2-3-53 {
+            description = "system-interaction library, for easier well-typed \"scripts\"";
+            libDepends = h: with h; [
+              aeson base base-unicode-symbols containers data-default
+              data-textual hashable lens mono-traversable mtl
+              optparse-applicative path process safe streaming tasty tasty-hunit
+              template-haskell text text-printer transformers unix
+
+              env-plus exited fpath has-callstack monaderror-io monadio-plus
+              more-unicode natural parsec-plus tasty-plus tfmt
+
+            ];
+            testDepends = h: with h; [ base tasty ];
+
+          # END OF PACKAGES ----------------------------------------------------
 
         }; # packages = rec { ...
 
