@@ -826,23 +826,17 @@
         }; # packages = rec { ...
 
         # run, say, nix develop ~/src/hpkgs1/flake.nix#tasty-plus
-        devShells.tasty-plus =
-          hpkgs.shellFor {
-            packages = _: [packages.tasty-plus];
-            buildInputs = with hpkgs; [
-              haskell-language-server ## you must build it with your ghc to work
-              ghcid cabal-install
-            ];
-          };
 
-        devShells.mockio-plus =
-          hpkgs.shellFor {
-            packages = _: [packages.mockio-plus];
+        devShells =
+          pkgs.lib.debug.traceSeqN 2 ({ xs = builtins.mapAttrs (_: p: p) packages; }) (
+          builtins.mapAttrs (_: p: hpkgs.shellFor {
+            packages = _: [p];
             buildInputs = with hpkgs; [
               haskell-language-server ## you must build it with your ghc to work
               ghcid cabal-install
             ];
-          };
+          }) packages
+          );
       } # let pkgs ... in ...
     );
 }

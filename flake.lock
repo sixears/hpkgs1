@@ -3,11 +3,11 @@
     "acct-src-0-0-0-0": {
       "flake": false,
       "locked": {
-        "lastModified": 1669207555,
-        "narHash": "sha256-MMzV0ll9vWzp34c/wRhm9bjUQZR3V8b6GT4o5cu2P9E=",
+        "lastModified": 1669225782,
+        "narHash": "sha256-qN6p5CC8RPEWb5neCK3iZ8jfFpxx9EmTFVCjzhyHUAA=",
         "owner": "sixears",
         "repo": "acct",
-        "rev": "044e75821ffdf6de167d7848f4c6bf4e2b1b9612",
+        "rev": "9bac90d393252b53b57d302311c6762e3818d990",
         "type": "github"
       },
       "original": {
