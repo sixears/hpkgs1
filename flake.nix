@@ -95,6 +95,20 @@
       ref   = "r0.0.4.4";
       flake = false;
     };
+    mockio-log-src-0-1-2-0 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "mockio-log";
+      ref   = "r0.1.2.0";
+      flake = false;
+    };
+    mockio-plus-src-0-3-12-0 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "mockio-plus";
+      ref   = "r0.3.12.0";
+      flake = false;
+    };
     monaderror-io-src-1-2-5-20 = {
       type  = "github";
       owner = "sixears";
@@ -224,6 +238,8 @@
             , index-src-1-0-1-26
             , log-plus-src-0-0-4-4
             , mockio-src-0-0-4-4
+            , mockio-log-src-0-1-2-0
+            , mockio-plus-src-0-3-12-0
             , monaderror-io-src-1-2-5-20
             , monadio-plus-src-2-5-1-49
             , more-unicode-src-0-0-17-12
@@ -700,6 +716,46 @@
                 --replace __gnugrep__   ${pkgs.gnugrep}              \
                 --replace __inetutils__ ${pkgs.inetutils}
             '';
+          };
+
+          # -- L11 (internal dependencies on L10) ----------
+
+          # -- mockio-log --------------
+
+          mockio-log         = mockio-log-0-1;
+          mockio-log-0-1     = mockio-log-0-1-2-0;
+          mockio-log-0-1-2-0 = callPkg "mockio-log" "0.1.2.0" mockio-log-src-0-1-2-0 {
+            description = "Combined Mock IO actions with logging";
+            libDepends = h: with h; [
+              base base-unicode-symbols containers data-default data-textual
+              deepseq exceptions lens logging-effect parsec prettyprinter
+              prettyprinter-ansi-terminal tasty tasty-hunit text text-printer
+              time
+
+              base1t containers-plus log-plus mockio monaderror-io monadio-plus
+              more-unicode parsec-plus parser-plus tasty-plus tfmt
+            ];
+            testDepends = h: with h; [ base tasty ];
+          };
+
+          # -- L12 (internal dependencies on L11) ----------
+
+          # -- mockio-plus -------------
+
+          mockio-plus          = mockio-plus-0-3;
+          mockio-plus-0-3      = mockio-plus-0-3-12-0;
+          mockio-plus-0-3-12-0 = callPkg "mockio-plus" "0.3.12.0"
+                                         mockio-plus-src-0-3-12-0 {
+            description = "MonadIO, Mocked, Logged, with Text";
+            libDepends = h: with h; [
+              base bytestring containers data-default data-textual directory
+              exceptions filelock lens logging-effect mtl prettyprinter process
+              safe tasty tasty-hunit text text-icu
+
+              base1t containers-plus env-plus fpath fstat log-plus mockio
+              mockio-log monaderror-io monadio-plus more-unicode tasty-plus tfmt
+            ];
+            testDepends = h: with h; [ base tasty ];
           };
 
           # END OF PACKAGES ----------------------------------------------------
