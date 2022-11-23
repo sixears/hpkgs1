@@ -203,6 +203,23 @@
         "type": "github"
       }
     },
+    "log-plus-src-0-0-4-4": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1649453293,
+        "narHash": "sha256-xs0B8AXgi8O4MyAS7vvkjmV3FIUbPl3QbLMMoRd7Upg=",
+        "owner": "sixears",
+        "repo": "log-plus",
+        "rev": "213bf0ffd47965b85b25fcd0373d92fc3bb80ec7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sixears",
+        "ref": "r0.0.4.4",
+        "repo": "log-plus",
+        "type": "github"
+      }
+    },
     "monaderror-io-src-1-2-5-20": {
       "flake": false,
       "locked": {
@@ -437,6 +454,7 @@
         "fstat-src-1-0-2-26": "fstat-src-1-0-2-26",
         "has-callstack-src-1-0-1-19": "has-callstack-src-1-0-1-19",
         "index-src-1-0-1-26": "index-src-1-0-1-26",
+        "log-plus-src-0-0-4-4": "log-plus-src-0-0-4-4",
         "monaderror-io-src-1-2-5-20": "monaderror-io-src-1-2-5-20",
         "monadio-plus-src-2-5-1-49": "monadio-plus-src-2-5-1-49",
         "more-unicode-src-0-0-17-12": "more-unicode-src-0-0-17-12",
@@ -450,9 +468,27 @@
         "parser-plus-src-1-0-7-29": "parser-plus-src-1-0-7-29",
         "proclib-src-3-2-3-53": "proclib-src-3-2-3-53",
         "quasiquoting-src-1-0-1-32": "quasiquoting-src-1-0-1-32",
+        "single-src-0-0-1-0": "single-src-0-0-1-0",
         "tasty-plus-src-1-5-2-24": "tasty-plus-src-1-5-2-24",
         "textual-plus-src-1-0-2-27": "textual-plus-src-1-0-2-27",
         "tfmt-src-0-2-7-25": "tfmt-src-0-2-7-25"
+      }
+    },
+    "single-src-0-0-1-0": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1600376716,
+        "narHash": "sha256-cL+C6E7AgUTxVjT96m5H8cZV4hCsE3ZNf7wcElreDhE=",
+        "owner": "sixears",
+        "repo": "single",
+        "rev": "b4faf01a8fa8827d5742c1e9209b5f76313a4730",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sixears",
+        "ref": "r0.0.1.0",
+        "repo": "single",
+        "type": "github"
       }
     },
     "tasty-plus-src-1-5-2-24": {
