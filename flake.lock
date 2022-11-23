@@ -523,6 +523,7 @@
         "proclib-src-3-2-3-53": "proclib-src-3-2-3-53",
         "quasiquoting-src-1-0-1-32": "quasiquoting-src-1-0-1-32",
         "single-src-0-0-1-0": "single-src-0-0-1-0",
+        "stdmain-src-1-5-13-0": "stdmain-src-1-5-13-0",
         "tasty-plus-src-1-5-2-24": "tasty-plus-src-1-5-2-24",
         "textual-plus-src-1-0-2-27": "textual-plus-src-1-0-2-27",
         "tfmt-src-0-2-7-25": "tfmt-src-0-2-7-25"
@@ -542,6 +543,23 @@
         "owner": "sixears",
         "ref": "r0.0.1.0",
         "repo": "single",
+        "type": "github"
+      }
+    },
+    "stdmain-src-1-5-13-0": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1655361637,
+        "narHash": "sha256-B45sA/owJB1B9BNwGn2kIIG28cHir+7DEqx6HEwarok=",
+        "owner": "sixears",
+        "repo": "stdmain",
+        "rev": "10b904c83e9f7dd0739fac1650b50222b9884933",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sixears",
+        "ref": "r1.5.13.0",
+        "repo": "stdmain",
         "type": "github"
       }
     },

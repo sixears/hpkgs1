@@ -200,6 +200,13 @@
       ref   = "r0.0.1.0";
       flake = false;
     };
+    stdmain-src-1-5-13-0 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "stdmain";
+      ref   = "r1.5.13.0";
+      flake = false;
+    };
     tasty-plus-src-1-5-2-24 = {
       type  = "github";
       owner = "sixears";
@@ -253,6 +260,7 @@
             , proclib-src-3-2-3-53
             , quasiquoting-src-1-0-1-32
             , single-src-0-0-1-0
+            , stdmain-src-1-5-13-0
             , tasty-plus-src-1-5-2-24
             , textual-plus-src-1-0-2-27
             , tfmt-src-0-2-7-25
@@ -754,6 +762,27 @@
 
               base1t containers-plus env-plus fpath fstat log-plus mockio
               mockio-log monaderror-io monadio-plus more-unicode tasty-plus tfmt
+            ];
+            testDepends = h: with h; [ base tasty ];
+          };
+
+          # -- L12 (internal dependencies on L11) ----------
+
+          # -- stdmain -----------------
+
+          stdmain          = stdmain-1-5;
+          stdmain-1-5      = stdmain-1-5-13-0;
+          stdmain-1-5-13-0 = callPkg "stdmain" "1.5.13.0" stdmain-src-1-5-13-0 {
+            description = "standardized CLI wrapper";
+            libDepends = h: with h; [
+              aeson base base-unicode-symbols bytestring data-default
+              data-textual deepseq lens logging-effect mtl optparse-applicative
+              parsec prettyprinter tasty tasty-hunit text text-printer
+
+              base1t containers-plus exited fpath fstat has-callstack log-plus
+              mockio mockio-log mockio-plus monaderror-io monadio-plus
+              more-unicode natural optparse-plus parsec-plus parser-plus
+              tasty-plus tfmt
             ];
             testDepends = h: with h; [ base tasty ];
           };
