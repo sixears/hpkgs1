@@ -88,6 +88,13 @@
       ref   = "r0.0.4.4";
       flake = false;
     };
+    mockio-src-0-0-4-4 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "mockio";
+      ref   = "r0.0.4.4";
+      flake = false;
+    };
     monaderror-io-src-1-2-5-20 = {
       type  = "github";
       owner = "sixears";
@@ -216,6 +223,7 @@
             , has-callstack-src-1-0-1-19
             , index-src-1-0-1-26
             , log-plus-src-0-0-4-4
+            , mockio-src-0-0-4-4
             , monaderror-io-src-1-2-5-20
             , monadio-plus-src-2-5-1-49
             , more-unicode-src-0-0-17-12
@@ -639,6 +647,19 @@
               mono-traversable more-unicode mtl parsec-plus parser-plus
               prettyprinter prettyprinter-ansi-terminal safe single tasty
               tasty-hunit tasty-plus terminal-size text text-printer tfmt time
+            ];
+            testDepends = h: with h; [ base tasty ];
+          };
+
+          # -- mockio ------------------
+
+          mockio         = mockio-0-0;
+          mockio-0-0     = mockio-0-0-4-4;
+          mockio-0-0-4-4 = callPkg "mockio" "0.0.4.4" mockio-src-0-0-4-4 {
+            description = "Mock IO actions (e.g., for dry-runs)";
+            libDepends = h: with h; [
+              base deepseq lens monaderror-io monadio-plus more-unicode mtl tasty
+              tasty-hunit tasty-plus text
             ];
             testDepends = h: with h; [ base tasty ];
           };

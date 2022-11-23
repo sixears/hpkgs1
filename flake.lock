@@ -220,6 +220,23 @@
         "type": "github"
       }
     },
+    "mockio-src-0-0-4-4": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1649453466,
+        "narHash": "sha256-KgJAiB0X2OCSt48iRJbUizpChz3m1iUTzwvtR4+xUyo=",
+        "owner": "sixears",
+        "repo": "mockio",
+        "rev": "18a450a79067bc188e1dda32051af40c2f37f530",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sixears",
+        "ref": "r0.0.4.4",
+        "repo": "mockio",
+        "type": "github"
+      }
+    },
     "monaderror-io-src-1-2-5-20": {
       "flake": false,
       "locked": {
@@ -455,6 +472,7 @@
         "has-callstack-src-1-0-1-19": "has-callstack-src-1-0-1-19",
         "index-src-1-0-1-26": "index-src-1-0-1-26",
         "log-plus-src-0-0-4-4": "log-plus-src-0-0-4-4",
+        "mockio-src-0-0-4-4": "mockio-src-0-0-4-4",
         "monaderror-io-src-1-2-5-20": "monaderror-io-src-1-2-5-20",
         "monadio-plus-src-2-5-1-49": "monadio-plus-src-2-5-1-49",
         "more-unicode-src-0-0-17-12": "more-unicode-src-0-0-17-12",
