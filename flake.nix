@@ -4,6 +4,13 @@
     nixpkgs.url     = github:nixos/nixpkgs/be44bf67; # nixos-22.05 2022-10-15
     flake-utils.url = github:numtide/flake-utils/c0e246b9;
 
+    acct-src-0-0-0-0 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "acct";
+      ref   = "r0.0.0.0";
+      flake = false;
+    };
     base0-src-0-0-4-11 = {
       type  = "github";
       owner = "sixears";
@@ -102,11 +109,11 @@
       ref   = "r0.1.2.0";
       flake = false;
     };
-    mockio-plus-src-0-3-12-0 = {
+    mockio-plus-src-0-3-12-1 = {
       type  = "github";
       owner = "sixears";
       repo  = "mockio-plus";
-      ref   = "r0.3.12.0";
+      ref   = "r0.3.12.1";
       flake = false;
     };
     monaderror-io-src-1-2-5-20 = {
@@ -232,6 +239,7 @@
 
   outputs = { self, nixpkgs, flake-utils
 
+            , acct-src-0-0-0-0
             , base0-src-0-0-4-11
             , base0t-src-0-0-1-14
             , base1-src-0-0-9-34
@@ -246,7 +254,7 @@
             , log-plus-src-0-0-4-4
             , mockio-src-0-0-4-4
             , mockio-log-src-0-1-2-0
-            , mockio-plus-src-0-3-12-0
+            , mockio-plus-src-0-3-12-1
             , monaderror-io-src-1-2-5-20
             , monadio-plus-src-2-5-1-49
             , more-unicode-src-0-0-17-12
@@ -751,9 +759,9 @@
           # -- mockio-plus -------------
 
           mockio-plus          = mockio-plus-0-3;
-          mockio-plus-0-3      = mockio-plus-0-3-12-0;
-          mockio-plus-0-3-12-0 = callPkg "mockio-plus" "0.3.12.0"
-                                         mockio-plus-src-0-3-12-0 {
+          mockio-plus-0-3      = mockio-plus-0-3-12-1;
+          mockio-plus-0-3-12-1 = callPkg "mockio-plus" "0.3.12.1"
+                                         mockio-plus-src-0-3-12-1 {
             description = "MonadIO, Mocked, Logged, with Text";
             libDepends = h: with h; [
               base bytestring containers data-default data-textual directory
@@ -764,6 +772,11 @@
               mockio-log monaderror-io monadio-plus more-unicode tasty-plus tfmt
             ];
             testDepends = h: with h; [ base tasty ];
+
+            postConfigure = ''
+              substitute proto/MockIOPlus/Paths.hs src/MockIOPlus/Paths.hs \
+                --replace __gnugrep__   ${pkgs.gnugrep}
+            '';
           };
 
           # -- L12 (internal dependencies on L11) ----------
@@ -787,6 +800,27 @@
             testDepends = h: with h; [ base tasty ];
           };
 
+          # -- L13 (internal dependencies on L12) ----------
+
+          # -- acct --------------------
+
+          acct         = acct-0-0;
+          acct-0-0     = acct-0-0-0-0;
+          acct-0-0-0-0 = callPkg "acct" "0.0.0.0" acct-src-0-0-0-0 {
+            description = "parse & manage finance files";
+            libDepends = h: with h; [
+              base bytestring containers data-default data-textual deepseq
+              genvalidity lens logging-effect mtl optparse-applicative parsers
+              prettyprinter QuickCheck safe tasty-hunit tasty-quickcheck
+              template-haskell text text-printer time trifecta validity
+
+              base1t exited fpath has-callstack log-plus mockio mockio-log
+              monaderror-io monadio-plus more-unicode natural optparse-plus
+              parsec-plus parser-plus quasiquoting stdmain tasty-plus tfmt
+            ];
+            testDepends = h: with h; [ base tasty ];
+          };
+
           # END OF PACKAGES ----------------------------------------------------
 
         }; # packages = rec { ...
@@ -795,6 +829,15 @@
         devShells.tasty-plus =
           hpkgs.shellFor {
             packages = _: [packages.tasty-plus];
+            buildInputs = with hpkgs; [
+              haskell-language-server ## you must build it with your ghc to work
+              ghcid cabal-install
+            ];
+          };
+
+        devShells.mockio-plus =
+          hpkgs.shellFor {
+            packages = _: [packages.mockio-plus];
             buildInputs = with hpkgs; [
               haskell-language-server ## you must build it with your ghc to work
               ghcid cabal-install
