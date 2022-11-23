@@ -165,6 +165,13 @@
       ref   = "r1.0.1.32";
       flake = false;
     };
+    single-src-0-0-1-0 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "single";
+      ref   = "r0.0.1.0";
+      flake = false;
+    };
     tasty-plus-src-1-5-2-24 = {
       type  = "github";
       owner = "sixears";
@@ -213,6 +220,7 @@
             , parser-plus-src-1-0-7-29
             , proclib-src-3-2-3-53
             , quasiquoting-src-1-0-1-32
+            , single-src-0-0-1-0
             , tasty-plus-src-1-5-2-24
             , textual-plus-src-1-0-2-27
             , tfmt-src-0-2-7-25
@@ -297,6 +305,19 @@
           natural-0-0-1-14 = callPkg "natural" "0.0.1.14" natural-src-0-0-1-14 {
             description = "Type-level natural numbers";
             libDepends  = h: with h; [ base base-unicode-symbols  more-unicode ];
+          };
+
+          # -- single ------------------
+
+          single         = single-0-0;
+          single-0-0     = single-0-0-1-0;
+          single-0-0-1-0 = callPkg "single" "0.0.1.0" single-src-0-0-1-0 {
+            description = "collections which have a 'singleton'-like function";
+            libDepends = h: with h; [
+              base base-unicode-symbols containers dlist mono-traversable
+
+              more-unicode
+            ];
           };
 
           # -- L2 (internal dependencies on L1) ------------
