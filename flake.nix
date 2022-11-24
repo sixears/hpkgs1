@@ -823,20 +823,51 @@
 
           # END OF PACKAGES ----------------------------------------------------
 
+          # an extra, dummy package for haskellPackages that we want in our
+          # default shell, but that aren't a dependency of any of our existing
+          # packages
+          extra_ =
+            hpkgs.mkDerivation {
+              pname = "extra"; version = "0.0.0.0"; description = "dummy pkg";
+              src = ./.;
+              libraryHaskellDepends = with hpkgs; [
+                # containers-unicode-symbols
+                criterion dhall diagrams Diff doctest finite-typelits freer
+                genvalidity-hspec ghc-typelits-extra hostaddress hostname
+                http-client inflections keys ListLike markdown-unlit monad-loops
+
+                network-ip pipes rainbow range regex-applicative regex-pcre
+                regex-with-pcre rio shake SVGFonts tagsoup
+                tasty-hspec timers xmonad-contrib yaml
+              ];
+              license = pkgs.lib.licenses.mit;
+              };
+
         }; # packages = rec { ...
 
         # run, say, nix develop ~/src/hpkgs1/flake.nix#tasty-plus
 
         devShells =
-          pkgs.lib.debug.traceSeqN 2 ({ xs = builtins.mapAttrs (_: p: p) packages; }) (
-          builtins.mapAttrs (_: p: hpkgs.shellFor {
+          (builtins.mapAttrs (_: p: hpkgs.shellFor {
             packages = _: [p];
             buildInputs = with hpkgs; [
               haskell-language-server ## you must build it with your ghc to work
               ghcid cabal-install
             ];
-          }) packages
-          );
+          }) packages);
+
+        # DEFAULT SHELL
+        # all the packages used by any packages cited within this flake,
+        # plus extras named below
+        # https://input-output-hk.github.io/haskell.nix/tutorials/development.html
+        devShell = # hpkgs.ghcWithPackages (ps: with ps; [criterion]);
+          hpkgs.shellFor {
+            packages = _: ([ ] ++ builtins.attrValues packages);
+            buildInputs = with hpkgs; [ criterion ];
+            # Prevents cabal from choosing alternate plans, so that
+            # *all* dependencies are provided by Nix.
+            exactDeps = true;
+          };
       } # let pkgs ... in ...
     );
 }
