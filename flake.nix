@@ -1,5 +1,5 @@
 {
-  description = "some haskell packages";
+  description = "homegrown haskell packages";
   inputs = {
     nixpkgs.url     = github:nixos/nixpkgs/be44bf67; # nixos-22.05 2022-10-15
     flake-utils.url = github:numtide/flake-utils/c0e246b9;
@@ -93,6 +93,13 @@
       owner = "sixears";
       repo  = "log-plus";
       ref   = "r0.0.4.4";
+      flake = false;
+    };
+    mockio-cmds-rsync-src-1-0-0-0 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "mockio-cmds-rsync";
+      ref   = "r1.0.0.0";
       flake = false;
     };
     mockio-src-0-0-4-4 = {
@@ -252,6 +259,7 @@
             , has-callstack-src-1-0-1-19
             , index-src-1-0-1-26
             , log-plus-src-0-0-4-4
+            , mockio-cmds-rsync-src-1-0-0-0
             , mockio-src-0-0-4-4
             , mockio-log-src-0-1-2-0
             , mockio-plus-src-0-3-12-1
@@ -295,6 +303,11 @@
               };
       in rec {
         packages = rec {
+          nixpkgs = pkgs;
+          # to allow clients to build against the same haskell base set (e.g.,
+          # the same ghc version)
+          inherit hpkgs;
+
           # -- L0 (no internal dependencies) ---------------
 
           # -- base0 -------------------
@@ -346,7 +359,7 @@
 
           # -- L1 (internal dependencies on L0) ------------
 
-          # -- number ------------------
+          # -- natural -----------------
 
           natural          = natural-0-0;
           natural-0-0      = natural-0-0-1-14;
@@ -734,7 +747,7 @@
             '';
           };
 
-          # -- L11 (internal dependencies on L10) ----------
+          # -- L12 (internal dependencies on L11) ----------
 
           # -- mockio-log --------------
 
@@ -754,7 +767,7 @@
             testDepends = h: with h; [ base tasty ];
           };
 
-          # -- L12 (internal dependencies on L11) ----------
+          # -- L13 (internal dependencies on L12) ----------
 
           # -- mockio-plus -------------
 
@@ -779,7 +792,7 @@
             '';
           };
 
-          # -- L12 (internal dependencies on L11) ----------
+          # -- L14 (internal dependencies on L13) ----------
 
           # -- stdmain -----------------
 
@@ -800,7 +813,7 @@
             testDepends = h: with h; [ base tasty ];
           };
 
-          # -- L13 (internal dependencies on L12) ----------
+          # -- L15 (internal dependencies on L14) ----------
 
           # -- acct --------------------
 
@@ -820,6 +833,29 @@
             ];
             testDepends = h: with h; [ base tasty ];
           };
+
+          # -- mockio-cmds-rsync -------
+
+          mockio-cmds-rsync         = mockio-cmds-rsync-1-0;
+          mockio-cmds-rsync-1-0     = mockio-cmds-rsync-1-0-0-0;
+          mockio-cmds-rsync-1-0-0-0 =
+            callPkg "mockio-cmds-rsync" "1.0.0.0"
+                    mockio-cmds-rsync-src-1-0-0-0 {
+              description = "MockIO wrappers for rsync";
+              libDepends = h: with h; [
+                base base1t containers deepseq lens logging-effect mtl safe
+                text-printer
+
+                base1t fpath log-plus mockio mockio-log mockio-plus monadio-plus
+                stdmain
+              ];
+
+              postConfigure = ''
+                substitute proto/MockIO/Cmds/RSync/Paths.hs \
+                           src/MockIO/Cmds/RSync/Paths.hs   \
+                  --replace __rsync__   ${pkgs.rsync}
+              '';
+            };
 
           # END OF PACKAGES ----------------------------------------------------
 
