@@ -102,6 +102,13 @@
       ref   = "r1.0.0.0";
       flake = false;
     };
+    mockio-cmds-util-linux-src-1-0-1-3 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "mockio-cmds-util-linux";
+      ref   = "r1.0.1.3";
+      flake = false;
+    };
     mockio-src-0-0-4-4 = {
       type  = "github";
       owner = "sixears";
@@ -260,6 +267,7 @@
             , index-src-1-0-1-26
             , log-plus-src-0-0-4-4
             , mockio-cmds-rsync-src-1-0-0-0
+            , mockio-cmds-util-linux-src-1-0-1-3
             , mockio-src-0-0-4-4
             , mockio-log-src-0-1-2-0
             , mockio-plus-src-0-3-12-1
@@ -854,6 +862,32 @@
                 substitute proto/MockIO/Cmds/RSync/Paths.hs \
                            src/MockIO/Cmds/RSync/Paths.hs   \
                   --replace __rsync__   ${pkgs.rsync}
+              '';
+            };
+
+          # -- mockio-cmds-util-linux
+
+          mockio-cmds-util-linux         = mockio-cmds-util-linux-1-0;
+          mockio-cmds-util-linux-1-0     = mockio-cmds-util-linux-1-0-1-3;
+          mockio-cmds-util-linux-1-0-1-3 =
+            callPkg "mockio-cmds-util-linux" "1.0.1.3"
+                    mockio-cmds-util-linux-src-1-0-1-3 {
+              description = "MockIO wrappers for util-linux cmds";
+              libDepends = h: with h; [
+                aeson base bytestring lens logging-effect mtl parsec parsers
+                safe text text-printer
+
+                base1t fpath log-plus mockio mockio-log mockio-plus monadio-plus
+                parsec-plus stdmain
+              ];
+
+              postConfigure = ''
+                for f in $( ${pkgs.findutils}/bin/find proto/ -type f \
+                                                              -name \*.hs ); do
+                  t=src/"''${f#proto/}"
+                  substitute "$f" "$t" \
+                    --replace __util-linux__ ${pkgs.util-linux}
+                done
               '';
             };
 
