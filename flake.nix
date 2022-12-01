@@ -46,6 +46,13 @@
       ref   = "r0.0.10.39";
       flake = false;
     };
+    domainnames-src-0-1-2-0 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "domainnames";
+      ref   = "r0.1.2.0";
+      flake = false;
+    };
     env-plus-src-1-0-7-37 = {
       type  = "github";
       owner = "sixears";
@@ -88,11 +95,24 @@
       ref   = "r1.0.1.26";
       flake = false;
     };
-    log-plus-src-0-0-4-4 = {
+    ip4-src-0-0-0-2 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "ip4";
+      ref   = "r0.0.0.2";
+      flake = false;
+    };    log-plus-src-0-0-4-4 = {
       type  = "github";
       owner = "sixears";
       repo  = "log-plus";
       ref   = "r0.0.4.4";
+      flake = false;
+    };
+    mockio-cmds-inetutils-src-1-0-0-0 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "mockio-cmds-inetutils";
+      ref   = "r1.0.0.0";
       flake = false;
     };
     mockio-cmds-rsync-src-1-0-0-0 = {
@@ -259,13 +279,16 @@
             , base1-src-0-0-9-34
             , base1t-src-0-0-5-36
             , containers-plus-src-0-0-10-39
+            , domainnames-src-0-1-2-0
             , env-plus-src-1-0-7-37
             , exited-src-1-0-4-23
             , fpath-src-1-3-2-39
             , fstat-src-1-0-2-26
             , has-callstack-src-1-0-1-19
             , index-src-1-0-1-26
+            , ip4-src-0-0-0-2
             , log-plus-src-0-0-4-4
+            , mockio-cmds-inetutils-src-1-0-0-0
             , mockio-cmds-rsync-src-1-0-0-0
             , mockio-cmds-util-linux-src-1-0-1-3
             , mockio-src-0-0-4-4
@@ -688,6 +711,21 @@
 
           # -- L11 (internal dependencies on L10) ----------
 
+          # -- ip4 ---------------------
+
+          ip4         = ip4-0-0;
+          ip4-0-0     = ip4-0-0-0-2;
+          ip4-0-0-0-2 = callPkg "ip4" "0.0.0.2" ip4-src-0-0-0-2 {
+            description = "IPv4 data-type with JSON, Textual, YAML & DHALL support";
+            libDepends = h: with h; [
+              aeson base base-unicode-symbols data-default data-textual deepseq
+              dhall either network-ip parsec template-haskell text text-printer
+              yaml
+
+              more-unicode parsec-plus quasiquoting
+            ];
+          };
+
           # -- log-plus ----------------
 
           log-plus         = log-plus-0-0;
@@ -756,6 +794,28 @@
           };
 
           # -- L12 (internal dependencies on L11) ----------
+
+          # -- domainnames -------------
+
+          domainnames         = domainnames-0-1;
+          domainnames-0-1     = domainnames-0-1-2-0;
+          domainnames-0-1-2-0 = callPkg "domainnames" "0.1.2.0"
+                                        domainnames-src-0-1-2-0 {
+            description = "domain names data types";
+            libDepends = h: with h; [
+              aeson base base-unicode-symbols containers data-default
+              data-textual deepseq dhall hashable lens mtl parsers tasty
+              tasty-hunit template-haskell text text-printer yaml
+
+              base1 has-callstack ip4 more-unicode non-empty-containers proclib
+              quasiquoting tasty-plus tfmt
+            ];
+            testDepends = h: with h; [
+              base base-unicode-symbols optparse-applicative tasty
+
+              more-unicode tasty-plus
+            ];
+          };
 
           # -- mockio-log --------------
 
@@ -842,6 +902,22 @@
             testDepends = h: with h; [ base tasty ];
           };
 
+          # -- mockio-cmds-inetutils ---
+
+          mockio-cmds-inetutils         = mockio-cmds-inetutils-1-0;
+          mockio-cmds-inetutils-1-0     = mockio-cmds-inetutils-1-0-0-0;
+          mockio-cmds-inetutils-1-0-0-0 =
+            callPkg "mockio-cmds-inetutils" "1.0.0.0"
+                    mockio-cmds-inetutils-src-1-0-0-0 {
+            description = "MockIO wrappers for inetutils cmds";
+            libDepends = h: with h; [
+              data-textual lens logging-effect mtl safe text
+
+              base1t domainnames fpath log-plus mockio mockio-log mockio-plus
+              monadio-plus stdmain
+            ];
+          };
+
           # -- mockio-cmds-rsync -------
 
           mockio-cmds-rsync         = mockio-cmds-rsync-1-0;
@@ -865,7 +941,7 @@
               '';
             };
 
-          # -- mockio-cmds-util-linux
+          # -- mockio-cmds-util-linux --
 
           mockio-cmds-util-linux         = mockio-cmds-util-linux-1-0;
           mockio-cmds-util-linux-1-0     = mockio-cmds-util-linux-1-0-1-3;
