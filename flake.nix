@@ -316,10 +316,13 @@
       let
         pkgs = import nixpkgs {
           system = system;
-          overlays = [ (final: prev: { haskellPackages = prev.haskell.packages.ghc8107; }) ];
+          overlays = [
+            (final: prev: {haskellPackages = prev.haskell.packages.ghc8107; })
+          ];
         };
-        hpkgs = pkgs.haskellPackages;
-        hlib  = pkgs.haskell.lib;
+        hpkgs           = pkgs.haskellPackages;
+        hlib            = pkgs.haskell.lib;
+        writeHaskellBin = pkgs.writers.writeHaskellBin;
 
         callPkg = pname: version: src: { description
                                        , libDepends ? _: []
@@ -333,6 +336,21 @@
                 testHaskellDepends = testDepends hpkgs;
               };
       in rec {
+        lib = rec {
+          ghcWithPackages = hpkgs.ghcWithPackages;
+          writeHaskellBin = pkgs.writers.writeHaskellBin;
+
+          mkHBin = name: srcfn: { libs ? (_: []) }:
+            let
+              src = builtins.readFile srcfn;
+            in {
+              pkg = writeHaskellBin name { libraries = libs packages; } src;
+              dev = pkgs.mkShell {
+                packages = [ (hpkgs.ghcWithPackages (_: libs packages)) ];
+              };
+            };
+        };
+
         packages = rec {
           nixpkgs = pkgs;
           # to allow clients to build against the same haskell base set (e.g.,
@@ -989,7 +1007,8 @@
               license = pkgs.lib.licenses.mit;
               };
 
-        }; # packages = rec { ...
+        } // pkgs.haskellPackages
+        ; # packages = rec { ...
 
         # run, say, nix develop ~/src/hpkgs1/flake.nix#tasty-plus
 
