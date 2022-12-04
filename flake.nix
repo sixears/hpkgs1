@@ -39,6 +39,13 @@
       ref   = "r0.0.5.36";
       flake = false;
     };
+    boundedn-src-1-1-7-0 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "boundedn";
+      ref   = "r1.1.7.0";
+      flake = false;
+    };
     containers-plus-src-0-0-10-39 = {
       type  = "github";
       owner = "sixears";
@@ -278,6 +285,7 @@
             , base0t-src-0-0-1-14
             , base1-src-0-0-9-34
             , base1t-src-0-0-5-36
+            , boundedn-src-1-1-7-0
             , containers-plus-src-0-0-10-39
             , domainnames-src-0-1-2-0
             , env-plus-src-1-0-7-37
@@ -346,7 +354,7 @@
             in {
               pkg = writeHaskellBin name { libraries = libs packages; } src;
               dev = pkgs.mkShell {
-                packages = [ (hpkgs.ghcWithPackages (_: libs packages)) ];
+                packages = [ (ghcWithPackages (_: libs packages)) ];
               };
             };
         };
@@ -561,6 +569,27 @@
           };
 
           # -- L6 (internal dependencies on L5) ------------
+
+          # -- boundedn ----------------
+
+          boundedn         = boundedn-1-1;
+          boundedn-1-1     = boundedn-1-1-7-0;
+          boundedn-1-1-7-0 = callPkg "boundedn" "1.1.7.0" boundedn-src-1-1-7-0 {
+            description = "Type-Level Bounded Natural Numbers";
+            libDepends = h: with h; [
+              base base-unicode-symbols deepseq finite-typelits genvalidity
+              ghc-typelits-extra lens mtl QuickCheck tasty tasty-hunit
+              tasty-quickcheck template-haskell validity
+
+              more-unicode number tasty-plus tfmt
+            ];
+            testDepends = h: with h; [
+              base base-unicode-symbols optparse-applicative tasty
+              tasty-hunit
+
+              more-unicode tasty-plus
+            ];
+          };
 
           # -- index -------------------
 
