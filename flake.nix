@@ -53,6 +53,13 @@
       ref   = "r0.0.10.39";
       flake = false;
     };
+    date-imprecise-src-1-0-0-3 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "date-imprecise";
+      ref   = "r1.0.0.3";
+      flake = false;
+    };
     domainnames-src-0-1-2-0 = {
       type  = "github";
       owner = "sixears";
@@ -276,6 +283,13 @@
       ref   = "r0.2.7.25";
       flake = false;
     };
+    yaml-plus-src-1-0-1-1 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "yaml-plus";
+      ref   = "r1.0.1.1";
+      flake = false;
+    };
   };
 
   outputs = { self, nixpkgs, flake-utils
@@ -287,6 +301,7 @@
             , base1t-src-0-0-5-36
             , boundedn-src-1-1-7-0
             , containers-plus-src-0-0-10-39
+            , date-imprecise-src-1-0-0-3
             , domainnames-src-0-1-2-0
             , env-plus-src-1-0-7-37
             , exited-src-1-0-4-23
@@ -319,6 +334,7 @@
             , tasty-plus-src-1-5-2-24
             , textual-plus-src-1-0-2-27
             , tfmt-src-0-2-7-25
+            , yaml-plus-src-1-0-1-1
             }:
     flake-utils.lib.eachDefaultSystem (system:
       let
@@ -756,7 +772,51 @@
             testDepends = h: with h; [ base ];
           };
 
+          # -- yaml-plus ---------------
+
+          yaml-plus         = yaml-plus-1-0;
+          yaml-plus-1-0     = yaml-plus-1-0-1-1;
+          yaml-plus-1-0-1-1 = callPkg "yaml-plus" "1.0.1.1"
+                                       yaml-plus-src-1-0-1-1 {
+            description = "Utilities for working with YAML";
+            libDepends = h: with h; [
+              aeson base base-unicode-symbols bytestring data-textual lens
+              ListLike mtl scientific tasty tasty-hunit text text-printer
+              utf8-string yaml
+
+              fpath has-callstack monaderror-io more-unicode natural tasty-plus
+              tfmt
+            ];
+            testDepends = h: with h; [
+              base base-unicode-symbols optparse-applicative tasty tasty-hunit
+
+              more-unicode tasty-plus
+            ];
+          };
+
           # -- L11 (internal dependencies on L10) ----------
+
+          # -- data-imprecise ----------
+
+          date-imprecise         = date-imprecise-1-0;
+          date-imprecise-1-0     = date-imprecise-1-0-0-3;
+          date-imprecise-1-0-0-3 = callPkg "date-imprecise" "1.0.0.3"
+                                           date-imprecise-src-1-0-0-3 {
+            description = "manage info.yaml";
+            libDepends = h: with h; [
+              aeson base base-unicode-symbols data-default data-textual deepseq
+              lens mtl parsers QuickCheck scientific tasty tasty-hunit
+              tasty-quickcheck template-haskell text text-printer time yaml
+
+              boundedn monaderror-io more-unicode number parsec-plus parser-plus
+              quasiquoting tasty-plus tfmt yaml-plus
+            ];
+            testDepends = h: with h; [
+              base base-unicode-symbols optparse-applicative tasty tasty-hunit
+
+              more-unicode tasty-plus
+            ];
+          };
 
           # -- ip4 ---------------------
 
