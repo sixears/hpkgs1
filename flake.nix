@@ -115,11 +115,19 @@
       repo  = "ip4";
       ref   = "r0.0.0.2";
       flake = false;
-    };    log-plus-src-0-0-4-4 = {
+    };
+    log-plus-src-0-0-4-4 = {
       type  = "github";
       owner = "sixears";
       repo  = "log-plus";
       ref   = "r0.0.4.4";
+      flake = false;
+    };
+    minfo-src-1-0-3-7 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "minfo";
+      ref   = "r1.0.3.7";
       flake = false;
     };
     mockio-cmds-inetutils-src-1-0-0-0 = {
@@ -311,6 +319,7 @@
             , index-src-1-0-1-26
             , ip4-src-0-0-0-2
             , log-plus-src-0-0-4-4
+            , minfo-src-1-0-3-7
             , mockio-cmds-inetutils-src-1-0-0-0
             , mockio-cmds-rsync-src-1-0-0-0
             , mockio-cmds-util-linux-src-1-0-1-3
@@ -919,6 +928,28 @@
             ];
             testDepends = h: with h; [
               base base-unicode-symbols optparse-applicative tasty
+
+              more-unicode tasty-plus
+            ];
+          };
+
+          # -- minfo -------------------
+
+          minfo         = minfo-1-0;
+          minfo-1-0     = minfo-1-0-3-7;
+          minfo-1-0-3-7 = callPkg "minfo" "1.0.3.7" minfo-src-1-0-3-7 {
+            description = "manage info.yaml";
+            libDepends = h: with h; [
+              aeson aeson-pretty base base-unicode-symbols bytestring
+              data-textual lens mtl optparse-applicative scientific tasty
+              tasty-hunit text text-printer vector yaml
+
+              date-imprecise fpath has-callstack index monaderror-io
+              monadio-plus more-unicode natural non-empty-containers
+              optparse-plus tasty-plus tfmt yaml-plus
+            ];
+            testDepends = h: with h; [
+              base base-unicode-symbols optparse-applicative tasty tasty-hunit
 
               more-unicode tasty-plus
             ];

@@ -305,6 +305,23 @@
         "type": "github"
       }
     },
+    "minfo-src-1-0-3-7": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1670189669,
+        "narHash": "sha256-0phEaC9K9S7XgRiDqxECuCnAhIXIoyAupD84cGDs1Yw=",
+        "owner": "sixears",
+        "repo": "minfo",
+        "rev": "14f33209eec25818effa003363e850a90e56be2c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sixears",
+        "ref": "r1.0.3.7",
+        "repo": "minfo",
+        "type": "github"
+      }
+    },
     "mockio-cmds-inetutils-src-1-0-0-0": {
       "flake": false,
       "locked": {
@@ -647,6 +664,7 @@
         "index-src-1-0-1-26": "index-src-1-0-1-26",
         "ip4-src-0-0-0-2": "ip4-src-0-0-0-2",
         "log-plus-src-0-0-4-4": "log-plus-src-0-0-4-4",
+        "minfo-src-1-0-3-7": "minfo-src-1-0-3-7",
         "mockio-cmds-inetutils-src-1-0-0-0": "mockio-cmds-inetutils-src-1-0-0-0",
         "mockio-cmds-rsync-src-1-0-0-0": "mockio-cmds-rsync-src-1-0-0-0",
         "mockio-cmds-util-linux-src-1-0-1-3": "mockio-cmds-util-linux-src-1-0-1-3",
