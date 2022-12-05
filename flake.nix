@@ -67,6 +67,13 @@
       ref   = "r0.1.2.0";
       flake = false;
     };
+    env-fpath-src-0-0-0-1 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "env-fpath";
+      ref   = "r0.0.0.1";
+      flake = false;
+    };
     env-plus-src-1-0-7-37 = {
       type  = "github";
       owner = "sixears";
@@ -242,6 +249,13 @@
       ref   = "r1.0.7.29";
       flake = false;
     };
+    pcre-src-0-0-4-1 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "pcre";
+      ref   = "r0.0.4.1";
+      flake = false;
+    };
     proclib-src-3-2-3-53 = {
       type  = "github";
       owner = "sixears";
@@ -254,6 +268,13 @@
       owner = "sixears";
       repo  = "quasiquoting";
       ref   = "r1.0.1.32";
+      flake = false;
+    };
+    rename-src-0-0-1-0 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "rename";
+      ref   = "r0.0.1.0";
       flake = false;
     };
     single-src-0-0-1-0 = {
@@ -311,6 +332,7 @@
             , containers-plus-src-0-0-10-39
             , date-imprecise-src-1-0-0-3
             , domainnames-src-0-1-2-0
+            , env-fpath-src-0-0-0-1
             , env-plus-src-1-0-7-37
             , exited-src-1-0-4-23
             , fpath-src-1-3-2-39
@@ -336,8 +358,10 @@
             , parsec-plus-base-src-1-0-5-23
             , parsec-plus-src-1-1-1-44
             , parser-plus-src-1-0-7-29
+            , pcre-src-0-0-4-1
             , proclib-src-3-2-3-53
             , quasiquoting-src-1-0-1-32
+            , rename-src-0-0-1-0
             , single-src-0-0-1-0
             , stdmain-src-1-5-13-0
             , tasty-plus-src-1-5-2-24
@@ -753,6 +777,23 @@
 
           # -- L10 (internal dependencies on L9) -----------
 
+          # -- env-fpath ---------------
+
+          env-fpath         = env-fpath-0-0;
+          env-fpath-0-0     = env-fpath-0-0-0-1;
+          env-fpath-0-0-0-1 = callPkg "env-fpath" "0.0.0.1"
+                                      env-fpath-src-0-0-0-1 {
+            description = "Utilities for working with the environment, path + fpath";
+            libDepends = h: with h; [
+              base base-unicode-symbols data-textual lens mtl safe split tasty
+              tasty-hunit
+
+              env-plus fpath monaderror-io monadio-plus more-unicode tasty-plus
+              tfmt
+            ];
+            testDepends = h: with h; [ base tasty ];
+          };
+
           # -- monadio-plus ------------
 
           monadio-plus          = monadio-plus-2-5;
@@ -1111,6 +1152,43 @@
                 done
               '';
             };
+
+          # -- pcre --------------------
+
+          pcre         = pcre-0-0;
+          pcre-0-0     = pcre-0-0-4-1;
+          pcre-0-0-4-1 = callPkg "pcre" "0.0.4.1" pcre-src-0-0-4-1 {
+            description = "handle PCRE-based REs, including textual replacements";
+            libDepends = h: with h; [
+              array base hashable lens parsec parsers regex regex-with-pcre
+              template-haskell text text-printer unordered-containers
+
+              base1t monaderror-io log-plus mockio-plus monadio-plus
+              optparse-plus parsec-plus-base parsec-plus parser-plus
+              quasiquoting stdmain
+            ];
+            testDepends = h: with h; [ base tasty ];
+          };
+
+          # -- L16 (internal dependencies on L15) ----------
+
+          # -- rename ------------------
+
+          rename         = rename-0-0;
+          rename-0-0     = rename-0-0-1-0;
+          rename-0-0-1-0 = callPkg "rename" "0.0.1.0" rename-src-0-0-1-0 {
+            description = "rename files according to regular expressions";
+            libDepends = h: with h; [
+              base containers extra logging-effect optparse-applicative parsec
+              parsers regex-with-pcre tasty-hunit text
+
+              base1t containers-plus env-fpath env-plus fpath log-plus
+              mockio-log mockio-plus monaderror-io monadio-plus natural
+              non-empty-containers optparse-plus parsec-plus-base parsec-plus
+              parser-plus pcre stdmain tasty-plus
+            ];
+            testDepends = h: with h; [ base tasty ];
+          };
 
           # END OF PACKAGES ----------------------------------------------------
 

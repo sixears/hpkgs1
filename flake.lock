@@ -153,6 +153,23 @@
         "type": "github"
       }
     },
+    "env-fpath-src-0-0-0-1": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1670265401,
+        "narHash": "sha256-AzEL5IyKCuz8IMLWKJpfsV9zADb8gZ01d8XbubFXX/k=",
+        "owner": "sixears",
+        "repo": "env-fpath",
+        "rev": "8fa0c4bac0d577108682809612b4cf86b5ce6370",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sixears",
+        "ref": "r0.0.0.1",
+        "repo": "env-fpath",
+        "type": "github"
+      }
+    },
     "env-plus-src-1-0-7-37": {
       "flake": false,
       "locked": {
@@ -610,6 +627,23 @@
         "type": "github"
       }
     },
+    "pcre-src-0-0-4-1": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1649938433,
+        "narHash": "sha256-mnWaSZqA3BaaAYpqVUDbJNKeu/OlxXaJLEWGliPHV1I=",
+        "owner": "sixears",
+        "repo": "pcre",
+        "rev": "8e725bd17c451011c049956883c37babc82dd70b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sixears",
+        "ref": "r0.0.4.1",
+        "repo": "pcre",
+        "type": "github"
+      }
+    },
     "proclib-src-3-2-3-53": {
       "flake": false,
       "locked": {
@@ -644,6 +678,23 @@
         "type": "github"
       }
     },
+    "rename-src-0-0-1-0": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1647780444,
+        "narHash": "sha256-QzGWtbHr6tgYrrE5PjPbfgoq4nLCs9P/ixDU9QOMWJo=",
+        "owner": "sixears",
+        "repo": "rename",
+        "rev": "a3578e3236c7ae9c9964864884b5f948ce167130",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sixears",
+        "ref": "r0.0.1.0",
+        "repo": "rename",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "acct-src-0-0-0-0": "acct-src-0-0-0-0",
@@ -655,6 +706,7 @@
         "containers-plus-src-0-0-10-39": "containers-plus-src-0-0-10-39",
         "date-imprecise-src-1-0-0-3": "date-imprecise-src-1-0-0-3",
         "domainnames-src-0-1-2-0": "domainnames-src-0-1-2-0",
+        "env-fpath-src-0-0-0-1": "env-fpath-src-0-0-0-1",
         "env-plus-src-1-0-7-37": "env-plus-src-1-0-7-37",
         "exited-src-1-0-4-23": "exited-src-1-0-4-23",
         "flake-utils": "flake-utils",
@@ -682,8 +734,10 @@
         "parsec-plus-base-src-1-0-5-23": "parsec-plus-base-src-1-0-5-23",
         "parsec-plus-src-1-1-1-44": "parsec-plus-src-1-1-1-44",
         "parser-plus-src-1-0-7-29": "parser-plus-src-1-0-7-29",
+        "pcre-src-0-0-4-1": "pcre-src-0-0-4-1",
         "proclib-src-3-2-3-53": "proclib-src-3-2-3-53",
         "quasiquoting-src-1-0-1-32": "quasiquoting-src-1-0-1-32",
+        "rename-src-0-0-1-0": "rename-src-0-0-1-0",
         "single-src-0-0-1-0": "single-src-0-0-1-0",
         "stdmain-src-1-5-13-0": "stdmain-src-1-5-13-0",
         "tasty-plus-src-1-5-2-24": "tasty-plus-src-1-5-2-24",
