@@ -373,9 +373,16 @@
           ghcWithPackages = hpkgs.ghcWithPackages;
           writeHaskellBin = pkgs.writers.writeHaskellBin;
 
-          mkHBin = name: srcfn: { libs ? (_: []) }:
+          mkHBin = name: srcfn: { libs ? (_: []), replace ? (_: {}) }:
             let
-              src = builtins.readFile srcfn;
+              src =
+                let
+                  repl = replace packages;
+                  repl_from = builtins.attrNames repl;
+                  repl_to   = map (x: repl.${x}) repl_from;
+                in
+                  builtins.replaceStrings repl_from repl_to
+                    (builtins.readFile srcfn);
             in {
               pkg = writeHaskellBin name { libraries = libs packages; } src;
               dev = pkgs.mkShell {

@@ -1,3 +1,7 @@
+0.0.3.0 2022-12-05
+==================
+- add replace to mkHBin
+
 0.0.2.0 2022-12-04
 ==================
 - +boundedn, +data-imprecise, +yaml-plus, +minfo
