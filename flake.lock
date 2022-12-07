@@ -254,6 +254,23 @@
         "type": "github"
       }
     },
+    "handbrake-src-1-0-3-0": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1643202437,
+        "narHash": "sha256-i4b5ZcVsOeDvpvzZLPrfg7Gip3Hw5DNtN7stVFFSDts=",
+        "owner": "sixears",
+        "repo": "handbrake",
+        "rev": "00457d7c8b13ea3a4f85a1cbeb84fb63e53c5612",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sixears",
+        "ref": "r1.0.3.0",
+        "repo": "handbrake",
+        "type": "github"
+      }
+    },
     "has-callstack-src-1-0-1-19": {
       "flake": false,
       "locked": {
@@ -712,6 +729,7 @@
         "flake-utils": "flake-utils",
         "fpath-src-1-3-2-39": "fpath-src-1-3-2-39",
         "fstat-src-1-0-2-26": "fstat-src-1-0-2-26",
+        "handbrake-src-1-0-3-0": "handbrake-src-1-0-3-0",
         "has-callstack-src-1-0-1-19": "has-callstack-src-1-0-1-19",
         "index-src-1-0-1-26": "index-src-1-0-1-26",
         "ip4-src-0-0-0-2": "ip4-src-0-0-0-2",

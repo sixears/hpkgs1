@@ -102,6 +102,13 @@
       ref   = "r1.0.2.26";
       flake = false;
     };
+    handbrake-src-1-0-3-0 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "handbrake";
+      ref   = "r1.0.3.0";
+      flake = false;
+    };
     has-callstack-src-1-0-1-19 = {
       type  = "github";
       owner = "sixears";
@@ -337,6 +344,7 @@
             , exited-src-1-0-4-23
             , fpath-src-1-3-2-39
             , fstat-src-1-0-2-26
+            , handbrake-src-1-0-3-0
             , has-callstack-src-1-0-1-19
             , index-src-1-0-1-26
             , ip4-src-0-0-0-2
@@ -1084,6 +1092,25 @@
               base1t exited fpath has-callstack log-plus mockio mockio-log
               monaderror-io monadio-plus more-unicode natural optparse-plus
               parsec-plus parser-plus quasiquoting stdmain tasty-plus tfmt
+            ];
+            testDepends = h: with h; [ base tasty ];
+          };
+
+          # -- handbrake ---------------
+
+          handbrake         = handbrake-1-0;
+          handbrake-1-0     = handbrake-1-0-3-0;
+          handbrake-1-0-3-0 = callPkg "handbrake" "1.0.3.0"
+                                      handbrake-src-1-0-3-0 {
+            description = "Haskell interface to HandBrakeCLI, and utility scripting";
+            libDepends = h: with h; [
+              base base-unicode-symbols data-textual deepseq lens logging-effect
+              mtl optparse-applicative parsers range tasty tasty-hunit text
+              text-printer
+
+              fpath log-plus mockio mockio-log mockio-plus monaderror-io
+              monadio-plus more-unicode natural optparse-plus parsec-plus
+              parser-plus stdmain tasty-plus tfmt
             ];
             testDepends = h: with h; [ base tasty ];
           };
