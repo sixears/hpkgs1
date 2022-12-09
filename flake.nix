@@ -67,6 +67,13 @@
       ref   = "r0.1.2.0";
       flake = false;
     };
+    duration-src-1-0-0-0 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "duration";
+      ref   = "r1.0.0.0";
+      flake = false;
+    };
     env-fpath-src-0-0-0-1 = {
       type  = "github";
       owner = "sixears";
@@ -291,6 +298,13 @@
       ref   = "r0.0.1.0";
       flake = false;
     };
+    srt-adjust-src-1-0-0-7 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "srt-adjust";
+      ref   = "r1.0.0.7";
+      flake = false;
+    };
     stdmain-src-1-5-13-0 = {
       type  = "github";
       owner = "sixears";
@@ -339,6 +353,7 @@
             , containers-plus-src-0-0-10-39
             , date-imprecise-src-1-0-0-3
             , domainnames-src-0-1-2-0
+            , duration-src-1-0-0-0
             , env-fpath-src-0-0-0-1
             , env-plus-src-1-0-7-37
             , exited-src-1-0-4-23
@@ -371,6 +386,7 @@
             , quasiquoting-src-1-0-1-32
             , rename-src-0-0-1-0
             , single-src-0-0-1-0
+            , srt-adjust-src-1-0-0-7
             , stdmain-src-1-5-13-0
             , tasty-plus-src-1-5-2-24
             , textual-plus-src-1-0-2-27
@@ -785,6 +801,26 @@
 
           # -- L10 (internal dependencies on L9) -----------
 
+          # -- duration ----------------
+
+          duration         = duration-1-0;
+          duration-1-0     = duration-1-0-0-0;
+          duration-1-0-0-0 = callPkg "duration" "1.0.0.0" duration-src-1-0-0-0 {
+            description = "A mostly type-safe Duration type";
+            libDepends = h: with h; [
+              base base-unicode-symbols data-textual lens parsers QuickCheck
+              tasty tasty-hunit tasty-quickcheck text text-printer
+
+              boundedn more-unicode non-empty-containers number parser-plus
+              tasty-plus tfmt
+            ];
+            testDepends = h: with h; [
+              base base-unicode-symbols optparse-applicative tasty tasty-hunit
+
+              more-unicode tasty-plus
+            ];
+          };
+
           # -- env-fpath ---------------
 
           env-fpath         = env-fpath-0-0;
@@ -1028,6 +1064,31 @@
             ];
             testDepends = h: with h; [ base tasty ];
           };
+
+          # -- srt-adjust --------------
+
+          srt-adjust         = srt-adjust-1-0;
+          srt-adjust-1-0     = srt-adjust-1-0-0-7;
+          srt-adjust-1-0-0-7 = callPkg "srt-adjust" "1.0.0.7"
+                                        srt-adjust-src-1-0-0-7 {
+            description = "adjust SRT subtitle file timing";
+            libDepends = h: with h; [
+              base base-unicode-symbols data-textual finite-typelits lens
+              mono-traversable mtl optparse-applicative parsec parsers
+              QuickCheck tasty tasty-hunit tasty-quickcheck
+              text text-printer
+
+              boundedn duration exited fpath monaderror-io monadio-plus
+              more-unicode non-empty-containers number optparse-plus parsec-plus
+              parser-plus tasty-plus tfmt
+            ];
+            testDepends = h: with h; [
+              base base-unicode-symbols optparse-applicative tasty tasty-hunit
+
+              more-unicode tasty-plus
+            ];
+          };
+
 
           # -- L13 (internal dependencies on L12) ----------
 
