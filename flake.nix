@@ -11,6 +11,13 @@
       ref   = "r0.0.0.0";
       flake = false;
     };
+    atreus-src-1-0-2-1 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "atreus";
+      ref   = "r1.0.2.1";
+      flake = false;
+    };
     base0-src-0-0-4-11 = {
       type  = "github";
       owner = "sixears";
@@ -345,6 +352,7 @@
   outputs = { self, nixpkgs, flake-utils
 
             , acct-src-0-0-0-0
+            , atreus-src-1-0-2-1
             , base0-src-0-0-4-11
             , base0t-src-0-0-1-14
             , base1-src-0-0-9-34
@@ -446,6 +454,19 @@
           inherit hpkgs;
 
           # -- L0 (no internal dependencies) ---------------
+
+          # -- atreus ------------------
+
+          atreus         = atreus-1-0;
+          atreus-1-0     = atreus-1-0-2-1;
+          atreus-1-0-2-1 = callPkg "atreus" "1.0.2.1" atreus-src-1-0-2-1 {
+            description = "draw diagram of atreus keyboard layout";
+            libDepends = h: with h; [
+              aeson base base-unicode-symbols colour data-default data-textual
+              diagrams-core diagrams-lib diagrams-svg lens mono-traversable mtl
+              SVGFonts text-printer
+            ];
+          };
 
           # -- base0 -------------------
 
