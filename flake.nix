@@ -1,3 +1,10 @@
+# to build a pkg, cd to the dir containing this flake, and
+# $ nix build .#atreus
+
+# to add a pkg, cd to the src dir of that pkg, and run
+# $ cabal2callPkg
+# that will give you three stanzas to add here
+
 {
   description = "homegrown haskell packages";
   inputs = {
@@ -67,6 +74,13 @@
       ref   = "r1.0.0.3";
       flake = false;
     };
+    dhall-plus-src-0-0-2-1 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "dhall-plus";
+      ref   = "r0.0.2.1";
+      flake = false;
+    };
     domainnames-src-0-1-2-0 = {
       type  = "github";
       owner = "sixears";
@@ -93,6 +107,13 @@
       owner = "sixears";
       repo  = "env-plus";
       ref   = "r1.0.7.37";
+      flake = false;
+    };
+    equalish-src-0-0-0-0 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "equalish";
+      ref   = "r0.0.0.0";
       flake = false;
     };
     exited-src-1-0-4-23 = {
@@ -130,6 +151,13 @@
       ref   = "r1.0.1.19";
       flake = false;
     };
+    hostsdb-src-0-1-1-4 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "hostsdb";
+      ref   = "r0.1.1.4";
+      flake = false;
+    };
     index-src-1-0-1-26 = {
       type  = "github";
       owner = "sixears";
@@ -149,6 +177,13 @@
       owner = "sixears";
       repo  = "log-plus";
       ref   = "r0.0.4.4";
+      flake = false;
+    };
+    mac-address-src-0-0-0-3 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "mac-address";
+      ref   = "r0.0.0.3";
       flake = false;
     };
     minfo-src-1-0-3-7 = {
@@ -340,6 +375,13 @@
       ref   = "r0.2.7.25";
       flake = false;
     };
+    tinydns-src-0-1-1-2 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "tinydns";
+      ref   = "r0.1.1.2";
+      flake = false;
+    };
     yaml-plus-src-1-0-1-1 = {
       type  = "github";
       owner = "sixears";
@@ -360,18 +402,22 @@
             , boundedn-src-1-1-7-0
             , containers-plus-src-0-0-10-39
             , date-imprecise-src-1-0-0-3
+            , dhall-plus-src-0-0-2-1
             , domainnames-src-0-1-2-0
             , duration-src-1-0-0-0
             , env-fpath-src-0-0-0-1
             , env-plus-src-1-0-7-37
+            , equalish-src-0-0-0-0
             , exited-src-1-0-4-23
             , fpath-src-1-3-2-39
             , fstat-src-1-0-2-26
             , handbrake-src-1-0-3-0
             , has-callstack-src-1-0-1-19
+            , hostsdb-src-0-1-1-4
             , index-src-1-0-1-26
             , ip4-src-0-0-0-2
             , log-plus-src-0-0-4-4
+            , mac-address-src-0-0-0-3
             , minfo-src-1-0-3-7
             , mockio-cmds-inetutils-src-1-0-0-0
             , mockio-cmds-rsync-src-1-0-0-0
@@ -399,6 +445,7 @@
             , tasty-plus-src-1-5-2-24
             , textual-plus-src-1-0-2-27
             , tfmt-src-0-2-7-25
+            , tinydns-src-0-1-1-2
             , yaml-plus-src-1-0-1-1
             }:
     flake-utils.lib.eachDefaultSystem (system:
@@ -445,13 +492,16 @@
                 packages = [ (ghcWithPackages (_: libs packages)) ];
               };
             };
+
+          # To allow clients to build against the same haskell base set (e.g.,
+          # the same ghc version).  Originally this was part of `packages`, but
+          # that causes issues for anything that iterates over packages, e.g.,
+          # the default development shell, or nix flake show
+          inherit hpkgs;
+          nixpkgs = pkgs;
         };
 
         packages = rec {
-          nixpkgs = pkgs;
-          # to allow clients to build against the same haskell base set (e.g.,
-          # the same ghc version)
-          inherit hpkgs;
 
           # -- L0 (no internal dependencies) ---------------
 
@@ -516,6 +566,15 @@
             };
 
           # -- L1 (internal dependencies on L0) ------------
+
+          # -- equalish ----------------
+
+          equalish         = equalish-0-0;
+          equalish-0-0     = equalish-0-0-0-0;
+          equalish-0-0-0-0 = callPkg "equalish" "0.0.0.0" equalish-src-0-0-0-0 {
+            description = "Like Eq, but with explanations when not equal";
+            libDepends = h: with h; [ base base-unicode-symbols more-unicode ];
+          };
 
           # -- natural -----------------
 
@@ -618,25 +677,29 @@
 
           parsec-plus-base          = parsec-plus-base-1-0;
           parsec-plus-base-1-0      = parsec-plus-base-1-0-5-23;
-          parsec-plus-base-1-0-5-23 = callPkg "parsec-plus-base" "1.0.5.23" parsec-plus-base-src-1-0-5-23 {
-            description = "Parsecable class, and utilities; base version without file parsing";
-            libDepends = h: with h; [
-              base base-unicode-symbols data-textual deepseq has-callstack lens
-              monaderror-io more-unicode mtl parsec text-printer
-            ];
-            testDepends = h: with h; [ base ];
-          };
+          parsec-plus-base-1-0-5-23 =
+            callPkg "parsec-plus-base" "1.0.5.23" parsec-plus-base-src-1-0-5-23 {
+              description = "Parsecable class, and utilities; base version without file parsing";
+              libDepends = h: with h; [
+                base base-unicode-symbols data-textual deepseq lens mtl parsec
+                text-printer
+
+                has-callstack monaderror-io more-unicode
+              ];
+              testDepends = h: with h; [ base ];
+            };
 
           # -- textual-plus ------------
 
           textual-plus          = textual-plus-1-0;
           textual-plus-1-0      = textual-plus-1-0-2-27;
-          textual-plus-1-0-2-27 = callPkg "textual-plus" "1.0.2.27" textual-plus-src-1-0-2-27 {
-            description = "manage info.yaml";
-            libDepends = h: with h; [
-              base base-unicode-symbols data-textual mtl text tfmt
-            ];
-          };
+          textual-plus-1-0-2-27 =
+            callPkg "textual-plus" "1.0.2.27" textual-plus-src-1-0-2-27 {
+              description = "manage info.yaml";
+              libDepends = h: with h; [
+                base base-unicode-symbols data-textual mtl text tfmt
+              ];
+            };
 
           # -- L5 (internal dependencies on L4) ------------
 
@@ -644,30 +707,33 @@
 
           quasiquoting          = quasiquoting-1-0;
           quasiquoting-1-0      = quasiquoting-1-0-1-32;
-          quasiquoting-1-0-1-32 = callPkg "quasiquoting" "1.0.1.32" quasiquoting-src-1-0-1-32 {
-            description = "manage info.yaml";
-            libDepends = h: with h; [
-              base base-unicode-symbols data-default lens template-haskell text
+          quasiquoting-1-0-1-32 =
+            callPkg "quasiquoting" "1.0.1.32" quasiquoting-src-1-0-1-32 {
+              description = "manage info.yaml";
+              libDepends = h: with h; [
+                base base-unicode-symbols data-default lens template-haskell
+                text
 
-              monaderror-io more-unicode parsec-plus-base tfmt
-            ];
-          };
+                monaderror-io more-unicode parsec-plus-base tfmt
+              ];
+            };
 
           # -- tasty-plus --------------
 
           tasty-plus          = tasty-plus-1-5;
           tasty-plus-1-5      = tasty-plus-1-5-2-24;
-          tasty-plus-1-5-2-24 = callPkg "tasty-plus" "1.5.2.24" tasty-plus-src-1-5-2-24 {
-            description = "Additional utilities for working with Tasty";
-            libDepends = h: with h; [
-              base base-unicode-symbols data-textual deepseq directory mtl
-              optparse-applicative safe tasty tasty-hunit tasty-quickcheck
-              temporary text text-printer
+          tasty-plus-1-5-2-24 =
+            callPkg "tasty-plus" "1.5.2.24" tasty-plus-src-1-5-2-24 {
+              description = "Additional utilities for working with Tasty";
+              libDepends = h: with h; [
+                base base-unicode-symbols data-textual deepseq directory mtl
+                optparse-applicative safe tasty tasty-hunit tasty-quickcheck
+                temporary text text-printer
 
-              exited more-unicode
-            ];
-            testDepends = h: with h; [ base optparse-applicative ];
-          };
+                exited more-unicode
+              ];
+              testDepends = h: with h; [ base optparse-applicative ];
+            };
 
           # -- L6 (internal dependencies on L5) ------------
 
@@ -710,6 +776,25 @@
               more-unicode tasty-plus
             ];
           };
+
+          # -- mac-address -------------
+
+          mac-address         = mac-address-0-0;
+          mac-address-0-0     = mac-address-0-0-0-3;
+          mac-address-0-0-0-3 =
+            callPkg "mac-address" "0.0.0.3" mac-address-src-0-0-0-3 {
+              description = "MAC Address type, with dhall support";
+              libDepends = h: with h; [
+                aeson base base-unicode-symbols data-default data-textual
+                deepseq dhall either parsec parsers QuickCheck scientific tasty
+                tasty-hunit tasty-quickcheck template-haskell text text-printer
+                yaml
+
+                more-unicode parsec-plus parsec-plus-base quasiquoting
+                tasty-plus textual-plus tfmt
+              ];
+              testDepends = h: with h; [ base tasty ];
+            };
 
           # -- L7 (internal dependencies on L6) ------------
 
@@ -940,6 +1025,22 @@
             ];
           };
 
+          # -- dhall-plus --------------
+
+          dhall-plus         = dhall-plus-0-0;
+          dhall-plus-0-0     = dhall-plus-0-0-2-1;
+          dhall-plus-0-0-2-1 = callPkg "dhall-plus" "0.0.2.1" dhall-plus-src-0-0-2-1 {
+            description = "Utilities for working with Dhall";
+            libDepends = h: with h; [
+              base base-unicode-symbols data-textual deepseq dhall
+              enclosed-exceptions lens mtl tasty tasty-hunit text text-printer
+
+              fpath has-callstack monaderror-io monadio-plus more-unicode
+              tasty-plus
+            ];
+            testDepends = h: with h; [ base tasty ];
+          };
+
           # -- ip4 ---------------------
 
           ip4         = ip4-0-0;
@@ -988,15 +1089,16 @@
 
           optparse-plus          = optparse-plus-1-3;
           optparse-plus-1-3      = optparse-plus-1-3-2-42;
-          optparse-plus-1-3-2-42 = callPkg "optparse-plus" "1.3.2.42" optparse-plus-src-1-3-2-42 {
-            description = "manage info.yaml";
-            libDepends = h: with h; [
-              base data-textual extra lens nonempty-containers
-              optparse-applicative parsec parsers terminal-size text
+          optparse-plus-1-3-2-42 =
+            callPkg "optparse-plus" "1.3.2.42" optparse-plus-src-1-3-2-42 {
+              description = "manage info.yaml";
+              libDepends = h: with h; [
+                base data-textual extra lens nonempty-containers
+                optparse-applicative parsec parsers terminal-size text
 
-              base1 parsec-plus parser-plus textual-plus
-            ];
-          };
+                base1 parsec-plus parser-plus textual-plus
+              ];
+            };
 
           # -- proclib -----------------
 
@@ -1112,6 +1214,27 @@
 
 
           # -- L13 (internal dependencies on L12) ----------
+
+          # -- hostsdb -----------------
+
+          hostsdb         = hostsdb-0-1;
+          hostsdb-0-1     = hostsdb-0-1-1-4;
+          hostsdb-0-1-1-4 = callPkg "hostsdb" "0.1.1.4" hostsdb-src-0-1-1-4 {
+            description = "hosts info as a single configuration";
+            libDepends = h: with h; [
+              aeson base base-unicode-symbols containers data-textual deepseq
+              dhall lens mono-traversable mtl path proclib tasty tasty-hunit
+              text text-printer unordered-containers yaml
+
+              containers-plus dhall-plus domainnames equalish fpath
+              has-callstack ip4 mac-address monaderror-io more-unicode
+              non-empty-containers tasty-plus textual-plus tfmt
+            ];
+            testDepends = h: with h; [
+              base base-unicode-symbols more-unicode optparse-applicative tasty
+              tasty-plus
+            ];
+          };
 
           # -- mockio-plus -------------
 
@@ -1279,6 +1402,27 @@
             testDepends = h: with h; [ base tasty ];
           };
 
+          # -- tinydns -----------------
+
+          tinydns         = tinydns-0-1;
+          tinydns-0-1     = tinydns-0-1-1-2;
+          tinydns-0-1-1-2 = callPkg "tinydns" "0.1.1.2" tinydns-src-0-1-1-2 {
+            description = "tinydns management";
+            libDepends = h: with h; [
+              base base-unicode-symbols data-default data-textual lens mtl
+              optparse-applicative path tasty tasty-hunit text
+              text-printer unordered-containers
+
+              dhall-plus domainnames fpath has-callstack hostsdb ip4 mac-address
+              monaderror-io monadio-plus more-unicode natural proclib stdmain
+              tasty-plus tfmt
+            ];
+            testDepends = h: with h; [
+              base base-unicode-symbols lens monaderror-io more-unicode natural
+              optparse-applicative proclib tasty tasty-plus
+            ];
+          };
+
           # -- L16 (internal dependencies on L15) ----------
 
           # -- rename ------------------
@@ -1300,35 +1444,14 @@
           };
 
           # END OF PACKAGES ----------------------------------------------------
-
-          # an extra, dummy package for haskellPackages that we want in our
-          # default shell, but that aren't a dependency of any of our existing
-          # packages
-          extra_ =
-            hpkgs.mkDerivation {
-              pname = "extra"; version = "0.0.0.0"; description = "dummy pkg";
-              src = ./.;
-              libraryHaskellDepends = with hpkgs; [
-                # containers-unicode-symbols
-                criterion dhall diagrams Diff doctest finite-typelits freer
-                genvalidity-hspec ghc-typelits-extra hostaddress hostname
-                http-client inflections keys ListLike markdown-unlit monad-loops
-
-                network-ip pipes rainbow range regex-applicative regex-pcre
-                regex-with-pcre rio shake SVGFonts tagsoup
-                tasty-hspec timers xmonad-contrib yaml
-              ];
-              license = pkgs.lib.licenses.mit;
-              };
-
-        } // pkgs.haskellPackages
+        }
         ; # packages = rec { ...
 
         # run, say, nix develop ~/src/hpkgs1/flake.nix#tasty-plus
 
         devShells =
           (builtins.mapAttrs (_: p: hpkgs.shellFor {
-            packages = _: [p];
+            packages = _: pkgs.lib.debug.traceSeqN 2 [p] [p];
             buildInputs = with hpkgs; [
               haskell-language-server ## you must build it with your ghc to work
               ghcid cabal-install
@@ -1340,13 +1463,61 @@
         # plus extras named below
         # https://input-output-hk.github.io/haskell.nix/tutorials/development.html
         devShell = # hpkgs.ghcWithPackages (ps: with ps; [criterion]);
-          hpkgs.shellFor {
-            packages = _: ([ ] ++ builtins.attrValues packages);
-            buildInputs = with hpkgs; [ criterion ];
-            # Prevents cabal from choosing alternate plans, so that
-            # *all* dependencies are provided by Nix.
-            exactDeps = true;
-          };
+          let
+            # pp = ([] ++ builtins.attrValues packages);
+          # an extra, dummy package for my own packages that we want in the
+          # default shell
+          myHaskellPkgs_ =
+            hpkgs.mkDerivation {
+              pname = "myHaskellPkgs"; version = "0.0.0.0";
+              description = "mine own haskell packages";
+              src = ./.;
+              libraryHaskellDepends =
+let y =
+                builtins.attrValues packages;
+in
+pkgs.lib.debug.traceSeqN 4 { inherit y; } y;
+              license = pkgs.lib.licenses.mit;
+              };
+
+          # an extra, dummy package for haskellPackages that we want in our
+          # default shell, but that aren't a dependency of any of our existing
+          # packages
+          extra_ =
+            hpkgs.mkDerivation {
+              pname = "extra"; version = "0.0.0.0"; description = "dummy pkg";
+              src = ./.;
+              libraryHaskellDepends =
+let x =
+
+                with hpkgs; [
+                # containers-unicode-symbols
+##                criterion dhall diagrams Diff doctest finite-typelits freer
+##                genvalidity-hspec ghc-typelits-extra hostaddress hostname
+##                http-client inflections keys ListLike markdown-unlit monad-loops
+##
+##                network-ip pipes rainbow range regex-applicative regex-pcre
+##                regex-with-pcre rio shake SVGFonts tagsoup
+##                tasty-hspec timers xmonad-contrib yaml
+tasty-hspec
+                ];
+in
+pkgs.lib.debug.traceSeqN 3 { inherit x; } x;
+              license = pkgs.lib.licenses.mit;
+              };
+          in
+            hpkgs.shellFor {
+              packages = _: pkgs.lib.debug.traceSeqN 2 [ myHaskellPkgs_ ] [ myHaskellPkgs_ ];
+           buildInputs = with hpkgs; [
+              haskell-language-server ## you must build it with your ghc to work
+              ghcid cabal-install
+            ];
+ #              buildInputs = with hpkgs; [ packages.yaml-plus ]; # criterion ];
+              # Prevents cabal from choosing alternate plans, so that
+              # *all* dependencies are provided by Nix.
+              exactDeps = true;
+            };
       } # let pkgs ... in ...
     );
 }
+
