@@ -1422,8 +1422,9 @@
               shopt -s globstar
 
               for i in proto/**/.hs; do
-              substitute "$i" src/"${i#proto/}" \
-                --replace __djbdns__   ${pkgs.djbdns}
+                substitute "$i" src/"''${i#proto/}" \
+                  --replace __djbdns__ ${pkgs.djbdns}
+              done
             '';
 
             testDepends = h: with h; [
