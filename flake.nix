@@ -1417,6 +1417,15 @@
               monaderror-io monadio-plus more-unicode natural proclib stdmain
               tasty-plus tfmt
             ];
+
+            postConfigure = ''
+              shopt -s globstar
+
+              for i in proto/**/.hs; do
+              substitute "$i" src/"${i#proto/}" \
+                --replace __djbdns__   ${pkgs.djbdns}
+            '';
+
             testDepends = h: with h; [
               base base-unicode-symbols lens monaderror-io more-unicode natural
               optparse-applicative proclib tasty tasty-plus
