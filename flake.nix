@@ -375,11 +375,11 @@
       ref   = "r0.2.7.25";
       flake = false;
     };
-    tinydns-src-0-1-1-2 = {
+    tinydns-src-0-1-1-3 = {
       type  = "github";
       owner = "sixears";
       repo  = "tinydns";
-      ref   = "r0.1.1.2";
+      ref   = "r0.1.1.3";
       flake = false;
     };
     yaml-plus-src-1-0-1-1 = {
@@ -445,7 +445,7 @@
             , tasty-plus-src-1-5-2-24
             , textual-plus-src-1-0-2-27
             , tfmt-src-0-2-7-25
-            , tinydns-src-0-1-1-2
+            , tinydns-src-0-1-1-3
             , yaml-plus-src-1-0-1-1
             }:
     flake-utils.lib.eachDefaultSystem (system:
@@ -1405,8 +1405,8 @@
           # -- tinydns -----------------
 
           tinydns         = tinydns-0-1;
-          tinydns-0-1     = tinydns-0-1-1-2;
-          tinydns-0-1-1-2 = callPkg "tinydns" "0.1.1.2" tinydns-src-0-1-1-2 {
+          tinydns-0-1     = tinydns-0-1-1-3;
+          tinydns-0-1-1-3 = callPkg "tinydns" "0.1.1.3" tinydns-src-0-1-1-3 {
             description = "tinydns management";
             libDepends = h: with h; [
               base base-unicode-symbols data-default data-textual lens mtl
@@ -1419,10 +1419,10 @@
             ];
 
             postConfigure = ''
-              shopt -s globstar
-
-              for i in proto/**/.hs; do
-                substitute "$i" src/"''${i#proto/}" \
+              for f in $( ${pkgs.findutils}/bin/find proto/ -type f \
+                                                            -name \*.hs ); do
+                t=src/"''${f#proto/}"
+                substitute "$f" "$t" \
                   --replace __djbdns__ ${pkgs.djbdns}
               done
             '';
