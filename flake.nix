@@ -123,6 +123,13 @@
       ref   = "r1.0.4.23";
       flake = false;
     };
+    file-split-src-1-0-2-1 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "file-split";
+      ref   = "r1.0.2.1";
+      flake = false;
+    };
     fpath-src-1-3-2-39 = {
       type  = "github";
       owner = "sixears";
@@ -409,6 +416,7 @@
             , env-plus-src-1-0-7-37
             , equalish-src-0-0-0-0
             , exited-src-1-0-4-23
+            , file-split-src-1-0-2-1
             , fpath-src-1-3-2-39
             , fstat-src-1-0-2-26
             , handbrake-src-1-0-3-0
@@ -537,6 +545,21 @@
           base0t-0-0-1-14 = callPkg "base0t" "0.0.1.14" base0t-src-0-0-1-14 {
             description = "Prelude replacement, external packages only, incl. tests";
             libDepends = h: with h; [ base0 tasty tasty-hunit ];
+          };
+
+          # -- file-split --------------
+
+          file-split         = file-split-1-0;
+          file-split-1-0     = file-split-1-0-2-1;
+          file-split-1-0-2-1 = callPkg "file-split" "1.0.2.1" file-split-src-1-0-2-1 {
+            description = "write files from instructions on stdin";
+            libDepends = h: with h; [
+              base containers data-default directory lens mtl path text unix
+            ];
+            testDepends = h: with h; [
+              base containers data-default directory mtl path tasty tasty-hunit
+              text unix
+            ];
           };
 
           # -- more-unicode ------------

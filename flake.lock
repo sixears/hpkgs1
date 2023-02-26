@@ -272,6 +272,23 @@
         "type": "github"
       }
     },
+    "file-split-src-1-0-2-1": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1677442503,
+        "narHash": "sha256-a7DuLFiA3ajgCC/k5Pd7gvY8DqM5cBnMzkg89yGK3b0=",
+        "owner": "sixears",
+        "repo": "file-split",
+        "rev": "44e1712ba2c2f51fc0119f6c186cb04799ffce4e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sixears",
+        "ref": "r1.0.2.1",
+        "repo": "file-split",
+        "type": "github"
+      }
+    },
     "flake-utils": {
       "locked": {
         "lastModified": 1659877975,
@@ -370,6 +387,23 @@
         "owner": "sixears",
         "ref": "r0.1.1.4",
         "repo": "hostsdb",
+        "type": "github"
+      }
+    },
+    "htinydns-src-0-1-1-3": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1676016967,
+        "narHash": "sha256-XKEDWesveDk/1ckbjVrfUPMV/wL1uzJ0VILsvTx31FU=",
+        "owner": "sixears",
+        "repo": "tinydns",
+        "rev": "fb8eede568f2a19941015a38dccffa365b98a269",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sixears",
+        "ref": "r0.1.1.3",
+        "repo": "tinydns",
         "type": "github"
       }
     },
@@ -832,12 +866,14 @@
         "env-plus-src-1-0-7-37": "env-plus-src-1-0-7-37",
         "equalish-src-0-0-0-0": "equalish-src-0-0-0-0",
         "exited-src-1-0-4-23": "exited-src-1-0-4-23",
+        "file-split-src-1-0-2-1": "file-split-src-1-0-2-1",
         "flake-utils": "flake-utils",
         "fpath-src-1-3-2-39": "fpath-src-1-3-2-39",
         "fstat-src-1-0-2-26": "fstat-src-1-0-2-26",
         "handbrake-src-1-0-3-0": "handbrake-src-1-0-3-0",
         "has-callstack-src-1-0-1-19": "has-callstack-src-1-0-1-19",
         "hostsdb-src-0-1-1-4": "hostsdb-src-0-1-1-4",
+        "htinydns-src-0-1-1-3": "htinydns-src-0-1-1-3",
         "index-src-1-0-1-26": "index-src-1-0-1-26",
         "ip4-src-0-0-0-2": "ip4-src-0-0-0-2",
         "log-plus-src-0-0-4-4": "log-plus-src-0-0-4-4",
@@ -870,7 +906,6 @@
         "tasty-plus-src-1-5-2-24": "tasty-plus-src-1-5-2-24",
         "textual-plus-src-1-0-2-27": "textual-plus-src-1-0-2-27",
         "tfmt-src-0-2-7-25": "tfmt-src-0-2-7-25",
-        "tinydns-src-0-1-1-3": "tinydns-src-0-1-1-3",
         "yaml-plus-src-1-0-1-1": "yaml-plus-src-1-0-1-1"
       }
     },
@@ -973,23 +1008,6 @@
         "owner": "sixears",
         "ref": "r0.2.7.25",
         "repo": "tfmt",
-        "type": "github"
-      }
-    },
-    "tinydns-src-0-1-1-3": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1676016967,
-        "narHash": "sha256-XKEDWesveDk/1ckbjVrfUPMV/wL1uzJ0VILsvTx31FU=",
-        "owner": "sixears",
-        "repo": "tinydns",
-        "rev": "fb8eede568f2a19941015a38dccffa365b98a269",
-        "type": "github"
-      },
-      "original": {
-        "owner": "sixears",
-        "ref": "r0.1.1.3",
-        "repo": "tinydns",
         "type": "github"
       }
     },
