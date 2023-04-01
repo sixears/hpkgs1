@@ -109,11 +109,11 @@
       ref   = "r1.0.7.37";
       flake = false;
     };
-    equalish-src-0-0-0-0 = {
+    equalish-src-0-0-0-2 = {
       type  = "github";
       owner = "sixears";
       repo  = "equalish";
-      ref   = "r0.0.0.0";
+      ref   = "r0.0.0.2";
       flake = false;
     };
     exited-src-1-0-4-23 = {
@@ -207,11 +207,11 @@
       ref   = "r1.0.0.0";
       flake = false;
     };
-    mockio-cmds-rsync-src-1-0-0-0 = {
+    mockio-cmds-rsync-src-1-0-0-1 = {
       type  = "github";
       owner = "sixears";
       repo  = "mockio-cmds-rsync";
-      ref   = "r1.0.0.0";
+      ref   = "r1.0.0.1";
       flake = false;
     };
     mockio-cmds-util-linux-src-1-0-1-3 = {
@@ -249,11 +249,11 @@
       ref   = "r1.2.5.20";
       flake = false;
     };
-    monadio-plus-src-2-5-1-49 = {
+    monadio-plus-src-2-5-1-51 = {
       type  = "github";
       owner = "sixears";
       repo  = "monadio-plus";
-      ref   = "r2.5.1.49";
+      ref   = "r2.5.1.51";
       flake = false;
     };
     more-unicode-src-0-0-17-12 = {
@@ -368,11 +368,11 @@
       ref   = "r1.5.2.24";
       flake = false;
     };
-    textual-plus-src-1-0-2-27 = {
+    textual-plus-src-1-0-2-28 = {
       type  = "github";
       owner = "sixears";
       repo  = "textual-plus";
-      ref   = "r1.0.2.27";
+      ref   = "r1.0.2.28";
       flake = false;
     };
     tfmt-src-0-2-7-25 = {
@@ -414,7 +414,7 @@
             , duration-src-1-0-0-0
             , env-fpath-src-0-0-0-1
             , env-plus-src-1-0-7-37
-            , equalish-src-0-0-0-0
+            , equalish-src-0-0-0-2
             , exited-src-1-0-4-23
             , file-split-src-1-0-2-1
             , fpath-src-1-3-2-39
@@ -428,13 +428,13 @@
             , mac-address-src-0-0-0-3
             , minfo-src-1-0-3-7
             , mockio-cmds-inetutils-src-1-0-0-0
-            , mockio-cmds-rsync-src-1-0-0-0
+            , mockio-cmds-rsync-src-1-0-0-1
             , mockio-cmds-util-linux-src-1-0-1-3
             , mockio-src-0-0-4-4
             , mockio-log-src-0-1-2-0
             , mockio-plus-src-0-3-12-1
             , monaderror-io-src-1-2-5-20
-            , monadio-plus-src-2-5-1-49
+            , monadio-plus-src-2-5-1-51
             , more-unicode-src-0-0-17-12
             , natural-src-0-0-1-14
             , non-empty-containers-src-1-4-3-36
@@ -451,7 +451,7 @@
             , srt-adjust-src-1-0-0-7
             , stdmain-src-1-5-13-0
             , tasty-plus-src-1-5-2-24
-            , textual-plus-src-1-0-2-27
+            , textual-plus-src-1-0-2-28
             , tfmt-src-0-2-7-25
             , htinydns-src-0-1-1-3
             , yaml-plus-src-1-0-1-1
@@ -593,8 +593,8 @@
           # -- equalish ----------------
 
           equalish         = equalish-0-0;
-          equalish-0-0     = equalish-0-0-0-0;
-          equalish-0-0-0-0 = callPkg "equalish" "0.0.0.0" equalish-src-0-0-0-0 {
+          equalish-0-0     = equalish-0-0-0-2;
+          equalish-0-0-0-2 = callPkg "equalish" "0.0.0.2" equalish-src-0-0-0-2 {
             description = "Like Eq, but with explanations when not equal";
             libDepends = h: with h; [ base base-unicode-symbols more-unicode ];
           };
@@ -715,9 +715,9 @@
           # -- textual-plus ------------
 
           textual-plus          = textual-plus-1-0;
-          textual-plus-1-0      = textual-plus-1-0-2-27;
-          textual-plus-1-0-2-27 =
-            callPkg "textual-plus" "1.0.2.27" textual-plus-src-1-0-2-27 {
+          textual-plus-1-0      = textual-plus-1-0-2-28;
+          textual-plus-1-0-2-28 =
+            callPkg "textual-plus" "1.0.2.28" textual-plus-src-1-0-2-28 {
               description = "manage info.yaml";
               libDepends = h: with h; [
                 base base-unicode-symbols data-textual mtl text tfmt
@@ -970,23 +970,24 @@
           # -- monadio-plus ------------
 
           monadio-plus          = monadio-plus-2-5;
-          monadio-plus-2-5      = monadio-plus-2-5-1-49;
-          monadio-plus-2-5-1-49 = callPkg "monadio-plus" "2.5.1.49" monadio-plus-src-2-5-1-49 {
-            description = "IO operations, using MonadIO & MonadError with AsIOError";
-            libDepends = h: with h; [
-              base base-unicode-symbols bytestring containers data-textual
-              deepseq directory exceptions filelock filepath lens mtl process
-              safe tasty-hunit temporary text text-printer unix
+          monadio-plus-2-5      = monadio-plus-2-5-1-51;
+          monadio-plus-2-5-1-51 =
+            callPkg "monadio-plus" "2.5.1.51" monadio-plus-src-2-5-1-51 {
+              description = "IO operations, using MonadIO & MonadError with AsIOError";
+              libDepends = h: with h; [
+                base base-unicode-symbols bytestring containers data-textual
+                deepseq directory exceptions filelock filepath lens mtl process
+                safe tasty-hunit temporary text text-printer unix
 
-              base1t containers-plus env-plus exited fpath fstat monaderror-io
-              more-unicode natural tasty-plus
-            ];
-            testDepends = h: with h; [ base tasty ];
-            postConfigure = ''
+                base1t containers-plus env-plus exited fpath fstat monaderror-io
+                more-unicode natural tasty-plus
+              ];
+              testDepends = h: with h; [ base tasty ];
+              postConfigure = ''
               substitute proto/MonadIO/Paths.hs src/MonadIO/Paths.hs \
                 --replace __gnugrep__ ${pkgs.gnugrep}
             '';
-          };
+            };
 
           # -- parsec-plus -------------
 
@@ -1362,10 +1363,10 @@
           # -- mockio-cmds-rsync -------
 
           mockio-cmds-rsync         = mockio-cmds-rsync-1-0;
-          mockio-cmds-rsync-1-0     = mockio-cmds-rsync-1-0-0-0;
-          mockio-cmds-rsync-1-0-0-0 =
-            callPkg "mockio-cmds-rsync" "1.0.0.0"
-                    mockio-cmds-rsync-src-1-0-0-0 {
+          mockio-cmds-rsync-1-0     = mockio-cmds-rsync-1-0-0-1;
+          mockio-cmds-rsync-1-0-0-1 =
+            callPkg "mockio-cmds-rsync" "1.0.0.1"
+                    mockio-cmds-rsync-src-1-0-0-1 {
               description = "MockIO wrappers for rsync";
               libDepends = h: with h; [
                 base base1t containers deepseq lens logging-effect mtl safe

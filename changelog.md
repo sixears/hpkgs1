@@ -1,3 +1,7 @@
+0.0.10.0 2023-04-01
+===================
+- changes to support nixos-22.11-release (and fix some messed up github references)
+
 0.0.9.0 2023-02-27
 ==================
 - +file-split
