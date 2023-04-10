@@ -221,19 +221,19 @@
         "type": "github"
       }
     },
-    "env-plus-src-1-0-7-37": {
+    "env-plus-src-1-0-8-0": {
       "flake": false,
       "locked": {
-        "lastModified": 1668928680,
-        "narHash": "sha256-HHfGsHYgF0GAK8rRgylujlRwLrvCYIThGXycT0DxkBY=",
+        "lastModified": 1681114101,
+        "narHash": "sha256-J79wWor1x4Z+fgMo7Q1zJ8BX1zRvj0FAtD4eSvc4CNE=",
         "owner": "sixears",
         "repo": "env-plus",
-        "rev": "0fab11de777ea033649231d30c76a102a5f4d987",
+        "rev": "2df770d03f37c3968b072087d4d7e0c3ca573d38",
         "type": "github"
       },
       "original": {
         "owner": "sixears",
-        "ref": "r1.0.7.37",
+        "ref": "r1.0.8.0",
         "repo": "env-plus",
         "type": "github"
       }
@@ -863,7 +863,7 @@
         "domainnames-src-0-1-2-0": "domainnames-src-0-1-2-0",
         "duration-src-1-0-0-0": "duration-src-1-0-0-0",
         "env-fpath-src-0-0-0-1": "env-fpath-src-0-0-0-1",
-        "env-plus-src-1-0-7-37": "env-plus-src-1-0-7-37",
+        "env-plus-src-1-0-8-0": "env-plus-src-1-0-8-0",
         "equalish-src-0-0-0-2": "equalish-src-0-0-0-2",
         "exited-src-1-0-4-23": "exited-src-1-0-4-23",
         "file-split-src-1-0-2-1": "file-split-src-1-0-2-1",

@@ -102,11 +102,11 @@
       ref   = "r0.0.0.1";
       flake = false;
     };
-    env-plus-src-1-0-7-37 = {
+    env-plus-src-1-0-8-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "env-plus";
-      ref   = "r1.0.7.37";
+      ref   = "r1.0.8.0";
       flake = false;
     };
     equalish-src-0-0-0-2 = {
@@ -413,7 +413,7 @@
             , domainnames-src-0-1-2-0
             , duration-src-1-0-0-0
             , env-fpath-src-0-0-0-1
-            , env-plus-src-1-0-7-37
+            , env-plus-src-1-0-8-0
             , equalish-src-0-0-0-2
             , exited-src-1-0-4-23
             , file-split-src-1-0-2-1
@@ -481,6 +481,7 @@
               };
       in rec {
         lib = rec {
+          ghcWithHoogle   = hpkgs.ghcWithHoogle;
           ghcWithPackages = hpkgs.ghcWithPackages;
           writeHaskellBin = pkgs.writers.writeHaskellBin;
 
@@ -881,14 +882,14 @@
           # -- env-plus ----------------
 
           env-plus          = env-plus-1-0;
-          env-plus-1-0      = env-plus-1-0-7-37;
-          env-plus-1-0-7-37 = callPkg "env-plus" "1.0.7.37" env-plus-src-1-0-7-37 {
+          env-plus-1-0      = env-plus-1-0-8-0;
+          env-plus-1-0-8-0 = callPkg "env-plus" "1.0.8.0" env-plus-src-1-0-8-0 {
             description = "Utilities for working with the system environment";
             libDepends = h: with h; [
               base containers data-textual deepseq lens mono-traversable mtl
               parsers text text-printer unix
 
-              base1t tasty-plus
+              base1t parsec-plus-base tasty-plus
             ];
             testDepends = h: with h; [ base tasty ];
           };
