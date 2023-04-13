@@ -102,11 +102,11 @@
       ref   = "r0.0.0.1";
       flake = false;
     };
-    env-plus-src-1-0-8-0 = {
+    env-plus-src-1-0-9-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "env-plus";
-      ref   = "r1.0.8.0";
+      ref   = "r1.0.9.0";
       flake = false;
     };
     equalish-src-0-0-0-2 = {
@@ -413,7 +413,7 @@
             , domainnames-src-0-1-2-0
             , duration-src-1-0-0-0
             , env-fpath-src-0-0-0-1
-            , env-plus-src-1-0-8-0
+            , env-plus-src-1-0-9-0
             , equalish-src-0-0-0-2
             , exited-src-1-0-4-23
             , file-split-src-1-0-2-1
@@ -882,14 +882,14 @@
           # -- env-plus ----------------
 
           env-plus          = env-plus-1-0;
-          env-plus-1-0      = env-plus-1-0-8-0;
-          env-plus-1-0-8-0 = callPkg "env-plus" "1.0.8.0" env-plus-src-1-0-8-0 {
+          env-plus-1-0      = env-plus-1-0-9-0;
+          env-plus-1-0-9-0 = callPkg "env-plus" "1.0.9.0" env-plus-src-1-0-9-0 {
             description = "Utilities for working with the system environment";
             libDepends = h: with h; [
               base containers data-textual deepseq lens mono-traversable mtl
-              parsers text text-printer unix
+              parsers template-haskell text text-printer unix
 
-              base1t parsec-plus-base tasty-plus
+              base1t parsec-plus-base quasiquoting tasty-plus
             ];
             testDepends = h: with h; [ base tasty ];
           };
@@ -1486,7 +1486,7 @@
 
         devShells =
           (builtins.mapAttrs (_: p: hpkgs.shellFor {
-            packages = _: pkgs.lib.debug.traceSeqN 2 [p] [p];
+            packages = _: [p];
             buildInputs = with hpkgs; [
               haskell-language-server ## you must build it with your ghc to work
               ghcid cabal-install
