@@ -375,11 +375,25 @@
       ref   = "r1.0.2.28";
       flake = false;
     };
+    textual-plus-src-1-1-0-0 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "textual-plus";
+      ref   = "r1.1.0.0";
+      flake = false;
+    };
     tfmt-src-0-2-7-25 = {
       type  = "github";
       owner = "sixears";
       repo  = "tfmt";
       ref   = "r0.2.7.25";
+      flake = false;
+    };
+    trifecta-plus-src-0-0-1-0 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "trifecta-plus";
+      ref   = "r0.0.1.0";
       flake = false;
     };
     htinydns-src-0-1-1-3 = {
@@ -452,6 +466,8 @@
             , stdmain-src-1-5-13-0
             , tasty-plus-src-1-5-2-24
             , textual-plus-src-1-0-2-28
+            , textual-plus-src-1-1-0-0
+            , trifecta-plus-src-0-0-1-0
             , tfmt-src-0-2-7-25
             , htinydns-src-0-1-1-3
             , yaml-plus-src-1-0-1-1
@@ -715,13 +731,27 @@
 
           # -- textual-plus ------------
 
-          textual-plus          = textual-plus-1-0;
           textual-plus-1-0      = textual-plus-1-0-2-28;
           textual-plus-1-0-2-28 =
             callPkg "textual-plus" "1.0.2.28" textual-plus-src-1-0-2-28 {
               description = "manage info.yaml";
               libDepends = h: with h; [
-                base base-unicode-symbols data-textual mtl text tfmt
+                base base-unicode-symbols data-textual mtl text
+
+                tfmt
+              ];
+            };
+
+          textual-plus          = textual-plus-1-1;
+          textual-plus-1-1      = textual-plus-1-1-0-0;
+          textual-plus-1-1-0-0 =
+            callPkg "textual-plus" "1.1.0.0" textual-plus-src-1-1-0-0 {
+              description = "manage info.yaml";
+              libDepends = h: with h; [
+                base base-unicode-symbols bytestring data-textual mtl
+                parsers tasty-quickcheck text text-printer
+
+                base0 more-unicode tfmt
               ];
             };
 
@@ -815,7 +845,7 @@
                 yaml
 
                 more-unicode parsec-plus parsec-plus-base quasiquoting
-                tasty-plus textual-plus tfmt
+                tasty-plus textual-plus-1-0 tfmt
               ];
               testDepends = h: with h; [ base tasty ];
             };
@@ -874,7 +904,7 @@
               mono-traversable tasty tasty-hunit text-printer
               unordered-containers
 
-              base1 more-unicode non-empty-containers tasty-plus textual-plus
+              base1 more-unicode non-empty-containers tasty-plus textual-plus-1-0
             ];
             testDepends = h: with h; [ base tasty ];
           };
@@ -1004,6 +1034,21 @@
             testDepends = h: with h; [ base ];
           };
 
+          # -- trifecta-plus ------------
+
+          trifecta-plus-0-0-1-0 =
+            callPkg "trifecta-plus" "0.0.1.0" trifecta-plus-src-0-0-1-0 {
+              description = "additional tools for working with Trifecta";
+              libDepends = h: with h; [
+                bytestring parsers prettyprinter tasty-hunit template-haskell
+                text trifecta
+
+                base1t fpath textual-plus
+              ];
+            };
+          trifecta-plus-0-0      = trifecta-plus-0-0-1-0;
+          trifecta-plus          = trifecta-plus-0-0;
+
           # -- yaml-plus ---------------
 
           yaml-plus         = yaml-plus-1-0;
@@ -1121,7 +1166,7 @@
                 base data-textual extra lens nonempty-containers
                 optparse-applicative parsec parsers terminal-size text
 
-                base1 parsec-plus parser-plus textual-plus
+                base1 parsec-plus parser-plus textual-plus-1-0
               ];
             };
 
@@ -1253,7 +1298,7 @@
 
               containers-plus dhall-plus domainnames equalish fpath
               has-callstack ip4 mac-address monaderror-io more-unicode
-              non-empty-containers tasty-plus textual-plus tfmt
+              non-empty-containers tasty-plus textual-plus-1-0 tfmt
             ];
             testDepends = h: with h; [
               base base-unicode-symbols more-unicode optparse-applicative tasty

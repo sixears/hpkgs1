@@ -905,7 +905,9 @@
         "stdmain-src-1-5-13-0": "stdmain-src-1-5-13-0",
         "tasty-plus-src-1-5-2-24": "tasty-plus-src-1-5-2-24",
         "textual-plus-src-1-0-2-28": "textual-plus-src-1-0-2-28",
+        "textual-plus-src-1-1-0-0": "textual-plus-src-1-1-0-0",
         "tfmt-src-0-2-7-25": "tfmt-src-0-2-7-25",
+        "trifecta-plus-src-0-0-1-0": "trifecta-plus-src-0-0-1-0",
         "yaml-plus-src-1-0-1-1": "yaml-plus-src-1-0-1-1"
       }
     },
@@ -994,6 +996,23 @@
         "type": "github"
       }
     },
+    "textual-plus-src-1-1-0-0": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1681455150,
+        "narHash": "sha256-BnM31oe3iUkZkYYAKx8FX6Z+OOHoi2dXdFXFu6n6isY=",
+        "owner": "sixears",
+        "repo": "textual-plus",
+        "rev": "18f29707730aac841c683ff00166a309f1e3618a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sixears",
+        "ref": "r1.1.0.0",
+        "repo": "textual-plus",
+        "type": "github"
+      }
+    },
     "tfmt-src-0-2-7-25": {
       "flake": false,
       "locked": {
@@ -1008,6 +1027,23 @@
         "owner": "sixears",
         "ref": "r0.2.7.25",
         "repo": "tfmt",
+        "type": "github"
+      }
+    },
+    "trifecta-plus-src-0-0-1-0": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1681458499,
+        "narHash": "sha256-/npM0ONZjhZ4p06kIV/WAekCE5LoMnJwuKTYQkBhnHY=",
+        "owner": "sixears",
+        "repo": "trifecta-plus",
+        "rev": "b4b0eb8eef5bd1771b1658675a42d7a6e688d170",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sixears",
+        "ref": "r0.0.1.0",
+        "repo": "trifecta-plus",
         "type": "github"
       }
     },
