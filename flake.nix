@@ -375,11 +375,11 @@
       ref   = "r1.0.2.28";
       flake = false;
     };
-    textual-plus-src-1-1-0-0 = {
+    textual-plus-src-1-1-1-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "textual-plus";
-      ref   = "r1.1.0.0";
+      ref   = "r1.1.1.0";
       flake = false;
     };
     tfmt-src-0-2-7-25 = {
@@ -466,7 +466,7 @@
             , stdmain-src-1-5-13-0
             , tasty-plus-src-1-5-2-24
             , textual-plus-src-1-0-2-28
-            , textual-plus-src-1-1-0-0
+            , textual-plus-src-1-1-1-0
             , trifecta-plus-src-0-0-1-0
             , tfmt-src-0-2-7-25
             , htinydns-src-0-1-1-3
@@ -743,15 +743,15 @@
             };
 
           textual-plus          = textual-plus-1-1;
-          textual-plus-1-1      = textual-plus-1-1-0-0;
-          textual-plus-1-1-0-0 =
-            callPkg "textual-plus" "1.1.0.0" textual-plus-src-1-1-0-0 {
+          textual-plus-1-1      = textual-plus-1-1-1-0;
+          textual-plus-1-1-1-0 =
+            callPkg "textual-plus" "1.1.1.0" textual-plus-src-1-1-1-0 {
               description = "manage info.yaml";
               libDepends = h: with h; [
-                base base-unicode-symbols bytestring data-textual mtl
+                base base-unicode-symbols bytestring data-textual deepseq mtl
                 parsers tasty-quickcheck text text-printer
 
-                base0 more-unicode tfmt
+                base0 has-callstack more-unicode tfmt
               ];
             };
 
@@ -1600,4 +1600,3 @@ pkgs.lib.debug.traceSeqN 3 { inherit x; } x;
       } # let pkgs ... in ...
     );
 }
-
