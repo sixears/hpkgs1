@@ -375,11 +375,18 @@
       ref   = "r1.0.2.28";
       flake = false;
     };
-    textual-plus-src-1-1-1-0 = {
+#-#    textual-plus-src-1-1-1-0 = {
+#-#      type  = "github";
+#-#      owner = "sixears";
+#-#      repo  = "textual-plus";
+#-#      ref   = "r1.1.1.0";
+#-#      flake = false;
+#-#    };
+    textual-plus-src-1-1-2-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "textual-plus";
-      ref   = "r1.1.1.0";
+      ref   = "r1.1.2.0";
       flake = false;
     };
     tfmt-src-0-2-7-25 = {
@@ -466,7 +473,8 @@
             , stdmain-src-1-5-13-0
             , tasty-plus-src-1-5-2-24
             , textual-plus-src-1-0-2-28
-            , textual-plus-src-1-1-1-0
+#-#            , textual-plus-src-1-1-1-0
+            , textual-plus-src-1-1-2-0
             , trifecta-plus-src-0-0-1-0
             , tfmt-src-0-2-7-25
             , htinydns-src-0-1-1-3
@@ -511,11 +519,13 @@
                 in
                   builtins.replaceStrings repl_from repl_to
                     (builtins.readFile srcfn);
-            in {
-              pkg = writeHaskellBin name { libraries = libs packages; } src;
-              dev = pkgs.mkShell {
-                packages = [ (ghcWithPackages (_: libs packages)) ];
-              };
+            in
+              let libraries = libs (hpkgs // packages);
+              in {
+                pkg = writeHaskellBin name { inherit libraries; } src;
+                dev = pkgs.mkShell {
+                  packages = [ (ghcWithPackages (_: libraries)) ];
+                };
             };
 
           # To allow clients to build against the same haskell base set (e.g.,
@@ -743,16 +753,27 @@
             };
 
           textual-plus          = textual-plus-1-1;
-          textual-plus-1-1      = textual-plus-1-1-1-0;
-          textual-plus-1-1-1-0 =
-            callPkg "textual-plus" "1.1.1.0" textual-plus-src-1-1-1-0 {
-              description = "manage info.yaml";
-              libDepends = h: with h; [
-                base base-unicode-symbols bytestring data-textual deepseq mtl
-                parsers tasty-quickcheck text text-printer
+#-#          textual-plus-1-1      = textual-plus-1-1-1-0;
+#-#          textual-plus-1-1-1-0 =
+#-#            callPkg "textual-plus" "1.1.1.0" textual-plus-src-1-1-1-0 {
+#-#              description = "manage info.yaml";
+#-#              libDepends = h: with h; [
+#-#                base base-unicode-symbols bytestring data-textual deepseq mtl
+#-#                parsers tasty-quickcheck text text-printer
+#-#
+#-#                base0 has-callstack more-unicode tfmt
+#-#              ];
+#-#            };
+          textual-plus-1-1      = textual-plus-1-1-2-0;
+           textual-plus-1-1-2-0 =
+             callPkg "textual-plus" "1.1.2.0" textual-plus-src-1-1-2-0 {
+               description = "manage info.yaml";
+               libDepends = h: with h; [
+                 base base-unicode-symbols bytestring data-textual deepseq mtl
+                 parsers tasty-quickcheck text text-printer
 
-                base0 has-callstack more-unicode tfmt
-              ];
+                 base0 has-callstack more-unicode tfmt
+               ];
             };
 
           # -- L5 (internal dependencies on L4) ------------
@@ -897,17 +918,21 @@
 
           containers-plus           = containers-plus-0-0;
           containers-plus-0-0       = containers-plus-0-0-10-39;
-          containers-plus-0-0-10-39 = callPkg "containers-plus" "0.0.10.39" containers-plus-src-0-0-10-39 {
-            description = "Additional Utilities for Working with Containers";
-            libDepends = h: with h; [
-              base base-unicode-symbols containers hashable lens
-              mono-traversable tasty tasty-hunit text-printer
-              unordered-containers
+          containers-plus-0-0-10-39 =
+            callPkg "containers-plus" "0.0.10.39" containers-plus-src-0-0-10-39
+              {
+                description =
+                  "Additional Utilities for Working with Containers";
+                libDepends = h: with h; [
+                  base base-unicode-symbols containers hashable lens
+                  mono-traversable tasty tasty-hunit text-printer
+                  unordered-containers
 
-              base1 more-unicode non-empty-containers tasty-plus textual-plus-1-0
-            ];
-            testDepends = h: with h; [ base tasty ];
-          };
+                  base1 more-unicode non-empty-containers tasty-plus
+                  textual-plus-1-0
+                ];
+                testDepends = h: with h; [ base tasty ];
+              };
 
           # -- env-plus ----------------
 
@@ -1552,13 +1577,9 @@
               pname = "myHaskellPkgs"; version = "0.0.0.0";
               description = "mine own haskell packages";
               src = ./.;
-              libraryHaskellDepends =
-let y =
-                builtins.attrValues packages;
-in
-pkgs.lib.debug.traceSeqN 4 { inherit y; } y;
+              libraryHaskellDepends = builtins.attrValues packages;
               license = pkgs.lib.licenses.mit;
-              };
+            };
 
           # an extra, dummy package for haskellPackages that we want in our
           # default shell, but that aren't a dependency of any of our existing
@@ -1568,7 +1589,6 @@ pkgs.lib.debug.traceSeqN 4 { inherit y; } y;
               pname = "extra"; version = "0.0.0.0"; description = "dummy pkg";
               src = ./.;
               libraryHaskellDepends =
-let x =
 
                 with hpkgs; [
                 # containers-unicode-symbols
@@ -1581,8 +1601,6 @@ let x =
 ##                tasty-hspec timers xmonad-contrib yaml
 tasty-hspec
                 ];
-in
-pkgs.lib.debug.traceSeqN 3 { inherit x; } x;
               license = pkgs.lib.licenses.mit;
               };
           in

@@ -1,3 +1,7 @@
+0.0.15.0 2023-06-01
+===================
+- fix mkHBin to include haskell packages from hackage, etc.; textual-plus -> 1.1.2.0
+
 0.0.14.0 2023-05-29
 ===================
 - textual-plus -> 1.1.1.0
