@@ -60,11 +60,11 @@
       ref   = "r1.1.7.0";
       flake = false;
     };
-    containers-plus-src-0-0-10-39 = {
+    containers-plus-src-0-0-10-40 = {
       type  = "github";
       owner = "sixears";
       repo  = "containers-plus";
-      ref   = "r0.0.10.39";
+      ref   = "r0.0.10.40";
       flake = false;
     };
     date-imprecise-src-1-0-0-3 = {
@@ -186,11 +186,11 @@
       ref   = "r0.0.4.4";
       flake = false;
     };
-    mac-address-src-0-0-0-3 = {
+    mac-address-src-0-0-1-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "mac-address";
-      ref   = "r0.0.0.3";
+      ref   = "r0.0.1.0";
       flake = false;
     };
     minfo-src-1-0-3-7 = {
@@ -284,11 +284,11 @@
       ref   = "r1.1.2.14";
       flake = false;
     };
-    optparse-plus-src-1-3-2-42 = {
+    optparse-plus-src-1-3-3-0 = {
       type = "github";
       owner = "sixears";
       repo  = "optparse-plus";
-      ref   = "r1.3.2.42";
+      ref   = "r1.3.3.0";
       flake = false;
     };
     parsec-plus-base-src-1-0-5-23 = {
@@ -368,20 +368,6 @@
       ref   = "r1.5.2.24";
       flake = false;
     };
-    textual-plus-src-1-0-2-28 = {
-      type  = "github";
-      owner = "sixears";
-      repo  = "textual-plus";
-      ref   = "r1.0.2.28";
-      flake = false;
-    };
-#-#    textual-plus-src-1-1-1-0 = {
-#-#      type  = "github";
-#-#      owner = "sixears";
-#-#      repo  = "textual-plus";
-#-#      ref   = "r1.1.1.0";
-#-#      flake = false;
-#-#    };
     textual-plus-src-1-1-2-0 = {
       type  = "github";
       owner = "sixears";
@@ -428,7 +414,7 @@
             , base1-src-0-0-9-34
             , base1t-src-0-0-5-36
             , boundedn-src-1-1-7-0
-            , containers-plus-src-0-0-10-39
+            , containers-plus-src-0-0-10-40
             , date-imprecise-src-1-0-0-3
             , dhall-plus-src-0-0-2-1
             , domainnames-src-0-1-2-0
@@ -446,7 +432,7 @@
             , index-src-1-0-1-26
             , ip4-src-0-0-0-2
             , log-plus-src-0-0-4-4
-            , mac-address-src-0-0-0-3
+            , mac-address-src-0-0-1-0
             , minfo-src-1-0-3-7
             , mockio-cmds-inetutils-src-1-0-0-0
             , mockio-cmds-rsync-src-1-0-0-1
@@ -460,7 +446,7 @@
             , natural-src-0-0-1-14
             , non-empty-containers-src-1-4-3-36
             , number-src-1-1-2-14
-            , optparse-plus-src-1-3-2-42
+            , optparse-plus-src-1-3-3-0
             , parsec-plus-base-src-1-0-5-23
             , parsec-plus-src-1-1-1-44
             , parser-plus-src-1-0-7-29
@@ -472,8 +458,6 @@
             , srt-adjust-src-1-0-0-7
             , stdmain-src-1-5-13-0
             , tasty-plus-src-1-5-2-24
-            , textual-plus-src-1-0-2-28
-#-#            , textual-plus-src-1-1-1-0
             , textual-plus-src-1-1-2-0
             , trifecta-plus-src-0-0-1-0
             , tfmt-src-0-2-7-25
@@ -741,29 +725,7 @@
 
           # -- textual-plus ------------
 
-          textual-plus-1-0      = textual-plus-1-0-2-28;
-          textual-plus-1-0-2-28 =
-            callPkg "textual-plus" "1.0.2.28" textual-plus-src-1-0-2-28 {
-              description = "manage info.yaml";
-              libDepends = h: with h; [
-                base base-unicode-symbols data-textual mtl text
-
-                tfmt
-              ];
-            };
-
           textual-plus          = textual-plus-1-1;
-#-#          textual-plus-1-1      = textual-plus-1-1-1-0;
-#-#          textual-plus-1-1-1-0 =
-#-#            callPkg "textual-plus" "1.1.1.0" textual-plus-src-1-1-1-0 {
-#-#              description = "manage info.yaml";
-#-#              libDepends = h: with h; [
-#-#                base base-unicode-symbols bytestring data-textual deepseq mtl
-#-#                parsers tasty-quickcheck text text-printer
-#-#
-#-#                base0 has-callstack more-unicode tfmt
-#-#              ];
-#-#            };
           textual-plus-1-1      = textual-plus-1-1-2-0;
            textual-plus-1-1-2-0 =
              callPkg "textual-plus" "1.1.2.0" textual-plus-src-1-1-2-0 {
@@ -855,9 +817,9 @@
           # -- mac-address -------------
 
           mac-address         = mac-address-0-0;
-          mac-address-0-0     = mac-address-0-0-0-3;
-          mac-address-0-0-0-3 =
-            callPkg "mac-address" "0.0.0.3" mac-address-src-0-0-0-3 {
+          mac-address-0-0     = mac-address-0-0-1-0;
+          mac-address-0-0-1-0 =
+            callPkg "mac-address" "0.0.1.0" mac-address-src-0-0-1-0 {
               description = "MAC Address type, with dhall support";
               libDepends = h: with h; [
                 aeson base base-unicode-symbols data-default data-textual
@@ -866,7 +828,7 @@
                 yaml
 
                 more-unicode parsec-plus parsec-plus-base quasiquoting
-                tasty-plus textual-plus-1-0 tfmt
+                tasty-plus textual-plus tfmt
               ];
               testDepends = h: with h; [ base tasty ];
             };
@@ -917,9 +879,9 @@
           # -- containers-plus ---------
 
           containers-plus           = containers-plus-0-0;
-          containers-plus-0-0       = containers-plus-0-0-10-39;
-          containers-plus-0-0-10-39 =
-            callPkg "containers-plus" "0.0.10.39" containers-plus-src-0-0-10-39
+          containers-plus-0-0       = containers-plus-0-0-10-40;
+          containers-plus-0-0-10-40 =
+            callPkg "containers-plus" "0.0.10.40" containers-plus-src-0-0-10-40
               {
                 description =
                   "Additional Utilities for Working with Containers";
@@ -929,7 +891,7 @@
                   unordered-containers
 
                   base1 more-unicode non-empty-containers tasty-plus
-                  textual-plus-1-0
+                  textual-plus
                 ];
                 testDepends = h: with h; [ base tasty ];
               };
@@ -1183,15 +1145,15 @@
           # -- optparse-plus -----------
 
           optparse-plus          = optparse-plus-1-3;
-          optparse-plus-1-3      = optparse-plus-1-3-2-42;
-          optparse-plus-1-3-2-42 =
-            callPkg "optparse-plus" "1.3.2.42" optparse-plus-src-1-3-2-42 {
+          optparse-plus-1-3      = optparse-plus-1-3-3-0;
+          optparse-plus-1-3-3-0 =
+            callPkg "optparse-plus" "1.3.3.0" optparse-plus-src-1-3-3-0 {
               description = "manage info.yaml";
               libDepends = h: with h; [
                 base data-textual extra lens nonempty-containers
                 optparse-applicative parsec parsers terminal-size text
 
-                base1 parsec-plus parser-plus textual-plus-1-0
+                base1 parsec-plus parser-plus textual-plus
               ];
             };
 
@@ -1323,7 +1285,7 @@
 
               containers-plus dhall-plus domainnames equalish fpath
               has-callstack ip4 mac-address monaderror-io more-unicode
-              non-empty-containers tasty-plus textual-plus-1-0 tfmt
+              non-empty-containers tasty-plus textual-plus tfmt
             ];
             testDepends = h: with h; [
               base base-unicode-symbols more-unicode optparse-applicative tasty
@@ -1370,7 +1332,7 @@
               base1t containers-plus exited fpath fstat has-callstack log-plus
               mockio mockio-log mockio-plus monaderror-io monadio-plus
               more-unicode natural optparse-plus parsec-plus parser-plus
-              tasty-plus tfmt
+              tasty-plus textual-plus tfmt
             ];
             testDepends = h: with h; [ base tasty ];
           };

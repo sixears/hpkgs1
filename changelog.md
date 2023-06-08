@@ -1,3 +1,7 @@
+0.0.16.0 2023-06-08
+===================
+- upgrade all uses of TextualPlus to 1.1
+
 0.0.15.0 2023-06-01
 ===================
 - fix mkHBin to include haskell packages from hackage, etc.; textual-plus -> 1.1.2.0
