@@ -158,6 +158,13 @@
       ref   = "r1.0.1.19";
       flake = false;
     };
+    hix-src-0-0-1-0 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "hix";
+      ref   = "r0.0.1.0";
+      flake = false;
+    };
     hostsdb-src-0-1-1-4 = {
       type  = "github";
       owner = "sixears";
@@ -242,11 +249,11 @@
       ref   = "r0.3.12.1";
       flake = false;
     };
-    monaderror-io-src-1-2-5-20 = {
+    monaderror-io-src-1-2-6-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "monaderror-io";
-      ref   = "r1.2.5.20";
+      ref   = "r1.2.6.0";
       flake = false;
     };
     monadio-plus-src-2-5-1-51 = {
@@ -354,11 +361,11 @@
       ref   = "r1.0.0.7";
       flake = false;
     };
-    stdmain-src-1-5-13-0 = {
+    stdmain-src-1-5-14-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "stdmain";
-      ref   = "r1.5.13.0";
+      ref   = "r1.5.14.0";
       flake = false;
     };
     tasty-plus-src-1-5-2-24 = {
@@ -368,11 +375,11 @@
       ref   = "r1.5.2.24";
       flake = false;
     };
-    textual-plus-src-1-1-2-0 = {
+    textual-plus-src-1-1-3-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "textual-plus";
-      ref   = "r1.1.2.0";
+      ref   = "r1.1.3.0";
       flake = false;
     };
     tfmt-src-0-2-7-25 = {
@@ -428,6 +435,7 @@
             , fstat-src-1-0-2-26
             , handbrake-src-1-0-3-0
             , has-callstack-src-1-0-1-19
+            , hix-src-0-0-1-0
             , hostsdb-src-0-1-1-4
             , index-src-1-0-1-26
             , ip4-src-0-0-0-2
@@ -440,7 +448,7 @@
             , mockio-src-0-0-4-4
             , mockio-log-src-0-1-2-0
             , mockio-plus-src-0-3-12-1
-            , monaderror-io-src-1-2-5-20
+            , monaderror-io-src-1-2-6-0
             , monadio-plus-src-2-5-1-51
             , more-unicode-src-0-0-17-12
             , natural-src-0-0-1-14
@@ -456,9 +464,9 @@
             , rename-src-0-0-1-0
             , single-src-0-0-1-0
             , srt-adjust-src-1-0-0-7
-            , stdmain-src-1-5-13-0
+            , stdmain-src-1-5-14-0
             , tasty-plus-src-1-5-2-24
-            , textual-plus-src-1-1-2-0
+            , textual-plus-src-1-1-3-0
             , trifecta-plus-src-0-0-1-0
             , tfmt-src-0-2-7-25
             , htinydns-src-0-1-1-3
@@ -670,11 +678,14 @@
           # -- monaderror-io -----------
 
           monaderror-io          = monaderror-io-1-2;
-          monaderror-io-1-2      = monaderror-io-1-2-5-20;
-          monaderror-io-1-2-5-20 = callPkg "monaderror-io" "1.2.5.20" monaderror-io-src-1-2-5-20 {
+          monaderror-io-1-2      = monaderror-io-1-2-6-0;
+          monaderror-io-1-2-6-0 = callPkg "monaderror-io" "1.2.6.0"
+                                  monaderror-io-src-1-2-6-0 {
             description = "An AsIOError class for compound errors, and some MonadError handling utilities";
             libDepends = h: with h; [
-              base base0 deepseq has-callstack lens more-unicode mtl text-printer
+              base deepseq lens mtl text-printer
+
+              base0 has-callstack more-unicode
             ];
             testDepends = h: with h; [ base ];
           };
@@ -726,13 +737,13 @@
           # -- textual-plus ------------
 
           textual-plus          = textual-plus-1-1;
-          textual-plus-1-1      = textual-plus-1-1-2-0;
-           textual-plus-1-1-2-0 =
-             callPkg "textual-plus" "1.1.2.0" textual-plus-src-1-1-2-0 {
+          textual-plus-1-1      = textual-plus-1-1-3-0;
+           textual-plus-1-1-3-0 =
+             callPkg "textual-plus" "1.1.3.0" textual-plus-src-1-1-3-0 {
                description = "manage info.yaml";
                libDepends = h: with h; [
                  base base-unicode-symbols bytestring data-textual deepseq mtl
-                 parsers tasty-quickcheck text text-printer
+                 parsers tasty tasty-hunit tasty-quickcheck text text-printer
 
                  base0 has-callstack more-unicode tfmt
                ];
@@ -1321,8 +1332,8 @@
           # -- stdmain -----------------
 
           stdmain          = stdmain-1-5;
-          stdmain-1-5      = stdmain-1-5-13-0;
-          stdmain-1-5-13-0 = callPkg "stdmain" "1.5.13.0" stdmain-src-1-5-13-0 {
+          stdmain-1-5      = stdmain-1-5-14-0;
+          stdmain-1-5-14-0 = callPkg "stdmain" "1.5.14.0" stdmain-src-1-5-14-0 {
             description = "standardized CLI wrapper";
             libDepends = h: with h; [
               aeson base base-unicode-symbols bytestring data-default
@@ -1375,6 +1386,21 @@
               parser-plus stdmain tasty-plus tfmt
             ];
             testDepends = h: with h; [ base tasty ];
+          };
+
+          # -- hix ------------------
+
+          hix         = hix-0-0;
+          hix-0-0     = hix-0-0-1-0;
+          hix-0-0-1-0 = callPkg "hix" "0.0.1.0" hix-src-0-0-1-0 {
+            description = "nix library for haskell, with utilities";
+            libDepends = h: with h; [
+              aeson base logging-effect optparse-applicative parsers text
+              text-printer
+
+              base1t fpath log-plus mockio mockio-log mockio-plus monaderror-io
+              monadio-plus more-unicode stdmain textual-plus
+            ];
           };
 
           # -- mockio-cmds-inetutils ---
