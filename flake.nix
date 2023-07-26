@@ -11,11 +11,18 @@
     nixpkgs.url     = github:nixos/nixpkgs/be44bf67; # nixos-22.05 2022-10-15
     flake-utils.url = github:numtide/flake-utils/c0e246b9;
 
-    acct-src-0-0-0-0 = {
+    acct-src-0-0-0-1 = {
       type  = "github";
       owner = "sixears";
       repo  = "acct";
-      ref   = "r0.0.0.0";
+      ref   = "r0.0.0.1";
+      flake = false;
+    };
+    aeson-plus-src-0-0-0-1 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "aeson-plus";
+      ref   = "r0.0.0.1";
       flake = false;
     };
     atreus-src-1-0-2-1 = {
@@ -130,11 +137,11 @@
       ref   = "r1.0.2.1";
       flake = false;
     };
-    fpath-src-1-3-2-39 = {
+    fpath-src-1-3-3-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "fpath";
-      ref   = "r1.3.2.39";
+      ref   = "r1.3.3.0";
       flake = false;
     };
     fstat-src-1-0-2-26 = {
@@ -144,11 +151,11 @@
       ref   = "r1.0.2.26";
       flake = false;
     };
-    handbrake-src-1-0-3-0 = {
+    handbrake-src-1-0-3-1 = {
       type  = "github";
       owner = "sixears";
       repo  = "handbrake";
-      ref   = "r1.0.3.0";
+      ref   = "r1.0.3.1";
       flake = false;
     };
     has-callstack-src-1-0-1-19 = {
@@ -256,25 +263,25 @@
       ref   = "r1.2.6.0";
       flake = false;
     };
-    monadio-plus-src-2-5-1-51 = {
+    monadio-plus-src-2-5-3-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "monadio-plus";
-      ref   = "r2.5.1.51";
+      ref   = "r2.5.3.0";
       flake = false;
     };
-    more-unicode-src-0-0-17-12 = {
+    more-unicode-src-0-0-18-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "more-unicode";
-      ref   = "r0.0.17.12";
+      ref   = "r0.0.18.0";
       flake = false;
     };
-    natural-src-0-0-1-14 = {
+    natural-src-0-0-3-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "natural";
-      ref   = "r0.0.1.14";
+      ref   = "r0.0.3.0";
       flake = false;
     };
     non-empty-containers-src-1-4-3-36 = {
@@ -319,11 +326,11 @@
       ref   = "r1.0.7.29";
       flake = false;
     };
-    pcre-src-0-0-4-1 = {
+    pcre-src-0-0-4-2 = {
       type  = "github";
       owner = "sixears";
       repo  = "pcre";
-      ref   = "r0.0.4.1";
+      ref   = "r0.0.4.2";
       flake = false;
     };
     proclib-src-3-2-3-53 = {
@@ -340,11 +347,11 @@
       ref   = "r1.0.1.32";
       flake = false;
     };
-    rename-src-0-0-1-0 = {
+    rename-src-0-0-1-1 = {
       type  = "github";
       owner = "sixears";
       repo  = "rename";
-      ref   = "r0.0.1.0";
+      ref   = "r0.0.1.1";
       flake = false;
     };
     single-src-0-0-1-0 = {
@@ -361,11 +368,11 @@
       ref   = "r1.0.0.7";
       flake = false;
     };
-    stdmain-src-1-5-14-0 = {
+    stdmain-src-1-6-1-1 = {
       type  = "github";
       owner = "sixears";
       repo  = "stdmain";
-      ref   = "r1.5.14.0";
+      ref   = "r1.6.1.1";
       flake = false;
     };
     tasty-plus-src-1-5-2-24 = {
@@ -375,11 +382,11 @@
       ref   = "r1.5.2.24";
       flake = false;
     };
-    textual-plus-src-1-1-3-0 = {
+    textual-plus-src-1-1-4-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "textual-plus";
-      ref   = "r1.1.3.0";
+      ref   = "r1.1.4.0";
       flake = false;
     };
     tfmt-src-0-2-7-25 = {
@@ -414,7 +421,8 @@
 
   outputs = { self, nixpkgs, flake-utils
 
-            , acct-src-0-0-0-0
+            , acct-src-0-0-0-1
+            , aeson-plus-src-0-0-0-1
             , atreus-src-1-0-2-1
             , base0-src-0-0-4-11
             , base0t-src-0-0-1-14
@@ -431,9 +439,9 @@
             , equalish-src-0-0-0-2
             , exited-src-1-0-4-23
             , file-split-src-1-0-2-1
-            , fpath-src-1-3-2-39
+            , fpath-src-1-3-3-0
             , fstat-src-1-0-2-26
-            , handbrake-src-1-0-3-0
+            , handbrake-src-1-0-3-1
             , has-callstack-src-1-0-1-19
             , hix-src-0-0-1-0
             , hostsdb-src-0-1-1-4
@@ -449,24 +457,24 @@
             , mockio-log-src-0-1-2-0
             , mockio-plus-src-0-3-12-1
             , monaderror-io-src-1-2-6-0
-            , monadio-plus-src-2-5-1-51
-            , more-unicode-src-0-0-17-12
-            , natural-src-0-0-1-14
+            , monadio-plus-src-2-5-3-0
+            , more-unicode-src-0-0-18-0
+            , natural-src-0-0-3-0
             , non-empty-containers-src-1-4-3-36
             , number-src-1-1-2-14
             , optparse-plus-src-1-3-3-0
             , parsec-plus-base-src-1-0-5-23
             , parsec-plus-src-1-1-1-44
             , parser-plus-src-1-0-7-29
-            , pcre-src-0-0-4-1
+            , pcre-src-0-0-4-2
             , proclib-src-3-2-3-53
             , quasiquoting-src-1-0-1-32
-            , rename-src-0-0-1-0
+            , rename-src-0-0-1-1
             , single-src-0-0-1-0
             , srt-adjust-src-1-0-0-7
-            , stdmain-src-1-5-14-0
+            , stdmain-src-1-6-1-1
             , tasty-plus-src-1-5-2-24
-            , textual-plus-src-1-1-3-0
+            , textual-plus-src-1-1-4-0
             , trifecta-plus-src-0-0-1-0
             , tfmt-src-0-2-7-25
             , htinydns-src-0-1-1-3
@@ -584,9 +592,9 @@
           # -- more-unicode ------------
 
           more-unicode           = more-unicode-0-0;
-          more-unicode-0-0       = more-unicode-0-0-17-12;
-          more-unicode-0-0-17-12 =
-            callPkg "more-unicode" "0.0.17.12" more-unicode-src-0-0-17-12 {
+          more-unicode-0-0       = more-unicode-0-0-18-0;
+          more-unicode-0-0-18-0 =
+            callPkg "more-unicode" "0.0.18.0" more-unicode-src-0-0-18-0 {
               description = "More unicode symbols";
               libDepends = h: with h; [
                 base-unicode-symbols containers lens mono-traversable
@@ -621,10 +629,14 @@
           # -- natural -----------------
 
           natural          = natural-0-0;
-          natural-0-0      = natural-0-0-1-14;
-          natural-0-0-1-14 = callPkg "natural" "0.0.1.14" natural-src-0-0-1-14 {
+          natural-0-0      = natural-0-0-3-0;
+          natural-0-0-3-0 = callPkg "natural" "0.0.3.0" natural-src-0-0-3-0 {
             description = "Type-level natural numbers";
-            libDepends  = h: with h; [ base base-unicode-symbols  more-unicode ];
+            libDepends  = h: with h; [
+              base base-unicode-symbols text
+
+              more-unicode
+            ];
           };
 
           # -- single ------------------
@@ -737,9 +749,9 @@
           # -- textual-plus ------------
 
           textual-plus          = textual-plus-1-1;
-          textual-plus-1-1      = textual-plus-1-1-3-0;
-           textual-plus-1-1-3-0 =
-             callPkg "textual-plus" "1.1.3.0" textual-plus-src-1-1-3-0 {
+          textual-plus-1-1      = textual-plus-1-1-4-0;
+           textual-plus-1-1-4-0 =
+             callPkg "textual-plus" "1.1.4.0" textual-plus-src-1-1-4-0 {
                description = "manage info.yaml";
                libDepends = h: with h; [
                  base base-unicode-symbols bytestring data-textual deepseq mtl
@@ -859,6 +871,20 @@
 
           # -- L8 (internal dependencies on L7) ------------
 
+          # -- aeson-plus --------------
+
+          aeson-plus         = aeson-plus-0-0;
+          aeson-plus-0-0     = aeson-plus-0-0-0-1;
+          aeson-plus-0-0-0-1 = callPkg "aeson-plus" "0.0.0.1"
+                                        aeson-plus-src-0-0-0-1 {
+            description = "Utilities for working with Aeson";
+            libDepends = h: with h; [
+              base deepseq text text-printer
+
+              base1
+            ];
+          };
+
           # -- base1t ------------------
 
           base1t          = base1t-0-0;
@@ -925,8 +951,8 @@
           # -- fpath -------------------
 
           fpath          = fpath-1-3;
-          fpath-1-3      = fpath-1-3-2-39;
-          fpath-1-3-2-39 = callPkg "fpath" "1.3.2.39" fpath-src-1-3-2-39 {
+          fpath-1-3      = fpath-1-3-3-0;
+          fpath-1-3-3-0 = callPkg "fpath" "1.3.3.0" fpath-src-1-3-3-0 {
             description = "Strongly-typed file paths";
             libDepends = h: with h; [
               base base-unicode-symbols containers data-default data-textual
@@ -946,16 +972,17 @@
 
           parser-plus          = parser-plus-1-0;
           parser-plus-1-0      = parser-plus-1-0-7-29;
-          parser-plus-1-0-7-29 = callPkg "parser-plus" "1.0.7.29" parser-plus-src-1-0-7-29 {
-            description = "manage info.yaml";
-            libDepends = h: with h; [
-              base base-unicode-symbols data-textual mono-traversable mtl
-              nonempty-containers parsec parsers tasty tasty-hunit
+          parser-plus-1-0-7-29 =
+            callPkg "parser-plus" "1.0.7.29" parser-plus-src-1-0-7-29 {
+              description = "manage info.yaml";
+              libDepends = h: with h; [
+                base base-unicode-symbols data-textual mono-traversable mtl
+                nonempty-containers parsec parsers tasty tasty-hunit
 
-              more-unicode natural non-empty-containers tasty-plus
-            ];
-            testDepends = h: with h; [ base tasty ];
-          };
+                more-unicode natural non-empty-containers tasty-plus
+              ];
+              testDepends = h: with h; [ base tasty ];
+            };
 
           # -- L10 (internal dependencies on L9) -----------
 
@@ -999,9 +1026,9 @@
           # -- monadio-plus ------------
 
           monadio-plus          = monadio-plus-2-5;
-          monadio-plus-2-5      = monadio-plus-2-5-1-51;
-          monadio-plus-2-5-1-51 =
-            callPkg "monadio-plus" "2.5.1.51" monadio-plus-src-2-5-1-51 {
+          monadio-plus-2-5      = monadio-plus-2-5-3-0;
+          monadio-plus-2-5-3-0 =
+            callPkg "monadio-plus" "2.5.3.0" monadio-plus-src-2-5-3-0 {
               description = "IO operations, using MonadIO & MonadError with AsIOError";
               libDepends = h: with h; [
                 base base-unicode-symbols bytestring containers data-textual
@@ -1331,17 +1358,17 @@
 
           # -- stdmain -----------------
 
-          stdmain          = stdmain-1-5;
-          stdmain-1-5      = stdmain-1-5-14-0;
-          stdmain-1-5-14-0 = callPkg "stdmain" "1.5.14.0" stdmain-src-1-5-14-0 {
+          stdmain          = stdmain-1-6;
+          stdmain-1-6      = stdmain-1-6-1-1;
+          stdmain-1-6-1-1 = callPkg "stdmain" "1.6.1.1" stdmain-src-1-6-1-1 {
             description = "standardized CLI wrapper";
             libDepends = h: with h; [
               aeson base base-unicode-symbols bytestring data-default
               data-textual deepseq lens logging-effect mtl optparse-applicative
               parsec prettyprinter tasty tasty-hunit text text-printer
 
-              base1t containers-plus exited fpath fstat has-callstack log-plus
-              mockio mockio-log mockio-plus monaderror-io monadio-plus
+              aeson-plus base1t containers-plus exited fpath fstat has-callstack
+              log-plus mockio mockio-log mockio-plus monaderror-io monadio-plus
               more-unicode natural optparse-plus parsec-plus parser-plus
               tasty-plus textual-plus tfmt
             ];
@@ -1353,18 +1380,19 @@
           # -- acct --------------------
 
           acct         = acct-0-0;
-          acct-0-0     = acct-0-0-0-0;
-          acct-0-0-0-0 = callPkg "acct" "0.0.0.0" acct-src-0-0-0-0 {
+          acct-0-0     = acct-0-0-0-1;
+          acct-0-0-0-1 = callPkg "acct" "0.0.0.1" acct-src-0-0-0-1 {
             description = "parse & manage finance files";
             libDepends = h: with h; [
-              base bytestring containers data-default data-textual deepseq
-              genvalidity lens logging-effect mtl optparse-applicative parsers
-              prettyprinter QuickCheck safe tasty-hunit tasty-quickcheck
-              template-haskell text text-printer time trifecta validity
+              base containers data-default data-textual deepseq genvalidity
+              lens logging-effect mtl optparse-applicative parsers QuickCheck
+              safe tasty-hunit tasty-quickcheck template-haskell text
+              text-printer time trifecta validity
 
               base1t exited fpath has-callstack log-plus mockio mockio-log
               monaderror-io monadio-plus more-unicode natural optparse-plus
-              parsec-plus parser-plus quasiquoting stdmain tasty-plus tfmt
+              parsec-plus parser-plus quasiquoting stdmain tasty-plus
+              textual-plus tfmt trifecta-plus
             ];
             testDepends = h: with h; [ base tasty ];
           };
@@ -1372,10 +1400,11 @@
           # -- handbrake ---------------
 
           handbrake         = handbrake-1-0;
-          handbrake-1-0     = handbrake-1-0-3-0;
-          handbrake-1-0-3-0 = callPkg "handbrake" "1.0.3.0"
-                                      handbrake-src-1-0-3-0 {
-            description = "Haskell interface to HandBrakeCLI, and utility scripting";
+          handbrake-1-0     = handbrake-1-0-3-1;
+          handbrake-1-0-3-1 = callPkg "handbrake" "1.0.3.1"
+                                      handbrake-src-1-0-3-1 {
+            description =
+              "Haskell interface to HandBrakeCLI, and utility scripting";
             libDepends = h: with h; [
               base base-unicode-symbols data-textual deepseq lens logging-effect
               mtl optparse-applicative parsers range tasty tasty-hunit text
@@ -1395,12 +1424,22 @@
           hix-0-0-1-0 = callPkg "hix" "0.0.1.0" hix-src-0-0-1-0 {
             description = "nix library for haskell, with utilities";
             libDepends = h: with h; [
-              aeson base logging-effect optparse-applicative parsers text
-              text-printer
+              aeson base containers data-textual lens logging-effect mtl
+              optparse-applicative parsers safe text text-printer
 
-              base1t fpath log-plus mockio mockio-log mockio-plus monaderror-io
-              monadio-plus more-unicode stdmain textual-plus
+              aeson-plus base1t fpath log-plus mockio mockio-log mockio-plus
+              monaderror-io monadio-plus more-unicode optparse-plus stdmain
+              textual-plus
             ];
+
+            postConfigure = ''
+                for f in $( ${pkgs.findutils}/bin/find proto/ -type f \
+                                                              -name \*.hs ); do
+                  t=src/"''${f#proto/}"
+                  substitute "$f" "$t" \
+                    --replace __nix__ ${pkgs.nix}
+                done
+              '';
           };
 
           # -- mockio-cmds-inetutils ---
@@ -1471,9 +1510,10 @@
           # -- pcre --------------------
 
           pcre         = pcre-0-0;
-          pcre-0-0     = pcre-0-0-4-1;
-          pcre-0-0-4-1 = callPkg "pcre" "0.0.4.1" pcre-src-0-0-4-1 {
-            description = "handle PCRE-based REs, including textual replacements";
+          pcre-0-0     = pcre-0-0-4-2;
+          pcre-0-0-4-2 = callPkg "pcre" "0.0.4.2" pcre-src-0-0-4-2 {
+            description =
+              "handle PCRE-based REs, including textual replacements";
             libDepends = h: with h; [
               array base hashable lens parsec parsers regex regex-with-pcre
               template-haskell text text-printer unordered-containers
@@ -1521,8 +1561,8 @@
           # -- rename ------------------
 
           rename         = rename-0-0;
-          rename-0-0     = rename-0-0-1-0;
-          rename-0-0-1-0 = callPkg "rename" "0.0.1.0" rename-src-0-0-1-0 {
+          rename-0-0     = rename-0-0-1-1;
+          rename-0-0-1-1 = callPkg "rename" "0.0.1.1" rename-src-0-0-1-1 {
             description = "rename files according to regular expressions";
             libDepends = h: with h; [
               base containers extra logging-effect optparse-applicative parsec
@@ -1580,14 +1620,14 @@
 
                 with hpkgs; [
                 # containers-unicode-symbols
-##                criterion dhall diagrams Diff doctest finite-typelits freer
-##                genvalidity-hspec ghc-typelits-extra hostaddress hostname
-##                http-client inflections keys ListLike markdown-unlit monad-loops
-##
-##                network-ip pipes rainbow range regex-applicative regex-pcre
-##                regex-with-pcre rio shake SVGFonts tagsoup
-##                tasty-hspec timers xmonad-contrib yaml
-tasty-hspec
+                criterion dhall diagrams Diff doctest finite-typelits freer
+                genvalidity-hspec ghc-typelits-extra hostaddress hostname
+                http-client inflections keys ListLike markdown-unlit monad-loops
+
+                network-ip pipes rainbow range regex-applicative regex-pcre
+                regex-with-pcre rio shake SVGFonts tagsoup
+                tasty-hspec timers xmonad-contrib yaml
+
                 ];
               license = pkgs.lib.licenses.mit;
               };
