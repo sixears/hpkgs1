@@ -95,11 +95,11 @@
       ref   = "r0.1.2.0";
       flake = false;
     };
-    duration-src-1-0-0-0 = {
+    duration-src-1-0-1-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "duration";
-      ref   = "r1.0.0.0";
+      ref   = "r1.0.1.0";
       flake = false;
     };
     env-fpath-src-0-0-0-1 = {
@@ -433,7 +433,7 @@
             , date-imprecise-src-1-0-0-3
             , dhall-plus-src-0-0-2-1
             , domainnames-src-0-1-2-0
-            , duration-src-1-0-0-0
+            , duration-src-1-0-1-0
             , env-fpath-src-0-0-0-1
             , env-plus-src-1-0-9-0
             , equalish-src-0-0-0-2
@@ -989,15 +989,15 @@
           # -- duration ----------------
 
           duration         = duration-1-0;
-          duration-1-0     = duration-1-0-0-0;
-          duration-1-0-0-0 = callPkg "duration" "1.0.0.0" duration-src-1-0-0-0 {
+          duration-1-0     = duration-1-0-1-0;
+          duration-1-0-1-0 = callPkg "duration" "1.0.1.0" duration-src-1-0-1-0 {
             description = "A mostly type-safe Duration type";
             libDepends = h: with h; [
               base base-unicode-symbols data-textual lens parsers QuickCheck
               tasty tasty-hunit tasty-quickcheck text text-printer
 
               boundedn more-unicode non-empty-containers number parser-plus
-              tasty-plus tfmt
+              tasty-plus textual-plus tfmt
             ];
             testDepends = h: with h; [
               base base-unicode-symbols optparse-applicative tasty tasty-hunit
