@@ -46,18 +46,18 @@
       ref   = "r0.0.1.14";
       flake = false;
     };
-    base1-src-0-0-9-34 = {
+    base1-src-0-0-10-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "base1";
-      ref   = "r0.0.9.34";
+      ref   = "r0.0.10.0";
       flake = false;
     };
-    base1t-src-0-0-5-36 = {
+    base1t-src-0-0-6-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "base1t";
-      ref   = "r0.0.5.36";
+      ref   = "r0.0.6.0";
       flake = false;
     };
     boundedn-src-1-1-7-0 = {
@@ -165,11 +165,11 @@
       ref   = "r1.0.1.19";
       flake = false;
     };
-    hix-src-0-0-1-0 = {
+    hix-src-0-0-2-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "hix";
-      ref   = "r0.0.1.0";
+      ref   = "r0.0.2.0";
       flake = false;
     };
     hostsdb-src-0-1-1-4 = {
@@ -277,11 +277,11 @@
       ref   = "r0.0.18.0";
       flake = false;
     };
-    natural-src-0-0-3-0 = {
+    natural-src-0-0-5-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "natural";
-      ref   = "r0.0.3.0";
+      ref   = "r0.0.5.0";
       flake = false;
     };
     non-empty-containers-src-1-4-3-36 = {
@@ -389,11 +389,11 @@
       ref   = "r1.1.4.0";
       flake = false;
     };
-    tfmt-src-0-2-7-25 = {
+    tfmt-src-0-2-8-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "tfmt";
-      ref   = "r0.2.7.25";
+      ref   = "r0.2.8.0";
       flake = false;
     };
     trifecta-plus-src-0-0-1-0 = {
@@ -426,8 +426,8 @@
             , atreus-src-1-0-2-1
             , base0-src-0-0-4-11
             , base0t-src-0-0-1-14
-            , base1-src-0-0-9-34
-            , base1t-src-0-0-5-36
+            , base1-src-0-0-10-0
+            , base1t-src-0-0-6-0
             , boundedn-src-1-1-7-0
             , containers-plus-src-0-0-10-40
             , date-imprecise-src-1-0-0-3
@@ -443,7 +443,7 @@
             , fstat-src-1-0-2-26
             , handbrake-src-1-0-3-1
             , has-callstack-src-1-0-1-19
-            , hix-src-0-0-1-0
+            , hix-src-0-0-2-0
             , hostsdb-src-0-1-1-4
             , index-src-1-0-1-26
             , ip4-src-0-0-0-2
@@ -459,7 +459,7 @@
             , monaderror-io-src-1-2-6-0
             , monadio-plus-src-2-5-3-0
             , more-unicode-src-0-0-18-0
-            , natural-src-0-0-3-0
+            , natural-src-0-0-5-0
             , non-empty-containers-src-1-4-3-36
             , number-src-1-1-2-14
             , optparse-plus-src-1-3-3-0
@@ -476,7 +476,7 @@
             , tasty-plus-src-1-5-2-24
             , textual-plus-src-1-1-4-0
             , trifecta-plus-src-0-0-1-0
-            , tfmt-src-0-2-7-25
+            , tfmt-src-0-2-8-0
             , htinydns-src-0-1-1-3
             , yaml-plus-src-1-0-1-1
             }:
@@ -629,8 +629,8 @@
           # -- natural -----------------
 
           natural          = natural-0-0;
-          natural-0-0      = natural-0-0-3-0;
-          natural-0-0-3-0 = callPkg "natural" "0.0.3.0" natural-src-0-0-3-0 {
+          natural-0-0      = natural-0-0-5-0;
+          natural-0-0-5-0 = callPkg "natural" "0.0.5.0" natural-src-0-0-5-0 {
             description = "Type-level natural numbers";
             libDepends  = h: with h; [
               base base-unicode-symbols text
@@ -672,8 +672,8 @@
           # -- tfmt --------------------
 
           tfmt          = tfmt-0-2;
-          tfmt-0-2      = tfmt-0-2-7-25;
-          tfmt-0-2-7-25 = callPkg "tfmt" "0.2.7.25" tfmt-src-0-2-7-25 {
+          tfmt-0-2      = tfmt-0-2-8-0;
+          tfmt-0-2-8-0 = callPkg "tfmt" "0.2.8.0" tfmt-src-0-2-8-0 {
             description = "type-safe text/string formatting with a simple interface";
             libDepends = h: with h; [
               base containers data-textual formatting lens parsers prettyprinter
@@ -861,8 +861,8 @@
           # -- base1 -------------------
 
           base1          = base1-0-0;
-          base1-0-0      = base1-0-0-9-34;
-          base1-0-0-9-34 = callPkg "base1" "0.0.9.34" base1-src-0-0-9-34 {
+          base1-0-0      = base1-0-0-10-0;
+          base1-0-0-10-0 = callPkg "base1" "0.0.10.0" base1-src-0-0-10-0 {
             description = "Prelude replacement, incl. first-level local packages";
             libDepends = h: with h; [
               base0 has-callstack index monaderror-io more-unicode tfmt
@@ -888,8 +888,8 @@
           # -- base1t ------------------
 
           base1t          = base1t-0-0;
-          base1t-0-0      = base1t-0-0-5-36;
-          base1t-0-0-5-36 = callPkg "base1t" "0.0.5.36" base1t-src-0-0-5-36 {
+          base1t-0-0      = base1t-0-0-6-0;
+          base1t-0-0-6-0 = callPkg "base1t" "0.0.6.0" base1t-src-0-0-6-0 {
             description = "Prelude replacement, first-level local packages, incl. tests";
             libDepends = h: with h; [ base0t base1 tasty-plus ];
           };
@@ -1420,8 +1420,9 @@
           # -- hix ------------------
 
           hix         = hix-0-0;
-          hix-0-0     = hix-0-0-1-0;
-          hix-0-0-1-0 = callPkg "hix" "0.0.1.0" hix-src-0-0-1-0 {
+          hix-0-0     = hix-0-0-2-0;
+
+          hix-0-0-2-0 = callPkg "hix" "0.0.2.0" hix-src-0-0-2-0 {
             description = "nix library for haskell, with utilities";
             libDepends = h: with h; [
               aeson base containers data-textual lens logging-effect mtl
@@ -1646,3 +1647,6 @@
       } # let pkgs ... in ...
     );
 }
+
+# to develop with a shell armed with all the packages, cd to ~/src/hpkgs1
+# and run `nix develop`
