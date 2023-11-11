@@ -67,6 +67,13 @@
       ref   = "r1.1.7.0";
       flake = false;
     };
+    columnify-src-0-0-1-0 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "columnify";
+      ref   = "r0.0.1.0";
+      flake = false;
+    };
     containers-plus-src-0-0-10-40 = {
       type  = "github";
       owner = "sixears";
@@ -137,11 +144,11 @@
       ref   = "r1.0.2.1";
       flake = false;
     };
-    fpath-src-1-3-3-0 = {
+    fpath-src-1-3-4-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "fpath";
-      ref   = "r1.3.3.0";
+      ref   = "r1.3.4.0";
       flake = false;
     };
     fstat-src-1-0-2-26 = {
@@ -242,11 +249,11 @@
       ref   = "r0.0.4.4";
       flake = false;
     };
-    mockio-log-src-0-1-2-0 = {
+    mockio-log-src-0-1-3-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "mockio-log";
-      ref   = "r0.1.2.0";
+      ref   = "r0.1.3.0";
       flake = false;
     };
     mockio-plus-src-0-3-12-1 = {
@@ -368,11 +375,11 @@
       ref   = "r1.0.0.7";
       flake = false;
     };
-    stdmain-src-1-6-1-1 = {
+    stdmain-src-1-6-1-2 = {
       type  = "github";
       owner = "sixears";
       repo  = "stdmain";
-      ref   = "r1.6.1.1";
+      ref   = "r1.6.1.2";
       flake = false;
     };
     tasty-plus-src-1-5-2-24 = {
@@ -410,6 +417,13 @@
       ref   = "r0.1.1.3";
       flake = false;
     };
+    tuple-plus-src-0-0-1-0 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "tuple-plus";
+      ref   = "r0.0.1.0";
+      flake = false;
+    };
     yaml-plus-src-1-0-1-1 = {
       type  = "github";
       owner = "sixears";
@@ -429,6 +443,7 @@
             , base1-src-0-0-10-0
             , base1t-src-0-0-6-0
             , boundedn-src-1-1-7-0
+            , columnify-src-0-0-1-0
             , containers-plus-src-0-0-10-40
             , date-imprecise-src-1-0-0-3
             , dhall-plus-src-0-0-2-1
@@ -439,7 +454,7 @@
             , equalish-src-0-0-0-2
             , exited-src-1-0-4-23
             , file-split-src-1-0-2-1
-            , fpath-src-1-3-3-0
+            , fpath-src-1-3-4-0
             , fstat-src-1-0-2-26
             , handbrake-src-1-0-3-1
             , has-callstack-src-1-0-1-19
@@ -454,7 +469,7 @@
             , mockio-cmds-rsync-src-1-0-0-1
             , mockio-cmds-util-linux-src-1-0-1-3
             , mockio-src-0-0-4-4
-            , mockio-log-src-0-1-2-0
+            , mockio-log-src-0-1-3-0
             , mockio-plus-src-0-3-12-1
             , monaderror-io-src-1-2-6-0
             , monadio-plus-src-2-5-3-0
@@ -472,11 +487,12 @@
             , rename-src-0-0-1-1
             , single-src-0-0-1-0
             , srt-adjust-src-1-0-0-7
-            , stdmain-src-1-6-1-1
+            , stdmain-src-1-6-1-2
             , tasty-plus-src-1-5-2-24
             , textual-plus-src-1-1-4-0
-            , trifecta-plus-src-0-0-1-0
             , tfmt-src-0-2-8-0
+            , trifecta-plus-src-0-0-1-0
+            , tuple-plus-src-0-0-1-0
             , htinydns-src-0-1-1-3
             , yaml-plus-src-1-0-1-1
             }:
@@ -565,15 +581,6 @@
             ];
           };
 
-          # -- base0t -------------------
-
-          base0t = base0t-0-0;
-          base0t-0-0 = base0t-0-0-1-14;
-          base0t-0-0-1-14 = callPkg "base0t" "0.0.1.14" base0t-src-0-0-1-14 {
-            description = "Prelude replacement, external packages only, incl. tests";
-            libDepends = h: with h; [ base0 tasty tasty-hunit ];
-          };
-
           # -- file-split --------------
 
           file-split         = file-split-1-0;
@@ -617,6 +624,15 @@
 
           # -- L1 (internal dependencies on L0) ------------
 
+          # -- base0t -------------------
+
+          base0t = base0t-0-0;
+          base0t-0-0 = base0t-0-0-1-14;
+          base0t-0-0-1-14 = callPkg "base0t" "0.0.1.14" base0t-src-0-0-1-14 {
+            description = "Prelude replacement, external packages only, incl. tests";
+            libDepends = h: with h; [ base0 tasty tasty-hunit ];
+          };
+
           # -- equalish ----------------
 
           equalish         = equalish-0-0;
@@ -652,7 +668,29 @@
             ];
           };
 
+          # -- tuple-plus --------------
+
+          tuple-plus = tuple-plus-0-0;
+          tuple-plus-0-0 = tuple-plus-0-0-1-0;
+          tuple-plus-0-0-1-0 =
+            callPkg "tuple-plus" "0.0.1.0" tuple-plus-src-0-0-1-0 {
+              description = "output text in aligned columns";
+              libDepends = h: with h; [ base ];
+            };
+
           # -- L2 (internal dependencies on L1) ------------
+
+          # -- columnify -------------------
+
+          columnify = columnify-0-0;
+          columnify-0-0 = columnify-0-0-1-0;
+          columnify-0-0-1-0 =
+            callPkg "columnify" "0.0.1.0" columnify-src-0-0-1-0 {
+              description = "output text in aligned columns";
+              libDepends = h: with h; [ base lens safe text
+
+                                        base0 more-unicode natural ];
+            };
 
           # -- has-callstack -----------
 
@@ -951,8 +989,8 @@
           # -- fpath -------------------
 
           fpath          = fpath-1-3;
-          fpath-1-3      = fpath-1-3-3-0;
-          fpath-1-3-3-0 = callPkg "fpath" "1.3.3.0" fpath-src-1-3-3-0 {
+          fpath-1-3      = fpath-1-3-4-0;
+          fpath-1-3-4-0 = callPkg "fpath" "1.3.4.0" fpath-src-1-3-4-0 {
             description = "Strongly-typed file paths";
             libDepends = h: with h; [
               base base-unicode-symbols containers data-default data-textual
@@ -1040,9 +1078,9 @@
               ];
               testDepends = h: with h; [ base tasty ];
               postConfigure = ''
-              substitute proto/MonadIO/Paths.hs src/MonadIO/Paths.hs \
-                --replace __gnugrep__ ${pkgs.gnugrep}
-            '';
+                substitute proto/MonadIO/Paths.hs src/MonadIO/Paths.hs \
+                  --replace __gnugrep__ ${pkgs.gnugrep}
+              '';
             };
 
           # -- parsec-plus -------------
@@ -1268,12 +1306,13 @@
           # -- mockio-log --------------
 
           mockio-log         = mockio-log-0-1;
-          mockio-log-0-1     = mockio-log-0-1-2-0;
-          mockio-log-0-1-2-0 = callPkg "mockio-log" "0.1.2.0" mockio-log-src-0-1-2-0 {
+          mockio-log-0-1     = mockio-log-0-1-3-0;
+          mockio-log-0-1-3-0 = callPkg "mockio-log" "0.1.3.0"
+                                       mockio-log-src-0-1-3-0 {
             description = "Combined Mock IO actions with logging";
             libDepends = h: with h; [
               base base-unicode-symbols containers data-default data-textual
-              deepseq exceptions lens logging-effect parsec prettyprinter
+              deepseq exceptions lens logging-effect mtl parsec prettyprinter
               prettyprinter-ansi-terminal tasty tasty-hunit text text-printer
               time
 
@@ -1359,8 +1398,8 @@
           # -- stdmain -----------------
 
           stdmain          = stdmain-1-6;
-          stdmain-1-6      = stdmain-1-6-1-1;
-          stdmain-1-6-1-1 = callPkg "stdmain" "1.6.1.1" stdmain-src-1-6-1-1 {
+          stdmain-1-6      = stdmain-1-6-1-2;
+          stdmain-1-6-1-2 = callPkg "stdmain" "1.6.1.1" stdmain-src-1-6-1-2 {
             description = "standardized CLI wrapper";
             libDepends = h: with h; [
               aeson base base-unicode-symbols bytestring data-default
@@ -1415,6 +1454,10 @@
               parser-plus stdmain tasty-plus tfmt
             ];
             testDepends = h: with h; [ base tasty ];
+            postConfigure = ''
+              substitute proto/HandBrake/Paths.hs src/HandBrake/Paths.hs \
+                --replace __handbrake__ ${pkgs.handbrake}
+            '';
           };
 
           # -- hix ------------------
@@ -1425,12 +1468,13 @@
           hix-0-0-2-0 = callPkg "hix" "0.0.2.0" hix-src-0-0-2-0 {
             description = "nix library for haskell, with utilities";
             libDepends = h: with h; [
-              aeson base containers data-textual lens logging-effect mtl
-              optparse-applicative parsers safe text text-printer
+              aeson base containers data-textual deepseq lens
+              logging-effect mono-traversable mtl optparse-applicative parsers
+              safe text text-printer
 
-              aeson-plus base1t fpath log-plus mockio mockio-log mockio-plus
-              monaderror-io monadio-plus more-unicode optparse-plus stdmain
-              textual-plus
+              aeson-plus base1t columnify env-plus fpath log-plus mockio
+              mockio-log mockio-plus monaderror-io monadio-plus mono-traversable
+              more-unicode optparse-plus stdmain textual-plus tuple-plus
             ];
 
             postConfigure = ''
