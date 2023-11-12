@@ -611,19 +611,19 @@
         "type": "github"
       }
     },
-    "mockio-plus-src-0-3-12-1": {
+    "mockio-plus-src-0-3-13-0": {
       "flake": false,
       "locked": {
-        "lastModified": 1669223301,
-        "narHash": "sha256-SEP4zF2cJXKlQQnMzerbS1Eul+dK4k6SG4801YTHlvQ=",
+        "lastModified": 1699781302,
+        "narHash": "sha256-aVHjvTtcpMhbT2vDrMybXvtQJunZ+lPjp6Ypnul62kY=",
         "owner": "sixears",
         "repo": "mockio-plus",
-        "rev": "3eb0ca23a6b7469d3b463be61bbee8f3a7bd6a24",
+        "rev": "09f2695d1f44184077fdedd30b9bb2c30592a261",
         "type": "github"
       },
       "original": {
         "owner": "sixears",
-        "ref": "r0.3.12.1",
+        "ref": "r0.3.13.0",
         "repo": "mockio-plus",
         "type": "github"
       }
@@ -937,7 +937,7 @@
         "mockio-cmds-rsync-src-1-0-0-1": "mockio-cmds-rsync-src-1-0-0-1",
         "mockio-cmds-util-linux-src-1-0-1-3": "mockio-cmds-util-linux-src-1-0-1-3",
         "mockio-log-src-0-1-3-0": "mockio-log-src-0-1-3-0",
-        "mockio-plus-src-0-3-12-1": "mockio-plus-src-0-3-12-1",
+        "mockio-plus-src-0-3-13-0": "mockio-plus-src-0-3-13-0",
         "mockio-src-0-0-4-4": "mockio-src-0-0-4-4",
         "monaderror-io-src-1-2-6-0": "monaderror-io-src-1-2-6-0",
         "monadio-plus-src-2-5-3-0": "monadio-plus-src-2-5-3-0",

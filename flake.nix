@@ -256,11 +256,11 @@
       ref   = "r0.1.3.0";
       flake = false;
     };
-    mockio-plus-src-0-3-12-1 = {
+    mockio-plus-src-0-3-13-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "mockio-plus";
-      ref   = "r0.3.12.1";
+      ref   = "r0.3.13.0";
       flake = false;
     };
     monaderror-io-src-1-2-6-0 = {
@@ -470,7 +470,7 @@
             , mockio-cmds-util-linux-src-1-0-1-3
             , mockio-src-0-0-4-4
             , mockio-log-src-0-1-3-0
-            , mockio-plus-src-0-3-12-1
+            , mockio-plus-src-0-3-13-0
             , monaderror-io-src-1-2-6-0
             , monadio-plus-src-2-5-3-0
             , more-unicode-src-0-0-18-0
@@ -1373,9 +1373,9 @@
           # -- mockio-plus -------------
 
           mockio-plus          = mockio-plus-0-3;
-          mockio-plus-0-3      = mockio-plus-0-3-12-1;
-          mockio-plus-0-3-12-1 = callPkg "mockio-plus" "0.3.12.1"
-                                         mockio-plus-src-0-3-12-1 {
+          mockio-plus-0-3      = mockio-plus-0-3-13-0;
+          mockio-plus-0-3-13-0 = callPkg "mockio-plus" "0.3.13.0"
+                                         mockio-plus-src-0-3-13-0 {
             description = "MonadIO, Mocked, Logged, with Text";
             libDepends = h: with h; [
               base bytestring containers data-default data-textual directory
