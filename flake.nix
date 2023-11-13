@@ -242,11 +242,11 @@
       ref   = "r1.0.1.3";
       flake = false;
     };
-    mockio-src-0-0-4-4 = {
+    mockio-src-0-0-5-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "mockio";
-      ref   = "r0.0.4.4";
+      ref   = "r0.0.5.0";
       flake = false;
     };
     mockio-log-src-0-1-3-0 = {
@@ -277,11 +277,11 @@
       ref   = "r2.5.3.0";
       flake = false;
     };
-    more-unicode-src-0-0-18-0 = {
+    more-unicode-src-0-0-19-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "more-unicode";
-      ref   = "r0.0.18.0";
+      ref   = "r0.0.19.0";
       flake = false;
     };
     natural-src-0-0-5-0 = {
@@ -375,11 +375,11 @@
       ref   = "r1.0.0.7";
       flake = false;
     };
-    stdmain-src-1-6-1-2 = {
+    stdmain-src-1-6-2-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "stdmain";
-      ref   = "r1.6.1.2";
+      ref   = "r1.6.2.0";
       flake = false;
     };
     tasty-plus-src-1-5-2-24 = {
@@ -468,12 +468,12 @@
             , mockio-cmds-inetutils-src-1-0-0-0
             , mockio-cmds-rsync-src-1-0-0-1
             , mockio-cmds-util-linux-src-1-0-1-3
-            , mockio-src-0-0-4-4
+            , mockio-src-0-0-5-0
             , mockio-log-src-0-1-3-0
             , mockio-plus-src-0-3-13-0
             , monaderror-io-src-1-2-6-0
             , monadio-plus-src-2-5-3-0
-            , more-unicode-src-0-0-18-0
+            , more-unicode-src-0-0-19-0
             , natural-src-0-0-5-0
             , non-empty-containers-src-1-4-3-36
             , number-src-1-1-2-14
@@ -487,7 +487,7 @@
             , rename-src-0-0-1-1
             , single-src-0-0-1-0
             , srt-adjust-src-1-0-0-7
-            , stdmain-src-1-6-1-2
+            , stdmain-src-1-6-2-0
             , tasty-plus-src-1-5-2-24
             , textual-plus-src-1-1-4-0
             , tfmt-src-0-2-8-0
@@ -599,9 +599,9 @@
           # -- more-unicode ------------
 
           more-unicode           = more-unicode-0-0;
-          more-unicode-0-0       = more-unicode-0-0-18-0;
-          more-unicode-0-0-18-0 =
-            callPkg "more-unicode" "0.0.18.0" more-unicode-src-0-0-18-0 {
+          more-unicode-0-0       = more-unicode-0-0-19-0;
+          more-unicode-0-0-19-0 =
+            callPkg "more-unicode" "0.0.19.0" more-unicode-src-0-0-19-0 {
               description = "More unicode symbols";
               libDepends = h: with h; [
                 base-unicode-symbols containers lens mono-traversable
@@ -1208,8 +1208,8 @@
           # -- mockio ------------------
 
           mockio         = mockio-0-0;
-          mockio-0-0     = mockio-0-0-4-4;
-          mockio-0-0-4-4 = callPkg "mockio" "0.0.4.4" mockio-src-0-0-4-4 {
+          mockio-0-0     = mockio-0-0-5-0;
+          mockio-0-0-5-0 = callPkg "mockio" "0.0.5.0" mockio-src-0-0-5-0 {
             description = "Mock IO actions (e.g., for dry-runs)";
             libDepends = h: with h; [
               base deepseq lens monaderror-io monadio-plus more-unicode mtl tasty
@@ -1398,18 +1398,17 @@
           # -- stdmain -----------------
 
           stdmain          = stdmain-1-6;
-          stdmain-1-6      = stdmain-1-6-1-2;
-          stdmain-1-6-1-2 = callPkg "stdmain" "1.6.1.1" stdmain-src-1-6-1-2 {
+          stdmain-1-6      = stdmain-1-6-2-0;
+          stdmain-1-6-2-0 = callPkg "stdmain" "1.6.2.0" stdmain-src-1-6-2-0 {
             description = "standardized CLI wrapper";
             libDepends = h: with h; [
-              aeson base base-unicode-symbols bytestring data-default
-              data-textual deepseq lens logging-effect mtl optparse-applicative
-              parsec prettyprinter tasty tasty-hunit text text-printer
+              aeson base bytestring deepseq lens logging-effect mtl
+              optparse-applicative parsec prettyprinter tasty text text-printer
 
-              aeson-plus base1t containers-plus exited fpath fstat has-callstack
+              aeson-plus base1t containers-plus exited fpath fstat
               log-plus mockio mockio-log mockio-plus monaderror-io monadio-plus
-              more-unicode natural optparse-plus parsec-plus parser-plus
-              tasty-plus textual-plus tfmt
+              natural optparse-plus parsec-plus parser-plus tasty-plus
+              textual-plus
             ];
             testDepends = h: with h; [ base tasty ];
           };
