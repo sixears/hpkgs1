@@ -458,6 +458,23 @@
         "type": "github"
       }
     },
+    "hxrandr-src-0-0-0-0": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1700224835,
+        "narHash": "sha256-ERjvQ8y5qNGRQTBg1nQGbeLjYlXcVkkBxT0O+t3ESZ4=",
+        "owner": "sixears",
+        "repo": "hxrandr",
+        "rev": "334bea72803e52473a73f96d1382f0be18b732da",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sixears",
+        "ref": "r0.0.0.0",
+        "repo": "hxrandr",
+        "type": "github"
+      }
+    },
     "index-src-1-0-1-26": {
       "flake": false,
       "locked": {
@@ -928,6 +945,7 @@
         "hix-src-0-1-0-1": "hix-src-0-1-0-1",
         "hostsdb-src-0-1-1-4": "hostsdb-src-0-1-1-4",
         "htinydns-src-0-1-1-3": "htinydns-src-0-1-1-3",
+        "hxrandr-src-0-0-0-0": "hxrandr-src-0-0-0-0",
         "index-src-1-0-1-26": "index-src-1-0-1-26",
         "ip4-src-0-0-0-2": "ip4-src-0-0-0-2",
         "log-plus-src-0-0-4-4": "log-plus-src-0-0-4-4",
@@ -956,7 +974,7 @@
         "rename-src-0-0-1-1": "rename-src-0-0-1-1",
         "single-src-0-0-1-0": "single-src-0-0-1-0",
         "srt-adjust-src-1-0-0-7": "srt-adjust-src-1-0-0-7",
-        "stdmain-src-1-6-2-0": "stdmain-src-1-6-2-0",
+        "stdmain-src-1-6-3-0": "stdmain-src-1-6-3-0",
         "tasty-plus-src-1-5-2-24": "tasty-plus-src-1-5-2-24",
         "textual-plus-src-1-1-4-0": "textual-plus-src-1-1-4-0",
         "tfmt-src-0-2-8-0": "tfmt-src-0-2-8-0",
@@ -999,19 +1017,19 @@
         "type": "github"
       }
     },
-    "stdmain-src-1-6-2-0": {
+    "stdmain-src-1-6-3-0": {
       "flake": false,
       "locked": {
-        "lastModified": 1699903785,
-        "narHash": "sha256-Fm4xo9Mft5shaEd9riGNiodSiChPgK+LT7WtO0i6mOU=",
+        "lastModified": 1700547629,
+        "narHash": "sha256-atf0+vWxX052yjbPEed5Trks/MEwfGzw7japJX8XhLw=",
         "owner": "sixears",
         "repo": "stdmain",
-        "rev": "2911c89a0c1b2ba0315f286b8e0d4a8a89586670",
+        "rev": "dd178191ea11e1b90b942883bcb038719c42a0a6",
         "type": "github"
       },
       "original": {
         "owner": "sixears",
-        "ref": "r1.6.2.0",
+        "ref": "r1.6.3.0",
         "repo": "stdmain",
         "type": "github"
       }

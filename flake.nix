@@ -179,6 +179,13 @@
       ref   = "r0.1.0.1";
       flake = false;
     };
+    hxrandr-src-0-0-0-0 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "hxrandr";
+      ref   = "r0.0.0.0";
+      flake = false;
+    };
     hostsdb-src-0-1-1-4 = {
       type  = "github";
       owner = "sixears";
@@ -375,11 +382,11 @@
       ref   = "r1.0.0.7";
       flake = false;
     };
-    stdmain-src-1-6-2-0 = {
+    stdmain-src-1-6-3-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "stdmain";
-      ref   = "r1.6.2.0";
+      ref   = "r1.6.3.0";
       flake = false;
     };
     tasty-plus-src-1-5-2-24 = {
@@ -460,6 +467,7 @@
             , has-callstack-src-1-0-1-19
             , hix-src-0-1-0-1
             , hostsdb-src-0-1-1-4
+            , hxrandr-src-0-0-0-0
             , index-src-1-0-1-26
             , ip4-src-0-0-0-2
             , log-plus-src-0-0-4-4
@@ -487,7 +495,7 @@
             , rename-src-0-0-1-1
             , single-src-0-0-1-0
             , srt-adjust-src-1-0-0-7
-            , stdmain-src-1-6-2-0
+            , stdmain-src-1-6-3-0
             , tasty-plus-src-1-5-2-24
             , textual-plus-src-1-1-4-0
             , tfmt-src-0-2-8-0
@@ -574,7 +582,8 @@
           base0 = base0-0-0;
           base0-0-0 = base0-0-0-4-11;
           base0-0-0-4-11 = callPkg "base0" "0.0.4.11" base0-src-0-0-4-11 {
-            description = "Prelude replacement, external packages only, no tests";
+            description =
+              "Prelude replacement, external packages only, no tests";
             libDepends = h: with h;[
               base base-unicode-symbols data-default data-textual hashable lens
               mtl safe
@@ -585,15 +594,39 @@
 
           file-split         = file-split-1-0;
           file-split-1-0     = file-split-1-0-2-1;
-          file-split-1-0-2-1 = callPkg "file-split" "1.0.2.1" file-split-src-1-0-2-1 {
-            description = "write files from instructions on stdin";
+          file-split-1-0-2-1 =
+            callPkg "file-split" "1.0.2.1" file-split-src-1-0-2-1 {
+              description = "write files from instructions on stdin";
+              libDepends = h: with h; [
+                base containers data-default directory lens mtl path text unix
+              ];
+              testDepends = h: with h; [
+                base containers data-default directory mtl path tasty
+                tasty-hunit text unix
+              ];
+          };
+
+          # -- hxrandr ------------------
+
+          hxrandr         = hxrandr-0-0;
+          hxrandr-0-0     = hxrandr-0-0-0-0;
+          hxrandr-0-0-0-0 = callPkg "hxrandr" "0.0.0.0" hxrandr-src-0-0-0-0 {
+            description = "interface & tools for xrandr";
             libDepends = h: with h; [
-              base containers data-default directory lens mtl path text unix
+              base logging-effect optparse-applicative text
+
+              base1t fpath log-plus mockio mockio-log monadio-plus stdmain
+              textual-plus
             ];
-            testDepends = h: with h; [
-              base containers data-default directory mtl path tasty tasty-hunit
-              text unix
-            ];
+
+            postConfigure = ''
+                for f in $( ${pkgs.findutils}/bin/find proto/ -type f \
+                                                              -name \*.hs ); do
+                  t=src/"''${f#proto/}"
+                  substitute "$f" "$t" \
+                    --replace __xrandr__ ${pkgs.xorg.xrandr}
+                done
+              '';
           };
 
           # -- more-unicode ------------
@@ -1398,8 +1431,8 @@
           # -- stdmain -----------------
 
           stdmain          = stdmain-1-6;
-          stdmain-1-6      = stdmain-1-6-2-0;
-          stdmain-1-6-2-0 = callPkg "stdmain" "1.6.2.0" stdmain-src-1-6-2-0 {
+          stdmain-1-6      = stdmain-1-6-3-0;
+          stdmain-1-6-3-0 = callPkg "stdmain" "1.6.3.0" stdmain-src-1-6-3-0 {
             description = "standardized CLI wrapper";
             libDepends = h: with h; [
               aeson base bytestring deepseq lens logging-effect mtl
