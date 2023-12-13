@@ -172,11 +172,11 @@
       ref   = "r1.0.1.19";
       flake = false;
     };
-    hix-src-0-1-0-1 = {
+    hix-src-0-1-2-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "hix";
-      ref   = "r0.1.0.1";
+      ref   = "r0.1.2.0";
       flake = false;
     };
     hxrandr-src-0-0-0-0 = {
@@ -465,7 +465,7 @@
             , fstat-src-1-0-2-26
             , handbrake-src-1-0-3-1
             , has-callstack-src-1-0-1-19
-            , hix-src-0-1-0-1
+            , hix-src-0-1-2-0
             , hostsdb-src-0-1-1-4
             , hxrandr-src-0-0-0-0
             , index-src-1-0-1-26
@@ -613,10 +613,11 @@
           hxrandr-0-0-0-0 = callPkg "hxrandr" "0.0.0.0" hxrandr-src-0-0-0-0 {
             description = "interface & tools for xrandr";
             libDepends = h: with h; [
-              base logging-effect optparse-applicative text
+              base base-unicode-symbols charset logging-effect
+              optparse-applicative parsers text text-printer trifecta
 
               base1t fpath log-plus mockio mockio-log monadio-plus stdmain
-              textual-plus
+              textual-plus trifecta-plus
             ];
 
             postConfigure = ''
@@ -1495,9 +1496,9 @@
           # -- hix ------------------
 
           hix         = hix-0-0;
-          hix-0-0     = hix-0-1-0-1;
+          hix-0-0     = hix-0-1-2-0;
 
-          hix-0-1-0-1 = callPkg "hix" "0.1.0.1" hix-src-0-1-0-1 {
+          hix-0-1-2-0 = callPkg "hix" "0.1.2.0" hix-src-0-1-2-0 {
             description = "nix library for haskell, with utilities";
             libDepends = h: with h; [
               aeson base containers data-textual deepseq lens
