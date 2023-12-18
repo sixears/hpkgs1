@@ -14,11 +14,11 @@
 #    nixpkgs.url     = github:nixos/nixpkgs/be44bf67; # nixos-22.05 2022-10-15
     flake-utils.url = github:numtide/flake-utils/c0e246b9;
 
-    acct-src-0-0-0-1 = {
+    acct-src-0-0-1-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "acct";
-      ref   = "r0.0.0.1";
+      ref   = "r0.0.1.0";
       flake = false;
     };
     aeson-plus-src-0-0-0-1 = {
@@ -343,11 +343,11 @@
       ref   = "r1.0.7.29";
       flake = false;
     };
-    pcre-src-0-0-4-2 = {
+    pcre-src-0-0-5-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "pcre";
-      ref   = "r0.0.4.2";
+      ref   = "r0.0.5.0";
       flake = false;
     };
     proclib-src-3-2-4-0 = {
@@ -445,7 +445,7 @@
 
   outputs = { self, nixpkgs, flake-utils
 
-            , acct-src-0-0-0-1
+            , acct-src-0-0-1-0
             , aeson-plus-src-0-0-0-1
             , atreus-src-1-0-2-1
             , base0-src-0-0-4-11
@@ -492,7 +492,7 @@
             , parsec-plus-base-src-1-0-5-23
             , parsec-plus-src-1-1-1-44
             , parser-plus-src-1-0-7-29
-            , pcre-src-0-0-4-2
+            , pcre-src-0-0-5-0
             , proclib-src-3-2-4-0
             , quasiquoting-src-1-0-1-32
             , rename-src-0-0-1-1
@@ -1460,8 +1460,8 @@
           # -- acct --------------------
 
           acct         = acct-0-0;
-          acct-0-0     = acct-0-0-0-1;
-          acct-0-0-0-1 = callPkg "acct" "0.0.0.1" acct-src-0-0-0-1 {
+          acct-0-0     = acct-0-0-1-0;
+          acct-0-0-1-0 = callPkg "acct" "0.0.1.0" acct-src-0-0-1-0 {
             description = "parse & manage finance files";
             libDepends = h: with h; [
               base containers data-default data-textual deepseq genvalidity
@@ -1596,8 +1596,8 @@
           # -- pcre --------------------
 
           pcre         = pcre-0-0;
-          pcre-0-0     = pcre-0-0-4-2;
-          pcre-0-0-4-2 = callPkg "pcre" "0.0.4.2" pcre-src-0-0-4-2 {
+          pcre-0-0     = pcre-0-0-5-0;
+          pcre-0-0-5-0 = callPkg "pcre" "0.0.5.0" pcre-src-0-0-5-0 {
             description =
               "handle PCRE-based REs, including textual replacements";
             libDepends = h: with h; [

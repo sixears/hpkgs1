@@ -1,18 +1,18 @@
 {
   "nodes": {
-    "acct-src-0-0-0-1": {
+    "acct-src-0-0-1-0": {
       "flake": false,
       "locked": {
-        "lastModified": 1688923694,
-        "narHash": "sha256-uA5LpvmY+s1g+/M+qcSf0Rrh3KlKWTUi4Imrz9Vau+w=",
+        "lastModified": 1702888643,
+        "narHash": "sha256-rgbmaxu+wIjn03WJd1yStNtq7SyBlDi9zWD+pqRZI+4=",
         "owner": "sixears",
         "repo": "acct",
-        "rev": "1aa85b9b2a1dac9ecfaa7a1ebc7897dc936e65ec",
+        "rev": "0e130baa4ca1267715801667c0de5e516a37beff",
         "type": "github"
       },
       "original": {
         "owner": "sixears",
-        "ref": "r0.0.0.1",
+        "ref": "r0.0.1.0",
         "repo": "acct",
         "type": "github"
       }
@@ -848,19 +848,19 @@
         "type": "github"
       }
     },
-    "pcre-src-0-0-4-2": {
+    "pcre-src-0-0-5-0": {
       "flake": false,
       "locked": {
-        "lastModified": 1688812119,
-        "narHash": "sha256-rulA4KXn6bhq/NxU++2+zQMY4dlYYsjh5vaU1EUhUVU=",
+        "lastModified": 1702887836,
+        "narHash": "sha256-EkeM0YouUfTato/ZsDDDgw/aZIB30AbFzN1qnfPhdLo=",
         "owner": "sixears",
         "repo": "pcre",
-        "rev": "0b0fc9f8b93253fca9f3842e8847a9d41d0e4af0",
+        "rev": "2e7beaceea34f8d94fd8bd962af1430b02694eef",
         "type": "github"
       },
       "original": {
         "owner": "sixears",
-        "ref": "r0.0.4.2",
+        "ref": "r0.0.5.0",
         "repo": "pcre",
         "type": "github"
       }
@@ -918,7 +918,7 @@
     },
     "root": {
       "inputs": {
-        "acct-src-0-0-0-1": "acct-src-0-0-0-1",
+        "acct-src-0-0-1-0": "acct-src-0-0-1-0",
         "aeson-plus-src-0-0-0-1": "aeson-plus-src-0-0-0-1",
         "atreus-src-1-0-2-1": "atreus-src-1-0-2-1",
         "base0-src-0-0-4-11": "base0-src-0-0-4-11",
@@ -968,7 +968,7 @@
         "parsec-plus-base-src-1-0-5-23": "parsec-plus-base-src-1-0-5-23",
         "parsec-plus-src-1-1-1-44": "parsec-plus-src-1-1-1-44",
         "parser-plus-src-1-0-7-29": "parser-plus-src-1-0-7-29",
-        "pcre-src-0-0-4-2": "pcre-src-0-0-4-2",
+        "pcre-src-0-0-5-0": "pcre-src-0-0-5-0",
         "proclib-src-3-2-4-0": "proclib-src-3-2-4-0",
         "quasiquoting-src-1-0-1-32": "quasiquoting-src-1-0-1-32",
         "rename-src-0-0-1-1": "rename-src-0-0-1-1",
