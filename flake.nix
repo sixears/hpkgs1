@@ -5,10 +5,13 @@
 # $ cabal2callPkg
 # that will give you three stanzas to add here
 
+# to test the whole set, run nix develop ~/src/hpkgs1
+
 {
   description = "homegrown haskell packages";
   inputs = {
-    nixpkgs.url     = github:nixos/nixpkgs/be44bf67; # nixos-22.05 2022-10-15
+    nixpkgs.url = github:NixOS/nixpkgs/354184a; # master 2023-12-13
+#    nixpkgs.url     = github:nixos/nixpkgs/be44bf67; # nixos-22.05 2022-10-15
     flake-utils.url = github:numtide/flake-utils/c0e246b9;
 
     acct-src-0-0-0-1 = {
@@ -60,11 +63,11 @@
       ref   = "r0.0.6.0";
       flake = false;
     };
-    boundedn-src-1-1-7-0 = {
+    boundedn-src-1-1-8-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "boundedn";
-      ref   = "r1.1.7.0";
+      ref   = "r1.1.8.0";
       flake = false;
     };
     columnify-src-0-0-1-0 = {
@@ -81,11 +84,11 @@
       ref   = "r0.0.10.40";
       flake = false;
     };
-    date-imprecise-src-1-0-0-3 = {
+    date-imprecise-src-1-0-1-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "date-imprecise";
-      ref   = "r1.0.0.3";
+      ref   = "r1.0.1.0";
       flake = false;
     };
     dhall-plus-src-0-0-2-1 = {
@@ -144,11 +147,11 @@
       ref   = "r1.0.2.1";
       flake = false;
     };
-    fpath-src-1-3-4-0 = {
+    fpath-src-1-3-5-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "fpath";
-      ref   = "r1.3.4.0";
+      ref   = "r1.3.5.0";
       flake = false;
     };
     fstat-src-1-0-2-26 = {
@@ -263,11 +266,11 @@
       ref   = "r0.1.3.0";
       flake = false;
     };
-    mockio-plus-src-0-3-13-0 = {
+    mockio-plus-src-0-3-14-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "mockio-plus";
-      ref   = "r0.3.13.0";
+      ref   = "r0.3.14.0";
       flake = false;
     };
     monaderror-io-src-1-2-6-0 = {
@@ -298,11 +301,11 @@
       ref   = "r0.0.5.0";
       flake = false;
     };
-    non-empty-containers-src-1-4-3-36 = {
+    non-empty-containers-src-1-4-4-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "non-empty-containers";
-      ref   = "r1.4.3.36";
+      ref   = "r1.4.4.0";
       flake = false;
     };
     number-src-1-1-2-14 = {
@@ -347,11 +350,11 @@
       ref   = "r0.0.4.2";
       flake = false;
     };
-    proclib-src-3-2-3-53 = {
+    proclib-src-3-2-4-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "proclib";
-      ref   = "r3.2.3.53";
+      ref   = "r3.2.4.0";
       flake = false;
     };
     quasiquoting-src-1-0-1-32 = {
@@ -449,10 +452,10 @@
             , base0t-src-0-0-1-14
             , base1-src-0-0-10-0
             , base1t-src-0-0-6-0
-            , boundedn-src-1-1-7-0
+            , boundedn-src-1-1-8-0
             , columnify-src-0-0-1-0
             , containers-plus-src-0-0-10-40
-            , date-imprecise-src-1-0-0-3
+            , date-imprecise-src-1-0-1-0
             , dhall-plus-src-0-0-2-1
             , domainnames-src-0-1-2-0
             , duration-src-1-0-1-0
@@ -461,7 +464,7 @@
             , equalish-src-0-0-0-2
             , exited-src-1-0-4-23
             , file-split-src-1-0-2-1
-            , fpath-src-1-3-4-0
+            , fpath-src-1-3-5-0
             , fstat-src-1-0-2-26
             , handbrake-src-1-0-3-1
             , has-callstack-src-1-0-1-19
@@ -478,19 +481,19 @@
             , mockio-cmds-util-linux-src-1-0-1-3
             , mockio-src-0-0-5-0
             , mockio-log-src-0-1-3-0
-            , mockio-plus-src-0-3-13-0
+            , mockio-plus-src-0-3-14-0
             , monaderror-io-src-1-2-6-0
             , monadio-plus-src-2-5-3-0
             , more-unicode-src-0-0-19-0
             , natural-src-0-0-5-0
-            , non-empty-containers-src-1-4-3-36
+            , non-empty-containers-src-1-4-4-0
             , number-src-1-1-2-14
             , optparse-plus-src-1-3-3-0
             , parsec-plus-base-src-1-0-5-23
             , parsec-plus-src-1-1-1-44
             , parser-plus-src-1-0-7-29
             , pcre-src-0-0-4-2
-            , proclib-src-3-2-3-53
+            , proclib-src-3-2-4-0
             , quasiquoting-src-1-0-1-32
             , rename-src-0-0-1-1
             , single-src-0-0-1-0
@@ -509,7 +512,9 @@
         pkgs = import nixpkgs {
           system = system;
           overlays = [
-            (final: prev: {haskellPackages = prev.haskell.packages.ghc8107; })
+#            (final: prev: {haskellPackages = prev.haskell.packages.ghc8107; })
+
+            (final: prev: {haskellPackages = prev.haskell.packages.ghc948; })
           ];
         };
         hpkgs           = pkgs.haskellPackages;
@@ -608,27 +613,27 @@
 
           # -- hxrandr ------------------
 
-          hxrandr         = hxrandr-0-0;
-          hxrandr-0-0     = hxrandr-0-0-0-0;
-          hxrandr-0-0-0-0 = callPkg "hxrandr" "0.0.0.0" hxrandr-src-0-0-0-0 {
-            description = "interface & tools for xrandr";
-            libDepends = h: with h; [
-              base base-unicode-symbols charset logging-effect
-              optparse-applicative parsers text text-printer trifecta
-
-              base1t fpath log-plus mockio mockio-log monadio-plus stdmain
-              textual-plus trifecta-plus
-            ];
-
-            postConfigure = ''
-                for f in $( ${pkgs.findutils}/bin/find proto/ -type f \
-                                                              -name \*.hs ); do
-                  t=src/"''${f#proto/}"
-                  substitute "$f" "$t" \
-                    --replace __xrandr__ ${pkgs.xorg.xrandr}
-                done
-              '';
-          };
+##          hxrandr         = hxrandr-0-0;
+##          hxrandr-0-0     = hxrandr-0-0-0-0;
+##          hxrandr-0-0-0-0 = callPkg "hxrandr" "0.0.0.0" hxrandr-src-0-0-0-0 {
+##            description = "interface & tools for xrandr";
+##            libDepends = h: with h; [
+##              base base-unicode-symbols charset logging-effect
+##              optparse-applicative parsers text text-printer trifecta
+##
+##              base1t fpath log-plus mockio mockio-log monadio-plus stdmain
+##              textual-plus trifecta-plus
+##            ];
+##
+##            postConfigure = ''
+##                for f in $( ${pkgs.findutils}/bin/find proto/ -type f \
+##                                                              -name \*.hs ); do
+##                  t=src/"''${f#proto/}"
+##                  substitute "$f" "$t" \
+##                    --replace __xrandr__ ${pkgs.xorg.xrandr}
+##                done
+##              '';
+##          };
 
           # -- more-unicode ------------
 
@@ -872,8 +877,8 @@
           # -- boundedn ----------------
 
           boundedn         = boundedn-1-1;
-          boundedn-1-1     = boundedn-1-1-7-0;
-          boundedn-1-1-7-0 = callPkg "boundedn" "1.1.7.0" boundedn-src-1-1-7-0 {
+          boundedn-1-1     = boundedn-1-1-8-0;
+          boundedn-1-1-8-0 = callPkg "boundedn" "1.1.8.0" boundedn-src-1-1-8-0 {
             description = "Type-Level Bounded Natural Numbers";
             libDepends = h: with h; [
               base base-unicode-symbols deepseq finite-typelits genvalidity
@@ -962,26 +967,29 @@
           base1t          = base1t-0-0;
           base1t-0-0      = base1t-0-0-6-0;
           base1t-0-0-6-0 = callPkg "base1t" "0.0.6.0" base1t-src-0-0-6-0 {
-            description = "Prelude replacement, first-level local packages, incl. tests";
+            description = "Prelude replacement, first-level local packages, "
+                        + "incl. tests";
             libDepends = h: with h; [ base0t base1 tasty-plus ];
           };
 
           # -- non-empty-containers ----
 
           non-empty-containers          = non-empty-containers-1-4;
-          non-empty-containers-1-4      = non-empty-containers-1-4-3-36;
-          non-empty-containers-1-4-3-36 = callPkg "non-empty-containers" "1.4.3.36" non-empty-containers-src-1-4-3-36 {
-            description = "Containers that may not be empty, by construction";
-            libDepends = h: with h; [
-              base base-unicode-symbols base1 containers deepseq lens
-              mono-traversable more-unicode QuickCheck tasty tasty-hunit
-              tasty-plus tasty-quickcheck template-haskell text text-printer
-              unordered-containers
+          non-empty-containers-1-4      = non-empty-containers-1-4-4-0;
+          non-empty-containers-1-4-4-0 =
+            callPkg "non-empty-containers" "1.4.4.0"
+                     non-empty-containers-src-1-4-4-0 {
+              description = "Containers that may not be empty, by construction";
+              libDepends = h: with h; [
+                base base-unicode-symbols base1 containers deepseq lens
+                mono-traversable more-unicode QuickCheck tasty tasty-hunit
+                tasty-plus tasty-quickcheck template-haskell text text-printer
+                unordered-containers
 
-              base1 more-unicode tasty-plus
-            ];
-            testDepends = h: with h; [ base tasty ];
-          };
+                base1 more-unicode tasty-plus
+              ];
+              testDepends = h: with h; [ base tasty ];
+            };
 
           # -- L9 (internal dependencies on L8) ------------
 
@@ -1023,8 +1031,8 @@
           # -- fpath -------------------
 
           fpath          = fpath-1-3;
-          fpath-1-3      = fpath-1-3-4-0;
-          fpath-1-3-4-0 = callPkg "fpath" "1.3.4.0" fpath-src-1-3-4-0 {
+          fpath-1-3      = fpath-1-3-5-0;
+          fpath-1-3-5-0 = callPkg "fpath" "1.3.5.0" fpath-src-1-3-5-0 {
             description = "Strongly-typed file paths";
             libDepends = h: with h; [
               base base-unicode-symbols containers data-default data-textual
@@ -1173,9 +1181,9 @@
           # -- data-imprecise ----------
 
           date-imprecise         = date-imprecise-1-0;
-          date-imprecise-1-0     = date-imprecise-1-0-0-3;
-          date-imprecise-1-0-0-3 = callPkg "date-imprecise" "1.0.0.3"
-                                           date-imprecise-src-1-0-0-3 {
+          date-imprecise-1-0     = date-imprecise-1-0-1-0;
+          date-imprecise-1-0-1-0 = callPkg "date-imprecise" "1.0.1.0"
+                                           date-imprecise-src-1-0-1-0 {
             description = "manage info.yaml";
             libDepends = h: with h; [
               aeson base base-unicode-symbols data-default data-textual deepseq
@@ -1270,8 +1278,8 @@
           # -- proclib -----------------
 
           proclib          = proclib-3-2;
-          proclib-3-2      = proclib-3-2-3-53;
-          proclib-3-2-3-53 = callPkg "proclib" "3.2.3.53" proclib-src-3-2-3-53 {
+          proclib-3-2      = proclib-3-2-4-0;
+          proclib-3-2-4-0 = callPkg "proclib" "3.2.4.0" proclib-src-3-2-4-0 {
             description = "system-interaction library, for easier well-typed \"scripts\"";
             libDepends = h: with h; [
               aeson base base-unicode-symbols containers data-default
@@ -1407,9 +1415,9 @@
           # -- mockio-plus -------------
 
           mockio-plus          = mockio-plus-0-3;
-          mockio-plus-0-3      = mockio-plus-0-3-13-0;
-          mockio-plus-0-3-13-0 = callPkg "mockio-plus" "0.3.13.0"
-                                         mockio-plus-src-0-3-13-0 {
+          mockio-plus-0-3      = mockio-plus-0-3-14-0;
+          mockio-plus-0-3-14-0 = callPkg "mockio-plus" "0.3.14.0"
+                                         mockio-plus-src-0-3-14-0 {
             description = "MonadIO, Mocked, Logged, with Text";
             libDepends = h: with h; [
               base bytestring containers data-default data-textual directory
