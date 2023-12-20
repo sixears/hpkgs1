@@ -175,11 +175,11 @@
       ref   = "r1.0.1.19";
       flake = false;
     };
-    hix-src-0-1-3-0 = {
+    hix-src-0-1-4-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "hix";
-      ref   = "r0.1.3.0";
+      ref   = "r0.1.4.0";
       flake = false;
     };
     hxrandr-src-0-0-0-0 = {
@@ -468,7 +468,7 @@
             , fstat-src-1-0-2-26
             , handbrake-src-1-0-3-1
             , has-callstack-src-1-0-1-19
-            , hix-src-0-1-3-0
+            , hix-src-0-1-4-0
             , hostsdb-src-0-1-1-4
             , hxrandr-src-0-0-0-0
             , index-src-1-0-1-26
@@ -512,8 +512,6 @@
         pkgs = import nixpkgs {
           system = system;
           overlays = [
-#            (final: prev: {haskellPackages = prev.haskell.packages.ghc8107; })
-
             (final: prev: {haskellPackages = prev.haskell.packages.ghc948; })
           ];
         };
@@ -1504,9 +1502,9 @@
           # -- hix ------------------
 
           hix         = hix-0-0;
-          hix-0-0     = hix-0-1-3-0;
+          hix-0-0     = hix-0-1-4-0;
 
-          hix-0-1-3-0 = callPkg "hix" "0.1.3.0" hix-src-0-1-3-0 {
+          hix-0-1-4-0 = callPkg "hix" "0.1.4.0" hix-src-0-1-4-0 {
             description = "nix library for haskell, with utilities";
             libDepends = h: with h; [
               aeson base containers data-textual deepseq lens
