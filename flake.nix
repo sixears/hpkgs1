@@ -10,7 +10,10 @@
 {
   description = "homegrown haskell packages";
   inputs = {
-    nixpkgs.url = github:NixOS/nixpkgs/354184a; # master 2023-12-13
+#    nixpkgs.url = github:NixOS/nixpkgs/354184a; # master 2023-12-13
+    nixpkgs.url     = github:NixOS/nixpkgs/938aa157; # nixos-24.05 2024-06-20
+#    nixpkgs.url = git+file:/local/nixpkgs/master?rev=354184a83e7360c7c5a6fd76d9f6d28508ac3461; # master 2023-12-13
+
 #    nixpkgs.url     = github:nixos/nixpkgs/be44bf67; # nixos-22.05 2022-10-15
     flake-utils.url = github:numtide/flake-utils/c0e246b9;
 
@@ -68,6 +71,13 @@
       owner = "sixears";
       repo  = "boundedn";
       ref   = "r1.1.8.0";
+      flake = false;
+    };
+    brian-src-0-0-1-0 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "brian";
+      ref   = "r0.0.1.0";
       flake = false;
     };
     columnify-src-0-0-1-0 = {
@@ -315,11 +325,11 @@
       ref   = "r1.1.2.14";
       flake = false;
     };
-    optparse-plus-src-1-3-3-0 = {
+    optparse-plus-src-1-3-3-1 = {
       type = "github";
       owner = "sixears";
       repo  = "optparse-plus";
-      ref   = "r1.3.3.0";
+      ref   = "r1.3.3.1";
       flake = false;
     };
     parsec-plus-base-src-1-0-5-23 = {
@@ -453,6 +463,7 @@
             , base1-src-0-0-10-0
             , base1t-src-0-0-6-0
             , boundedn-src-1-1-8-0
+            , brian-src-0-0-1-0
             , columnify-src-0-0-1-0
             , containers-plus-src-0-0-10-40
             , date-imprecise-src-1-0-1-0
@@ -488,7 +499,7 @@
             , natural-src-0-0-5-0
             , non-empty-containers-src-1-4-4-0
             , number-src-1-1-2-14
-            , optparse-plus-src-1-3-3-0
+            , optparse-plus-src-1-3-3-1
             , parsec-plus-base-src-1-0-5-23
             , parsec-plus-src-1-1-1-44
             , parser-plus-src-1-0-7-29
@@ -658,6 +669,21 @@
               description = "manage info.yaml";
               libDepends = h: with h; [ base base-unicode-symbols ];
             };
+
+          # -- brian -------------------
+
+          brian         = brian-0-0;
+          brian-0-0     = brian-0-0-1-0;
+          brian-0-0-1-0 = callPkg "brian" "0.0.1.0" brian-src-0-0-1-0 {
+            description = "a life with Brian";
+            libDepends = h: with h; [
+              containers data-textual HTTP lens logging-effect mtl
+              optparse-applicative parsers safe-exceptions sqlite-simple tagsoup
+              text text-printer word-wrap
+
+              base1t fpath log-plus mockio-log monaderror-io monadio-plus
+              natural stdmain textual-plus
+            ]; };
 
           # -- L1 (internal dependencies on L0) ------------
 
@@ -1261,9 +1287,9 @@
           # -- optparse-plus -----------
 
           optparse-plus          = optparse-plus-1-3;
-          optparse-plus-1-3      = optparse-plus-1-3-3-0;
-          optparse-plus-1-3-3-0 =
-            callPkg "optparse-plus" "1.3.3.0" optparse-plus-src-1-3-3-0 {
+          optparse-plus-1-3      = optparse-plus-1-3-3-1;
+          optparse-plus-1-3-3-1 =
+            callPkg "optparse-plus" "1.3.3.1" optparse-plus-src-1-3-3-1 {
               description = "manage info.yaml";
               libDepends = h: with h; [
                 base data-textual extra lens nonempty-containers
