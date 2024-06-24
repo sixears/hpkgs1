@@ -395,11 +395,11 @@
       ref   = "r1.0.0.7";
       flake = false;
     };
-    stdmain-src-1-6-3-0 = {
+    stdmain-src-1-6-3-1 = {
       type  = "github";
       owner = "sixears";
       repo  = "stdmain";
-      ref   = "r1.6.3.0";
+      ref   = "r1.6.3.1";
       flake = false;
     };
     tasty-plus-src-1-5-2-24 = {
@@ -509,7 +509,7 @@
             , rename-src-0-0-1-1
             , single-src-0-0-1-0
             , srt-adjust-src-1-0-0-7
-            , stdmain-src-1-6-3-0
+            , stdmain-src-1-6-3-1
             , tasty-plus-src-1-5-2-24
             , textual-plus-src-1-1-4-0
             , tfmt-src-0-2-8-0
@@ -1464,8 +1464,8 @@
           # -- stdmain -----------------
 
           stdmain          = stdmain-1-6;
-          stdmain-1-6      = stdmain-1-6-3-0;
-          stdmain-1-6-3-0 = callPkg "stdmain" "1.6.3.0" stdmain-src-1-6-3-0 {
+          stdmain-1-6      = stdmain-1-6-3-1;
+          stdmain-1-6-3-1 = callPkg "stdmain" "1.6.3.1" stdmain-src-1-6-3-1 {
             description = "standardized CLI wrapper";
             libDepends = h: with h; [
               aeson base bytestring deepseq lens logging-effect mtl
