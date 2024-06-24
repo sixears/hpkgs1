@@ -136,23 +136,6 @@
         "type": "github"
       }
     },
-    "brian-src-0-0-1-0": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1716227580,
-        "narHash": "sha256-vgjruCmJSGu6UMRaCFFQfOLUgf5t8WxPn12sfFn1dV0=",
-        "owner": "sixears",
-        "repo": "brian",
-        "rev": "e2f52e158f3e963d6aeec5dcba1586f592a67c63",
-        "type": "github"
-      },
-      "original": {
-        "owner": "sixears",
-        "ref": "r0.0.1.0",
-        "repo": "brian",
-        "type": "github"
-      }
-    },
     "columnify-src-0-0-1-0": {
       "flake": false,
       "locked": {
@@ -943,7 +926,6 @@
         "base1-src-0-0-10-0": "base1-src-0-0-10-0",
         "base1t-src-0-0-6-0": "base1t-src-0-0-6-0",
         "boundedn-src-1-1-8-0": "boundedn-src-1-1-8-0",
-        "brian-src-0-0-1-0": "brian-src-0-0-1-0",
         "columnify-src-0-0-1-0": "columnify-src-0-0-1-0",
         "containers-plus-src-0-0-10-40": "containers-plus-src-0-0-10-40",
         "date-imprecise-src-1-0-1-0": "date-imprecise-src-1-0-1-0",
