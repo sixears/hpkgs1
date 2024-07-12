@@ -136,6 +136,23 @@
         "type": "github"
       }
     },
+    "brian-src-0-0-1-0": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1716227580,
+        "narHash": "sha256-vgjruCmJSGu6UMRaCFFQfOLUgf5t8WxPn12sfFn1dV0=",
+        "owner": "sixears",
+        "repo": "brian",
+        "rev": "e2f52e158f3e963d6aeec5dcba1586f592a67c63",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sixears",
+        "ref": "r0.0.1.0",
+        "repo": "brian",
+        "type": "github"
+      }
+    },
     "columnify-src-0-0-1-0": {
       "flake": false,
       "locked": {
@@ -407,19 +424,19 @@
         "type": "github"
       }
     },
-    "hix-src-0-1-4-0": {
+    "hix-src-0-1-4-1": {
       "flake": false,
       "locked": {
-        "lastModified": 1703062501,
-        "narHash": "sha256-mW62eFiSoGkTtYKn4lpT2CxHNmZtb+ICmwe0RdydB2w=",
+        "lastModified": 1719237885,
+        "narHash": "sha256-rooEGoDHpGaKV4/JTdBLvVz+kfKnvo5STYeLUhXR4Dc=",
         "owner": "sixears",
         "repo": "hix",
-        "rev": "c44d59764079845dddde3de73b16edaf14562f17",
+        "rev": "d7c588a34d05dceddb40a8fac688826b2429f651",
         "type": "github"
       },
       "original": {
         "owner": "sixears",
-        "ref": "r0.1.4.0",
+        "ref": "r0.1.4.1",
         "repo": "hix",
         "type": "github"
       }
@@ -611,19 +628,19 @@
         "type": "github"
       }
     },
-    "mockio-log-src-0-1-3-0": {
+    "mockio-log-src-0-1-3-1": {
       "flake": false,
       "locked": {
-        "lastModified": 1699602210,
-        "narHash": "sha256-IEMbbu9VUM3BANO1Bsk3mzYo4Nen5TK7/AosVYB2Bss=",
+        "lastModified": 1720797072,
+        "narHash": "sha256-7DRUg3yMBFx1P3iyBHoT0W8drOGZkeGUEogGOJgFtZQ=",
         "owner": "sixears",
         "repo": "mockio-log",
-        "rev": "cdc78793652deff044f4dd7a528b64483686a25d",
+        "rev": "01102e2edbc35d978370baf1e5e3760d2d3a6405",
         "type": "github"
       },
       "original": {
         "owner": "sixears",
-        "ref": "r0.1.3.0",
+        "ref": "r0.1.3.1",
         "repo": "mockio-log",
         "type": "github"
       }
@@ -645,19 +662,19 @@
         "type": "github"
       }
     },
-    "mockio-src-0-0-5-0": {
+    "mockio-src-0-0-6-0": {
       "flake": false,
       "locked": {
-        "lastModified": 1699863242,
-        "narHash": "sha256-YRWmYwsdfixGoazfcdn3Ha14XELm5x9c+R8iAx7VaHs=",
+        "lastModified": 1719734580,
+        "narHash": "sha256-zriWkrVhi/DqKsOr6fVTm047EQVpp1Nyd9pet/pQLWc=",
         "owner": "sixears",
         "repo": "mockio",
-        "rev": "95a02a724b52e227c8dc0d7c4106ded1722ca481",
+        "rev": "c7cfb0d82b2b502895038fcf6e30824ff2f01c73",
         "type": "github"
       },
       "original": {
         "owner": "sixears",
-        "ref": "r0.0.5.0",
+        "ref": "r0.0.6.0",
         "repo": "mockio",
         "type": "github"
       }
@@ -926,6 +943,7 @@
         "base1-src-0-0-10-0": "base1-src-0-0-10-0",
         "base1t-src-0-0-6-0": "base1t-src-0-0-6-0",
         "boundedn-src-1-1-8-0": "boundedn-src-1-1-8-0",
+        "brian-src-0-0-1-0": "brian-src-0-0-1-0",
         "columnify-src-0-0-1-0": "columnify-src-0-0-1-0",
         "containers-plus-src-0-0-10-40": "containers-plus-src-0-0-10-40",
         "date-imprecise-src-1-0-1-0": "date-imprecise-src-1-0-1-0",
@@ -942,7 +960,7 @@
         "fstat-src-1-0-2-26": "fstat-src-1-0-2-26",
         "handbrake-src-1-0-3-1": "handbrake-src-1-0-3-1",
         "has-callstack-src-1-0-1-19": "has-callstack-src-1-0-1-19",
-        "hix-src-0-1-4-0": "hix-src-0-1-4-0",
+        "hix-src-0-1-4-1": "hix-src-0-1-4-1",
         "hostsdb-src-0-1-1-4": "hostsdb-src-0-1-1-4",
         "htinydns-src-0-1-1-3": "htinydns-src-0-1-1-3",
         "hxrandr-src-0-0-0-0": "hxrandr-src-0-0-0-0",
@@ -954,9 +972,9 @@
         "mockio-cmds-inetutils-src-1-0-0-0": "mockio-cmds-inetutils-src-1-0-0-0",
         "mockio-cmds-rsync-src-1-0-0-1": "mockio-cmds-rsync-src-1-0-0-1",
         "mockio-cmds-util-linux-src-1-0-1-3": "mockio-cmds-util-linux-src-1-0-1-3",
-        "mockio-log-src-0-1-3-0": "mockio-log-src-0-1-3-0",
+        "mockio-log-src-0-1-3-1": "mockio-log-src-0-1-3-1",
         "mockio-plus-src-0-3-14-0": "mockio-plus-src-0-3-14-0",
-        "mockio-src-0-0-5-0": "mockio-src-0-0-5-0",
+        "mockio-src-0-0-6-0": "mockio-src-0-0-6-0",
         "monaderror-io-src-1-2-6-0": "monaderror-io-src-1-2-6-0",
         "monadio-plus-src-2-5-3-0": "monadio-plus-src-2-5-3-0",
         "more-unicode-src-0-0-19-0": "more-unicode-src-0-0-19-0",

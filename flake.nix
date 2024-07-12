@@ -73,13 +73,13 @@
       ref   = "r1.1.8.0";
       flake = false;
     };
-##    brian-src-0-0-1-0 = {
-##      type  = "github";
-##      owner = "sixears";
-##      repo  = "brian";
-##      ref   = "r0.0.1.0";
-##      flake = false;
-##    };
+    brian-src-0-0-1-0 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "brian";
+      ref   = "r0.0.1.0";
+      flake = false;
+    };
     columnify-src-0-0-1-0 = {
       type  = "github";
       owner = "sixears";
@@ -262,18 +262,18 @@
       ref   = "r1.0.1.3";
       flake = false;
     };
-    mockio-src-0-0-5-0 = {
+    mockio-src-0-0-6-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "mockio";
-      ref   = "r0.0.5.0";
+      ref   = "r0.0.6.0";
       flake = false;
     };
-    mockio-log-src-0-1-3-0 = {
+    mockio-log-src-0-1-3-1 = {
       type  = "github";
       owner = "sixears";
       repo  = "mockio-log";
-      ref   = "r0.1.3.0";
+      ref   = "r0.1.3.1";
       flake = false;
     };
     mockio-plus-src-0-3-14-0 = {
@@ -463,7 +463,7 @@
             , base1-src-0-0-10-0
             , base1t-src-0-0-6-0
             , boundedn-src-1-1-8-0
-##            , brian-src-0-0-1-0
+            , brian-src-0-0-1-0
             , columnify-src-0-0-1-0
             , containers-plus-src-0-0-10-40
             , date-imprecise-src-1-0-1-0
@@ -490,8 +490,8 @@
             , mockio-cmds-inetutils-src-1-0-0-0
             , mockio-cmds-rsync-src-1-0-0-1
             , mockio-cmds-util-linux-src-1-0-1-3
-            , mockio-src-0-0-5-0
-            , mockio-log-src-0-1-3-0
+            , mockio-src-0-0-6-0
+            , mockio-log-src-0-1-3-1
             , mockio-plus-src-0-3-14-0
             , monaderror-io-src-1-2-6-0
             , monadio-plus-src-2-5-3-0
@@ -672,18 +672,18 @@
 
           # -- brian -------------------
 
-##          brian         = brian-0-0;
-##          brian-0-0     = brian-0-0-1-0;
-##          brian-0-0-1-0 = callPkg "brian" "0.0.1.0" brian-src-0-0-1-0 {
-##            description = "a life with Brian";
-##            libDepends = h: with h; [
-##              containers data-textual HTTP lens logging-effect mtl
-##              optparse-applicative parsers safe-exceptions sqlite-simple tagsoup
-##              text text-printer word-wrap
-##
-##              base1t fpath log-plus mockio-log monaderror-io monadio-plus
-##              natural stdmain textual-plus
-##            ]; };
+          brian         = brian-0-0;
+          brian-0-0     = brian-0-0-1-0;
+          brian-0-0-1-0 = callPkg "brian" "0.0.1.0" brian-src-0-0-1-0 {
+            description = "a life with Brian";
+            libDepends = h: with h; [
+              containers data-textual HTTP lens logging-effect mtl
+              optparse-applicative parsers safe-exceptions sqlite-simple tagsoup
+              text text-printer word-wrap
+
+              base1t fpath log-plus mockio-log monaderror-io monadio-plus
+              natural stdmain textual-plus
+            ]; };
 
           # -- L1 (internal dependencies on L0) ------------
 
@@ -1274,8 +1274,8 @@
           # -- mockio ------------------
 
           mockio         = mockio-0-0;
-          mockio-0-0     = mockio-0-0-5-0;
-          mockio-0-0-5-0 = callPkg "mockio" "0.0.5.0" mockio-src-0-0-5-0 {
+          mockio-0-0     = mockio-0-0-6-0;
+          mockio-0-0-6-0 = callPkg "mockio" "0.0.6.0" mockio-src-0-0-6-0 {
             description = "Mock IO actions (e.g., for dry-runs)";
             libDepends = h: with h; [
               base deepseq lens monaderror-io monadio-plus more-unicode mtl tasty
@@ -1372,9 +1372,9 @@
           # -- mockio-log --------------
 
           mockio-log         = mockio-log-0-1;
-          mockio-log-0-1     = mockio-log-0-1-3-0;
-          mockio-log-0-1-3-0 = callPkg "mockio-log" "0.1.3.0"
-                                       mockio-log-src-0-1-3-0 {
+          mockio-log-0-1     = mockio-log-0-1-3-1;
+          mockio-log-0-1-3-1 = callPkg "mockio-log" "0.1.3.1"
+                                       mockio-log-src-0-1-3-1 {
             description = "Combined Mock IO actions with logging";
             libDepends = h: with h; [
               base base-unicode-symbols containers data-default data-textual
