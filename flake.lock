@@ -645,19 +645,19 @@
         "type": "github"
       }
     },
-    "mockio-plus-src-0-3-14-0": {
+    "mockio-plus-src-0-3-15-0": {
       "flake": false,
       "locked": {
-        "lastModified": 1702658968,
-        "narHash": "sha256-0AeWOtDvcRibt3FTONtmKUtwpSMxrAJ9QMGOUp9rOMM=",
+        "lastModified": 1724689808,
+        "narHash": "sha256-5p2Qlree/MbpMv/HZ+6PFnv6CoF2dz+NrJ/v0AuKRDs=",
         "owner": "sixears",
         "repo": "mockio-plus",
-        "rev": "569bbe2aadd8b6c7cf55d3e1d9464cec80241887",
+        "rev": "cded290e1b76f892617b5f44a91cbc956a40e18f",
         "type": "github"
       },
       "original": {
         "owner": "sixears",
-        "ref": "r0.3.14.0",
+        "ref": "r0.3.15.0",
         "repo": "mockio-plus",
         "type": "github"
       }
@@ -865,19 +865,19 @@
         "type": "github"
       }
     },
-    "pcre-src-0-0-5-0": {
+    "pcre-src-0-0-6-0": {
       "flake": false,
       "locked": {
-        "lastModified": 1702887836,
-        "narHash": "sha256-EkeM0YouUfTato/ZsDDDgw/aZIB30AbFzN1qnfPhdLo=",
+        "lastModified": 1726491492,
+        "narHash": "sha256-AJA7Ha78imFWyYatM0JFlyyXvbhRz7PvJQAdsgRWvCE=",
         "owner": "sixears",
         "repo": "pcre",
-        "rev": "2e7beaceea34f8d94fd8bd962af1430b02694eef",
+        "rev": "0f2febf7e457526c057f10d5ce985d31a8b7e0e5",
         "type": "github"
       },
       "original": {
         "owner": "sixears",
-        "ref": "r0.0.5.0",
+        "ref": "r0.0.6.0",
         "repo": "pcre",
         "type": "github"
       }
@@ -973,7 +973,7 @@
         "mockio-cmds-rsync-src-1-0-0-1": "mockio-cmds-rsync-src-1-0-0-1",
         "mockio-cmds-util-linux-src-1-0-1-3": "mockio-cmds-util-linux-src-1-0-1-3",
         "mockio-log-src-0-1-3-1": "mockio-log-src-0-1-3-1",
-        "mockio-plus-src-0-3-14-0": "mockio-plus-src-0-3-14-0",
+        "mockio-plus-src-0-3-15-0": "mockio-plus-src-0-3-15-0",
         "mockio-src-0-0-6-0": "mockio-src-0-0-6-0",
         "monaderror-io-src-1-2-6-0": "monaderror-io-src-1-2-6-0",
         "monadio-plus-src-2-5-3-0": "monadio-plus-src-2-5-3-0",
@@ -986,7 +986,7 @@
         "parsec-plus-base-src-1-0-5-23": "parsec-plus-base-src-1-0-5-23",
         "parsec-plus-src-1-1-1-44": "parsec-plus-src-1-1-1-44",
         "parser-plus-src-1-0-7-29": "parser-plus-src-1-0-7-29",
-        "pcre-src-0-0-5-0": "pcre-src-0-0-5-0",
+        "pcre-src-0-0-6-0": "pcre-src-0-0-6-0",
         "proclib-src-3-2-4-0": "proclib-src-3-2-4-0",
         "quasiquoting-src-1-0-1-32": "quasiquoting-src-1-0-1-32",
         "rename-src-0-0-1-1": "rename-src-0-0-1-1",
