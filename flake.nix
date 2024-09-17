@@ -325,11 +325,11 @@
       ref   = "r1.1.2.14";
       flake = false;
     };
-    optparse-plus-src-1-3-3-1 = {
+    optparse-plus-src-1-3-4-0 = {
       type = "github";
       owner = "sixears";
       repo  = "optparse-plus";
-      ref   = "r1.3.3.1";
+      ref   = "r1.3.4.0";
       flake = false;
     };
     parsec-plus-base-src-1-0-5-23 = {
@@ -499,7 +499,7 @@
             , natural-src-0-0-5-0
             , non-empty-containers-src-1-4-4-0
             , number-src-1-1-2-14
-            , optparse-plus-src-1-3-3-1
+            , optparse-plus-src-1-3-4-0
             , parsec-plus-base-src-1-0-5-23
             , parsec-plus-src-1-1-1-44
             , parser-plus-src-1-0-7-29
@@ -678,7 +678,7 @@
             description = "a life with Brian";
             libDepends = h: with h; [
               containers data-textual HTTP logging-effect mtl
-              optparse-applicative parsers regex-with-pcre safe-exceptions
+              optparse-applicative parsers regex regex-with-pcre safe-exceptions
               sqlite-simple tagsoup text text-printer word-wrap
 
               base1t fpath log-plus mockio-log monaderror-io monadio-plus
@@ -1287,9 +1287,9 @@
           # -- optparse-plus -----------
 
           optparse-plus          = optparse-plus-1-3;
-          optparse-plus-1-3      = optparse-plus-1-3-3-1;
-          optparse-plus-1-3-3-1 =
-            callPkg "optparse-plus" "1.3.3.1" optparse-plus-src-1-3-3-1 {
+          optparse-plus-1-3      = optparse-plus-1-3-4-0;
+          optparse-plus-1-3-4-0 =
+            callPkg "optparse-plus" "1.3.4.0" optparse-plus-src-1-3-4-0 {
               description = "manage info.yaml";
               libDepends = h: with h; [
                 base data-textual extra lens nonempty-containers

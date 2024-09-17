@@ -797,19 +797,19 @@
         "type": "github"
       }
     },
-    "optparse-plus-src-1-3-3-1": {
+    "optparse-plus-src-1-3-4-0": {
       "flake": false,
       "locked": {
-        "lastModified": 1719212392,
-        "narHash": "sha256-YG9+arLcSq+aK9b1izSROTi+AnPRR4F0Dyz6KI1+oyk=",
+        "lastModified": 1726603606,
+        "narHash": "sha256-Mhrga/72EEeAMrQshzIJbhwhP1/MTT+SqWL26AHhMyo=",
         "owner": "sixears",
         "repo": "optparse-plus",
-        "rev": "6d900c8429d8575e184f05d18d674acb84cd937d",
+        "rev": "254c054b79fd3e0532d5c33ab81972b56ba34c3f",
         "type": "github"
       },
       "original": {
         "owner": "sixears",
-        "ref": "r1.3.3.1",
+        "ref": "r1.3.4.0",
         "repo": "optparse-plus",
         "type": "github"
       }
@@ -982,7 +982,7 @@
         "nixpkgs": "nixpkgs",
         "non-empty-containers-src-1-4-4-0": "non-empty-containers-src-1-4-4-0",
         "number-src-1-1-2-14": "number-src-1-1-2-14",
-        "optparse-plus-src-1-3-3-1": "optparse-plus-src-1-3-3-1",
+        "optparse-plus-src-1-3-4-0": "optparse-plus-src-1-3-4-0",
         "parsec-plus-base-src-1-0-5-23": "parsec-plus-base-src-1-0-5-23",
         "parsec-plus-src-1-1-1-44": "parsec-plus-src-1-1-1-44",
         "parser-plus-src-1-0-7-29": "parser-plus-src-1-0-7-29",
