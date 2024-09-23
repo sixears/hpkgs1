@@ -374,11 +374,11 @@
       ref   = "r1.0.1.32";
       flake = false;
     };
-    rename-src-0-0-1-1 = {
+    rename-src-0-0-1-2 = {
       type  = "github";
       owner = "sixears";
       repo  = "rename";
-      ref   = "r0.0.1.1";
+      ref   = "r0.0.1.2";
       flake = false;
     };
     single-src-0-0-1-0 = {
@@ -506,7 +506,7 @@
             , pcre-src-0-1-0-0
             , proclib-src-3-2-4-0
             , quasiquoting-src-1-0-1-32
-            , rename-src-0-0-1-1
+            , rename-src-0-0-1-2
             , single-src-0-0-1-0
             , srt-adjust-src-1-0-0-7
             , stdmain-src-1-6-3-1
@@ -1671,12 +1671,12 @@
           # -- rename ------------------
 
           rename         = rename-0-0;
-          rename-0-0     = rename-0-0-1-1;
-          rename-0-0-1-1 = callPkg "rename" "0.0.1.1" rename-src-0-0-1-1 {
+          rename-0-0     = rename-0-0-1-2;
+          rename-0-0-1-2 = callPkg "rename" "0.0.1.2" rename-src-0-0-1-2 {
             description = "rename files according to regular expressions";
             libDepends = h: with h; [
               base containers extra logging-effect optparse-applicative parsec
-              parsers regex-with-pcre tasty-hunit text
+              parsers tasty-hunit text
 
               base1t containers-plus env-fpath env-plus fpath log-plus
               mockio-log mockio-plus monaderror-io monadio-plus natural
