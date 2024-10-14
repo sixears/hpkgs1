@@ -73,11 +73,11 @@
       ref   = "r1.1.8.0";
       flake = false;
     };
-    brian-src-0-0-1-0 = {
+    brian-src-0-0-2-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "brian";
-      ref   = "r0.0.1.0";
+      ref   = "r0.0.2.0";
       flake = false;
     };
     columnify-src-0-0-1-0 = {
@@ -463,7 +463,7 @@
             , base1-src-0-0-10-0
             , base1t-src-0-0-6-0
             , boundedn-src-1-1-8-0
-            , brian-src-0-0-1-0
+            , brian-src-0-0-2-0
             , columnify-src-0-0-1-0
             , containers-plus-src-0-0-10-40
             , date-imprecise-src-1-0-1-0
@@ -673,8 +673,8 @@
           # -- brian -------------------
 
           brian         = brian-0-0;
-          brian-0-0     = brian-0-0-1-0;
-          brian-0-0-1-0 = callPkg "brian" "0.0.1.0" brian-src-0-0-1-0 {
+          brian-0-0     = brian-0-0-2-0;
+          brian-0-0-2-0 = callPkg "brian" "0.0.2.0" brian-src-0-0-2-0 {
             description = "a life with Brian";
             libDepends = h: with h; [
               containers data-textual HTTP lens logging-effect mtl
