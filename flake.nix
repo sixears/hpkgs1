@@ -677,12 +677,14 @@
           brian-0-0-1-0 = callPkg "brian" "0.0.1.0" brian-src-0-0-1-0 {
             description = "a life with Brian";
             libDepends = h: with h; [
-              containers data-textual HTTP logging-effect mtl
-              optparse-applicative parsers regex regex-with-pcre safe-exceptions
-              sqlite-simple tagsoup text text-printer word-wrap
+              containers data-textual HTTP lens logging-effect mtl
+              optparse-applicative parsers regex regex-with-pcre safe
+              safe-exceptions split sqlite-simple tagsoup tasty-hunit text
+              text-printer time trifecta word-wrap
 
               base1t fpath log-plus mockio-log monaderror-io monadio-plus
-              natural pcre stdmain textual-plus
+              natural optparse-plus parser-plus pcre stdmain tasty-plus
+              textual-plus trifecta-plus
             ]; };
 
           # -- L1 (internal dependencies on L0) ------------

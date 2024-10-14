@@ -916,19 +916,19 @@
         "type": "github"
       }
     },
-    "rename-src-0-0-1-1": {
+    "rename-src-0-0-1-2": {
       "flake": false,
       "locked": {
-        "lastModified": 1688812339,
-        "narHash": "sha256-KyRD7artusPqrfBKYfoMyvI8QmbN/+L4AjsUCJdO9+4=",
+        "lastModified": 1727122723,
+        "narHash": "sha256-pyV2XyAKse2v08305lLhAARofxc9Fpp0kNqQRfcRIR8=",
         "owner": "sixears",
         "repo": "rename",
-        "rev": "a20662a61c48cb1963c107fbd73219946b765060",
+        "rev": "5252259cd5cc507c67315f84ea1ad53147d72224",
         "type": "github"
       },
       "original": {
         "owner": "sixears",
-        "ref": "r0.0.1.1",
+        "ref": "r0.0.1.2",
         "repo": "rename",
         "type": "github"
       }
@@ -989,7 +989,7 @@
         "pcre-src-0-1-0-0": "pcre-src-0-1-0-0",
         "proclib-src-3-2-4-0": "proclib-src-3-2-4-0",
         "quasiquoting-src-1-0-1-32": "quasiquoting-src-1-0-1-32",
-        "rename-src-0-0-1-1": "rename-src-0-0-1-1",
+        "rename-src-0-0-1-2": "rename-src-0-0-1-2",
         "single-src-0-0-1-0": "single-src-0-0-1-0",
         "srt-adjust-src-1-0-0-7": "srt-adjust-src-1-0-0-7",
         "stdmain-src-1-6-3-1": "stdmain-src-1-6-3-1",
