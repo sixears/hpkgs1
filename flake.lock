@@ -139,11 +139,11 @@
     "brian-src-0-0-2-0": {
       "flake": false,
       "locked": {
-        "lastModified": 1728836648,
-        "narHash": "sha256-LPTwRZK46Yd7dZg2Kuh2dNlTH3CdLpgOfVVabbsER/8=",
+        "lastModified": 1728891784,
+        "narHash": "sha256-e8TCo24z0vU0FNiSejQh+EMEzZJ2XdUn43+g1OWNg/k=",
         "owner": "sixears",
         "repo": "brian",
-        "rev": "6968319ed5c3b03c73ec726243671ea8677353e5",
+        "rev": "61f0444f19bb08106494072516a8622524d3d36b",
         "type": "github"
       },
       "original": {
