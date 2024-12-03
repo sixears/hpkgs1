@@ -73,11 +73,11 @@
       ref   = "r1.1.8.0";
       flake = false;
     };
-    brian-src-0-0-2-1 = {
+    brian-src-0-0-3-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "brian";
-      ref   = "r0.0.2.1";
+      ref   = "r0.0.3.0";
       flake = false;
     };
     columnify-src-0-0-1-0 = {
@@ -463,7 +463,7 @@
             , base1-src-0-0-10-0
             , base1t-src-0-0-6-0
             , boundedn-src-1-1-8-0
-            , brian-src-0-0-2-1
+            , brian-src-0-0-3-0
             , columnify-src-0-0-1-0
             , containers-plus-src-0-0-10-40
             , date-imprecise-src-1-0-1-0
@@ -669,23 +669,6 @@
               description = "manage info.yaml";
               libDepends = h: with h; [ base base-unicode-symbols ];
             };
-
-          # -- brian -------------------
-
-          brian         = brian-0-0;
-          brian-0-0     = brian-0-0-2-1;
-          brian-0-0-2-1 = callPkg "brian" "0.0.2.1" brian-src-0-0-2-1 {
-            description = "a life with Brian";
-            libDepends = h: with h; [
-              containers data-textual HTTP lens logging-effect mtl
-              optparse-applicative parsers regex regex-with-pcre safe
-              safe-exceptions split sqlite-simple tagsoup tasty-hunit text
-              text-printer time trifecta word-wrap
-
-              base1t fpath log-plus mockio-log monaderror-io monadio-plus
-              natural optparse-plus parser-plus pcre stdmain tasty-plus
-              textual-plus trifecta-plus
-            ]; };
 
           # -- L1 (internal dependencies on L0) ------------
 
@@ -1669,6 +1652,23 @@
           };
 
           # -- L16 (internal dependencies on L15) ----------
+
+          # -- brian -------------------
+
+          brian         = brian-0-0;
+          brian-0-0     = brian-0-0-3-0;
+          brian-0-0-3-0 = callPkg "brian" "0.0.3.0" brian-src-0-0-3-0 {
+            description = "a life with Brian";
+            libDepends = h: with h; [
+              data-textual HTTP lens logging-effect mtl optparse-applicative
+              parsers prettyprinter regex regex-with-pcre safe safe-exceptions
+              split sqlite-simple tagsoup tasty-hunit text text-printer time
+              trifecta word-wrap
+
+              base1t fpath log-plus mockio-log monaderror-io monadio-plus
+              natural optparse-plus parser-plus pcre stdmain tasty-plus
+              textual-plus trifecta-plus
+            ]; };
 
           # -- rename ------------------
 
