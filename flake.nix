@@ -80,11 +80,11 @@
       ref   = "r0.0.3.0";
       flake = false;
     };
-    columnify-src-0-0-1-0 = {
+    columnify-src-0-0-2-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "columnify";
-      ref   = "r0.0.1.0";
+      ref   = "r0.0.2.0";
       flake = false;
     };
     containers-plus-src-0-0-10-40 = {
@@ -178,18 +178,18 @@
       ref   = "r1.0.3.1";
       flake = false;
     };
-    has-callstack-src-1-0-1-19 = {
+    has-callstack-src-1-0-2-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "has-callstack";
-      ref   = "r1.0.1.19";
+      ref   = "r1.0.2.0";
       flake = false;
     };
-    hix-src-0-1-4-1 = {
+    hix-src-0-1-5-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "hix";
-      ref   = "r0.1.4.1";
+      ref   = "r0.1.5.0";
       flake = false;
     };
     hxrandr-src-0-0-0-0 = {
@@ -444,6 +444,13 @@
       ref   = "r0.0.1.0";
       flake = false;
     };
+    vidtools-src-0-0-0-0 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "vidtools";
+      ref   = "r0.0.0.0";
+      flake = false;
+    };
     yaml-plus-src-1-0-1-1 = {
       type  = "github";
       owner = "sixears";
@@ -464,7 +471,7 @@
             , base1t-src-0-0-6-0
             , boundedn-src-1-1-8-0
             , brian-src-0-0-3-0
-            , columnify-src-0-0-1-0
+            , columnify-src-0-0-2-0
             , containers-plus-src-0-0-10-40
             , date-imprecise-src-1-0-1-0
             , dhall-plus-src-0-0-2-1
@@ -478,8 +485,8 @@
             , fpath-src-1-3-5-0
             , fstat-src-1-0-2-26
             , handbrake-src-1-0-3-1
-            , has-callstack-src-1-0-1-19
-            , hix-src-0-1-4-1
+            , has-callstack-src-1-0-2-0
+            , hix-src-0-1-5-0
             , hostsdb-src-0-1-1-4
             , hxrandr-src-0-0-0-0
             , index-src-1-0-1-26
@@ -513,9 +520,10 @@
             , tasty-plus-src-1-5-2-24
             , textual-plus-src-1-1-4-0
             , tfmt-src-0-2-8-0
+            , htinydns-src-0-1-1-3
             , trifecta-plus-src-0-0-1-0
             , tuple-plus-src-0-0-1-0
-            , htinydns-src-0-1-1-3
+            , vidtools-src-0-0-0-0
             , yaml-plus-src-1-0-1-1
             }:
     flake-utils.lib.eachDefaultSystem (system:
@@ -690,18 +698,19 @@
             libDepends = h: with h; [ base base-unicode-symbols more-unicode ];
           };
 
-          # -- natural -----------------
+          # -- has-callstack -----------
 
-          natural          = natural-0-0;
-          natural-0-0      = natural-0-0-5-0;
-          natural-0-0-5-0 = callPkg "natural" "0.0.5.0" natural-src-0-0-5-0 {
-            description = "Type-level natural numbers";
-            libDepends  = h: with h; [
-              base base-unicode-symbols text
+          has-callstack          = has-callstack-1-0;
+          has-callstack-1-0      = has-callstack-1-0-2-0;
+          has-callstack-1-0-2-0 =
+            callPkg "has-callstack" "1.0.2.0" has-callstack-src-1-0-2-0 {
+              description = "TypeClass for things that carry around a callstack";
+              libDepends = h: with h; [
+                base base-unicode-symbols lens safe strings text
 
-              more-unicode
-            ];
-          };
+                more-unicode
+              ];
+            };
 
           # -- single ------------------
 
@@ -728,32 +737,33 @@
 
           # -- L2 (internal dependencies on L1) ------------
 
+          # -- natural -----------------
+
+          natural          = natural-0-0;
+          natural-0-0      = natural-0-0-5-0;
+          natural-0-0-5-0 = callPkg "natural" "0.0.5.0" natural-src-0-0-5-0 {
+            description = "Type-level natural numbers";
+            libDepends  = h: with h; [
+              base base-unicode-symbols bytestring data-textual deepseq lens mtl
+              tasty tasty-hunit tasty-quickcheck text text-printer
+
+              base0t has-callstack more-unicode
+            ];
+          };
+
+          # -- L3 (internal dependencies on L2) ------------
+
           # -- columnify -------------------
 
           columnify = columnify-0-0;
-          columnify-0-0 = columnify-0-0-1-0;
-          columnify-0-0-1-0 =
-            callPkg "columnify" "0.0.1.0" columnify-src-0-0-1-0 {
+          columnify-0-0 = columnify-0-0-2-0;
+          columnify-0-0-2-0 =
+            callPkg "columnify" "0.0.2.0" columnify-src-0-0-2-0 {
               description = "output text in aligned columns";
               libDepends = h: with h; [ base lens safe text
 
                                         base0 more-unicode natural ];
             };
-
-          # -- has-callstack -----------
-
-          has-callstack          = has-callstack-1-0;
-          has-callstack-1-0      = has-callstack-1-0-1-19;
-          has-callstack-1-0-1-19 =
-            callPkg "has-callstack" "1.0.1.19" has-callstack-src-1-0-1-19 {
-              description = "TypeClass for things that carry around a callstack";
-              libDepends = h: with h; [
-                base base-unicode-symbols lens safe strings text
-                more-unicode natural
-              ];
-            };
-
-          # -- L3 (internal dependencies on L2) ------------
 
           # -- tfmt --------------------
 
@@ -762,13 +772,13 @@
           tfmt-0-2-8-0 = callPkg "tfmt" "0.2.8.0" tfmt-src-0-2-8-0 {
             description = "type-safe text/string formatting with a simple interface";
             libDepends = h: with h; [
-              base containers data-textual formatting lens parsers prettyprinter
-              process tasty tasty-hunit template-haskell text text-printer time
-              trifecta
+              base base-unicode-symbols containers data-textual formatting lens
+              parsers prettyprinter process tasty tasty-hunit template-haskell
+              text text-printer time trifecta
 
               (hlib.markUnbroken text-format)
 
-              base0t has-callstack more-unicode number
+              base0t has-callstack more-unicode natural number
             ];
             testDepends = h: with h; [ base tasty ];
           };
@@ -1513,12 +1523,12 @@
           # -- hix ------------------
 
           hix         = hix-0-0;
-          hix-0-0     = hix-0-1-4-1;
+          hix-0-0     = hix-0-1-5-0;
 
-          hix-0-1-4-1 = callPkg "hix" "0.1.4.1" hix-src-0-1-4-1 {
+          hix-0-1-5-0 = callPkg "hix" "0.1.5.0" hix-src-0-1-5-0 {
             description = "nix library for haskell, with utilities";
             libDepends = h: with h; [
-              aeson base containers data-textual deepseq lens
+              aeson base bytestring containers data-textual deepseq lens
               logging-effect mono-traversable mtl optparse-applicative parsers
               safe text text-printer
 
@@ -1649,6 +1659,27 @@
               base base-unicode-symbols lens monaderror-io more-unicode natural
               optparse-applicative proclib tasty tasty-plus
             ];
+          };
+
+          # -- vidtools ----------------
+
+          vidtools         = vidtools-0-0;
+          vidtools-0-0     = vidtools-0-0-0-0;
+          vidtools-0-0-0-0 = callPkg "vidtools" "0.0.0.0" vidtools-src-0-0-0-0 {
+            description = "tools for working with videos";
+            libDepends = h: with h; [
+              base containers data-textual logging-effect mtl
+              optparse-applicative parsers text text-printer trifecta
+
+              base1 duration env-plus fpath fstat log-plus mockio mockio-log
+              mockio-plus monadio-plus more-unicode optparse-plus stdmain
+              textual-plus trifecta-plus
+            ];
+
+            postConfigure = ''
+              substitute proto/Video/MPlayer/Paths.hs src/Video/MPlayer/Paths.hs \
+                --replace __mplayer__ ${pkgs.mplayer}
+            '';
           };
 
           # -- L16 (internal dependencies on L15) ----------

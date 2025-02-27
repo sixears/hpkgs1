@@ -136,36 +136,36 @@
         "type": "github"
       }
     },
-    "brian-src-0-0-2-1": {
+    "brian-src-0-0-3-0": {
       "flake": false,
       "locked": {
-        "lastModified": 1728893452,
-        "narHash": "sha256-OlNcSG5Fxth87zjmwaCeGGrBPoTA85UWGTWyuCHiOSU=",
+        "lastModified": 1733214410,
+        "narHash": "sha256-9rjSV0HdOAAzTfh55t3cC04I+hw/RvinCx9IIiHFtvk=",
         "owner": "sixears",
         "repo": "brian",
-        "rev": "60827e3272752adaa268325689b3789f66ddc1be",
+        "rev": "8c3a3a961c78d3a3dd22003a305fd356fdfd5a57",
         "type": "github"
       },
       "original": {
         "owner": "sixears",
-        "ref": "r0.0.2.1",
+        "ref": "r0.0.3.0",
         "repo": "brian",
         "type": "github"
       }
     },
-    "columnify-src-0-0-1-0": {
+    "columnify-src-0-0-2-0": {
       "flake": false,
       "locked": {
-        "lastModified": 1699519161,
-        "narHash": "sha256-5E6/PQ5V1M5tB27V+5K0xjspjCO4LiNlCdlSCp/qZ44=",
+        "lastModified": 1738971194,
+        "narHash": "sha256-abA0wVaeYVdn0+P4uF4++5EqZ7AUyV3TAAVLxm1dIu8=",
         "owner": "sixears",
         "repo": "columnify",
-        "rev": "84f1d193e2dd13db8e58e5a1ab9d08c9dd01bf44",
+        "rev": "88b5bbe0d004b10b90d93e5632b88c12f299bf42",
         "type": "github"
       },
       "original": {
         "owner": "sixears",
-        "ref": "r0.0.1.0",
+        "ref": "r0.0.2.0",
         "repo": "columnify",
         "type": "github"
       }
@@ -407,19 +407,19 @@
         "type": "github"
       }
     },
-    "has-callstack-src-1-0-1-19": {
+    "has-callstack-src-1-0-2-0": {
       "flake": false,
       "locked": {
-        "lastModified": 1668928630,
-        "narHash": "sha256-lxdqsh05wSMQ3QMAMA5Euccm5lbFPTG50uhnChTxmxc=",
+        "lastModified": 1737066791,
+        "narHash": "sha256-fnOOzq2vtm7eNiDCnA2GCCVbtwFO1KVD7rJ1Pm3i39Y=",
         "owner": "sixears",
         "repo": "has-callstack",
-        "rev": "735266991d049f2a04f2a620373fde6e20054905",
+        "rev": "f43358a91a108fe2f037f366614b95004e6b7248",
         "type": "github"
       },
       "original": {
         "owner": "sixears",
-        "ref": "r1.0.1.19",
+        "ref": "r1.0.2.0",
         "repo": "has-callstack",
         "type": "github"
       }
@@ -943,8 +943,8 @@
         "base1-src-0-0-10-0": "base1-src-0-0-10-0",
         "base1t-src-0-0-6-0": "base1t-src-0-0-6-0",
         "boundedn-src-1-1-8-0": "boundedn-src-1-1-8-0",
-        "brian-src-0-0-2-1": "brian-src-0-0-2-1",
-        "columnify-src-0-0-1-0": "columnify-src-0-0-1-0",
+        "brian-src-0-0-3-0": "brian-src-0-0-3-0",
+        "columnify-src-0-0-2-0": "columnify-src-0-0-2-0",
         "containers-plus-src-0-0-10-40": "containers-plus-src-0-0-10-40",
         "date-imprecise-src-1-0-1-0": "date-imprecise-src-1-0-1-0",
         "dhall-plus-src-0-0-2-1": "dhall-plus-src-0-0-2-1",
@@ -959,7 +959,7 @@
         "fpath-src-1-3-5-0": "fpath-src-1-3-5-0",
         "fstat-src-1-0-2-26": "fstat-src-1-0-2-26",
         "handbrake-src-1-0-3-1": "handbrake-src-1-0-3-1",
-        "has-callstack-src-1-0-1-19": "has-callstack-src-1-0-1-19",
+        "has-callstack-src-1-0-2-0": "has-callstack-src-1-0-2-0",
         "hix-src-0-1-4-1": "hix-src-0-1-4-1",
         "hostsdb-src-0-1-1-4": "hostsdb-src-0-1-1-4",
         "htinydns-src-0-1-1-3": "htinydns-src-0-1-1-3",
@@ -998,6 +998,7 @@
         "tfmt-src-0-2-8-0": "tfmt-src-0-2-8-0",
         "trifecta-plus-src-0-0-1-0": "trifecta-plus-src-0-0-1-0",
         "tuple-plus-src-0-0-1-0": "tuple-plus-src-0-0-1-0",
+        "vidtools-src-0-0-0-0": "vidtools-src-0-0-0-0",
         "yaml-plus-src-1-0-1-1": "yaml-plus-src-1-0-1-1"
       }
     },
@@ -1134,6 +1135,23 @@
         "owner": "sixears",
         "ref": "r0.0.1.0",
         "repo": "tuple-plus",
+        "type": "github"
+      }
+    },
+    "vidtools-src-0-0-0-0": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1733254292,
+        "narHash": "sha256-JZMU+BhGISjWGG1YjZcb/7vPvtiRrSQ88LuZV9ugV8s=",
+        "owner": "sixears",
+        "repo": "vidtools",
+        "rev": "7f5937668d8abe67d7dda4e808a07082027d54da",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sixears",
+        "ref": "r0.0.0.0",
+        "repo": "vidtools",
         "type": "github"
       }
     },
