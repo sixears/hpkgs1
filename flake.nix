@@ -11,7 +11,10 @@
   description = "homegrown haskell packages";
   inputs = {
 #    nixpkgs.url = github:NixOS/nixpkgs/354184a; # master 2023-12-13
-    nixpkgs.url     = github:NixOS/nixpkgs/938aa157; # nixos-24.05 2024-06-20
+    nixpkgs.url     = github:NixOS/nixpkgs/d9d87c51; # nixos-24.11 2024-12-11
+#    nixpkgs.url     = github:NixOS/nixpkgs/f5090d49; # master 2025-03-01
+
+
 #    nixpkgs.url = git+file:/local/nixpkgs/master?rev=354184a83e7360c7c5a6fd76d9f6d28508ac3461; # master 2023-12-13
 
 #    nixpkgs.url     = github:nixos/nixpkgs/be44bf67; # nixos-22.05 2022-10-15
@@ -290,11 +293,11 @@
       ref   = "r1.2.6.0";
       flake = false;
     };
-    monadio-plus-src-2-5-3-0 = {
+    monadio-plus-src-2-6-0-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "monadio-plus";
-      ref   = "r2.5.3.0";
+      ref   = "r2.6.0.0";
       flake = false;
     };
     more-unicode-src-0-0-19-0 = {
@@ -501,7 +504,7 @@
             , mockio-log-src-0-1-3-1
             , mockio-plus-src-0-3-15-0
             , monaderror-io-src-1-2-6-0
-            , monadio-plus-src-2-5-3-0
+            , monadio-plus-src-2-6-0-0
             , more-unicode-src-0-0-19-0
             , natural-src-0-0-5-0
             , non-empty-containers-src-1-4-4-0
@@ -531,7 +534,7 @@
         pkgs = import nixpkgs {
           system = system;
           overlays = [
-            (final: prev: {haskellPackages = prev.haskell.packages.ghc948; })
+#            (final: prev: {haskellPackages = prev.haskell.packages.ghc948; })
           ];
         };
         hpkgs           = pkgs.haskellPackages;
@@ -545,6 +548,8 @@
                                        }:
               hpkgs.mkDerivation {
                 inherit pname version src description postConfigure;
+#                inherit pname version src description;
+#                postConfigure = postConfigure + "; exit 76";
                 libraryHaskellDepends = libDepends hpkgs;
                 license = pkgs.lib.licenses.mit;
                 testHaskellDepends = testDepends hpkgs;
@@ -744,8 +749,9 @@
           natural-0-0-5-0 = callPkg "natural" "0.0.5.0" natural-src-0-0-5-0 {
             description = "Type-level natural numbers";
             libDepends  = h: with h; [
-              base base-unicode-symbols bytestring data-textual deepseq lens mtl
-              tasty tasty-hunit tasty-quickcheck text text-printer
+              base base-unicode-symbols bytestring containers data-textual
+              deepseq lens mtl tasty tasty-hunit tasty-quickcheck text
+              text-printer unordered-containers
 
               base0t has-callstack more-unicode
             ];
@@ -1124,10 +1130,10 @@
 
           # -- monadio-plus ------------
 
-          monadio-plus          = monadio-plus-2-5;
-          monadio-plus-2-5      = monadio-plus-2-5-3-0;
-          monadio-plus-2-5-3-0 =
-            callPkg "monadio-plus" "2.5.3.0" monadio-plus-src-2-5-3-0 {
+          monadio-plus          = monadio-plus-2-6;
+          monadio-plus-2-6      = monadio-plus-2-6-0-0;
+          monadio-plus-2-6-0-0 =
+            callPkg "monadio-plus" "2.6.0.0" monadio-plus-src-2-6-0-0 {
               description = "IO operations, using MonadIO & MonadError with AsIOError";
               libDepends = h: with h; [
                 base base-unicode-symbols bytestring containers data-textual
@@ -1140,7 +1146,8 @@
               testDepends = h: with h; [ base tasty ];
               postConfigure = ''
                 substitute proto/MonadIO/Paths.hs src/MonadIO/Paths.hs \
-                  --replace __gnugrep__ ${pkgs.gnugrep}
+                  --replace __gnugrep__ ${pkgs.gnugrep} && ls -l src/MonadIO/
+
               '';
             };
 
@@ -1730,7 +1737,7 @@
             packages = _: [p];
             buildInputs = with hpkgs; [
               haskell-language-server ## you must build it with your ghc to work
-              ghcid cabal-install
+              ghcid # cabal-install # cabal-install isn't currently building
             ];
           }) packages);
 
@@ -1779,7 +1786,7 @@
               packages = _: pkgs.lib.debug.traceSeqN 2 [ myHaskellPkgs_ ] [ myHaskellPkgs_ ];
            buildInputs = with hpkgs; [
               haskell-language-server ## you must build it with your ghc to work
-              ghcid cabal-install
+              ghcid # cabal-install # cabal-install isn't currently building
             ];
  #              buildInputs = with hpkgs; [ packages.yaml-plus ]; # criterion ];
               # Prevents cabal from choosing alternate plans, so that

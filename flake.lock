@@ -424,19 +424,19 @@
         "type": "github"
       }
     },
-    "hix-src-0-1-4-1": {
+    "hix-src-0-1-5-0": {
       "flake": false,
       "locked": {
-        "lastModified": 1719237885,
-        "narHash": "sha256-rooEGoDHpGaKV4/JTdBLvVz+kfKnvo5STYeLUhXR4Dc=",
+        "lastModified": 1740642826,
+        "narHash": "sha256-pJ9kqfgfBzb+6OEvwA9HTFEGGJafMJSsqByNLdgNVTo=",
         "owner": "sixears",
         "repo": "hix",
-        "rev": "d7c588a34d05dceddb40a8fac688826b2429f651",
+        "rev": "aeb6bd101eb28f46aa16482dd0d31638ae85ed67",
         "type": "github"
       },
       "original": {
         "owner": "sixears",
-        "ref": "r0.1.4.1",
+        "ref": "r0.1.5.0",
         "repo": "hix",
         "type": "github"
       }
@@ -696,19 +696,19 @@
         "type": "github"
       }
     },
-    "monadio-plus-src-2-5-3-0": {
+    "monadio-plus-src-2-6-0-0": {
       "flake": false,
       "locked": {
-        "lastModified": 1687454612,
-        "narHash": "sha256-yCQv+d0SNwAWyPqVcXiQANRbeohcX5iFlJmWAXXZN5g=",
+        "lastModified": 1741594695,
+        "narHash": "sha256-9xQMqGFbOQGShKl5pLRxOwIgmEWvFXmOCrIVdjCANBU=",
         "owner": "sixears",
         "repo": "monadio-plus",
-        "rev": "695d835da37ced1304646312a248b3347f64017d",
+        "rev": "bc5490d6ed18bb2f3b87d3f5afb31a8e5f8db346",
         "type": "github"
       },
       "original": {
         "owner": "sixears",
-        "ref": "r2.5.3.0",
+        "ref": "r2.6.0.0",
         "repo": "monadio-plus",
         "type": "github"
       }
@@ -749,16 +749,16 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1718717462,
-        "narHash": "sha256-qddfQLMaWR2gxfEzUM/zFZVK6H1kTv9WBQSBQxbP3MU=",
+        "lastModified": 1733858964,
+        "narHash": "sha256-bPgbpddXTvbTFy1SjNbTlnOLUEHxHUv/6QcviLOkRdk=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "938aa157bbd6e3c6fd7dcb77998b1f92c2ad1631",
+        "rev": "d9d87c51960050e89c79e4025082ed965e770d68",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
-        "ref": "938aa157",
+        "ref": "d9d87c51",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -960,7 +960,7 @@
         "fstat-src-1-0-2-26": "fstat-src-1-0-2-26",
         "handbrake-src-1-0-3-1": "handbrake-src-1-0-3-1",
         "has-callstack-src-1-0-2-0": "has-callstack-src-1-0-2-0",
-        "hix-src-0-1-4-1": "hix-src-0-1-4-1",
+        "hix-src-0-1-5-0": "hix-src-0-1-5-0",
         "hostsdb-src-0-1-1-4": "hostsdb-src-0-1-1-4",
         "htinydns-src-0-1-1-3": "htinydns-src-0-1-1-3",
         "hxrandr-src-0-0-0-0": "hxrandr-src-0-0-0-0",
@@ -976,7 +976,7 @@
         "mockio-plus-src-0-3-15-0": "mockio-plus-src-0-3-15-0",
         "mockio-src-0-0-6-0": "mockio-src-0-0-6-0",
         "monaderror-io-src-1-2-6-0": "monaderror-io-src-1-2-6-0",
-        "monadio-plus-src-2-5-3-0": "monadio-plus-src-2-5-3-0",
+        "monadio-plus-src-2-6-0-0": "monadio-plus-src-2-6-0-0",
         "more-unicode-src-0-0-19-0": "more-unicode-src-0-0-19-0",
         "natural-src-0-0-5-0": "natural-src-0-0-5-0",
         "nixpkgs": "nixpkgs",
