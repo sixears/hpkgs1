@@ -279,11 +279,11 @@
       ref   = "r0.1.3.1";
       flake = false;
     };
-    mockio-plus-src-0-3-15-0 = {
+    mockio-plus-src-0-3-16-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "mockio-plus";
-      ref   = "r0.3.15.0";
+      ref   = "r0.3.16.0";
       flake = false;
     };
     monaderror-io-src-1-2-6-0 = {
@@ -447,13 +447,13 @@
       ref   = "r0.0.1.0";
       flake = false;
     };
-    vidtools-src-0-0-0-0 = {
-      type  = "github";
-      owner = "sixears";
-      repo  = "vidtools";
-      ref   = "r0.0.0.0";
-      flake = false;
-    };
+##    vidtools-src-0-0-0-0 = {
+##      type  = "github";
+##      owner = "sixears";
+##      repo  = "vidtools";
+##      ref   = "r0.0.0.0";
+##      flake = false;
+##    };
     yaml-plus-src-1-0-1-1 = {
       type  = "github";
       owner = "sixears";
@@ -502,7 +502,7 @@
             , mockio-cmds-util-linux-src-1-0-1-3
             , mockio-src-0-0-6-0
             , mockio-log-src-0-1-3-1
-            , mockio-plus-src-0-3-15-0
+            , mockio-plus-src-0-3-16-0
             , monaderror-io-src-1-2-6-0
             , monadio-plus-src-2-6-0-0
             , more-unicode-src-0-0-19-0
@@ -526,7 +526,7 @@
             , htinydns-src-0-1-1-3
             , trifecta-plus-src-0-0-1-0
             , tuple-plus-src-0-0-1-0
-            , vidtools-src-0-0-0-0
+##            , vidtools-src-0-0-0-0
             , yaml-plus-src-1-0-1-1
             }:
     flake-utils.lib.eachDefaultSystem (system:
@@ -1441,9 +1441,9 @@
           # -- mockio-plus -------------
 
           mockio-plus          = mockio-plus-0-3;
-          mockio-plus-0-3      = mockio-plus-0-3-15-0;
-          mockio-plus-0-3-15-0 = callPkg "mockio-plus" "0.3.15.0"
-                                         mockio-plus-src-0-3-15-0 {
+          mockio-plus-0-3      = mockio-plus-0-3-16-0;
+          mockio-plus-0-3-16-0 = callPkg "mockio-plus" "0.3.16.0"
+                                         mockio-plus-src-0-3-16-0 {
             description = "MonadIO, Mocked, Logged, with Text";
             libDepends = h: with h; [
               base bytestring containers data-default data-textual directory
@@ -1670,24 +1670,24 @@
 
           # -- vidtools ----------------
 
-          vidtools         = vidtools-0-0;
-          vidtools-0-0     = vidtools-0-0-0-0;
-          vidtools-0-0-0-0 = callPkg "vidtools" "0.0.0.0" vidtools-src-0-0-0-0 {
-            description = "tools for working with videos";
-            libDepends = h: with h; [
-              base containers data-textual logging-effect mtl
-              optparse-applicative parsers text text-printer trifecta
-
-              base1 duration env-plus fpath fstat log-plus mockio mockio-log
-              mockio-plus monadio-plus more-unicode optparse-plus stdmain
-              textual-plus trifecta-plus
-            ];
-
-            postConfigure = ''
-              substitute proto/Video/MPlayer/Paths.hs src/Video/MPlayer/Paths.hs \
-                --replace __mplayer__ ${pkgs.mplayer}
-            '';
-          };
+##          vidtools         = vidtools-0-0;
+##          vidtools-0-0     = vidtools-0-0-0-0;
+##          vidtools-0-0-0-0 = callPkg "vidtools" "0.0.0.0" vidtools-src-0-0-0-0 {
+##            description = "tools for working with videos";
+##            libDepends = h: with h; [
+##              base containers data-textual logging-effect mtl
+##              optparse-applicative parsers text text-printer trifecta
+##
+##              base1 duration env-plus fpath fstat log-plus mockio mockio-log
+##              mockio-plus monadio-plus more-unicode optparse-plus stdmain
+##              textual-plus trifecta-plus
+##            ];
+##
+##            postConfigure = ''
+##              substitute proto/Video/MPlayer/Paths.hs src/Video/MPlayer/Paths.hs \
+##                --replace __mplayer__ ${pkgs.mplayer}
+##            '';
+##          };
 
           # -- L16 (internal dependencies on L15) ----------
 

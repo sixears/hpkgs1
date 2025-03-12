@@ -645,19 +645,19 @@
         "type": "github"
       }
     },
-    "mockio-plus-src-0-3-15-0": {
+    "mockio-plus-src-0-3-16-0": {
       "flake": false,
       "locked": {
-        "lastModified": 1724689808,
-        "narHash": "sha256-5p2Qlree/MbpMv/HZ+6PFnv6CoF2dz+NrJ/v0AuKRDs=",
+        "lastModified": 1741759860,
+        "narHash": "sha256-VbVYQR+IuOokOtvX130JV09bVOQ0fXrbXxMH8gKM74I=",
         "owner": "sixears",
         "repo": "mockio-plus",
-        "rev": "cded290e1b76f892617b5f44a91cbc956a40e18f",
+        "rev": "4161b776bfaff44af0988d6ea2bce30b12a8c8f3",
         "type": "github"
       },
       "original": {
         "owner": "sixears",
-        "ref": "r0.3.15.0",
+        "ref": "r0.3.16.0",
         "repo": "mockio-plus",
         "type": "github"
       }
@@ -973,7 +973,7 @@
         "mockio-cmds-rsync-src-1-0-0-1": "mockio-cmds-rsync-src-1-0-0-1",
         "mockio-cmds-util-linux-src-1-0-1-3": "mockio-cmds-util-linux-src-1-0-1-3",
         "mockio-log-src-0-1-3-1": "mockio-log-src-0-1-3-1",
-        "mockio-plus-src-0-3-15-0": "mockio-plus-src-0-3-15-0",
+        "mockio-plus-src-0-3-16-0": "mockio-plus-src-0-3-16-0",
         "mockio-src-0-0-6-0": "mockio-src-0-0-6-0",
         "monaderror-io-src-1-2-6-0": "monaderror-io-src-1-2-6-0",
         "monadio-plus-src-2-6-0-0": "monadio-plus-src-2-6-0-0",
@@ -998,7 +998,6 @@
         "tfmt-src-0-2-8-0": "tfmt-src-0-2-8-0",
         "trifecta-plus-src-0-0-1-0": "trifecta-plus-src-0-0-1-0",
         "tuple-plus-src-0-0-1-0": "tuple-plus-src-0-0-1-0",
-        "vidtools-src-0-0-0-0": "vidtools-src-0-0-0-0",
         "yaml-plus-src-1-0-1-1": "yaml-plus-src-1-0-1-1"
       }
     },
@@ -1135,23 +1134,6 @@
         "owner": "sixears",
         "ref": "r0.0.1.0",
         "repo": "tuple-plus",
-        "type": "github"
-      }
-    },
-    "vidtools-src-0-0-0-0": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1733254292,
-        "narHash": "sha256-JZMU+BhGISjWGG1YjZcb/7vPvtiRrSQ88LuZV9ugV8s=",
-        "owner": "sixears",
-        "repo": "vidtools",
-        "rev": "7f5937668d8abe67d7dda4e808a07082027d54da",
-        "type": "github"
-      },
-      "original": {
-        "owner": "sixears",
-        "ref": "r0.0.0.0",
-        "repo": "vidtools",
         "type": "github"
       }
     },
