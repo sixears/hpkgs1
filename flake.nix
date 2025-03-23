@@ -188,11 +188,11 @@
       ref   = "r1.0.2.0";
       flake = false;
     };
-    hix-src-0-1-5-0 = {
+    hix-src-0-1-6-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "hix";
-      ref   = "r0.1.5.0";
+      ref   = "r0.1.6.0";
       flake = false;
     };
     hxrandr-src-0-0-0-0 = {
@@ -489,7 +489,7 @@
             , fstat-src-1-0-2-26
             , handbrake-src-1-0-3-1
             , has-callstack-src-1-0-2-0
-            , hix-src-0-1-5-0
+            , hix-src-0-1-6-0
             , hostsdb-src-0-1-1-4
             , hxrandr-src-0-0-0-0
             , index-src-1-0-1-26
@@ -749,9 +749,8 @@
           natural-0-0-5-0 = callPkg "natural" "0.0.5.0" natural-src-0-0-5-0 {
             description = "Type-level natural numbers";
             libDepends  = h: with h; [
-              base base-unicode-symbols bytestring containers data-textual
-              deepseq lens mtl tasty tasty-hunit tasty-quickcheck text
-              text-printer unordered-containers
+              base base-unicode-symbols bytestring data-textual deepseq lens mtl
+              tasty tasty-hunit tasty-quickcheck text text-printer
 
               base0t has-callstack more-unicode
             ];
@@ -1530,9 +1529,9 @@
           # -- hix ------------------
 
           hix         = hix-0-0;
-          hix-0-0     = hix-0-1-5-0;
+          hix-0-0     = hix-0-1-6-0;
 
-          hix-0-1-5-0 = callPkg "hix" "0.1.5.0" hix-src-0-1-5-0 {
+          hix-0-1-6-0 = callPkg "hix" "0.1.6.0" hix-src-0-1-6-0 {
             description = "nix library for haskell, with utilities";
             libDepends = h: with h; [
               aeson base bytestring containers data-textual deepseq lens
