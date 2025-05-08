@@ -300,11 +300,11 @@
       ref   = "r2.6.0.0";
       flake = false;
     };
-    more-unicode-src-0-0-19-0 = {
+    more-unicode-src-0-0-23-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "more-unicode";
-      ref   = "r0.0.19.0";
+      ref   = "r0.0.23.0";
       flake = false;
     };
     natural-src-0-0-5-0 = {
@@ -447,6 +447,13 @@
       ref   = "r0.0.1.0";
       flake = false;
     };
+    while-src-0-0-0-1 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "while";
+      ref   = "r0.0.0.1";
+      flake = false;
+    };
 ##    vidtools-src-0-0-0-0 = {
 ##      type  = "github";
 ##      owner = "sixears";
@@ -505,7 +512,7 @@
             , mockio-plus-src-0-3-16-0
             , monaderror-io-src-1-2-6-0
             , monadio-plus-src-2-6-0-0
-            , more-unicode-src-0-0-19-0
+            , more-unicode-src-0-0-23-0
             , natural-src-0-0-5-0
             , non-empty-containers-src-1-4-4-0
             , number-src-1-1-2-14
@@ -527,6 +534,7 @@
             , trifecta-plus-src-0-0-1-0
             , tuple-plus-src-0-0-1-0
 ##            , vidtools-src-0-0-0-0
+            , while-src-0-0-0-1
             , yaml-plus-src-1-0-1-1
             }:
     flake-utils.lib.eachDefaultSystem (system:
@@ -660,20 +668,20 @@
           # -- more-unicode ------------
 
           more-unicode           = more-unicode-0-0;
-          more-unicode-0-0       = more-unicode-0-0-19-0;
-          more-unicode-0-0-19-0 =
-            callPkg "more-unicode" "0.0.19.0" more-unicode-src-0-0-19-0 {
+          more-unicode-0-0       = more-unicode-0-0-23-0;
+          more-unicode-0-0-23-0 =
+            callPkg "more-unicode" "0.0.23.0" more-unicode-src-0-0-23-0 {
               description = "More unicode symbols";
               libDepends = h: with h; [
-                base-unicode-symbols containers lens mono-traversable
-                prettyprinter tasty-hunit tasty-quickcheck
+                base-unicode-symbols bytestring containers data-textual lens
+                mono-traversable prettyprinter tasty-hunit tasty-quickcheck
                 # strangely, neither 'base' nor 'text' seem to be required in
                 # practice!?
                 # base text
               ];
             };
 
-          # -- number --------------------
+          # -- number ------------------
 
           number          = number-1-1;
           number-1-1      = number-1-1-2-14;
@@ -740,6 +748,20 @@
               libDepends = h: with h; [ base ];
             };
 
+          # -- while -------------------
+
+          while           = while-0-0;
+          while-0-0       = while-0-0-0-1;
+          while-0-0-0-1 =
+            callPkg "while" "0.0.0.1" while-src-0-0-0-1 {
+              description = "More unicode symbols";
+              libDepends = h: with h; [
+                bytestring text
+
+                more-unicode
+              ];
+            };
+
           # -- L2 (internal dependencies on L1) ------------
 
           # -- natural -----------------
@@ -752,7 +774,7 @@
               base base-unicode-symbols bytestring data-textual deepseq lens mtl
               tasty tasty-hunit tasty-quickcheck text text-printer
 
-              base0t has-callstack more-unicode
+              base0t has-callstack more-unicode while
             ];
           };
 
