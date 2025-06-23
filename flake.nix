@@ -307,11 +307,11 @@
       ref   = "r0.0.23.0";
       flake = false;
     };
-    natural-src-0-0-5-0 = {
+    natural-src-0-1-0-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "natural";
-      ref   = "r0.0.5.0";
+      ref   = "r0.1.0.0";
       flake = false;
     };
     non-empty-containers-src-1-4-4-0 = {
@@ -513,7 +513,7 @@
             , monaderror-io-src-1-2-6-0
             , monadio-plus-src-2-6-0-0
             , more-unicode-src-0-0-23-0
-            , natural-src-0-0-5-0
+            , natural-src-0-1-0-0
             , non-empty-containers-src-1-4-4-0
             , number-src-1-1-2-14
             , optparse-plus-src-1-3-4-0
@@ -595,7 +595,126 @@
           nixpkgs = pkgs;
         };
 
-        packages = rec {
+        packages =
+          let
+            l0 = rec {
+              # -- base0 -------------------
+
+              base0-0-0-4-11 = callPkg "base0" "0.0.4.11" base0-src-0-0-4-11 {
+                description =
+                  "Prelude replacement, external packages only, no tests";
+                libDepends = h: with h;[
+                  base base-unicode-symbols data-default data-textual hashable lens
+                  mtl safe
+                ];
+              };
+
+              base0-0-0 = base0-0-0-4-11;
+              base0 = base0-0-0;
+
+              # -- more-unicode ------------
+
+              more-unicode-0-0-23-0 =
+                callPkg "more-unicode" "0.0.23.0" more-unicode-src-0-0-23-0 {
+                  description = "More unicode symbols";
+                  libDepends = h: with h; [
+                    base-unicode-symbols bytestring containers data-textual lens
+                    mono-traversable prettyprinter tasty-hunit tasty-quickcheck
+                    # strangely, neither 'base' nor 'text' seem to be required
+                    # in practice!?
+                    # base text
+                  ];
+                };
+
+              more-unicode           = more-unicode-0-0;
+              more-unicode-0-0       = more-unicode-0-0-23-0;
+            };
+
+            l1 = rec {
+              # -- base0t -------------------
+
+              base0t-0-0-1-14 =
+                callPkg "base0t" "0.0.1.14" base0t-src-0-0-1-14 {
+                  description = "Prelude replacement, external packages " +
+                                "only, incl. tests";
+                  libDepends = h: with h; [ l0.base0 tasty tasty-hunit ];
+                };
+              base0t-0-0 = base0t-0-0-1-14;
+              base0t = base0t-0-0;
+
+              # -- has-callstack -----------
+
+              has-callstack-1-0-2-0 =
+                callPkg "has-callstack" "1.0.2.0" has-callstack-src-1-0-2-0 {
+                  description = "TypeClass for things that carry around a " +
+                                "callstack";
+                  libDepends = h: with h; [
+                    base base-unicode-symbols lens safe strings text
+
+                    l0.more-unicode
+                  ];
+                };
+
+              has-callstack-1-0      = has-callstack-1-0-2-0;
+              has-callstack          = has-callstack-1-0;
+
+              # -- while -------------------
+
+              while-0-0-0-1 =
+                callPkg "while" "0.0.0.1" while-src-0-0-0-1 {
+                  description = "takeWhile, dropWhile etc.; as a typeclass";
+                  libDepends = h: with h; [
+                    bytestring text
+
+                    l0.more-unicode
+                  ];
+                };
+
+              while-0-0       = while-0-0-0-1;
+              while           = while-0-0;
+            };
+
+            l2 = rec {
+              # -- natural -----------------
+
+              natural-0-1-0-0 =
+                callPkg "natural" "0.1.0.0" natural-src-0-1-0-0 {
+                  description = "Type-level natural numbers";
+                  libDepends  = h: with h; [
+                    base base-unicode-symbols bytestring data-textual deepseq
+                    lens mtl tasty tasty-hunit tasty-quickcheck text
+                    text-printer
+
+                    l1.base0t l1.has-callstack l0.more-unicode l1.while
+                  ];
+                };
+
+              natural-0-0      = natural-0-1-0-0;
+              natural          = natural-0-0;
+            };
+
+            l3 = rec {
+              # -- tfmt --------------------
+
+              tfmt-0-2-8-0 = callPkg "tfmt" "0.2.8.0" tfmt-src-0-2-8-0 {
+                description = "type-safe text/string formatting with a " +
+                              "simple interface";
+                libDepends = h: with h; [
+                  base base-unicode-symbols containers data-textual formatting
+                  lens parsers prettyprinter process tasty tasty-hunit
+                  template-haskell text text-printer time trifecta
+
+                  (hlib.markUnbroken text-format)
+
+                  l1.base0t l1.has-callstack l0.more-unicode l2.natural number
+                ];
+                testDepends = h: with h; [ base tasty ];
+              };
+
+              tfmt-0-2      = tfmt-0-2-8-0;
+              tfmt          = tfmt-0-2;
+            };
+          in rec {
 
           # -- L0 (no internal dependencies) ---------------
 
@@ -609,19 +728,6 @@
               aeson base base-unicode-symbols colour data-default data-textual
               diagrams-core diagrams-lib diagrams-svg lens mono-traversable mtl
               SVGFonts text-printer
-            ];
-          };
-
-          # -- base0 -------------------
-
-          base0 = base0-0-0;
-          base0-0-0 = base0-0-0-4-11;
-          base0-0-0-4-11 = callPkg "base0" "0.0.4.11" base0-src-0-0-4-11 {
-            description =
-              "Prelude replacement, external packages only, no tests";
-            libDepends = h: with h;[
-              base base-unicode-symbols data-default data-textual hashable lens
-              mtl safe
             ];
           };
 
@@ -665,22 +771,6 @@
 ##              '';
 ##          };
 
-          # -- more-unicode ------------
-
-          more-unicode           = more-unicode-0-0;
-          more-unicode-0-0       = more-unicode-0-0-23-0;
-          more-unicode-0-0-23-0 =
-            callPkg "more-unicode" "0.0.23.0" more-unicode-src-0-0-23-0 {
-              description = "More unicode symbols";
-              libDepends = h: with h; [
-                base-unicode-symbols bytestring containers data-textual lens
-                mono-traversable prettyprinter tasty-hunit tasty-quickcheck
-                # strangely, neither 'base' nor 'text' seem to be required in
-                # practice!?
-                # base text
-              ];
-            };
-
           # -- number ------------------
 
           number          = number-1-1;
@@ -693,37 +783,14 @@
 
           # -- L1 (internal dependencies on L0) ------------
 
-          # -- base0t -------------------
-
-          base0t = base0t-0-0;
-          base0t-0-0 = base0t-0-0-1-14;
-          base0t-0-0-1-14 = callPkg "base0t" "0.0.1.14" base0t-src-0-0-1-14 {
-            description = "Prelude replacement, external packages only, incl. tests";
-            libDepends = h: with h; [ base0 tasty tasty-hunit ];
-          };
-
           # -- equalish ----------------
 
           equalish         = equalish-0-0;
           equalish-0-0     = equalish-0-0-0-2;
           equalish-0-0-0-2 = callPkg "equalish" "0.0.0.2" equalish-src-0-0-0-2 {
             description = "Like Eq, but with explanations when not equal";
-            libDepends = h: with h; [ base base-unicode-symbols more-unicode ];
+            libDepends = h: with h; [ base base-unicode-symbols l0.more-unicode ];
           };
-
-          # -- has-callstack -----------
-
-          has-callstack          = has-callstack-1-0;
-          has-callstack-1-0      = has-callstack-1-0-2-0;
-          has-callstack-1-0-2-0 =
-            callPkg "has-callstack" "1.0.2.0" has-callstack-src-1-0-2-0 {
-              description = "TypeClass for things that carry around a callstack";
-              libDepends = h: with h; [
-                base base-unicode-symbols lens safe strings text
-
-                more-unicode
-              ];
-            };
 
           # -- single ------------------
 
@@ -734,7 +801,7 @@
             libDepends = h: with h; [
               base base-unicode-symbols containers dlist mono-traversable
 
-              more-unicode
+              l0.more-unicode
             ];
           };
 
@@ -748,35 +815,7 @@
               libDepends = h: with h; [ base ];
             };
 
-          # -- while -------------------
-
-          while           = while-0-0;
-          while-0-0       = while-0-0-0-1;
-          while-0-0-0-1 =
-            callPkg "while" "0.0.0.1" while-src-0-0-0-1 {
-              description = "More unicode symbols";
-              libDepends = h: with h; [
-                bytestring text
-
-                more-unicode
-              ];
-            };
-
           # -- L2 (internal dependencies on L1) ------------
-
-          # -- natural -----------------
-
-          natural          = natural-0-0;
-          natural-0-0      = natural-0-0-5-0;
-          natural-0-0-5-0 = callPkg "natural" "0.0.5.0" natural-src-0-0-5-0 {
-            description = "Type-level natural numbers";
-            libDepends  = h: with h; [
-              base base-unicode-symbols bytestring data-textual deepseq lens mtl
-              tasty tasty-hunit tasty-quickcheck text text-printer
-
-              base0t has-callstack more-unicode while
-            ];
-          };
 
           # -- L3 (internal dependencies on L2) ------------
 
@@ -789,26 +828,8 @@
               description = "output text in aligned columns";
               libDepends = h: with h; [ base lens safe text
 
-                                        base0 more-unicode natural ];
+                                        l0.base0 l0.more-unicode l2.natural ];
             };
-
-          # -- tfmt --------------------
-
-          tfmt          = tfmt-0-2;
-          tfmt-0-2      = tfmt-0-2-8-0;
-          tfmt-0-2-8-0 = callPkg "tfmt" "0.2.8.0" tfmt-src-0-2-8-0 {
-            description = "type-safe text/string formatting with a simple interface";
-            libDepends = h: with h; [
-              base base-unicode-symbols containers data-textual formatting lens
-              parsers prettyprinter process tasty tasty-hunit template-haskell
-              text text-printer time trifecta
-
-              (hlib.markUnbroken text-format)
-
-              base0t has-callstack more-unicode natural number
-            ];
-            testDepends = h: with h; [ base tasty ];
-          };
 
           # -- monaderror-io -----------
 
@@ -820,7 +841,7 @@
             libDepends = h: with h; [
               base deepseq lens mtl text-printer
 
-              base0 has-callstack more-unicode
+              l0.base0 l1.has-callstack l0.more-unicode
             ];
             testDepends = h: with h; [ base ];
           };
@@ -836,7 +857,7 @@
             libDepends = h: with h; [
               base base-unicode-symbols data-textual mtl
 
-              has-callstack monaderror-io more-unicode
+              l1.has-callstack monaderror-io l0.more-unicode
             ];
             testDepends = h: with h; [ base ];
           };
@@ -848,7 +869,7 @@
           fstat-1-0-2-26 = callPkg "fstat" "1.0.2.26" fstat-src-1-0-2-26 {
             description = "Haskell version of C's struct stat";
             libDepends = h: with h; [
-              base base-unicode-symbols data-textual text text-printer tfmt time
+              base base-unicode-symbols data-textual text text-printer l3.tfmt time
               unix
             ];
           };
@@ -864,7 +885,7 @@
                 base base-unicode-symbols data-textual deepseq lens mtl parsec
                 text-printer
 
-                has-callstack monaderror-io more-unicode
+                l1.has-callstack monaderror-io l0.more-unicode
               ];
               testDepends = h: with h; [ base ];
             };
@@ -880,7 +901,7 @@
                  base base-unicode-symbols bytestring data-textual deepseq mtl
                  parsers tasty tasty-hunit tasty-quickcheck text text-printer
 
-                 base0 has-callstack more-unicode tfmt
+                 l0.base0 l1.has-callstack l0.more-unicode l3.tfmt
                ];
             };
 
@@ -897,7 +918,7 @@
                 base base-unicode-symbols data-default lens template-haskell
                 text
 
-                monaderror-io more-unicode parsec-plus-base tfmt
+                monaderror-io l0.more-unicode parsec-plus-base l3.tfmt
               ];
             };
 
@@ -913,7 +934,7 @@
                 optparse-applicative safe tasty tasty-hunit tasty-quickcheck
                 temporary text text-printer
 
-                exited more-unicode
+                exited l0.more-unicode
               ];
               testDepends = h: with h; [ base optparse-applicative ];
             };
@@ -931,13 +952,13 @@
               ghc-typelits-extra lens mtl QuickCheck tasty tasty-hunit
               tasty-quickcheck template-haskell validity
 
-              more-unicode number tasty-plus tfmt
+              l0.more-unicode number tasty-plus l3.tfmt
             ];
             testDepends = h: with h; [
               base base-unicode-symbols optparse-applicative tasty
               tasty-hunit
 
-              more-unicode tasty-plus
+              l0.more-unicode tasty-plus
             ];
           };
 
@@ -951,12 +972,12 @@
               base base-unicode-symbols hashable safe tasty tasty-hunit
               unordered-containers
 
-              more-unicode tasty-plus
+              l0.more-unicode tasty-plus
             ];
             testDepends = h: with h; [
               base base-unicode-symbols optparse-applicative
 
-              more-unicode tasty-plus
+              l0.more-unicode tasty-plus
             ];
           };
 
@@ -973,8 +994,8 @@
                 tasty-hunit tasty-quickcheck template-haskell text text-printer
                 yaml
 
-                more-unicode parsec-plus parsec-plus-base quasiquoting
-                tasty-plus textual-plus tfmt
+                l0.more-unicode parsec-plus parsec-plus-base quasiquoting
+                tasty-plus textual-plus l3.tfmt
               ];
               testDepends = h: with h; [ base tasty ];
             };
@@ -988,7 +1009,7 @@
           base1-0-0-10-0 = callPkg "base1" "0.0.10.0" base1-src-0-0-10-0 {
             description = "Prelude replacement, incl. first-level local packages";
             libDepends = h: with h; [
-              base0 has-callstack index monaderror-io more-unicode tfmt
+              l0.base0 l1.has-callstack index monaderror-io l0.more-unicode l3.tfmt
             ];
           };
 
@@ -1015,7 +1036,7 @@
           base1t-0-0-6-0 = callPkg "base1t" "0.0.6.0" base1t-src-0-0-6-0 {
             description = "Prelude replacement, first-level local packages, "
                         + "incl. tests";
-            libDepends = h: with h; [ base0t base1 tasty-plus ];
+            libDepends = h: with h; [ l1.base0t base1 tasty-plus ];
           };
 
           # -- non-empty-containers ----
@@ -1028,11 +1049,11 @@
               description = "Containers that may not be empty, by construction";
               libDepends = h: with h; [
                 base base-unicode-symbols base1 containers deepseq lens
-                mono-traversable more-unicode QuickCheck tasty tasty-hunit
+                mono-traversable l0.more-unicode QuickCheck tasty tasty-hunit
                 tasty-plus tasty-quickcheck template-haskell text text-printer
                 unordered-containers
 
-                base1 more-unicode tasty-plus
+                base1 l0.more-unicode tasty-plus
               ];
               testDepends = h: with h; [ base tasty ];
             };
@@ -1053,7 +1074,7 @@
                   mono-traversable tasty tasty-hunit text-printer
                   unordered-containers
 
-                  base1 more-unicode non-empty-containers tasty-plus
+                  base1 l0.more-unicode non-empty-containers tasty-plus
                   textual-plus
                 ];
                 testDepends = h: with h; [ base tasty ];
@@ -1088,8 +1109,8 @@
               tasty tasty-hunit tasty-quickcheck template-haskell temporary text
               text-printer th-lift-instances unix validity
 
-              base1t exited has-callstack monaderror-io more-unicode
-              non-empty-containers quasiquoting tasty-plus tfmt
+              base1t exited l1.has-callstack monaderror-io l0.more-unicode
+              non-empty-containers quasiquoting tasty-plus l3.tfmt
             ];
             testDepends = h: with h; [ base tasty ];
           };
@@ -1105,7 +1126,7 @@
                 base base-unicode-symbols data-textual mono-traversable mtl
                 nonempty-containers parsec parsers tasty tasty-hunit
 
-                more-unicode natural non-empty-containers tasty-plus
+                l0.more-unicode l2.natural non-empty-containers tasty-plus
               ];
               testDepends = h: with h; [ base tasty ];
             };
@@ -1122,13 +1143,13 @@
               base base-unicode-symbols data-textual lens parsers QuickCheck
               tasty tasty-hunit tasty-quickcheck text text-printer
 
-              boundedn more-unicode non-empty-containers number parser-plus
-              tasty-plus textual-plus tfmt
+              boundedn l0.more-unicode non-empty-containers number parser-plus
+              tasty-plus textual-plus l3.tfmt
             ];
             testDepends = h: with h; [
               base base-unicode-symbols optparse-applicative tasty tasty-hunit
 
-              more-unicode tasty-plus
+              l0.more-unicode tasty-plus
             ];
           };
 
@@ -1143,8 +1164,8 @@
               base base-unicode-symbols data-textual lens mtl safe split tasty
               tasty-hunit
 
-              env-plus fpath monaderror-io monadio-plus more-unicode tasty-plus
-              tfmt
+              env-plus fpath monaderror-io monadio-plus l0.more-unicode tasty-plus
+              l3.tfmt
             ];
             testDepends = h: with h; [ base tasty ];
           };
@@ -1162,7 +1183,7 @@
                 safe tasty-hunit temporary text text-printer unix
 
                 base1t containers-plus env-plus exited fpath fstat monaderror-io
-                more-unicode natural tasty-plus
+                l0.more-unicode l2.natural tasty-plus
               ];
               testDepends = h: with h; [ base tasty ];
               postConfigure = ''
@@ -1213,13 +1234,13 @@
               ListLike mtl scientific tasty tasty-hunit text text-printer
               utf8-string yaml
 
-              fpath has-callstack monaderror-io more-unicode natural tasty-plus
-              tfmt
+              fpath l1.has-callstack monaderror-io l0.more-unicode l2.natural tasty-plus
+              l3.tfmt
             ];
             testDepends = h: with h; [
               base base-unicode-symbols optparse-applicative tasty tasty-hunit
 
-              more-unicode tasty-plus
+              l0.more-unicode tasty-plus
             ];
           };
 
@@ -1237,13 +1258,13 @@
               lens mtl parsers QuickCheck scientific tasty tasty-hunit
               tasty-quickcheck template-haskell text text-printer time yaml
 
-              boundedn monaderror-io more-unicode number parsec-plus parser-plus
-              quasiquoting tasty-plus tfmt yaml-plus
+              boundedn monaderror-io l0.more-unicode number parsec-plus parser-plus
+              quasiquoting tasty-plus l3.tfmt yaml-plus
             ];
             testDepends = h: with h; [
               base base-unicode-symbols optparse-applicative tasty tasty-hunit
 
-              more-unicode tasty-plus
+              l0.more-unicode tasty-plus
             ];
           };
 
@@ -1257,7 +1278,7 @@
               base base-unicode-symbols data-textual deepseq dhall
               enclosed-exceptions lens mtl tasty tasty-hunit text text-printer
 
-              fpath has-callstack monaderror-io monadio-plus more-unicode
+              fpath l1.has-callstack monaderror-io monadio-plus l0.more-unicode
               tasty-plus
             ];
             testDepends = h: with h; [ base tasty ];
@@ -1274,7 +1295,7 @@
               dhall either network-ip parsec template-haskell text text-printer
               yaml
 
-              more-unicode parsec-plus quasiquoting
+              l0.more-unicode parsec-plus quasiquoting
             ];
           };
 
@@ -1286,10 +1307,10 @@
             description = "Logging, the way I like it";
             libDepends = h: with h; [
               base base-unicode-symbols data-default data-textual deepseq dlist
-              exceptions has-callstack lens logging-effect monadio-plus
-              mono-traversable more-unicode mtl parsec-plus parser-plus
+              exceptions l1.has-callstack lens logging-effect monadio-plus
+              mono-traversable l0.more-unicode mtl parsec-plus parser-plus
               prettyprinter prettyprinter-ansi-terminal safe single tasty
-              tasty-hunit tasty-plus terminal-size text text-printer tfmt time
+              tasty-hunit tasty-plus terminal-size text text-printer l3.tfmt time
             ];
             testDepends = h: with h; [ base tasty ];
           };
@@ -1301,7 +1322,7 @@
           mockio-0-0-6-0 = callPkg "mockio" "0.0.6.0" mockio-src-0-0-6-0 {
             description = "Mock IO actions (e.g., for dry-runs)";
             libDepends = h: with h; [
-              base deepseq lens monaderror-io monadio-plus more-unicode mtl tasty
+              base deepseq lens monaderror-io monadio-plus l0.more-unicode mtl tasty
               tasty-hunit tasty-plus text
             ];
             testDepends = h: with h; [ base tasty ];
@@ -1334,8 +1355,8 @@
               optparse-applicative path process safe streaming tasty tasty-hunit
               template-haskell text text-printer transformers unix
 
-              env-plus exited fpath has-callstack monaderror-io monadio-plus
-              more-unicode natural optparse-plus parsec-plus tasty-plus tfmt
+              env-plus exited fpath l1.has-callstack monaderror-io monadio-plus
+              l0.more-unicode l2.natural optparse-plus parsec-plus tasty-plus l3.tfmt
             ];
             testDepends = h: with h; [ base tasty ];
             postConfigure = ''
@@ -1360,13 +1381,13 @@
               data-textual deepseq dhall hashable lens mtl parsers tasty
               tasty-hunit template-haskell text text-printer yaml
 
-              base1 has-callstack ip4 more-unicode non-empty-containers proclib
-              quasiquoting tasty-plus tfmt
+              base1 l1.has-callstack ip4 l0.more-unicode non-empty-containers proclib
+              quasiquoting tasty-plus l3.tfmt
             ];
             testDepends = h: with h; [
               base base-unicode-symbols optparse-applicative tasty
 
-              more-unicode tasty-plus
+              l0.more-unicode tasty-plus
             ];
           };
 
@@ -1381,14 +1402,14 @@
               data-textual lens mtl optparse-applicative scientific tasty
               tasty-hunit text text-printer vector yaml
 
-              date-imprecise fpath has-callstack index monaderror-io
-              monadio-plus more-unicode natural non-empty-containers
-              optparse-plus tasty-plus tfmt yaml-plus
+              date-imprecise fpath l1.has-callstack index monaderror-io
+              monadio-plus l0.more-unicode l2.natural non-empty-containers
+              optparse-plus tasty-plus l3.tfmt yaml-plus
             ];
             testDepends = h: with h; [
               base base-unicode-symbols optparse-applicative tasty tasty-hunit
 
-              more-unicode tasty-plus
+              l0.more-unicode tasty-plus
             ];
           };
 
@@ -1406,7 +1427,7 @@
               time
 
               base1t containers-plus log-plus mockio monaderror-io monadio-plus
-              more-unicode parsec-plus parser-plus tasty-plus tfmt
+              l0.more-unicode parsec-plus parser-plus tasty-plus l3.tfmt
             ];
             testDepends = h: with h; [ base tasty ];
           };
@@ -1425,13 +1446,13 @@
               text text-printer
 
               boundedn duration exited fpath monaderror-io monadio-plus
-              more-unicode non-empty-containers number optparse-plus parsec-plus
-              parser-plus tasty-plus tfmt
+              l0.more-unicode non-empty-containers number optparse-plus parsec-plus
+              parser-plus tasty-plus l3.tfmt
             ];
             testDepends = h: with h; [
               base base-unicode-symbols optparse-applicative tasty tasty-hunit
 
-              more-unicode tasty-plus
+              l0.more-unicode tasty-plus
             ];
           };
 
@@ -1450,11 +1471,11 @@
               text text-printer unordered-containers yaml
 
               containers-plus dhall-plus domainnames equalish fpath
-              has-callstack ip4 mac-address monaderror-io more-unicode
-              non-empty-containers tasty-plus textual-plus tfmt
+              l1.has-callstack ip4 mac-address monaderror-io l0.more-unicode
+              non-empty-containers tasty-plus textual-plus l3.tfmt
             ];
             testDepends = h: with h; [
-              base base-unicode-symbols more-unicode optparse-applicative tasty
+              base base-unicode-symbols l0.more-unicode optparse-applicative tasty
               tasty-plus
             ];
           };
@@ -1472,7 +1493,7 @@
               safe tasty tasty-hunit text text-icu
 
               base1t containers-plus env-plus fpath fstat log-plus mockio
-              mockio-log monaderror-io monadio-plus more-unicode tasty-plus tfmt
+              mockio-log monaderror-io monadio-plus l0.more-unicode tasty-plus l3.tfmt
             ];
             testDepends = h: with h; [ base tasty ];
 
@@ -1496,7 +1517,7 @@
 
               aeson-plus base1t containers-plus exited fpath fstat
               log-plus mockio mockio-log mockio-plus monaderror-io monadio-plus
-              natural optparse-plus parsec-plus parser-plus tasty-plus
+              l2.natural optparse-plus parsec-plus parser-plus tasty-plus
               textual-plus
             ];
             testDepends = h: with h; [ base tasty ];
@@ -1516,10 +1537,10 @@
               safe tasty-hunit tasty-quickcheck template-haskell text
               text-printer time trifecta validity
 
-              base1t exited fpath has-callstack log-plus mockio mockio-log
-              monaderror-io monadio-plus more-unicode natural optparse-plus
+              base1t exited fpath l1.has-callstack log-plus mockio mockio-log
+              monaderror-io monadio-plus l0.more-unicode l2.natural optparse-plus
               parsec-plus parser-plus quasiquoting stdmain tasty-plus
-              textual-plus tfmt trifecta-plus
+              textual-plus l3.tfmt trifecta-plus
             ];
             testDepends = h: with h; [ base tasty ];
           };
@@ -1538,8 +1559,8 @@
               text-printer
 
               fpath log-plus mockio mockio-log mockio-plus monaderror-io
-              monadio-plus more-unicode natural optparse-plus parsec-plus
-              parser-plus stdmain tasty-plus tfmt
+              monadio-plus l0.more-unicode l2.natural optparse-plus parsec-plus
+              parser-plus stdmain tasty-plus l3.tfmt
             ];
             testDepends = h: with h; [ base tasty ];
             postConfigure = ''
@@ -1550,30 +1571,30 @@
 
           # -- hix ------------------
 
-          hix         = hix-0-0;
-          hix-0-0     = hix-0-1-6-0;
+###          hix         = hix-0-0;
+###          hix-0-0     = hix-0-1-6-0;
 
-          hix-0-1-6-0 = callPkg "hix" "0.1.6.0" hix-src-0-1-6-0 {
-            description = "nix library for haskell, with utilities";
-            libDepends = h: with h; [
-              aeson base bytestring containers data-textual deepseq lens
-              logging-effect mono-traversable mtl optparse-applicative parsers
-              safe text text-printer
-
-              aeson-plus base1t columnify env-plus fpath log-plus mockio
-              mockio-log mockio-plus monaderror-io monadio-plus mono-traversable
-              more-unicode optparse-plus stdmain textual-plus tuple-plus
-            ];
-
-            postConfigure = ''
-                for f in $( ${pkgs.findutils}/bin/find proto/ -type f \
-                                                              -name \*.hs ); do
-                  t=src/"''${f#proto/}"
-                  substitute "$f" "$t" \
-                    --replace __nix__ ${pkgs.nix}
-                done
-              '';
-          };
+###          hix-0-1-6-0 = callPkg "hix" "0.1.6.0" hix-src-0-1-6-0 {
+###            description = "nix library for haskell, with utilities";
+###            libDepends = h: with h; [
+###              aeson base bytestring containers data-textual deepseq lens
+###              logging-effect mono-traversable mtl optparse-applicative parsers
+###              safe text text-printer
+###
+###              aeson-plus base1t columnify env-plus fpath log-plus mockio
+###              mockio-log mockio-plus monaderror-io monadio-plus mono-traversable
+###              more-unicode optparse-plus stdmain textual-plus tuple-plus
+###            ];
+###
+###            postConfigure = ''
+###                for f in $( ${pkgs.findutils}/bin/find proto/ -type f \
+###                                                              -name \*.hs ); do
+###                  t=src/"''${f#proto/}"
+###                  substitute "$f" "$t" \
+###                    --replace __nix__ ${pkgs.nix}
+###                done
+###              '';
+###          };
 
           # -- mockio-cmds-inetutils ---
 
@@ -1669,9 +1690,9 @@
               optparse-applicative path tasty tasty-hunit text
               text-printer unordered-containers
 
-              dhall-plus domainnames fpath has-callstack hostsdb ip4 mac-address
-              monaderror-io monadio-plus more-unicode natural proclib stdmain
-              tasty-plus tfmt
+              dhall-plus domainnames fpath l1.has-callstack hostsdb ip4 mac-address
+              monaderror-io monadio-plus l0.more-unicode l2.natural proclib stdmain
+              tasty-plus l3.tfmt
             ];
 
             postConfigure = ''
@@ -1684,7 +1705,7 @@
             '';
 
             testDepends = h: with h; [
-              base base-unicode-symbols lens monaderror-io more-unicode natural
+              base base-unicode-symbols lens monaderror-io l0.more-unicode l2.natural
               optparse-applicative proclib tasty tasty-plus
             ];
           };
@@ -1700,7 +1721,7 @@
 ##              optparse-applicative parsers text text-printer trifecta
 ##
 ##              base1 duration env-plus fpath fstat log-plus mockio mockio-log
-##              mockio-plus monadio-plus more-unicode optparse-plus stdmain
+##              mockio-plus monadio-plus l0.more-unicode optparse-plus stdmain
 ##              textual-plus trifecta-plus
 ##            ];
 ##
@@ -1725,7 +1746,7 @@
               trifecta word-wrap
 
               base1t fpath log-plus mockio-log monaderror-io monadio-plus
-              natural optparse-plus parser-plus pcre stdmain tasty-plus
+              l2.natural optparse-plus parser-plus pcre stdmain tasty-plus
               textual-plus trifecta-plus
             ]; };
 
@@ -1740,7 +1761,7 @@
               parsers tasty-hunit text
 
               base1t containers-plus env-fpath env-plus fpath log-plus
-              mockio-log mockio-plus monaderror-io monadio-plus natural
+              mockio-log mockio-plus monaderror-io monadio-plus l2.natural
               non-empty-containers optparse-plus parsec-plus-base parsec-plus
               parser-plus pcre stdmain tasty-plus
             ];
