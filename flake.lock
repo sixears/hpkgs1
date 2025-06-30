@@ -153,19 +153,19 @@
         "type": "github"
       }
     },
-    "columnify-src-0-0-2-0": {
+    "columnify-src-0-0-2-1": {
       "flake": false,
       "locked": {
-        "lastModified": 1738971194,
-        "narHash": "sha256-abA0wVaeYVdn0+P4uF4++5EqZ7AUyV3TAAVLxm1dIu8=",
+        "lastModified": 1750843873,
+        "narHash": "sha256-9bZEFO0zka29U3shC6zhwlQu4YCtJJ/u5UM+QGiFAmM=",
         "owner": "sixears",
         "repo": "columnify",
-        "rev": "88b5bbe0d004b10b90d93e5632b88c12f299bf42",
+        "rev": "2248fe04e03349f16417ecc5cb4c36a99f1dbc8a",
         "type": "github"
       },
       "original": {
         "owner": "sixears",
-        "ref": "r0.0.2.0",
+        "ref": "r0.0.2.1",
         "repo": "columnify",
         "type": "github"
       }
@@ -730,19 +730,19 @@
         "type": "github"
       }
     },
-    "natural-src-0-0-5-0": {
+    "natural-src-0-1-2-0": {
       "flake": false,
       "locked": {
-        "lastModified": 1692300642,
-        "narHash": "sha256-MHxuPxkaa4DqKJxpaM8LqETa19xPB3G7SEp5h2nVLic=",
+        "lastModified": 1750868227,
+        "narHash": "sha256-50bTscKMyEcbUGKHVXPpYM10cPgKYa4+tH+Uo/HYsrk=",
         "owner": "sixears",
         "repo": "natural",
-        "rev": "28b312f5f2be714cfda85d298d9f01b7cf11a17c",
+        "rev": "a69cbf60a1d3f64bad095d4eb6861168ac002a83",
         "type": "github"
       },
       "original": {
         "owner": "sixears",
-        "ref": "r0.0.5.0",
+        "ref": "r0.1.2.0",
         "repo": "natural",
         "type": "github"
       }
@@ -944,7 +944,7 @@
         "base1t-src-0-0-6-0": "base1t-src-0-0-6-0",
         "boundedn-src-1-1-8-0": "boundedn-src-1-1-8-0",
         "brian-src-0-0-3-0": "brian-src-0-0-3-0",
-        "columnify-src-0-0-2-0": "columnify-src-0-0-2-0",
+        "columnify-src-0-0-2-1": "columnify-src-0-0-2-1",
         "containers-plus-src-0-0-10-40": "containers-plus-src-0-0-10-40",
         "date-imprecise-src-1-0-1-0": "date-imprecise-src-1-0-1-0",
         "dhall-plus-src-0-0-2-1": "dhall-plus-src-0-0-2-1",
@@ -978,7 +978,7 @@
         "monaderror-io-src-1-2-6-0": "monaderror-io-src-1-2-6-0",
         "monadio-plus-src-2-6-0-0": "monadio-plus-src-2-6-0-0",
         "more-unicode-src-0-0-23-0": "more-unicode-src-0-0-23-0",
-        "natural-src-0-0-5-0": "natural-src-0-0-5-0",
+        "natural-src-0-1-2-0": "natural-src-0-1-2-0",
         "nixpkgs": "nixpkgs",
         "non-empty-containers-src-1-4-4-0": "non-empty-containers-src-1-4-4-0",
         "number-src-1-1-2-14": "number-src-1-1-2-14",
@@ -992,10 +992,10 @@
         "rename-src-0-0-1-2": "rename-src-0-0-1-2",
         "single-src-0-0-1-0": "single-src-0-0-1-0",
         "srt-adjust-src-1-0-0-7": "srt-adjust-src-1-0-0-7",
-        "stdmain-src-1-6-3-1": "stdmain-src-1-6-3-1",
+        "stdmain-src-1-6-3-2": "stdmain-src-1-6-3-2",
         "tasty-plus-src-1-5-2-24": "tasty-plus-src-1-5-2-24",
         "textual-plus-src-1-1-4-0": "textual-plus-src-1-1-4-0",
-        "tfmt-src-0-2-8-0": "tfmt-src-0-2-8-0",
+        "tfmt-src-0-3-0-0": "tfmt-src-0-3-0-0",
         "trifecta-plus-src-0-0-1-0": "trifecta-plus-src-0-0-1-0",
         "tuple-plus-src-0-0-1-0": "tuple-plus-src-0-0-1-0",
         "while-src-0-0-0-1": "while-src-0-0-0-1",
@@ -1036,19 +1036,19 @@
         "type": "github"
       }
     },
-    "stdmain-src-1-6-3-1": {
+    "stdmain-src-1-6-3-2": {
       "flake": false,
       "locked": {
-        "lastModified": 1719236744,
-        "narHash": "sha256-JPvNnQ3hiqZN1QQ2pZvfx2LP2S9D+NB1tfVRbyGs7c8=",
+        "lastModified": 1751304864,
+        "narHash": "sha256-Ywny/FCgjh8QL9M3WwClZvxJmJjss5ji0H0AGpyOWSs=",
         "owner": "sixears",
         "repo": "stdmain",
-        "rev": "d0c7d5b594018f464f7f320e846a2bb1fbb8daa7",
+        "rev": "350c666f3443c6fb3ce6ac3fa829a49137df2e2b",
         "type": "github"
       },
       "original": {
         "owner": "sixears",
-        "ref": "r1.6.3.1",
+        "ref": "r1.6.3.2",
         "repo": "stdmain",
         "type": "github"
       }
@@ -1087,19 +1087,19 @@
         "type": "github"
       }
     },
-    "tfmt-src-0-2-8-0": {
+    "tfmt-src-0-3-0-0": {
       "flake": false,
       "locked": {
-        "lastModified": 1692301558,
-        "narHash": "sha256-DFdSI1aBiLwrJx/v6JYr47y6QApudaOMXBM82iEe+Y4=",
+        "lastModified": 1751012587,
+        "narHash": "sha256-vIyGf/79eQ4xiDnGp5IaFgjF4m5F2LOzBFiPRt0WZ0A=",
         "owner": "sixears",
         "repo": "tfmt",
-        "rev": "6eab27719b93c67f8abe5c2dad08991e95ef2da3",
+        "rev": "1b2784a65c77570c9b5c359d8f36437886155098",
         "type": "github"
       },
       "original": {
         "owner": "sixears",
-        "ref": "r0.2.8.0",
+        "ref": "r0.3.0.0",
         "repo": "tfmt",
         "type": "github"
       }
