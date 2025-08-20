@@ -1593,8 +1593,8 @@
 
           # -- hix ------------------
 
-          hix         = hix-0-0;
-          hix-0-0     = hix-0-1-6-0;
+###          hix         = hix-0-0;
+###          hix-0-0     = hix-0-1-6-0;
 
           hix-0-1-6-0 = callPkg "hix" "0.1.6.0" hix-src-0-1-6-0 {
             description = "nix library for haskell, with utilities";
