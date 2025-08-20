@@ -244,11 +244,11 @@
       ref   = "r1.0.3.7";
       flake = false;
     };
-    mockio-cmds-inetutils-src-1-0-0-0 = {
+    mockio-cmds-inetutils-src-1-0-0-1 = {
       type  = "github";
       owner = "sixears";
       repo  = "mockio-cmds-inetutils";
-      ref   = "r1.0.0.0";
+      ref   = "r1.0.0.1";
       flake = false;
     };
     mockio-cmds-rsync-src-1-0-0-1 = {
@@ -504,7 +504,7 @@
             , log-plus-src-0-0-4-4
             , mac-address-src-0-0-1-0
             , minfo-src-1-0-3-7
-            , mockio-cmds-inetutils-src-1-0-0-0
+            , mockio-cmds-inetutils-src-1-0-0-1
             , mockio-cmds-rsync-src-1-0-0-1
             , mockio-cmds-util-linux-src-1-0-1-3
             , mockio-src-0-0-6-0
@@ -1621,17 +1621,25 @@
           # -- mockio-cmds-inetutils ---
 
           mockio-cmds-inetutils         = mockio-cmds-inetutils-1-0;
-          mockio-cmds-inetutils-1-0     = mockio-cmds-inetutils-1-0-0-0;
-          mockio-cmds-inetutils-1-0-0-0 =
-            callPkg "mockio-cmds-inetutils" "1.0.0.0"
-                    mockio-cmds-inetutils-src-1-0-0-0 {
+          mockio-cmds-inetutils-1-0     = mockio-cmds-inetutils-1-0-0-1;
+          mockio-cmds-inetutils-1-0-0-1 =
+            callPkg "mockio-cmds-inetutils" "1.0.0.1"
+                    mockio-cmds-inetutils-src-1-0-0-1 {
             description = "MockIO wrappers for inetutils cmds";
             libDepends = h: with h; [
               data-textual lens logging-effect mtl safe text
 
               base1t domainnames fpath log-plus mockio mockio-log mockio-plus
-              monadio-plus stdmain
+              monadio-plus l0.more-unicode stdmain
             ];
+
+            postConfigure = ''
+                for f in $( ${pkgs.findutils}/bin/find proto/ -type f \
+                                                              -name \*.hs ); do
+                  t=src/"''${f#proto/}"
+                  substitute "$f" "$t" --replace __inetutils__ ${pkgs.inetutils}
+                done
+            '';
           };
 
           # -- mockio-cmds-rsync -------
