@@ -475,15 +475,15 @@
       ref   = "r0.0.0.1";
       flake = false;
     };
-    vidtools-src-0-0-0-0 = {
-      type = "path";
-      path = "/home/martyn/src/vidtools";
-##      type  = "github";
-##      owner = "sixears";
-##      repo  = "vidtools";
-##      ref   = "r0.0.0.0";
-      flake = false;
-    };
+###     vidtools-src-0-0-0-0 = {
+###       type = "path";
+###       path = "/home/martyn/src/vidtools";
+### ##      type  = "github";
+### ##      owner = "sixears";
+### ##      repo  = "vidtools";
+### ##      ref   = "r0.0.0.0";
+###       flake = false;
+###     };
     yaml-plus-src-1-0-1-1 = {
       type  = "github";
       owner = "sixears";
@@ -557,7 +557,7 @@
             , htinydns-src-0-1-1-3
             , trifecta-plus-src-0-0-1-0
             , tuple-plus-src-0-0-1-0
-            , vidtools-src-0-0-0-0
+###             , vidtools-src-0-0-0-0
             , while-src-0-0-0-1
             , yaml-plus-src-1-0-1-1
             }:
@@ -1784,24 +1784,24 @@
 
           # -- vidtools ----------------
 
-          vidtools         = vidtools-0-0;
-          vidtools-0-0     = vidtools-0-0-0-0;
-          vidtools-0-0-0-0 = callPkg "vidtools" "0.0.0.0" vidtools-src-0-0-0-0 {
-            description = "tools for working with videos";
-            libDepends = h: with h; [
-              base containers data-textual logging-effect mono-traversable mtl
-              optparse-applicative parsers text text-printer trifecta
-
-              base1 containers-plus duration env-plus l1.finite-list fpath fstat
-              log-plus mockio mockio-log mockio-plus monadio-plus
-              l0.more-unicode optparse-plus stdmain textual-plus trifecta-plus
-            ];
-
-            postConfigure = ''
-              substitute proto/Video/MPlayer/Paths.hs src/Video/MPlayer/Paths.hs \
-                --replace __mplayer__ ${pkgs.mplayer}
-            '';
-          };
+###           vidtools         = vidtools-0-0;
+###           vidtools-0-0     = vidtools-0-0-0-0;
+###           vidtools-0-0-0-0 = callPkg "vidtools" "0.0.0.0" vidtools-src-0-0-0-0 {
+###             description = "tools for working with videos";
+###             libDepends = h: with h; [
+###               base containers data-textual logging-effect mono-traversable mtl
+###               optparse-applicative parsers text text-printer trifecta
+###
+###               base1 containers-plus duration env-plus l1.finite-list fpath fstat
+###               log-plus mockio mockio-log mockio-plus monadio-plus
+###               l0.more-unicode optparse-plus stdmain textual-plus trifecta-plus
+###             ];
+###
+###             postConfigure = ''
+###               substitute proto/Video/MPlayer/Paths.hs src/Video/MPlayer/Paths.hs \
+###                 --replace __mplayer__ ${pkgs.mplayer}
+###             '';
+###           };
 
           # -- L16 (internal dependencies on L15) ----------
 
