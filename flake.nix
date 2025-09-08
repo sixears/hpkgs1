@@ -41,11 +41,13 @@
       ref   = "r1.0.2.1";
       flake = false;
     };
-    base0-src-0-0-4-11 = {
+    base0-src-0-0-5-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "base0";
-      ref   = "r0.0.4.11";
+      ref   = "r0.0.5.0";
+##      type  = "path";
+##      path  = "/home/martyn/src/base0";
       flake = false;
     };
     base0t-src-0-0-1-14 = {
@@ -55,11 +57,13 @@
       ref   = "r0.0.1.14";
       flake = false;
     };
-    base1-src-0-0-10-0 = {
+    base1-src-0-0-12-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "base1";
-      ref   = "r0.0.10.0";
+      ref   = "r0.0.12.0";
+##      type  = "path";
+##      path  = "/home/martyn/src/base1";
       flake = false;
     };
     base1t-src-0-0-6-0 = {
@@ -90,11 +94,13 @@
       ref   = "r0.0.2.1";
       flake = false;
     };
-    containers-plus-src-0-0-10-40 = {
+    containers-plus-src-0-0-13-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "containers-plus";
-      ref   = "r0.0.10.40";
+      ref   = "r0.0.13.0";
+##      type  = "path";
+##      path  = "/home/martyn/src/containers-plus";
       flake = false;
     };
     date-imprecise-src-1-0-1-0 = {
@@ -158,6 +164,15 @@
       owner = "sixears";
       repo  = "file-split";
       ref   = "r1.0.2.1";
+      flake = false;
+    };
+    finite-list-src-0-0-1-0 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "base1";
+      ref   = "r0.0.10.0";
+##      type  = "path";
+##      path  = "/home/martyn/src/finite-list";
       flake = false;
     };
     fpath-src-1-3-5-0 = {
@@ -300,11 +315,13 @@
       ref   = "r2.6.0.0";
       flake = false;
     };
-    more-unicode-src-0-0-23-0 = {
+    more-unicode-src-0-0-26-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "more-unicode";
-      ref   = "r0.0.23.0";
+      ref   = "r0.0.26.0";
+##      type = "path";
+##      path = "/home/martyn/src/more-unicode";
       flake = false;
     };
     natural-src-0-1-2-0 = {
@@ -356,11 +373,13 @@
       ref   = "r1.0.7.29";
       flake = false;
     };
-    pcre-src-0-1-0-0 = {
+    pcre-src-0-1-1-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "pcre";
-      ref   = "r0.1.0.0";
+      ref   = "r0.1.1.0";
+##      type  = "path";
+##      path  = "/home/martyn/src/pcre";
       flake = false;
     };
     proclib-src-3-2-4-0 = {
@@ -419,11 +438,13 @@
       ref   = "r1.1.4.0";
       flake = false;
     };
-    tfmt-src-0-3-0-0 = {
+    tfmt-src-0-3-0-1 = {
       type  = "github";
       owner = "sixears";
       repo  = "tfmt";
-      ref   = "r0.3.0.0";
+      ref   = "r0.3.0.1";
+##      type = "path";
+##      path = "/home/martyn/src/tfmt";
       flake = false;
     };
     trifecta-plus-src-0-0-1-0 = {
@@ -454,13 +475,15 @@
       ref   = "r0.0.0.1";
       flake = false;
     };
-##    vidtools-src-0-0-0-0 = {
+    vidtools-src-0-0-0-0 = {
+      type = "path";
+      path = "/home/martyn/src/vidtools";
 ##      type  = "github";
 ##      owner = "sixears";
 ##      repo  = "vidtools";
 ##      ref   = "r0.0.0.0";
-##      flake = false;
-##    };
+      flake = false;
+    };
     yaml-plus-src-1-0-1-1 = {
       type  = "github";
       owner = "sixears";
@@ -475,14 +498,14 @@
             , acct-src-0-0-1-0
             , aeson-plus-src-0-0-0-1
             , atreus-src-1-0-2-1
-            , base0-src-0-0-4-11
+            , base0-src-0-0-5-0
             , base0t-src-0-0-1-14
-            , base1-src-0-0-10-0
+            , base1-src-0-0-12-0
             , base1t-src-0-0-6-0
             , boundedn-src-1-1-8-0
             , brian-src-0-0-3-0
             , columnify-src-0-0-2-1
-            , containers-plus-src-0-0-10-40
+            , containers-plus-src-0-0-13-0
             , date-imprecise-src-1-0-1-0
             , dhall-plus-src-0-0-2-1
             , domainnames-src-0-1-2-0
@@ -492,6 +515,7 @@
             , equalish-src-0-0-0-2
             , exited-src-1-0-4-23
             , file-split-src-1-0-2-1
+            , finite-list-src-0-0-1-0
             , fpath-src-1-3-5-0
             , fstat-src-1-0-2-26
             , handbrake-src-1-0-3-1
@@ -512,7 +536,7 @@
             , mockio-plus-src-0-3-16-0
             , monaderror-io-src-1-2-6-0
             , monadio-plus-src-2-6-0-0
-            , more-unicode-src-0-0-23-0
+            , more-unicode-src-0-0-26-0
             , natural-src-0-1-2-0
             , non-empty-containers-src-1-4-4-0
             , number-src-1-1-2-14
@@ -520,7 +544,7 @@
             , parsec-plus-base-src-1-0-5-23
             , parsec-plus-src-1-1-1-44
             , parser-plus-src-1-0-7-29
-            , pcre-src-0-1-0-0
+            , pcre-src-0-1-1-0
             , proclib-src-3-2-4-0
             , quasiquoting-src-1-0-1-32
             , rename-src-0-0-1-2
@@ -529,11 +553,11 @@
             , stdmain-src-1-6-3-2
             , tasty-plus-src-1-5-2-24
             , textual-plus-src-1-1-4-0
-            , tfmt-src-0-3-0-0
+            , tfmt-src-0-3-0-1
             , htinydns-src-0-1-1-3
             , trifecta-plus-src-0-0-1-0
             , tuple-plus-src-0-0-1-0
-##            , vidtools-src-0-0-0-0
+            , vidtools-src-0-0-0-0
             , while-src-0-0-0-1
             , yaml-plus-src-1-0-1-1
             }:
@@ -600,28 +624,29 @@
             # -- l0 ----------------------------------------
 
             l0 = rec {
-              # -- base0 -------------------
+              # -- base0 ---------------
 
-              base0-0-0-4-11 = callPkg "base0" "0.0.4.11" base0-src-0-0-4-11 {
+              base0-0-0-5-0 = callPkg "base0" "0.0.5.0" base0-src-0-0-5-0 {
                 description =
                   "Prelude replacement, external packages only, no tests";
                 libDepends = h: with h;[
-                  base base-unicode-symbols data-default data-textual hashable lens
-                  mtl safe
+                  base base-unicode-symbols data-default data-textual hashable
+                  lens mtl safe
                 ];
               };
 
-              base0-0-0 = base0-0-0-4-11;
+              base0-0-0 = base0-0-0-5-0;
               base0 = base0-0-0;
 
-              # -- more-unicode ------------
+              # -- more-unicode --------
 
-              more-unicode-0-0-23-0 =
-                callPkg "more-unicode" "0.0.23.0" more-unicode-src-0-0-23-0 {
+              more-unicode-0-0-26-0 =
+                callPkg "more-unicode" "0.0.26.0" more-unicode-src-0-0-26-0 {
                   description = "More unicode symbols";
                   libDepends = h: with h; [
-                    base-unicode-symbols bytestring containers data-textual lens
-                    mono-traversable prettyprinter tasty-hunit tasty-quickcheck
+                    base-unicode-symbols bytestring containers data-default
+                    data-textual lens mono-traversable mtl prettyprinter
+                    tasty-hunit tasty-quickcheck
                     # strangely, neither 'base' nor 'text' seem to be required
                     # in practice!?
                     # base text
@@ -629,9 +654,9 @@
                 };
 
               more-unicode           = more-unicode-0-0;
-              more-unicode-0-0       = more-unicode-0-0-23-0;
+              more-unicode-0-0       = more-unicode-0-0-26-0;
 
-              # -- number ------------------
+              # -- number --------------
 
               number-1-1-2-14 =
                 callPkg "number" "1.1.2.14" number-src-1-1-2-14 {
@@ -656,6 +681,22 @@
                 };
               base0t-0-0 = base0t-0-0-1-14;
               base0t = base0t-0-0;
+
+              # -- finite-list ---------
+
+              finite-list-0-0-1-0 =
+                callPkg "finite-list" "0.0.1.0" finite-list-src-0-0-1-0 {
+                  description = "Lists of finite length, as tuples of a single type";
+                  libDepends = h: with h; [
+                    base
+
+                    l0.base0
+                    l0.more-unicode
+                  ];
+                };
+
+              finite-list-0-0      = finite-list-0-0-1-0;
+              finite-list          = finite-list-0-0;
 
               # -- has-callstack -----------
 
@@ -729,7 +770,7 @@
 
               # -- tfmt --------------------
 
-              tfmt-0-3-0-0 = callPkg "tfmt" "0.3.0.0" tfmt-src-0-3-0-0 {
+              tfmt-0-3-0-1 = callPkg "tfmt" "0.3.0.1" tfmt-src-0-3-0-1 {
                 description = "type-safe text/string formatting with a " +
                               "simple interface";
                 libDepends = h: with h; [
@@ -746,7 +787,7 @@
                 testDepends = h: with h; [ base tasty ];
               };
 
-              tfmt-0-3      = tfmt-0-3-0-0;
+              tfmt-0-3      = tfmt-0-3-0-1;
               tfmt          = tfmt-0-3;
             };
 
@@ -1027,11 +1068,12 @@
           # -- base1 -------------------
 
           base1          = base1-0-0;
-          base1-0-0      = base1-0-0-10-0;
-          base1-0-0-10-0 = callPkg "base1" "0.0.10.0" base1-src-0-0-10-0 {
+          base1-0-0      = base1-0-0-12-0;
+          base1-0-0-12-0 = callPkg "base1" "0.0.12.0" base1-src-0-0-12-0 {
             description = "Prelude replacement, incl. first-level local packages";
             libDepends = h: with h; [
-              l0.base0 l1.has-callstack index monaderror-io l0.more-unicode l3.tfmt
+              l0.base0 l1.has-callstack index monaderror-io l0.more-unicode
+              l3.tfmt
             ];
           };
 
@@ -1085,9 +1127,9 @@
           # -- containers-plus ---------
 
           containers-plus           = containers-plus-0-0;
-          containers-plus-0-0       = containers-plus-0-0-10-40;
-          containers-plus-0-0-10-40 =
-            callPkg "containers-plus" "0.0.10.40" containers-plus-src-0-0-10-40
+          containers-plus-0-0       = containers-plus-0-0-13-0;
+          containers-plus-0-0-13-0 =
+            callPkg "containers-plus" "0.0.13.0" containers-plus-src-0-0-13-0
               {
                 description =
                   "Additional Utilities for Working with Containers";
@@ -1694,8 +1736,8 @@
           # -- pcre --------------------
 
           pcre         = pcre-0-0;
-          pcre-0-0     = pcre-0-1-0-0;
-          pcre-0-1-0-0 = callPkg "pcre" "0.1.0.0" pcre-src-0-1-0-0 {
+          pcre-0-0     = pcre-0-1-1-0;
+          pcre-0-1-1-0 = callPkg "pcre" "0.1.1.0" pcre-src-0-1-1-0 {
             description =
               "handle PCRE-based REs, including textual replacements";
             libDepends = h: with h; [
@@ -1742,24 +1784,24 @@
 
           # -- vidtools ----------------
 
-##          vidtools         = vidtools-0-0;
-##          vidtools-0-0     = vidtools-0-0-0-0;
-##          vidtools-0-0-0-0 = callPkg "vidtools" "0.0.0.0" vidtools-src-0-0-0-0 {
-##            description = "tools for working with videos";
-##            libDepends = h: with h; [
-##              base containers data-textual logging-effect mtl
-##              optparse-applicative parsers text text-printer trifecta
-##
-##              base1 duration env-plus fpath fstat log-plus mockio mockio-log
-##              mockio-plus monadio-plus l0.more-unicode optparse-plus stdmain
-##              textual-plus trifecta-plus
-##            ];
-##
-##            postConfigure = ''
-##              substitute proto/Video/MPlayer/Paths.hs src/Video/MPlayer/Paths.hs \
-##                --replace __mplayer__ ${pkgs.mplayer}
-##            '';
-##          };
+          vidtools         = vidtools-0-0;
+          vidtools-0-0     = vidtools-0-0-0-0;
+          vidtools-0-0-0-0 = callPkg "vidtools" "0.0.0.0" vidtools-src-0-0-0-0 {
+            description = "tools for working with videos";
+            libDepends = h: with h; [
+              base containers data-textual logging-effect mono-traversable mtl
+              optparse-applicative parsers text text-printer trifecta
+
+              base1 containers-plus duration env-plus l1.finite-list fpath fstat
+              log-plus mockio mockio-log mockio-plus monadio-plus
+              l0.more-unicode optparse-plus stdmain textual-plus trifecta-plus
+            ];
+
+            postConfigure = ''
+              substitute proto/Video/MPlayer/Paths.hs src/Video/MPlayer/Paths.hs \
+                --replace __mplayer__ ${pkgs.mplayer}
+            '';
+          };
 
           # -- L16 (internal dependencies on L15) ----------
 
@@ -1797,6 +1839,9 @@
             ];
             testDepends = h: with h; [ base tasty ];
           };
+
+          inherit (l0) base0 more-unicode number;
+          inherit (l1) finite-list;
 
           # END OF PACKAGES ----------------------------------------------------
         }
