@@ -1016,7 +1016,6 @@
         "tfmt-src-0-3-0-1": "tfmt-src-0-3-0-1",
         "trifecta-plus-src-0-0-1-0": "trifecta-plus-src-0-0-1-0",
         "tuple-plus-src-0-0-1-0": "tuple-plus-src-0-0-1-0",
-        "vidtools-src-0-0-0-0": "vidtools-src-0-0-0-0",
         "while-src-0-0-0-1": "while-src-0-0-0-1",
         "yaml-plus-src-1-0-1-1": "yaml-plus-src-1-0-1-1"
       }
@@ -1155,19 +1154,6 @@
         "ref": "r0.0.1.0",
         "repo": "tuple-plus",
         "type": "github"
-      }
-    },
-    "vidtools-src-0-0-0-0": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1757206722,
-        "narHash": "sha256-cmUBdFQh9N1gsfawn5ZnM7Dz2pVDnz+xHbOLWtoppVc=",
-        "path": "/home/martyn/src/vidtools",
-        "type": "path"
-      },
-      "original": {
-        "path": "/home/martyn/src/vidtools",
-        "type": "path"
       }
     },
     "while-src-0-0-0-1": {

@@ -5,6 +5,7 @@
 - containers-plus: 0.0.10.40 -> 0.0.13.0
 - finite-list 0.0.1.0
 - hix: 0.1.6.0 -> 0.1.6.1
+- mockio-cmds-inetutils: 1.0.0.1 -> 1.0.0.2
 - more-unicode: 0.0.23.0 -> 0.0.26.0
 - pcre: 0.1.0.0 -> 0.1.1.0
 - tfmt: 0.3.0.0 -> 0.3.0.1
