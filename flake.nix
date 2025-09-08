@@ -169,8 +169,8 @@
     finite-list-src-0-0-1-0 = {
       type  = "github";
       owner = "sixears";
-      repo  = "base1";
-      ref   = "r0.0.10.0";
+      repo  = "finite-list";
+      ref   = "r0.0.1.0";
 ##      type  = "path";
 ##      path  = "/home/martyn/src/finite-list";
       flake = false;
@@ -203,11 +203,11 @@
       ref   = "r1.0.2.0";
       flake = false;
     };
-    hix-src-0-1-6-0 = {
+    hix-src-0-1-6-1 = {
       type  = "github";
       owner = "sixears";
       repo  = "hix";
-      ref   = "r0.1.6.0";
+      ref   = "r0.1.6.1";
       flake = false;
     };
     hxrandr-src-0-0-0-0 = {
@@ -520,7 +520,7 @@
             , fstat-src-1-0-2-26
             , handbrake-src-1-0-3-1
             , has-callstack-src-1-0-2-0
-            , hix-src-0-1-6-0
+            , hix-src-0-1-6-1
             , hostsdb-src-0-1-1-4
             , hxrandr-src-0-0-0-0
             , index-src-1-0-1-26
@@ -1635,10 +1635,7 @@
 
           # -- hix ------------------
 
-###          hix         = hix-0-0;
-###          hix-0-0     = hix-0-1-6-0;
-
-          hix-0-1-6-0 = callPkg "hix" "0.1.6.0" hix-src-0-1-6-0 {
+          hix-0-1-6-1 = callPkg "hix" "0.1.6.1" hix-src-0-1-6-1 {
             description = "nix library for haskell, with utilities";
             libDepends = h: with h; [
               aeson base bytestring containers data-textual deepseq lens
@@ -1659,6 +1656,9 @@
                 done
               '';
           };
+
+          hix-0-1     = hix-0-1-6-1;
+          hix         = hix-0-1;
 
           # -- mockio-cmds-inetutils ---
 
