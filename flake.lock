@@ -882,19 +882,19 @@
         "type": "github"
       }
     },
-    "pcre-src-0-1-1-0": {
+    "pcre-src-0-1-2-0": {
       "flake": false,
       "locked": {
-        "lastModified": 1757316778,
-        "narHash": "sha256-Hg9/5yCFjvWJbUjqwiXOHGQvZ3Npuf67cSZ74k7kJ1s=",
+        "lastModified": 1757451198,
+        "narHash": "sha256-QNc3SQAHyVYMkSPPf7Q5pGCh0+gRHW4GlL+zRwITVqw=",
         "owner": "sixears",
         "repo": "pcre",
-        "rev": "6b3b8cf2cc893c575e057f042600f0c78a6db110",
+        "rev": "cdd1b9db1b9e8e96a46c7c11b2d865d1851d882f",
         "type": "github"
       },
       "original": {
         "owner": "sixears",
-        "ref": "r0.1.1.0",
+        "ref": "r0.1.2.0",
         "repo": "pcre",
         "type": "github"
       }
@@ -1004,7 +1004,7 @@
         "parsec-plus-base-src-1-0-5-23": "parsec-plus-base-src-1-0-5-23",
         "parsec-plus-src-1-1-1-44": "parsec-plus-src-1-1-1-44",
         "parser-plus-src-1-0-7-29": "parser-plus-src-1-0-7-29",
-        "pcre-src-0-1-1-0": "pcre-src-0-1-1-0",
+        "pcre-src-0-1-2-0": "pcre-src-0-1-2-0",
         "proclib-src-3-2-4-0": "proclib-src-3-2-4-0",
         "quasiquoting-src-1-0-1-32": "quasiquoting-src-1-0-1-32",
         "rename-src-0-0-1-2": "rename-src-0-0-1-2",
