@@ -594,19 +594,19 @@
         "type": "github"
       }
     },
-    "mockio-cmds-inetutils-src-1-0-0-1": {
+    "mockio-cmds-inetutils-src-1-0-0-2": {
       "flake": false,
       "locked": {
-        "lastModified": 1755715783,
-        "narHash": "sha256-BQgByoxRXTfP9GFLd+Zw1o+rRciCUTePLEjrjvNu+uE=",
+        "lastModified": 1757363099,
+        "narHash": "sha256-Akbf2jiPM2YUhpk82Ps9hcf804TCbdb850BeaoWlF6c=",
         "owner": "sixears",
         "repo": "mockio-cmds-inetutils",
-        "rev": "545413775de9b359761177842ca89094033e506e",
+        "rev": "6c9971774e9fc0c117afd3d228c7f13a03d40403",
         "type": "github"
       },
       "original": {
         "owner": "sixears",
-        "ref": "r1.0.0.1",
+        "ref": "r1.0.0.2",
         "repo": "mockio-cmds-inetutils",
         "type": "github"
       }
@@ -987,7 +987,7 @@
         "log-plus-src-0-0-4-4": "log-plus-src-0-0-4-4",
         "mac-address-src-0-0-1-0": "mac-address-src-0-0-1-0",
         "minfo-src-1-0-3-7": "minfo-src-1-0-3-7",
-        "mockio-cmds-inetutils-src-1-0-0-1": "mockio-cmds-inetutils-src-1-0-0-1",
+        "mockio-cmds-inetutils-src-1-0-0-2": "mockio-cmds-inetutils-src-1-0-0-2",
         "mockio-cmds-rsync-src-1-0-0-1": "mockio-cmds-rsync-src-1-0-0-1",
         "mockio-cmds-util-linux-src-1-0-1-3": "mockio-cmds-util-linux-src-1-0-1-3",
         "mockio-log-src-0-1-3-1": "mockio-log-src-0-1-3-1",
