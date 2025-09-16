@@ -373,11 +373,11 @@
       ref   = "r1.0.7.29";
       flake = false;
     };
-    pcre-src-0-1-3-0 = {
+    pcre-src-0-1-4-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "pcre";
-      ref   = "r0.1.3.0";
+      ref   = "r0.1.4.0";
 ##      type  = "path";
 ##      path  = "/home/martyn/src/pcre";
       flake = false;
@@ -544,7 +544,7 @@
             , parsec-plus-base-src-1-0-5-23
             , parsec-plus-src-1-1-1-44
             , parser-plus-src-1-0-7-29
-            , pcre-src-0-1-3-0
+            , pcre-src-0-1-4-0
             , proclib-src-3-2-4-0
             , quasiquoting-src-1-0-1-32
             , rename-src-0-0-1-2
@@ -1737,8 +1737,8 @@
           # -- pcre --------------------
 
           pcre         = pcre-0-0;
-          pcre-0-0     = pcre-0-1-3-0;
-          pcre-0-1-3-0 = callPkg "pcre" "0.1.3.0" pcre-src-0-1-3-0 {
+          pcre-0-0     = pcre-0-1-4-0;
+          pcre-0-1-4-0 = callPkg "pcre" "0.1.4.0" pcre-src-0-1-4-0 {
             description =
               "handle PCRE-based REs, including textual replacements";
             libDepends = h: with h; [
