@@ -10,14 +10,10 @@
 {
   description = "homegrown haskell packages";
   inputs = {
-#    nixpkgs.url = github:NixOS/nixpkgs/354184a; # master 2023-12-13
+    ## nixpkgs.url     = github:NixOS/nixpkgs/3385ca0c; # nixos-25.05 2025-08-09
+    ## text-format-0.3.2.1 no workee, requires base >=4.3 && < 4.19
+
     nixpkgs.url     = github:NixOS/nixpkgs/d9d87c51; # nixos-24.11 2024-12-11
-#    nixpkgs.url     = github:NixOS/nixpkgs/f5090d49; # master 2025-03-01
-
-
-#    nixpkgs.url = git+file:/local/nixpkgs/master?rev=354184a83e7360c7c5a6fd76d9f6d28508ac3461; # master 2023-12-13
-
-#    nixpkgs.url     = github:nixos/nixpkgs/be44bf67; # nixos-22.05 2022-10-15
     flake-utils.url = github:numtide/flake-utils/c0e246b9;
 
     acct-src-0-0-1-0 = {
@@ -373,11 +369,11 @@
       ref   = "r1.0.7.29";
       flake = false;
     };
-    pcre-src-0-1-4-0 = {
+    pcre-src-0-1-5-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "pcre";
-      ref   = "r0.1.4.0";
+      ref   = "r0.1.5.0";
 ##      type  = "path";
 ##      path  = "/home/martyn/src/pcre";
       flake = false;
@@ -544,7 +540,7 @@
             , parsec-plus-base-src-1-0-5-23
             , parsec-plus-src-1-1-1-44
             , parser-plus-src-1-0-7-29
-            , pcre-src-0-1-4-0
+            , pcre-src-0-1-5-0
             , proclib-src-3-2-4-0
             , quasiquoting-src-1-0-1-32
             , rename-src-0-0-1-2
@@ -1737,8 +1733,8 @@
           # -- pcre --------------------
 
           pcre         = pcre-0-0;
-          pcre-0-0     = pcre-0-1-4-0;
-          pcre-0-1-4-0 = callPkg "pcre" "0.1.4.0" pcre-src-0-1-4-0 {
+          pcre-0-0     = pcre-0-1-5-0;
+          pcre-0-1-5-0 = callPkg "pcre" "0.1.5.0" pcre-src-0-1-5-0 {
             description =
               "handle PCRE-based REs, including textual replacements";
             libDepends = h: with h; [
@@ -1746,7 +1742,7 @@
               template-haskell text text-printer unordered-containers
 
               base1t fpath monaderror-io log-plus mockio-plus monadio-plus
-              optparse-plus parsec-plus-base parsec-plus parser-plus
+              natural optparse-plus parsec-plus-base parsec-plus parser-plus
               quasiquoting stdmain
             ];
             testDepends = h: with h; [ base tasty ];
