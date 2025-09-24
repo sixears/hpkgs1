@@ -369,11 +369,11 @@
       ref   = "r1.0.7.29";
       flake = false;
     };
-    pcre-src-0-1-5-0 = {
+    pcre-src-0-1-6-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "pcre";
-      ref   = "r0.1.5.0";
+      ref   = "r0.1.6.0";
 ##      type  = "path";
 ##      path  = "/home/martyn/src/pcre";
       flake = false;
@@ -413,11 +413,11 @@
       ref   = "r1.0.0.7";
       flake = false;
     };
-    stdmain-src-1-6-3-2 = {
+    stdmain-src-1-6-4-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "stdmain";
-      ref   = "r1.6.3.2";
+      ref   = "r1.6.4.0";
       flake = false;
     };
     tasty-plus-src-1-5-2-24 = {
@@ -540,13 +540,13 @@
             , parsec-plus-base-src-1-0-5-23
             , parsec-plus-src-1-1-1-44
             , parser-plus-src-1-0-7-29
-            , pcre-src-0-1-5-0
+            , pcre-src-0-1-6-0
             , proclib-src-3-2-4-0
             , quasiquoting-src-1-0-1-32
             , rename-src-0-0-1-2
             , single-src-0-0-1-0
             , srt-adjust-src-1-0-0-7
-            , stdmain-src-1-6-3-2
+            , stdmain-src-1-6-4-0
             , tasty-plus-src-1-5-2-24
             , textual-plus-src-1-1-4-0
             , tfmt-src-0-3-0-1
@@ -1568,8 +1568,8 @@
           # -- stdmain -----------------
 
           stdmain          = stdmain-1-6;
-          stdmain-1-6      = stdmain-1-6-3-2;
-          stdmain-1-6-3-2 = callPkg "stdmain" "1.6.3.2" stdmain-src-1-6-3-2 {
+          stdmain-1-6      = stdmain-1-6-4-0;
+          stdmain-1-6-4-0 = callPkg "stdmain" "1.6.4.0" stdmain-src-1-6-4-0 {
             description = "standardized CLI wrapper";
             libDepends = h: with h; [
               aeson base bytestring deepseq lens logging-effect mtl
@@ -1577,8 +1577,8 @@
 
               aeson-plus base1t containers-plus exited fpath fstat
               log-plus mockio mockio-log mockio-plus monaderror-io monadio-plus
-              l0.more-unicode l2.natural optparse-plus parsec-plus parser-plus
-              tasty-plus textual-plus
+              l2.natural optparse-plus parsec-plus parser-plus tasty-plus
+              textual-plus
             ];
             testDepends = h: with h; [ base tasty ];
           };
@@ -1733,8 +1733,8 @@
           # -- pcre --------------------
 
           pcre         = pcre-0-0;
-          pcre-0-0     = pcre-0-1-5-0;
-          pcre-0-1-5-0 = callPkg "pcre" "0.1.5.0" pcre-src-0-1-5-0 {
+          pcre-0-0     = pcre-0-1-6-0;
+          pcre-0-1-6-0 = callPkg "pcre" "0.1.6.0" pcre-src-0-1-6-0 {
             description =
               "handle PCRE-based REs, including textual replacements";
             libDepends = h: with h; [

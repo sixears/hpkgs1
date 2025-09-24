@@ -882,19 +882,19 @@
         "type": "github"
       }
     },
-    "pcre-src-0-1-5-0": {
+    "pcre-src-0-1-6-0": {
       "flake": false,
       "locked": {
-        "lastModified": 1758389919,
-        "narHash": "sha256-+lm6LRz+kPiVKw6y7X86H1zJoTu4Kn5+58bnJwTo0/g=",
+        "lastModified": 1758710542,
+        "narHash": "sha256-fv/FKQfUysBgUVbZYSuBmXDoLBHGkMPyoyIfn871I4o=",
         "owner": "sixears",
         "repo": "pcre",
-        "rev": "a1119a165f3a1d41ad02efec1e942389231d7696",
+        "rev": "96f679e0e0759cb408a27caff2ed52f4922b7a7a",
         "type": "github"
       },
       "original": {
         "owner": "sixears",
-        "ref": "r0.1.5.0",
+        "ref": "r0.1.6.0",
         "repo": "pcre",
         "type": "github"
       }
@@ -1004,13 +1004,13 @@
         "parsec-plus-base-src-1-0-5-23": "parsec-plus-base-src-1-0-5-23",
         "parsec-plus-src-1-1-1-44": "parsec-plus-src-1-1-1-44",
         "parser-plus-src-1-0-7-29": "parser-plus-src-1-0-7-29",
-        "pcre-src-0-1-5-0": "pcre-src-0-1-5-0",
+        "pcre-src-0-1-6-0": "pcre-src-0-1-6-0",
         "proclib-src-3-2-4-0": "proclib-src-3-2-4-0",
         "quasiquoting-src-1-0-1-32": "quasiquoting-src-1-0-1-32",
         "rename-src-0-0-1-2": "rename-src-0-0-1-2",
         "single-src-0-0-1-0": "single-src-0-0-1-0",
         "srt-adjust-src-1-0-0-7": "srt-adjust-src-1-0-0-7",
-        "stdmain-src-1-6-3-2": "stdmain-src-1-6-3-2",
+        "stdmain-src-1-6-4-0": "stdmain-src-1-6-4-0",
         "tasty-plus-src-1-5-2-24": "tasty-plus-src-1-5-2-24",
         "textual-plus-src-1-1-4-0": "textual-plus-src-1-1-4-0",
         "tfmt-src-0-3-0-1": "tfmt-src-0-3-0-1",
@@ -1054,19 +1054,19 @@
         "type": "github"
       }
     },
-    "stdmain-src-1-6-3-2": {
+    "stdmain-src-1-6-4-0": {
       "flake": false,
       "locked": {
-        "lastModified": 1751304864,
-        "narHash": "sha256-Ywny/FCgjh8QL9M3WwClZvxJmJjss5ji0H0AGpyOWSs=",
+        "lastModified": 1758710146,
+        "narHash": "sha256-pa/rOXNLimCe2Q87gDpxyOX9/nV3+mpHDGjmhad0LGw=",
         "owner": "sixears",
         "repo": "stdmain",
-        "rev": "350c666f3443c6fb3ce6ac3fa829a49137df2e2b",
+        "rev": "ff808cba7a1f4aaf1aafa51d26e7d12ffa5fd034",
         "type": "github"
       },
       "original": {
         "owner": "sixears",
-        "ref": "r1.6.3.2",
+        "ref": "r1.6.4.0",
         "repo": "stdmain",
         "type": "github"
       }
