@@ -206,6 +206,13 @@
       ref   = "r0.1.6.1";
       flake = false;
     };
+    http-plus-src-0-0-1-0 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "http-plus";
+      ref   = "r0.0.1.0";
+      flake = false;
+    };
     hxrandr-src-0-0-0-0 = {
       type  = "github";
       owner = "sixears";
@@ -518,6 +525,7 @@
             , has-callstack-src-1-0-2-0
             , hix-src-0-1-6-1
             , hostsdb-src-0-1-1-4
+            , http-plus-src-0-0-1-0
             , hxrandr-src-0-0-0-0
             , index-src-1-0-1-26
             , ip4-src-0-0-0-2
@@ -1344,12 +1352,28 @@
             testDepends = h: with h; [ base tasty ];
           };
 
+          # -- http-plus -----------
+
+          http-plus         = http-plus-0-0;
+          http-plus-0-0     = http-plus-0-0-1-0;
+          http-plus-0-0-1-0 =
+            callPkg "http-plus" "0.0.1.0" http-plus-src-0-0-1-0 {
+              description = "HTTP tools";
+              libDepends = h: with h; [
+                base bytestring http-client http-client-tls text
+
+                base1 duration monaderror-io parsec-plus
+              ];
+            };
+
           # -- ip4 ---------------------
 
           ip4         = ip4-0-0;
           ip4-0-0     = ip4-0-0-0-2;
           ip4-0-0-0-2 = callPkg "ip4" "0.0.0.2" ip4-src-0-0-0-2 {
-            description = "IPv4 data-type with JSON, Textual, YAML & DHALL support";
+            description =
+              "IPv4 data-type with JSON, Textual, YAML & DHALL support";
+
             libDepends = h: with h; [
               aeson base base-unicode-symbols data-default data-textual deepseq
               dhall either network-ip parsec template-haskell text text-printer
