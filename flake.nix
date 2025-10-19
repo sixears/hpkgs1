@@ -234,11 +234,11 @@
       ref   = "r1.0.1.26";
       flake = false;
     };
-    ip4-src-0-0-0-2 = {
+    ip4-src-0-0-1-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "ip4";
-      ref   = "r0.0.0.2";
+      ref   = "r0.0.1.0";
       flake = false;
     };
     log-plus-src-0-0-4-4 = {
@@ -332,6 +332,13 @@
       owner = "sixears";
       repo  = "natural";
       ref   = "r0.1.2.0";
+      flake = false;
+    };
+    network-plus-src-0-0-1-0 = {
+      type  = "github";
+      owner = "sixears";
+      repo  = "network-plus";
+      ref   = "r0.0.0.0";
       flake = false;
     };
     non-empty-containers-src-1-4-4-0 = {
@@ -528,7 +535,7 @@
             , http-plus-src-0-0-1-0
             , hxrandr-src-0-0-0-0
             , index-src-1-0-1-26
-            , ip4-src-0-0-0-2
+            , ip4-src-0-0-1-0
             , log-plus-src-0-0-4-4
             , mac-address-src-0-0-1-0
             , minfo-src-1-0-3-7
@@ -542,6 +549,7 @@
             , monadio-plus-src-2-6-0-0
             , more-unicode-src-0-0-26-0
             , natural-src-0-1-2-0
+            , network-plus-src-0-0-1-0
             , non-empty-containers-src-1-4-4-0
             , number-src-1-1-2-14
             , optparse-plus-src-1-3-4-0
@@ -1369,17 +1377,16 @@
           # -- ip4 ---------------------
 
           ip4         = ip4-0-0;
-          ip4-0-0     = ip4-0-0-0-2;
-          ip4-0-0-0-2 = callPkg "ip4" "0.0.0.2" ip4-src-0-0-0-2 {
+          ip4-0-0     = ip4-0-0-1-0;
+          ip4-0-0-1-0 = callPkg "ip4" "0.0.1.0" ip4-src-0-0-1-0 {
             description =
               "IPv4 data-type with JSON, Textual, YAML & DHALL support";
 
             libDepends = h: with h; [
-              aeson base base-unicode-symbols data-default data-textual deepseq
-              dhall either network-ip parsec template-haskell text text-printer
-              yaml
+              aeson base data-textual deepseq dhall either network-ip parsec
+              template-haskell text text-printer yaml
 
-              l0.more-unicode parsec-plus quasiquoting
+              l0.more-unicode base1 parsec-plus quasiquoting
             ];
           };
 
@@ -1515,6 +1522,20 @@
             ];
             testDepends = h: with h; [ base tasty ];
           };
+
+          # -- network-plus -----------
+
+          network-plus         = network-plus-0-0;
+          network-plus-0-0     = network-plus-0-0-1-0;
+          network-plus-0-0-1-0 =
+            callPkg "network-plus" "0.0.1.0" network-plus-src-0-0-1-0 {
+              description = "network tools";
+              libDepends = h: with h; [
+                base base-unicode-symbols network-info network-ip text
+
+                base1 duration http-plus ip4 monaderror-io parsec-plus-base
+              ];
+            };
 
           # -- srt-adjust --------------
 

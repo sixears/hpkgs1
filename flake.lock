@@ -495,16 +495,16 @@
     "http-plus-src-0-0-1-0": {
       "flake": false,
       "locked": {
-        "lastModified": 1760385799,
-        "narHash": "sha256-HY3naXDo2xhUr38ApMViyhrKsjJkEOhhBYTK5PGaGeI=",
+        "lastModified": 1760473338,
+        "narHash": "sha256-SbxVHc8kMd9NN6K7kGr4nSClWU8hagxhr/pzmZvaLyQ=",
         "owner": "sixears",
         "repo": "http-plus",
-        "rev": "b945def87c2559aeeff64dd2e9cd814b50b79fee",
+        "rev": "f7c60b17d954f20a8c38c8f242a52f357f1ff545",
         "type": "github"
       },
       "original": {
         "owner": "sixears",
-        "ref": "r0.0.0.0",
+        "ref": "r0.0.1.0",
         "repo": "http-plus",
         "type": "github"
       }
@@ -781,6 +781,23 @@
         "type": "github"
       }
     },
+    "network-plus-src-0-0-1-0": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1760516350,
+        "narHash": "sha256-WjX80OrtChQCSru8TQOYIA363X7IYcWAeYCOj0xAimk=",
+        "owner": "sixears",
+        "repo": "network-plus",
+        "rev": "df55294a17adde838ad034b5f5bedcf723ee84a3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sixears",
+        "ref": "r0.0.0.0",
+        "repo": "network-plus",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1733858964,
@@ -1015,6 +1032,7 @@
         "monadio-plus-src-2-6-0-0": "monadio-plus-src-2-6-0-0",
         "more-unicode-src-0-0-26-0": "more-unicode-src-0-0-26-0",
         "natural-src-0-1-2-0": "natural-src-0-1-2-0",
+        "network-plus-src-0-0-1-0": "network-plus-src-0-0-1-0",
         "nixpkgs": "nixpkgs",
         "non-empty-containers-src-1-4-4-0": "non-empty-containers-src-1-4-4-0",
         "number-src-1-1-2-14": "number-src-1-1-2-14",
