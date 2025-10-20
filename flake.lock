@@ -543,19 +543,19 @@
         "type": "github"
       }
     },
-    "ip4-src-0-0-0-2": {
+    "ip4-src-0-0-1-0": {
       "flake": false,
       "locked": {
-        "lastModified": 1649939235,
-        "narHash": "sha256-VqQtv3nJEH3DFSjDu5xsT2r1q450c4tbR5gT5rDUYrU=",
+        "lastModified": 1760856900,
+        "narHash": "sha256-i0eWE4731hP0EXXbiZK/61je5hI40bGQLE34xTxlNJE=",
         "owner": "sixears",
         "repo": "ip4",
-        "rev": "727e1835bd01fe85302b1519cf7dc5dc5bfa67a0",
+        "rev": "541aa85cf1adf394468927bdb7c1938a574f2040",
         "type": "github"
       },
       "original": {
         "owner": "sixears",
-        "ref": "r0.0.0.2",
+        "ref": "r0.0.1.0",
         "repo": "ip4",
         "type": "github"
       }
@@ -784,16 +784,16 @@
     "network-plus-src-0-0-1-0": {
       "flake": false,
       "locked": {
-        "lastModified": 1760516350,
-        "narHash": "sha256-WjX80OrtChQCSru8TQOYIA363X7IYcWAeYCOj0xAimk=",
+        "lastModified": 1760966140,
+        "narHash": "sha256-lG5mXez+HTTE5fYcVXeVFEwTNrS44gFdFlUC65NVEQg=",
         "owner": "sixears",
         "repo": "network-plus",
-        "rev": "df55294a17adde838ad034b5f5bedcf723ee84a3",
+        "rev": "7e012b9f8a6b56442fe4f4d2988d557e41b41092",
         "type": "github"
       },
       "original": {
         "owner": "sixears",
-        "ref": "r0.0.0.0",
+        "ref": "r0.0.1.0",
         "repo": "network-plus",
         "type": "github"
       }
@@ -1018,7 +1018,7 @@
         "http-plus-src-0-0-1-0": "http-plus-src-0-0-1-0",
         "hxrandr-src-0-0-0-0": "hxrandr-src-0-0-0-0",
         "index-src-1-0-1-26": "index-src-1-0-1-26",
-        "ip4-src-0-0-0-2": "ip4-src-0-0-0-2",
+        "ip4-src-0-0-1-0": "ip4-src-0-0-1-0",
         "log-plus-src-0-0-4-4": "log-plus-src-0-0-4-4",
         "mac-address-src-0-0-1-0": "mac-address-src-0-0-1-0",
         "minfo-src-1-0-3-7": "minfo-src-1-0-3-7",

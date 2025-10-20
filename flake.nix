@@ -338,7 +338,7 @@
       type  = "github";
       owner = "sixears";
       repo  = "network-plus";
-      ref   = "r0.0.0.0";
+      ref   = "r0.0.1.0";
       flake = false;
     };
     non-empty-containers-src-1-4-4-0 = {
@@ -1531,7 +1531,7 @@
             callPkg "network-plus" "0.0.1.0" network-plus-src-0-0-1-0 {
               description = "network tools";
               libDepends = h: with h; [
-                base base-unicode-symbols network-info network-ip text
+                base base-unicode-symbols network-info
 
                 base1 duration http-plus ip4 monaderror-io parsec-plus-base
               ];
