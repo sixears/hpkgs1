@@ -234,11 +234,11 @@
       ref   = "r1.0.1.26";
       flake = false;
     };
-    ip4-src-0-0-1-0 = {
+    ip4-src-0-0-2-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "ip4";
-      ref   = "r0.0.1.0";
+      ref   = "r0.0.2.0";
       flake = false;
     };
     log-plus-src-0-0-4-4 = {
@@ -535,7 +535,7 @@
             , http-plus-src-0-0-1-0
             , hxrandr-src-0-0-0-0
             , index-src-1-0-1-26
-            , ip4-src-0-0-1-0
+            , ip4-src-0-0-2-0
             , log-plus-src-0-0-4-4
             , mac-address-src-0-0-1-0
             , minfo-src-1-0-3-7
@@ -1377,8 +1377,8 @@
           # -- ip4 ---------------------
 
           ip4         = ip4-0-0;
-          ip4-0-0     = ip4-0-0-1-0;
-          ip4-0-0-1-0 = callPkg "ip4" "0.0.1.0" ip4-src-0-0-1-0 {
+          ip4-0-0     = ip4-0-0-2-0;
+          ip4-0-0-2-0 = callPkg "ip4" "0.0.2.0" ip4-src-0-0-2-0 {
             description =
               "IPv4 data-type with JSON, Textual, YAML & DHALL support";
 
