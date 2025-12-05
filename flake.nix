@@ -448,11 +448,11 @@
       ref   = "r1.1.4.0";
       flake = false;
     };
-    tfmt-src-0-3-0-1 = {
+    tfmt-src-0-3-1-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "tfmt";
-      ref   = "r0.3.0.1";
+      ref   = "r0.3.1.0";
 ##      type = "path";
 ##      path = "/home/martyn/src/tfmt";
       flake = false;
@@ -565,7 +565,7 @@
             , stdmain-src-1-6-4-0
             , tasty-plus-src-1-5-2-24
             , textual-plus-src-1-1-4-0
-            , tfmt-src-0-3-0-1
+            , tfmt-src-0-3-1-0
             , htinydns-src-0-1-1-3
             , trifecta-plus-src-0-0-1-0
             , tuple-plus-src-0-0-1-0
@@ -782,7 +782,7 @@
 
               # -- tfmt --------------------
 
-              tfmt-0-3-0-1 = callPkg "tfmt" "0.3.0.1" tfmt-src-0-3-0-1 {
+              tfmt-0-3-1-0 = callPkg "tfmt" "0.3.1.0" tfmt-src-0-3-1-0 {
                 description = "type-safe text/string formatting with a " +
                               "simple interface";
                 libDepends = h: with h; [
@@ -799,7 +799,7 @@
                 testDepends = h: with h; [ base tasty ];
               };
 
-              tfmt-0-3      = tfmt-0-3-0-1;
+              tfmt-0-3      = tfmt-0-3-1-0;
               tfmt          = tfmt-0-3;
             };
 

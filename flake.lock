@@ -1049,7 +1049,7 @@
         "stdmain-src-1-6-4-0": "stdmain-src-1-6-4-0",
         "tasty-plus-src-1-5-2-24": "tasty-plus-src-1-5-2-24",
         "textual-plus-src-1-1-4-0": "textual-plus-src-1-1-4-0",
-        "tfmt-src-0-3-0-1": "tfmt-src-0-3-0-1",
+        "tfmt-src-0-3-1-0": "tfmt-src-0-3-1-0",
         "trifecta-plus-src-0-0-1-0": "trifecta-plus-src-0-0-1-0",
         "tuple-plus-src-0-0-1-0": "tuple-plus-src-0-0-1-0",
         "while-src-0-0-0-1": "while-src-0-0-0-1",
@@ -1141,19 +1141,19 @@
         "type": "github"
       }
     },
-    "tfmt-src-0-3-0-1": {
+    "tfmt-src-0-3-1-0": {
       "flake": false,
       "locked": {
-        "lastModified": 1757341968,
-        "narHash": "sha256-lhfsjnABsvM3KWzuFDqZ9mo8Jlt/E4bv9mYVYKursRc=",
+        "lastModified": 1764887998,
+        "narHash": "sha256-KrM3GEvChtRQcC10t58pRW3mEg2wkUD+Q6/yi3XP4EM=",
         "owner": "sixears",
         "repo": "tfmt",
-        "rev": "3e5fe51f40fa928363acd3de9d9bbb0f7c0174ab",
+        "rev": "e358602e00b60608ef5105177011bb7fe973def2",
         "type": "github"
       },
       "original": {
         "owner": "sixears",
-        "ref": "r0.3.0.1",
+        "ref": "r0.3.1.0",
         "repo": "tfmt",
         "type": "github"
       }
