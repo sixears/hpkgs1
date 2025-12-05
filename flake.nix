@@ -241,11 +241,11 @@
       ref   = "r0.0.2.0";
       flake = false;
     };
-    log-plus-src-0-0-4-4 = {
+    log-plus-src-0-0-4-5 = {
       type  = "github";
       owner = "sixears";
       repo  = "log-plus";
-      ref   = "r0.0.4.4";
+      ref   = "r0.0.4.5";
       flake = false;
     };
     mac-address-src-0-0-1-0 = {
@@ -536,7 +536,7 @@
             , hxrandr-src-0-0-0-0
             , index-src-1-0-1-26
             , ip4-src-0-0-2-0
-            , log-plus-src-0-0-4-4
+            , log-plus-src-0-0-4-5
             , mac-address-src-0-0-1-0
             , minfo-src-1-0-3-7
             , mockio-cmds-inetutils-src-1-0-0-2
@@ -1393,8 +1393,8 @@
           # -- log-plus ----------------
 
           log-plus         = log-plus-0-0;
-          log-plus-0-0     = log-plus-0-0-4-4;
-          log-plus-0-0-4-4 = callPkg "log-plus" "0.0.4.4" log-plus-src-0-0-4-4 {
+          log-plus-0-0     = log-plus-0-0-4-5;
+          log-plus-0-0-4-5 = callPkg "log-plus" "0.0.4.5" log-plus-src-0-0-4-5 {
             description = "Logging, the way I like it";
             libDepends = h: with h; [
               base base-unicode-symbols data-default data-textual deepseq dlist
