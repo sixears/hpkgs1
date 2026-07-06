@@ -13,7 +13,8 @@
     ## nixpkgs.url     = github:NixOS/nixpkgs/3385ca0c; # nixos-25.05 2025-08-09
     ## text-format-0.3.2.1 no workee, requires base >=4.3 && < 4.19
 
-    nixpkgs.url     = github:NixOS/nixpkgs/d9d87c51; # nixos-24.11 2024-12-11
+    nixpkgs.url     = github:NixOS/nixpkgs/667d5cf1; # nixos-26.05 2026-06-26
+#    nixpkgs.url     = github:NixOS/nixpkgs/d9d87c51; # nixos-24.11 2024-12-11
     flake-utils.url = github:numtide/flake-utils/c0e246b9;
 
     acct-src-0-0-1-0 = {
@@ -304,18 +305,18 @@
       ref   = "r0.3.16.0";
       flake = false;
     };
-    monaderror-io-src-1-2-6-0 = {
+    monaderror-io-src-1-2-8-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "monaderror-io";
-      ref   = "r1.2.6.0";
+      ref   = "r1.2.8.0";
       flake = false;
     };
-    monadio-plus-src-2-6-0-0 = {
+    monadio-plus-src-2-6-3-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "monadio-plus";
-      ref   = "r2.6.0.0";
+      ref   = "r2.6.3.0";
       flake = false;
     };
     more-unicode-src-0-0-26-0 = {
@@ -485,15 +486,15 @@
       ref   = "r0.0.0.1";
       flake = false;
     };
-###     vidtools-src-0-0-0-0 = {
-###       type = "path";
-###       path = "/home/martyn/src/vidtools";
-### ##      type  = "github";
-### ##      owner = "sixears";
-### ##      repo  = "vidtools";
-### ##      ref   = "r0.0.0.0";
-###       flake = false;
-###     };
+    vidtools-src-0-0-0-0 = {
+      type = "path";
+      path = "/home/martyn/src/vidtools";
+##      type  = "github";
+##      owner = "sixears";
+##      repo  = "vidtools";
+##      ref   = "r0.0.0.0";
+      flake = false;
+    };
     yaml-plus-src-1-0-1-1 = {
       type  = "github";
       owner = "sixears";
@@ -545,8 +546,8 @@
             , mockio-src-0-0-6-0
             , mockio-log-src-0-1-3-1
             , mockio-plus-src-0-3-16-0
-            , monaderror-io-src-1-2-6-0
-            , monadio-plus-src-2-6-0-0
+            , monaderror-io-src-1-2-8-0
+            , monadio-plus-src-2-6-3-0
             , more-unicode-src-0-0-26-0
             , natural-src-0-1-2-0
             , network-plus-src-0-0-1-0
@@ -569,7 +570,7 @@
             , htinydns-src-0-1-1-3
             , trifecta-plus-src-0-0-1-0
             , tuple-plus-src-0-0-1-0
-###             , vidtools-src-0-0-0-0
+            , vidtools-src-0-0-0-0
             , while-src-0-0-0-1
             , yaml-plus-src-1-0-1-1
             }:
@@ -909,9 +910,9 @@
           # -- monaderror-io -----------
 
           monaderror-io          = monaderror-io-1-2;
-          monaderror-io-1-2      = monaderror-io-1-2-6-0;
-          monaderror-io-1-2-6-0 = callPkg "monaderror-io" "1.2.6.0"
-                                  monaderror-io-src-1-2-6-0 {
+          monaderror-io-1-2      = monaderror-io-1-2-8-0;
+          monaderror-io-1-2-8-0 = callPkg "monaderror-io" "1.2.8.0"
+                                  monaderror-io-src-1-2-8-0 {
             description = "An AsIOError class for compound errors, and some MonadError handling utilities";
             libDepends = h: with h; [
               base deepseq lens mtl text-printer
@@ -1249,14 +1250,14 @@
           # -- monadio-plus ------------
 
           monadio-plus          = monadio-plus-2-6;
-          monadio-plus-2-6      = monadio-plus-2-6-0-0;
-          monadio-plus-2-6-0-0 =
-            callPkg "monadio-plus" "2.6.0.0" monadio-plus-src-2-6-0-0 {
+          monadio-plus-2-6      = monadio-plus-2-6-3-0;
+          monadio-plus-2-6-3-0 =
+            callPkg "monadio-plus" "2.6.3.0" monadio-plus-src-2-6-3-0 {
               description = "IO operations, using MonadIO & MonadError with AsIOError";
               libDepends = h: with h; [
                 base base-unicode-symbols bytestring containers data-textual
                 deepseq directory exceptions filelock filepath lens mtl process
-                safe tasty-hunit temporary text text-printer unix
+                safe tasty tasty-hunit temporary text text-printer unix
 
                 base1t containers-plus env-plus exited fpath fstat monaderror-io
                 l0.more-unicode l2.natural tasty-plus
@@ -1265,7 +1266,6 @@
               postConfigure = ''
                 substitute proto/MonadIO/Paths.hs src/MonadIO/Paths.hs \
                   --replace __gnugrep__ ${pkgs.gnugrep} && ls -l src/MonadIO/
-
               '';
             };
 
@@ -1390,22 +1390,6 @@
             ];
           };
 
-          # -- log-plus ----------------
-
-          log-plus         = log-plus-0-0;
-          log-plus-0-0     = log-plus-0-0-4-5;
-          log-plus-0-0-4-5 = callPkg "log-plus" "0.0.4.5" log-plus-src-0-0-4-5 {
-            description = "Logging, the way I like it";
-            libDepends = h: with h; [
-              base base-unicode-symbols data-default data-textual deepseq dlist
-              exceptions l1.has-callstack lens logging-effect monadio-plus
-              mono-traversable l0.more-unicode mtl parsec-plus parser-plus
-              prettyprinter prettyprinter-ansi-terminal safe single tasty
-              tasty-hunit tasty-plus terminal-size text text-printer l3.tfmt time
-            ];
-            testDepends = h: with h; [ base tasty ];
-          };
-
           # -- mockio ------------------
 
           mockio         = mockio-0-0;
@@ -1482,6 +1466,29 @@
             ];
           };
 
+          # -- log-plus ----------------
+
+          log-plus         = log-plus-0-0;
+          log-plus-0-0     = log-plus-0-0-4-5;
+          log-plus-0-0-4-5 = callPkg "log-plus" "0.0.4.5" log-plus-src-0-0-4-5 {
+            description = "Logging, the way I like it";
+            libDepends = h: with h; [
+              base base-unicode-symbols data-default data-textual deepseq dlist
+              exceptions lens logging-effect mono-traversable mtl pcre-heavy
+              prettyprinter prettyprinter-ansi-terminal safe tasty tasty-hunit
+              terminal-size text text-printer time unix
+
+              l1.has-callstack fpath monadio-plus l0.more-unicode l2.natural
+              optparse-plus parsec-plus parser-plus single tasty-plus l3.tfmt
+            ];
+            testDepends = h: with h; [ base tasty ];
+##            postConfigure = ''
+##                substitute proto/LogPlus/Paths.hs src/LogPlus/Paths.hs \
+##                  --replace __zstd__ ${pkgs.zstd} && ls -l src/LogPlus/
+##
+##              '';
+          };
+
           # -- minfo -------------------
 
           minfo         = minfo-1-0;
@@ -1502,25 +1509,6 @@
 
               l0.more-unicode tasty-plus
             ];
-          };
-
-          # -- mockio-log --------------
-
-          mockio-log         = mockio-log-0-1;
-          mockio-log-0-1     = mockio-log-0-1-3-1;
-          mockio-log-0-1-3-1 = callPkg "mockio-log" "0.1.3.1"
-                                       mockio-log-src-0-1-3-1 {
-            description = "Combined Mock IO actions with logging";
-            libDepends = h: with h; [
-              base base-unicode-symbols containers data-default data-textual
-              deepseq exceptions lens logging-effect mtl parsec prettyprinter
-              prettyprinter-ansi-terminal tasty tasty-hunit text text-printer
-              time
-
-              base1t containers-plus log-plus mockio monaderror-io monadio-plus
-              l0.more-unicode parsec-plus parser-plus tasty-plus l3.tfmt
-            ];
-            testDepends = h: with h; [ base tasty ];
           };
 
           # -- network-plus -----------
@@ -1585,6 +1573,27 @@
             ];
           };
 
+          # -- mockio-log --------------
+
+          mockio-log         = mockio-log-0-1;
+          mockio-log-0-1     = mockio-log-0-1-3-1;
+          mockio-log-0-1-3-1 = callPkg "mockio-log" "0.1.3.1"
+                                       mockio-log-src-0-1-3-1 {
+            description = "Combined Mock IO actions with logging";
+            libDepends = h: with h; [
+              base base-unicode-symbols containers data-default data-textual
+              deepseq exceptions lens logging-effect mtl parsec prettyprinter
+              prettyprinter-ansi-terminal tasty tasty-hunit text text-printer
+              time
+
+              base1t containers-plus log-plus mockio monaderror-io monadio-plus
+              l0.more-unicode parsec-plus parser-plus tasty-plus l3.tfmt
+            ];
+            testDepends = h: with h; [ base tasty ];
+          };
+
+          # -- L14 (internal dependencies on L13) ----------
+
           # -- mockio-plus -------------
 
           mockio-plus          = mockio-plus-0-3;
@@ -1608,7 +1617,7 @@
             '';
           };
 
-          # -- L14 (internal dependencies on L13) ----------
+          # -- L15 (internal dependencies on L14) ----------
 
           # -- stdmain -----------------
 
@@ -1628,7 +1637,7 @@
             testDepends = h: with h; [ base tasty ];
           };
 
-          # -- L15 (internal dependencies on L14) ----------
+          # -- L16 (internal dependencies on L15) ----------
 
           # -- acct --------------------
 
@@ -1826,26 +1835,27 @@
 
           # -- vidtools ----------------
 
-###           vidtools         = vidtools-0-0;
-###           vidtools-0-0     = vidtools-0-0-0-0;
-###           vidtools-0-0-0-0 = callPkg "vidtools" "0.0.0.0" vidtools-src-0-0-0-0 {
-###             description = "tools for working with videos";
-###             libDepends = h: with h; [
-###               base containers data-textual logging-effect mono-traversable mtl
-###               optparse-applicative parsers text text-printer trifecta
-###
-###               base1 containers-plus duration env-plus l1.finite-list fpath fstat
-###               log-plus mockio mockio-log mockio-plus monadio-plus
-###               l0.more-unicode optparse-plus stdmain textual-plus trifecta-plus
-###             ];
-###
-###             postConfigure = ''
-###               substitute proto/Video/MPlayer/Paths.hs src/Video/MPlayer/Paths.hs \
-###                 --replace __mplayer__ ${pkgs.mplayer}
-###             '';
-###           };
+          vidtools         = vidtools-0-0;
+          vidtools-0-0     = vidtools-0-0-0-0;
+          vidtools-0-0-0-0 = callPkg "vidtools" "0.0.0.0" vidtools-src-0-0-0-0 {
+            description = "tools for working with videos";
+            libDepends = h: with h; [
+              aeson base containers data-textual logging-effect mono-traversable
+              mtl optparse-applicative parsers text text-printer trifecta
 
-          # -- L16 (internal dependencies on L15) ----------
+              base1 containers-plus duration env-plus l1.finite-list fpath fstat
+              log-plus mockio mockio-log mockio-plus monadio-plus
+              l0.more-unicode optparse-plus stdmain textual-plus trifecta-plus
+            ];
+
+            postConfigure = ''
+              substitute proto/Video/MPlayer/Paths.hs src/Video/MPlayer/Paths.hs \
+                --replace-fail __mplayer__   ${pkgs.mplayer} \
+                --replace-fail __mediainfo__ ${pkgs.mediainfo}
+            '';
+          };
+
+          # -- L17 (internal dependencies on L16) ----------
 
           # -- brian -------------------
 

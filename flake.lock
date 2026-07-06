@@ -713,36 +713,36 @@
         "type": "github"
       }
     },
-    "monaderror-io-src-1-2-6-0": {
+    "monaderror-io-src-1-2-8-0": {
       "flake": false,
       "locked": {
-        "lastModified": 1686471846,
-        "narHash": "sha256-XQLZGxtsIAsze63IyScyMgVw018ZStT5WdUDkJJ19Eo=",
+        "lastModified": 1776702608,
+        "narHash": "sha256-kXqBEV1tcS7sJvNztbg/pSm9GfRYf5z8ZrAmQo/Jfm0=",
         "owner": "sixears",
         "repo": "monaderror-io",
-        "rev": "c26293d9ad61d28049618451be4d413df16d9d1e",
+        "rev": "3950da5a3c3dd4f09b934c6beb23258d5bf5c7d2",
         "type": "github"
       },
       "original": {
         "owner": "sixears",
-        "ref": "r1.2.6.0",
+        "ref": "r1.2.8.0",
         "repo": "monaderror-io",
         "type": "github"
       }
     },
-    "monadio-plus-src-2-6-0-0": {
+    "monadio-plus-src-2-6-3-0": {
       "flake": false,
       "locked": {
-        "lastModified": 1741594695,
-        "narHash": "sha256-9xQMqGFbOQGShKl5pLRxOwIgmEWvFXmOCrIVdjCANBU=",
+        "lastModified": 1769279993,
+        "narHash": "sha256-xvFvyaICugcWZN+fafy6tsQ6znEmkFJlbpR1+K64sDk=",
         "owner": "sixears",
         "repo": "monadio-plus",
-        "rev": "bc5490d6ed18bb2f3b87d3f5afb31a8e5f8db346",
+        "rev": "62635bdd8792e4ec8eec44b632e6ae05f96d09c6",
         "type": "github"
       },
       "original": {
         "owner": "sixears",
-        "ref": "r2.6.0.0",
+        "ref": "r2.6.3.0",
         "repo": "monadio-plus",
         "type": "github"
       }
@@ -1028,8 +1028,8 @@
         "mockio-log-src-0-1-3-1": "mockio-log-src-0-1-3-1",
         "mockio-plus-src-0-3-16-0": "mockio-plus-src-0-3-16-0",
         "mockio-src-0-0-6-0": "mockio-src-0-0-6-0",
-        "monaderror-io-src-1-2-6-0": "monaderror-io-src-1-2-6-0",
-        "monadio-plus-src-2-6-0-0": "monadio-plus-src-2-6-0-0",
+        "monaderror-io-src-1-2-8-0": "monaderror-io-src-1-2-8-0",
+        "monadio-plus-src-2-6-3-0": "monadio-plus-src-2-6-3-0",
         "more-unicode-src-0-0-26-0": "more-unicode-src-0-0-26-0",
         "natural-src-0-1-2-0": "natural-src-0-1-2-0",
         "network-plus-src-0-0-1-0": "network-plus-src-0-0-1-0",
@@ -1052,6 +1052,7 @@
         "tfmt-src-0-3-1-0": "tfmt-src-0-3-1-0",
         "trifecta-plus-src-0-0-1-0": "trifecta-plus-src-0-0-1-0",
         "tuple-plus-src-0-0-1-0": "tuple-plus-src-0-0-1-0",
+        "vidtools-src-0-0-0-0": "vidtools-src-0-0-0-0",
         "while-src-0-0-0-1": "while-src-0-0-0-1",
         "yaml-plus-src-1-0-1-1": "yaml-plus-src-1-0-1-1"
       }
@@ -1190,6 +1191,19 @@
         "ref": "r0.0.1.0",
         "repo": "tuple-plus",
         "type": "github"
+      }
+    },
+    "vidtools-src-0-0-0-0": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1783283597,
+        "narHash": "sha256-mCietQfFz+kbzIZIZFBf1bpcM3Mj/RFMcQkMqpA6/co=",
+        "path": "/home/martyn/src/vidtools",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/martyn/src/vidtools",
+        "type": "path"
       }
     },
     "while-src-0-0-0-1": {
