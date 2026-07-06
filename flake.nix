@@ -791,7 +791,12 @@
                   lens parsers prettyprinter process tasty tasty-hunit
                   template-haskell text text-printer time trifecta
 
-                  (hlib.markUnbroken text-format)
+                  (hlib.markUnbroken (text-format.overrideAttrs (old: {
+                    postPatch = ''
+                      substituteInPlace text-format.cabal \
+                        --replace-fail "&& < 4.19" ""
+                    '';
+                  })))
 
                   l0.more-unicode l0.number
                   l1.base0t l1.has-callstack
