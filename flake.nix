@@ -435,11 +435,11 @@
       ref   = "r1.6.4.0";
       flake = false;
     };
-    tasty-plus-src-1-5-2-24 = {
+    tasty-plus-src-1-5-3-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "tasty-plus";
-      ref   = "r1.5.2.24";
+      ref   = "r1.5.3.0";
       flake = false;
     };
     textual-plus-src-1-1-4-0 = {
@@ -486,15 +486,15 @@
       ref   = "r0.0.0.1";
       flake = false;
     };
-    vidtools-src-0-0-0-0 = {
-      type = "path";
-      path = "/home/martyn/src/vidtools";
-##      type  = "github";
-##      owner = "sixears";
-##      repo  = "vidtools";
-##      ref   = "r0.0.0.0";
-      flake = false;
-    };
+###     vidtools-src-0-0-0-0 = {
+###       type = "path";
+###       path = "/home/martyn/src/vidtools";
+### ##      type  = "github";
+### ##      owner = "sixears";
+### ##      repo  = "vidtools";
+### ##      ref   = "r0.0.0.0";
+###       flake = false;
+###     };
     yaml-plus-src-1-0-1-1 = {
       type  = "github";
       owner = "sixears";
@@ -564,13 +564,13 @@
             , single-src-0-0-1-0
             , srt-adjust-src-1-0-0-7
             , stdmain-src-1-6-4-0
-            , tasty-plus-src-1-5-2-24
+            , tasty-plus-src-1-5-3-0
             , textual-plus-src-1-1-4-0
             , tfmt-src-0-3-1-0
             , htinydns-src-0-1-1-3
             , trifecta-plus-src-0-0-1-0
             , tuple-plus-src-0-0-1-0
-            , vidtools-src-0-0-0-0
+###             , vidtools-src-0-0-0-0
             , while-src-0-0-0-1
             , yaml-plus-src-1-0-1-1
             }:
@@ -1006,9 +1006,9 @@
           # -- tasty-plus --------------
 
           tasty-plus          = tasty-plus-1-5;
-          tasty-plus-1-5      = tasty-plus-1-5-2-24;
-          tasty-plus-1-5-2-24 =
-            callPkg "tasty-plus" "1.5.2.24" tasty-plus-src-1-5-2-24 {
+          tasty-plus-1-5      = tasty-plus-1-5-3-0;
+          tasty-plus-1-5-3-0 =
+            callPkg "tasty-plus" "1.5.3.0" tasty-plus-src-1-5-3-0 {
               description = "Additional utilities for working with Tasty";
               libDepends = h: with h; [
                 base base-unicode-symbols data-textual deepseq directory mtl
@@ -1840,25 +1840,26 @@
 
           # -- vidtools ----------------
 
-          vidtools         = vidtools-0-0;
-          vidtools-0-0     = vidtools-0-0-0-0;
-          vidtools-0-0-0-0 = callPkg "vidtools" "0.0.0.0" vidtools-src-0-0-0-0 {
-            description = "tools for working with videos";
-            libDepends = h: with h; [
-              aeson base containers data-textual logging-effect mono-traversable
-              mtl optparse-applicative parsers text text-printer trifecta
-
-              base1 containers-plus duration env-plus l1.finite-list fpath fstat
-              log-plus mockio mockio-log mockio-plus monadio-plus
-              l0.more-unicode optparse-plus stdmain textual-plus trifecta-plus
-            ];
-
-            postConfigure = ''
-              substitute proto/Video/MPlayer/Paths.hs src/Video/MPlayer/Paths.hs \
-                --replace-fail __mplayer__   ${pkgs.mplayer} \
-                --replace-fail __mediainfo__ ${pkgs.mediainfo}
-            '';
-          };
+###           vidtools         = vidtools-0-0;
+###           vidtools-0-0     = vidtools-0-0-0-0;
+###           vidtools-0-0-0-0 = callPkg "vidtools" "0.0.0.0" vidtools-src-0-0-0-0 {
+###             description = "tools for working with videos";
+###             libDepends = h: with h; [
+###               aeson base bytestring containers data-textual logging-effect
+###               mono-traversable mtl optparse-applicative parsers text
+###               text-printer trifecta
+###
+###               base1 containers-plus duration env-plus l1.finite-list fpath fstat
+###               log-plus mockio mockio-log mockio-plus monadio-plus
+###               l0.more-unicode optparse-plus stdmain textual-plus trifecta-plus
+###             ];
+###
+###             postConfigure = ''
+###               substitute proto/Video/MPlayer/Paths.hs src/Video/MPlayer/Paths.hs \
+###                 --replace-fail __mplayer__   ${pkgs.mplayer} \
+###                 --replace-fail __mediainfo__ ${pkgs.mediainfo}
+###             '';
+###           };
 
           # -- L17 (internal dependencies on L16) ----------
 

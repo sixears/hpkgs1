@@ -1047,12 +1047,11 @@
         "single-src-0-0-1-0": "single-src-0-0-1-0",
         "srt-adjust-src-1-0-0-7": "srt-adjust-src-1-0-0-7",
         "stdmain-src-1-6-4-0": "stdmain-src-1-6-4-0",
-        "tasty-plus-src-1-5-2-24": "tasty-plus-src-1-5-2-24",
+        "tasty-plus-src-1-5-3-0": "tasty-plus-src-1-5-3-0",
         "textual-plus-src-1-1-4-0": "textual-plus-src-1-1-4-0",
         "tfmt-src-0-3-1-0": "tfmt-src-0-3-1-0",
         "trifecta-plus-src-0-0-1-0": "trifecta-plus-src-0-0-1-0",
         "tuple-plus-src-0-0-1-0": "tuple-plus-src-0-0-1-0",
-        "vidtools-src-0-0-0-0": "vidtools-src-0-0-0-0",
         "while-src-0-0-0-1": "while-src-0-0-0-1",
         "yaml-plus-src-1-0-1-1": "yaml-plus-src-1-0-1-1"
       }
@@ -1108,19 +1107,19 @@
         "type": "github"
       }
     },
-    "tasty-plus-src-1-5-2-24": {
+    "tasty-plus-src-1-5-3-0": {
       "flake": false,
       "locked": {
-        "lastModified": 1668928652,
-        "narHash": "sha256-IhFu66RkXGRE+sgHT8ZG2hCToteh6WMVf59XIavcBCE=",
+        "lastModified": 1783442988,
+        "narHash": "sha256-xdcA1QpVqPdlCcC6o7lEq34OkkDMIWMLBXqvAyKYtEg=",
         "owner": "sixears",
         "repo": "tasty-plus",
-        "rev": "09a4cead7d4289e74d26c1ef86b83a6fd7627a94",
+        "rev": "b8132460f45d78b2b2424f173a59493ebb48c1a1",
         "type": "github"
       },
       "original": {
         "owner": "sixears",
-        "ref": "r1.5.2.24",
+        "ref": "r1.5.3.0",
         "repo": "tasty-plus",
         "type": "github"
       }
@@ -1191,19 +1190,6 @@
         "ref": "r0.0.1.0",
         "repo": "tuple-plus",
         "type": "github"
-      }
-    },
-    "vidtools-src-0-0-0-0": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1783283597,
-        "narHash": "sha256-mCietQfFz+kbzIZIZFBf1bpcM3Mj/RFMcQkMqpA6/co=",
-        "path": "/home/martyn/src/vidtools",
-        "type": "path"
-      },
-      "original": {
-        "path": "/home/martyn/src/vidtools",
-        "type": "path"
       }
     },
     "while-src-0-0-0-1": {
