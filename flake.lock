@@ -441,19 +441,19 @@
         "type": "github"
       }
     },
-    "hix-src-0-1-6-1": {
+    "hix-src-0-1-7-0": {
       "flake": false,
       "locked": {
-        "lastModified": 1757356452,
-        "narHash": "sha256-N1IG09aZUqc1RVX4c393rNzNex4QnUEViGiVnGtaUtw=",
+        "lastModified": 1783447272,
+        "narHash": "sha256-qZeueeysCuC3LRCzl3l4bWnJjdWn9Pc1b7Vu41rY5yM=",
         "owner": "sixears",
         "repo": "hix",
-        "rev": "0f19cbb3ab25fd813926c2f6e1f5888095546ed2",
+        "rev": "d946f4703e72259ceca38eff936cfeb53c87a325",
         "type": "github"
       },
       "original": {
         "owner": "sixears",
-        "ref": "r0.1.6.1",
+        "ref": "r0.1.7.0",
         "repo": "hix",
         "type": "github"
       }
@@ -1012,7 +1012,7 @@
         "fstat-src-1-0-2-26": "fstat-src-1-0-2-26",
         "handbrake-src-1-0-3-1": "handbrake-src-1-0-3-1",
         "has-callstack-src-1-0-2-0": "has-callstack-src-1-0-2-0",
-        "hix-src-0-1-6-1": "hix-src-0-1-6-1",
+        "hix-src-0-1-7-0": "hix-src-0-1-7-0",
         "hostsdb-src-0-1-1-4": "hostsdb-src-0-1-1-4",
         "htinydns-src-0-1-1-3": "htinydns-src-0-1-1-3",
         "http-plus-src-0-0-1-0": "http-plus-src-0-0-1-0",

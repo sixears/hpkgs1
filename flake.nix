@@ -200,11 +200,11 @@
       ref   = "r1.0.2.0";
       flake = false;
     };
-    hix-src-0-1-6-1 = {
+    hix-src-0-1-7-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "hix";
-      ref   = "r0.1.6.1";
+      ref   = "r0.1.7.0";
       flake = false;
     };
     http-plus-src-0-0-1-0 = {
@@ -531,7 +531,7 @@
             , fstat-src-1-0-2-26
             , handbrake-src-1-0-3-1
             , has-callstack-src-1-0-2-0
-            , hix-src-0-1-6-1
+            , hix-src-0-1-7-0
             , hostsdb-src-0-1-1-4
             , http-plus-src-0-0-1-0
             , hxrandr-src-0-0-0-0
@@ -1690,7 +1690,7 @@
 
           # -- hix ------------------
 
-          hix-0-1-6-1 = callPkg "hix" "0.1.6.1" hix-src-0-1-6-1 {
+          hix-0-1-7-0 = callPkg "hix" "0.1.7.0" hix-src-0-1-7-0 {
             description = "nix library for haskell, with utilities";
             libDepends = h: with h; [
               aeson base bytestring containers data-textual deepseq lens
@@ -1712,7 +1712,7 @@
               '';
           };
 
-          hix-0-1     = hix-0-1-6-1;
+          hix-0-1     = hix-0-1-7-0;
           hix         = hix-0-1;
 
           # -- mockio-cmds-inetutils ---
