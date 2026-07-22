@@ -486,15 +486,15 @@
       ref   = "r0.0.0.1";
       flake = false;
     };
-###     vidtools-src-0-0-0-0 = {
-###       type = "path";
-###       path = "/home/martyn/src/vidtools";
-### ##      type  = "github";
-### ##      owner = "sixears";
-### ##      repo  = "vidtools";
-### ##      ref   = "r0.0.0.0";
-###       flake = false;
-###     };
+    vidtools-src-0-0-1-0 = {
+##      type = "path";
+##      path = "/home/martyn/src/vidtools";
+      type  = "github";
+      owner = "sixears";
+      repo  = "vidtools";
+      ref   = "r0.0.1.0";
+      flake = false;
+    };
     yaml-plus-src-1-0-1-1 = {
       type  = "github";
       owner = "sixears";
@@ -570,7 +570,7 @@
             , htinydns-src-0-1-1-3
             , trifecta-plus-src-0-0-1-0
             , tuple-plus-src-0-0-1-0
-###             , vidtools-src-0-0-0-0
+            , vidtools-src-0-0-1-0
             , while-src-0-0-0-1
             , yaml-plus-src-1-0-1-1
             }:
@@ -1833,33 +1833,43 @@
             '';
 
             testDepends = h: with h; [
-              base base-unicode-symbols lens monaderror-io l0.more-unicode l2.natural
+              base base-unicode-symbols lens
+
+              monaderror-io l0.more-unicode l2.natural
               optparse-applicative proclib tasty tasty-plus
             ];
           };
 
           # -- vidtools ----------------
 
-###           vidtools         = vidtools-0-0;
-###           vidtools-0-0     = vidtools-0-0-0-0;
-###           vidtools-0-0-0-0 = callPkg "vidtools" "0.0.0.0" vidtools-src-0-0-0-0 {
-###             description = "tools for working with videos";
-###             libDepends = h: with h; [
-###               aeson base bytestring containers data-textual logging-effect
-###               mono-traversable mtl optparse-applicative parsers text
-###               text-printer trifecta
-###
-###               base1 containers-plus duration env-plus l1.finite-list fpath fstat
-###               log-plus mockio mockio-log mockio-plus monadio-plus
-###               l0.more-unicode optparse-plus stdmain textual-plus trifecta-plus
-###             ];
-###
-###             postConfigure = ''
-###               substitute proto/Video/MPlayer/Paths.hs src/Video/MPlayer/Paths.hs \
-###                 --replace-fail __mplayer__   ${pkgs.mplayer} \
-###                 --replace-fail __mediainfo__ ${pkgs.mediainfo}
-###             '';
-###           };
+          vidtools         = vidtools-0-0;
+          vidtools-0-0     = vidtools-0-0-1-0;
+          vidtools-0-0-1-0 = callPkg "vidtools" "0.0.1.0" vidtools-src-0-0-1-0 {
+            description = "tools for working with videos";
+            libDepends = h: with h; [
+              aeson base base-unicode-symbols bytestring containers data-textual
+              exceptions extra lens logging-effect mono-traversable mtl
+              optparse-applicative parsers scientific tasty tasty-hunit text
+              text-printer trifecta
+
+              aeson-plus base1 containers-plus duration env-plus l1.finite-list
+              fpath fstat log-plus mockio mockio-log mockio-plus monadio-plus
+              l0.more-unicode natural optparse-plus stdmain tasty-plus
+              textual-plus trifecta-plus
+            ];
+
+            postConfigure = ''
+              mkdir -p src/Video/{MPlayer,MediaInfo}
+
+              substitute proto/Video/MPlayer/Paths.hs         \
+                           src/Video/MPlayer/Paths.hs         \
+                --replace-fail __mplayer__   ${pkgs.mplayer}
+
+              substitute proto/Video/MediaInfo/Paths.hs       \
+                           src/Video/MediaInfo/Paths.hs       \
+                --replace-fail __mediainfo__ ${pkgs.mediainfo}
+            '';
+          };
 
           # -- L17 (internal dependencies on L16) ----------
 
