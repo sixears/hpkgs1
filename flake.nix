@@ -486,13 +486,13 @@
       ref   = "r0.0.0.1";
       flake = false;
     };
-    vidtools-src-0-0-1-0 = {
+    vidtools-src-0-0-2-0 = {
 ##      type = "path";
 ##      path = "/home/martyn/src/vidtools";
       type  = "github";
       owner = "sixears";
       repo  = "vidtools";
-      ref   = "r0.0.1.0";
+      ref   = "r0.0.2.0";
       flake = false;
     };
     yaml-plus-src-1-0-1-1 = {
@@ -570,7 +570,7 @@
             , htinydns-src-0-1-1-3
             , trifecta-plus-src-0-0-1-0
             , tuple-plus-src-0-0-1-0
-            , vidtools-src-0-0-1-0
+            , vidtools-src-0-0-2-0
             , while-src-0-0-0-1
             , yaml-plus-src-1-0-1-1
             }:
@@ -582,7 +582,7 @@
 #            (final: prev: {haskellPackages = prev.haskell.packages.ghc948; })
           ];
         };
-        hpkgs           = pkgs.haskellPackages;
+        hpkgs           = pkgs.haskellPackages // { duration = null; };
         hlib            = pkgs.haskell.lib;
         writeHaskellBin = pkgs.writers.writeHaskellBin;
 
@@ -1843,8 +1843,8 @@
           # -- vidtools ----------------
 
           vidtools         = vidtools-0-0;
-          vidtools-0-0     = vidtools-0-0-1-0;
-          vidtools-0-0-1-0 = callPkg "vidtools" "0.0.1.0" vidtools-src-0-0-1-0 {
+          vidtools-0-0     = vidtools-0-0-2-0;
+          vidtools-0-0-2-0 = callPkg "vidtools" "0.0.2.0" vidtools-src-0-0-2-0 {
             description = "tools for working with videos";
             libDepends = h: with h; [
               aeson base base-unicode-symbols bytestring containers data-textual
@@ -1865,8 +1865,9 @@
                            src/Video/MPlayer/Paths.hs         \
                 --replace-fail __mplayer__   ${pkgs.mplayer}
 
-              substitute proto/Video/MediaInfo/Paths.hs       \
-                           src/Video/MediaInfo/Paths.hs       \
+              substitute proto/Video/MediaInfo/Paths.hs        \
+                           src/Video/MediaInfo/Paths.hs        \
+                --replace-fail __coreutils__ ${pkgs.coreutils} \
                 --replace-fail __mediainfo__ ${pkgs.mediainfo}
             '';
           };
