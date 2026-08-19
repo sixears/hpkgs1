@@ -390,19 +390,19 @@
         "type": "github"
       }
     },
-    "fstat-src-1-0-2-26": {
+    "fstat-src-1-0-3-0": {
       "flake": false,
       "locked": {
-        "lastModified": 1668928643,
-        "narHash": "sha256-P15f4DxEeuao+tl3/gp+gksQW1rldfOq1iNUrNO7IBA=",
+        "lastModified": 1787107648,
+        "narHash": "sha256-UZmHFTRcksJq+rYTyQJ2sVDqTOAHkq1luBnpNWVPuSo=",
         "owner": "sixears",
         "repo": "fstat",
-        "rev": "a600afb7daae6212988e7217392a3ec8064f2404",
+        "rev": "70d697fb973741ec43e27c4cf8f7707eb6ff994e",
         "type": "github"
       },
       "original": {
         "owner": "sixears",
-        "ref": "r1.0.2.26",
+        "ref": "r1.0.3.0",
         "repo": "fstat",
         "type": "github"
       }
@@ -1009,7 +1009,7 @@
         "finite-list-src-0-0-1-0": "finite-list-src-0-0-1-0",
         "flake-utils": "flake-utils",
         "fpath-src-1-3-5-0": "fpath-src-1-3-5-0",
-        "fstat-src-1-0-2-26": "fstat-src-1-0-2-26",
+        "fstat-src-1-0-3-0": "fstat-src-1-0-3-0",
         "handbrake-src-1-0-3-1": "handbrake-src-1-0-3-1",
         "has-callstack-src-1-0-2-0": "has-callstack-src-1-0-2-0",
         "hix-src-0-1-7-0": "hix-src-0-1-7-0",

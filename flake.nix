@@ -179,11 +179,11 @@
       ref   = "r1.3.5.0";
       flake = false;
     };
-    fstat-src-1-0-2-26 = {
+    fstat-src-1-0-3-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "fstat";
-      ref   = "r1.0.2.26";
+      ref   = "r1.0.3.0";
       flake = false;
     };
     handbrake-src-1-0-3-1 = {
@@ -528,7 +528,7 @@
             , file-split-src-1-0-2-1
             , finite-list-src-0-0-1-0
             , fpath-src-1-3-5-0
-            , fstat-src-1-0-2-26
+            , fstat-src-1-0-3-0
             , handbrake-src-1-0-3-1
             , has-callstack-src-1-0-2-0
             , hix-src-0-1-7-0
@@ -946,12 +946,14 @@
           # -- fstat -------------------
 
           fstat          = fstat-1-0;
-          fstat-1-0      = fstat-1-0-2-26;
-          fstat-1-0-2-26 = callPkg "fstat" "1.0.2.26" fstat-src-1-0-2-26 {
+          fstat-1-0      = fstat-1-0-3-0;
+          fstat-1-0-3-0 = callPkg "fstat" "1.0.3.0" fstat-src-1-0-3-0 {
             description = "Haskell version of C's struct stat";
             libDepends = h: with h; [
-              base base-unicode-symbols data-textual text text-printer l3.tfmt time
+              base base-unicode-symbols data-textual text text-printer time
               unix
+
+              l3.tfmt
             ];
           };
 
@@ -1262,10 +1264,11 @@
               libDepends = h: with h; [
                 base base-unicode-symbols bytestring containers data-textual
                 deepseq directory exceptions filelock filepath lens mtl process
-                safe tasty tasty-hunit temporary text text-printer unix
+                regex-pcre safe tasty tasty-hunit temporary text text-printer
+                time unix
 
                 base1t containers-plus env-plus exited fpath fstat monaderror-io
-                l0.more-unicode l2.natural tasty-plus
+                l0.more-unicode l2.natural non-empty-containers tasty-plus
               ];
               testDepends = h: with h; [ base tasty ];
               postConfigure = ''
