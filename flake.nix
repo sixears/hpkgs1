@@ -172,18 +172,18 @@
 ##      path  = "/home/martyn/src/finite-list";
       flake = false;
     };
-    fpath-src-1-3-5-0 = {
+    fpath-src-1-3-7-1 = {
       type  = "github";
       owner = "sixears";
       repo  = "fpath";
-      ref   = "r1.3.5.0";
+      ref   = "r1.3.7.1";
       flake = false;
     };
-    fstat-src-1-0-3-0 = {
+    fstat-src-1-0-4-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "fstat";
-      ref   = "r1.0.3.0";
+      ref   = "r1.0.4.0";
       flake = false;
     };
     handbrake-src-1-0-3-1 = {
@@ -242,11 +242,11 @@
       ref   = "r0.0.2.0";
       flake = false;
     };
-    log-plus-src-0-0-4-5 = {
+    log-plus-src-0-0-5-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "log-plus";
-      ref   = "r0.0.4.5";
+      ref   = "r0.0.5.0";
       flake = false;
     };
     mac-address-src-0-0-1-0 = {
@@ -312,18 +312,18 @@
       ref   = "r1.2.8.0";
       flake = false;
     };
-    monadio-plus-src-2-6-3-0 = {
+    monadio-plus-src-2-6-8-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "monadio-plus";
-      ref   = "r2.6.3.0";
+      ref   = "r2.6.8.0";
       flake = false;
     };
-    more-unicode-src-0-0-26-0 = {
+    more-unicode-src-0-0-27-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "more-unicode";
-      ref   = "r0.0.26.0";
+      ref   = "r0.0.27.0";
 ##      type = "path";
 ##      path = "/home/martyn/src/more-unicode";
       flake = false;
@@ -428,18 +428,18 @@
       ref   = "r1.0.0.7";
       flake = false;
     };
-    stdmain-src-1-6-4-0 = {
+    stdmain-src-1-6-4-1 = {
       type  = "github";
       owner = "sixears";
       repo  = "stdmain";
-      ref   = "r1.6.4.0";
+      ref   = "r1.6.4.1";
       flake = false;
     };
-    tasty-plus-src-1-5-3-0 = {
+    tasty-plus-src-1-5-4-0 = {
       type  = "github";
       owner = "sixears";
       repo  = "tasty-plus";
-      ref   = "r1.5.3.0";
+      ref   = "r1.5.4.0";
       flake = false;
     };
     textual-plus-src-1-1-4-0 = {
@@ -527,8 +527,8 @@
             , exited-src-1-0-4-23
             , file-split-src-1-0-2-1
             , finite-list-src-0-0-1-0
-            , fpath-src-1-3-5-0
-            , fstat-src-1-0-3-0
+            , fpath-src-1-3-7-1
+            , fstat-src-1-0-4-0
             , handbrake-src-1-0-3-1
             , has-callstack-src-1-0-2-0
             , hix-src-0-1-7-0
@@ -537,7 +537,7 @@
             , hxrandr-src-0-0-0-0
             , index-src-1-0-1-26
             , ip4-src-0-0-2-0
-            , log-plus-src-0-0-4-5
+            , log-plus-src-0-0-5-0
             , mac-address-src-0-0-1-0
             , minfo-src-1-0-3-7
             , mockio-cmds-inetutils-src-1-0-0-2
@@ -547,8 +547,8 @@
             , mockio-log-src-0-1-3-1
             , mockio-plus-src-0-3-16-0
             , monaderror-io-src-1-2-8-0
-            , monadio-plus-src-2-6-3-0
-            , more-unicode-src-0-0-26-0
+            , monadio-plus-src-2-6-8-0
+            , more-unicode-src-0-0-27-0
             , natural-src-0-1-2-0
             , network-plus-src-0-0-1-0
             , non-empty-containers-src-1-4-4-0
@@ -563,8 +563,8 @@
             , rename-src-0-0-1-2
             , single-src-0-0-1-0
             , srt-adjust-src-1-0-0-7
-            , stdmain-src-1-6-4-0
-            , tasty-plus-src-1-5-3-0
+            , stdmain-src-1-6-4-1
+            , tasty-plus-src-1-5-4-0
             , textual-plus-src-1-1-4-0
             , tfmt-src-0-3-1-0
             , htinydns-src-0-1-1-3
@@ -653,8 +653,8 @@
 
               # -- more-unicode --------
 
-              more-unicode-0-0-26-0 =
-                callPkg "more-unicode" "0.0.26.0" more-unicode-src-0-0-26-0 {
+              more-unicode-0-0-27-0 =
+                callPkg "more-unicode" "0.0.27.0" more-unicode-src-0-0-27-0 {
                   description = "More unicode symbols";
                   libDepends = h: with h; [
                     base-unicode-symbols bytestring containers data-default
@@ -667,7 +667,7 @@
                 };
 
               more-unicode           = more-unicode-0-0;
-              more-unicode-0-0       = more-unicode-0-0-26-0;
+              more-unicode-0-0       = more-unicode-0-0-27-0;
 
               # -- number --------------
 
@@ -946,8 +946,8 @@
           # -- fstat -------------------
 
           fstat          = fstat-1-0;
-          fstat-1-0      = fstat-1-0-3-0;
-          fstat-1-0-3-0 = callPkg "fstat" "1.0.3.0" fstat-src-1-0-3-0 {
+          fstat-1-0      = fstat-1-0-4-0;
+          fstat-1-0-4-0 = callPkg "fstat" "1.0.4.0" fstat-src-1-0-4-0 {
             description = "Haskell version of C's struct stat";
             libDepends = h: with h; [
               base base-unicode-symbols data-textual text text-printer time
@@ -1008,9 +1008,9 @@
           # -- tasty-plus --------------
 
           tasty-plus          = tasty-plus-1-5;
-          tasty-plus-1-5      = tasty-plus-1-5-3-0;
-          tasty-plus-1-5-3-0 =
-            callPkg "tasty-plus" "1.5.3.0" tasty-plus-src-1-5-3-0 {
+          tasty-plus-1-5      = tasty-plus-1-5-4-0;
+          tasty-plus-1-5-4-0 =
+            callPkg "tasty-plus" "1.5.4.0" tasty-plus-src-1-5-4-0 {
               description = "Additional utilities for working with Tasty";
               libDepends = h: with h; [
                 base base-unicode-symbols data-textual deepseq directory mtl
@@ -1182,8 +1182,8 @@
           # -- fpath -------------------
 
           fpath          = fpath-1-3;
-          fpath-1-3      = fpath-1-3-5-0;
-          fpath-1-3-5-0 = callPkg "fpath" "1.3.5.0" fpath-src-1-3-5-0 {
+          fpath-1-3      = fpath-1-3-7-1;
+          fpath-1-3-7-1 = callPkg "fpath" "1.3.7.1" fpath-src-1-3-7-1 {
             description = "Strongly-typed file paths";
             libDepends = h: with h; [
               base base-unicode-symbols containers data-default data-textual
@@ -1257,9 +1257,9 @@
           # -- monadio-plus ------------
 
           monadio-plus          = monadio-plus-2-6;
-          monadio-plus-2-6      = monadio-plus-2-6-3-0;
-          monadio-plus-2-6-3-0 =
-            callPkg "monadio-plus" "2.6.3.0" monadio-plus-src-2-6-3-0 {
+          monadio-plus-2-6      = monadio-plus-2-6-8-0;
+          monadio-plus-2-6-8-0 =
+            callPkg "monadio-plus" "2.6.8.0" monadio-plus-src-2-6-8-0 {
               description = "IO operations, using MonadIO & MonadError with AsIOError";
               libDepends = h: with h; [
                 base base-unicode-symbols bytestring containers data-textual
@@ -1464,8 +1464,8 @@
               data-textual deepseq dhall hashable lens mtl parsers tasty
               tasty-hunit template-haskell text text-printer yaml
 
-              base1 l1.has-callstack ip4 l0.more-unicode non-empty-containers proclib
-              quasiquoting tasty-plus l3.tfmt
+              base1 l1.has-callstack ip4 l0.more-unicode non-empty-containers
+              proclib quasiquoting tasty-plus l3.tfmt
             ];
             testDepends = h: with h; [
               base base-unicode-symbols optparse-applicative tasty
@@ -1477,24 +1477,25 @@
           # -- log-plus ----------------
 
           log-plus         = log-plus-0-0;
-          log-plus-0-0     = log-plus-0-0-4-5;
-          log-plus-0-0-4-5 = callPkg "log-plus" "0.0.4.5" log-plus-src-0-0-4-5 {
+          log-plus-0-0     = log-plus-0-0-5-0;
+          log-plus-0-0-5-0 = callPkg "log-plus" "0.0.5.0" log-plus-src-0-0-5-0 {
             description = "Logging, the way I like it";
             libDepends = h: with h; [
-              base base-unicode-symbols data-default data-textual deepseq dlist
-              exceptions lens logging-effect mono-traversable mtl pcre-heavy
+              async base base-unicode-symbols data-default data-textual deepseq
+              dlist exceptions lens logging-effect mono-traversable mtl
               prettyprinter prettyprinter-ansi-terminal safe tasty tasty-hunit
               terminal-size text text-printer time unix
 
-              l1.has-callstack fpath monadio-plus l0.more-unicode l2.natural
-              optparse-plus parsec-plus parser-plus single tasty-plus l3.tfmt
+              l1.has-callstack fpath fstat monadio-plus l0.more-unicode
+              l2.natural optparse-plus parsec-plus parser-plus single tasty-plus
+              l3.tfmt
             ];
             testDepends = h: with h; [ base tasty ];
-##            postConfigure = ''
-##                substitute proto/LogPlus/Paths.hs src/LogPlus/Paths.hs \
-##                  --replace __zstd__ ${pkgs.zstd} && ls -l src/LogPlus/
-##
-##              '';
+            postConfigure = ''
+                mkdir -p src/LogPlus
+                substitute proto/LogPlus/Paths.hs src/LogPlus/Paths.hs \
+                  --replace __zstd__ ${pkgs.zstd} && ls -l src/LogPlus/
+              '';
           };
 
           # -- minfo -------------------
@@ -1630,8 +1631,8 @@
           # -- stdmain -----------------
 
           stdmain          = stdmain-1-6;
-          stdmain-1-6      = stdmain-1-6-4-0;
-          stdmain-1-6-4-0 = callPkg "stdmain" "1.6.4.0" stdmain-src-1-6-4-0 {
+          stdmain-1-6      = stdmain-1-6-4-1;
+          stdmain-1-6-4-1 = callPkg "stdmain" "1.6.4.1" stdmain-src-1-6-4-1 {
             description = "standardized CLI wrapper";
             libDepends = h: with h; [
               aeson base bytestring deepseq lens logging-effect mtl
